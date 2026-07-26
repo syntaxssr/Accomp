@@ -158,28 +158,32 @@ Every trail is an opportunity to discover something new.
 
 | Token | Hex | Intended use |
 |---|---:|---|
-| Accomp Green | `#3ECF8E` | Logo, primary CTA, interactive states, success |
-| Emerald Dark | `#249361` | Hover, depth, icons, controlled gradients |
+| Trail Sage | `#778873` | Logo, primary CTA, path motif, active states |
+| Meadow Sage | `#A1BC98` | Hover, supporting surfaces, icons, gentle depth |
+| Trail Sand | `#DCCFC0` | Cards, borders, soft fields, supporting surfaces |
+| Warm Cream | `#FDF6ED` | Main canvas, light surfaces, text on dark |
 | Brand Dark | `#1F1F1F` | Headings, primary text, dark surfaces |
 | Background Dark | `#171717` | Dark sections and dark mode backgrounds |
-| Foreground Light | `#EDEDED` | Text and icons on dark surfaces |
-| Surface | `#F8F9FA` | Cards, sheets, light page surfaces |
 
 ```css
 :root {
-  --brand-primary: #3ecf8e;
-  --brand-primary-dark: #249361;
+  --brand-primary: #778873;
+  --brand-secondary: #a1bc98;
+  --brand-sand: #dccfc0;
+  --brand-cream: #fdf6ed;
   --brand-dark: #1f1f1f;
   --background-dark: #171717;
-  --foreground-light: #ededed;
-  --surface: #f8f9fa;
+  --foreground-light: #fdf6ed;
+  --surface: #fdf6ed;
+  --surface-muted: #dccfc0;
 }
 ```
 
 ### Color behavior
 
-- สีเขียวคือจุดโฟกัส ไม่ใช่สีที่ต้องเติมเต็มทุกพื้นที่
-- พื้นที่ขนาดใหญ่ควรใช้สีอ่อนที่สงบหรือ Brand Dark
+- Trail Sage คือจุดโฟกัส ไม่ใช่สีที่ต้องเติมเต็มทุกพื้นที่
+- Warm Cream เป็น canvas หลัก และ Trail Sand/Meadow Sage ใช้สร้างชั้นของ surface
+- พื้นที่เข้มยังใช้ Brand Dark เพื่อรักษาคอนทราสต์และจังหวะของหน้า
 - คอนทราสต์ของข้อความและปุ่มต้องผ่านเกณฑ์ accessibility
 - Gradient ใช้อย่างจำกัดเพื่อสร้างมิติ ไม่ใช้เป็นเอฟเฟกต์หลักทั่วทั้งหน้า
 - ห้ามยืมสีม่วง โลโก้ หรือ visual signature ของ Phantom มาเป็นอัตลักษณ์ของ Accomp
@@ -244,7 +248,7 @@ motif เหล่านี้ต้องเป็นงานต้นฉบ�
 
 ## 11. Logo Direction
 
-โลโก้ควรสื่อ “companionship through movement” มากกว่าการใช้ภาพภูเขาหรือสถานที่แบบตรงตัว
+โลโก้ควรสื่อ “companionship through movement” ผ่านต้นสนทรงออร์แกนิกที่เรียบง่าย มากกว่าการใช้ภาพภูเขาหรือสถานที่แบบตรงตัว
 
 ### Preferred
 
@@ -254,19 +258,20 @@ motif เหล่านี้ต้องเป็นงานต้นฉบ�
 - Recognizable at small sizes
 - Works in monochrome
 - Suitable for an app icon
-- สื่อ shared path, two companions, connection, navigation, exploration หรือ progress
+- ต้นสนต้องมี silhouette ที่เป็นเอกลักษณ์ ไม่ใช่ clip-art outdoor ทั่วไป
+- ช่องว่างระหว่างกิ่งสื่อ shared path, connection และการเดินทางร่วมกัน
 
 ### Avoid
 
 - Mountains inside circles
-- Pine tree clichés
+- Pine tree ที่สมจริง ซับซ้อน หรือเป็นทรงสามเหลี่ยมสำเร็จรูป
 - Generic location pins
 - Complex landscapes
 - Overly realistic graphics
 
 ### Current status
 
-ยังไม่มีไฟล์โลโก้หรือ wordmark ที่อนุมัติ เว็บไซต์จะยังไม่เริ่มออกแบบ final header, favicon หรือ app icon จนกว่าจะได้รับ asset หรืออนุมัติให้สร้าง logo exploration แยกต่างหาก
+มี [pine symbol exploration v1](./accomp-pine-icon.svg) สำหรับ review แล้ว แต่ยังไม่มี final wordmark หรือไฟล์โลโก้ที่อนุมัติ เว็บไซต์จะยังไม่เริ่มออกแบบ final header, favicon หรือ app icon จนกว่า symbol นี้จะได้รับ approval
 
 ## 12. Iconography
 
@@ -400,4 +405,3 @@ motif เหล่านี้ต้องเป็นงานต้นฉบ�
 - CTA ก่อนแอปเปิดตัว: Download, Join waitlist หรือ Get notified
 - Social proof ที่ตรวจสอบได้
 - Legal entity, contact, privacy policy และ terms
-

@@ -1,0 +1,234 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="430" height="8200" viewBox="0 0 430 8200" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Accomp mobile homepage low-fidelity wireframe</title>
+  <desc id="desc">A full-page 390-pixel mobile wireframe showing the Accomp marketing homepage with reordered mobile content, native card rails, vertical steps, FAQ and waitlist placeholder.</desc>
+  <defs>
+    <pattern id="photoGrid" width="28" height="28" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="28" stroke="#778873" stroke-opacity="0.2" stroke-width="10"/>
+    </pattern>
+    <pattern id="contours" width="150" height="100" patternUnits="userSpaceOnUse">
+      <path d="M-18 68C24 26 60 28 94 50s60 16 86-8" stroke="#A1BC98" stroke-opacity="0.14" stroke-width="2"/>
+      <path d="M-14 92C26 56 64 54 100 78s56 12 84-8" stroke="#A1BC98" stroke-opacity="0.1" stroke-width="2"/>
+    </pattern>
+  </defs>
+
+  <rect width="430" height="8200" fill="#E8E3DA"/>
+  <text x="20" y="30" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="600" letter-spacing="1.2" fill="#5D685F">ACCOMP · PHASE 2 · MOBILE 390 INTENT</text>
+  <text x="410" y="30" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="10" fill="#5D685F">LOW FIDELITY</text>
+  <rect x="20" y="50" width="390" height="8108" rx="28" fill="#FDF6ED"/>
+
+  <!-- Header -->
+  <rect x="34" y="70" width="362" height="64" rx="22" fill="#FDF6ED" stroke="#DCCFC0"/>
+  <circle cx="62" cy="102" r="14" fill="#778873"/>
+  <text x="84" y="108" font-family="Geist, Inter, Arial, sans-serif" font-size="17" font-weight="600" fill="#1F1F1F">Accomp</text>
+  <rect x="204" y="82" width="116" height="40" rx="20" fill="#778873"/>
+  <text x="262" y="107" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="600" fill="#171717">Join waitlist</text>
+  <rect x="330" y="82" width="52" height="40" rx="20" fill="none" stroke="#778873"/>
+  <text x="356" y="107" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="600" fill="#1F1F1F">Menu</text>
+
+  <!-- Hero -->
+  <rect x="34" y="156" width="362" height="820" rx="30" fill="#FDF6ED" stroke="#DCCFC0"/>
+  <text x="58" y="206" font-family="Inter, Arial, sans-serif" font-size="9" font-weight="600" letter-spacing="1.25" fill="#778873">YOUR COMPANION FOR EVERY ADVENTURE</text>
+  <text x="58" y="278" font-family="Geist, Inter, Arial, sans-serif" font-size="48" font-weight="500" fill="#1F1F1F">Adventure</text>
+  <text x="58" y="330" font-family="Geist, Inter, Arial, sans-serif" font-size="48" font-weight="500" fill="#1F1F1F">together.</text>
+  <text x="58" y="382" font-family="Inter, Arial, sans-serif" font-size="14" fill="#5D685F">Bring the route, the crew, the gear,</text>
+  <text x="58" y="406" font-family="Inter, Arial, sans-serif" font-size="14" fill="#5D685F">and the plan into one calm place—so</text>
+  <text x="58" y="430" font-family="Inter, Arial, sans-serif" font-size="14" fill="#5D685F">everyone can head out ready.</text>
+  <rect x="58" y="472" width="314" height="50" rx="25" fill="#778873"/>
+  <text x="215" y="503" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#171717">Join the waitlist</text>
+  <rect x="58" y="536" width="314" height="50" rx="25" fill="none" stroke="#778873"/>
+  <text x="215" y="567" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#1F1F1F">Explore the features</text>
+  <text x="58" y="620" font-family="Inter, Arial, sans-serif" font-size="11" fill="#5D685F">Mobile app for shared outdoor-trip planning.</text>
+  <rect x="58" y="654" width="314" height="286" rx="28" fill="#2C352F"/>
+  <rect x="58" y="654" width="314" height="286" rx="28" fill="url(#contours)"/>
+  <path d="M72 856C132 824 166 866 218 830S312 786 358 812" stroke="#DCCFC0" stroke-width="5" stroke-linecap="round"/>
+  <path d="M72 744C132 760 158 824 220 796S314 720 358 734" stroke="#778873" stroke-width="5" stroke-linecap="round"/>
+  <rect x="164" y="688" width="108" height="210" rx="22" fill="#FDF6ED" stroke="#A1BC98" stroke-width="2"/>
+  <rect x="180" y="718" width="76" height="10" rx="5" fill="#DCCFC0"/>
+  <rect x="180" y="748" width="60" height="16" rx="6" fill="#1F1F1F"/>
+  <circle cx="188" cy="792" r="7" fill="#778873"/>
+  <circle cx="206" cy="792" r="7" fill="#A1BC98"/>
+  <circle cx="224" cy="792" r="7" fill="#2C352F"/>
+  <rect x="180" y="826" width="76" height="8" rx="4" fill="#DCCFC0"/>
+  <rect x="180" y="850" width="64" height="8" rx="4" fill="#DCCFC0"/>
+  <text x="215" y="924" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="8" font-weight="600" letter-spacing="0.8" fill="#DCCFC0">PRODUCT PLACEHOLDER</text>
+
+  <!-- Promise -->
+  <rect x="34" y="1000" width="362" height="326" rx="30" fill="#DCCFC0"/>
+  <text x="58" y="1058" font-family="Geist, Inter, Arial, sans-serif" font-size="26" font-weight="500" fill="#1F1F1F">One place for the plan,</text>
+  <text x="58" y="1090" font-family="Geist, Inter, Arial, sans-serif" font-size="26" font-weight="500" fill="#1F1F1F">the people, and the trail ahead.</text>
+  <line x1="58" y1="1128" x2="372" y2="1128" stroke="#A1BC98"/>
+  <g font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#1F1F1F">
+    <circle cx="70" cy="1170" r="7" fill="#778873"/><text x="88" y="1175">Plan together</text>
+    <circle cx="70" cy="1220" r="7" fill="#778873"/><text x="88" y="1225">Pack together</text>
+    <circle cx="70" cy="1270" r="7" fill="#778873"/><text x="88" y="1275">Explore ready</text>
+  </g>
+
+  <!-- Plan -->
+  <rect x="34" y="1350" width="362" height="1080" rx="30" fill="#FDF6ED" stroke="#DCCFC0"/>
+  <text x="58" y="1406" font-family="Inter, Arial, sans-serif" font-size="9" font-weight="600" letter-spacing="1.4" fill="#778873">PLAN TOGETHER · #FEATURES</text>
+  <text x="58" y="1470" font-family="Geist, Inter, Arial, sans-serif" font-size="34" font-weight="500" fill="#1F1F1F">Make one plan.</text>
+  <text x="58" y="1510" font-family="Geist, Inter, Arial, sans-serif" font-size="34" font-weight="500" fill="#1F1F1F">Bring everyone in.</text>
+  <text x="58" y="1556" font-family="Inter, Arial, sans-serif" font-size="13" fill="#5D685F">Start the trip, invite your crew, and</text>
+  <text x="58" y="1578" font-family="Inter, Arial, sans-serif" font-size="13" fill="#5D685F">shape the days in one shared space.</text>
+  <text x="58" y="1632" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="600" letter-spacing="1" fill="#5D685F">NATIVE CARD RAIL · NEXT CARD PEEKS IN</text>
+  <rect x="58" y="1660" width="280" height="574" rx="28" fill="#DCCFC0"/>
+  <text x="84" y="1712" font-family="Geist, Inter, Arial, sans-serif" font-size="22" font-weight="600" fill="#1F1F1F">Start with the trip</text>
+  <rect x="84" y="1750" width="228" height="196" rx="22" fill="#FDF6ED"/>
+  <rect x="104" y="1780" width="110" height="12" rx="6" fill="#778873"/>
+  <rect x="104" y="1816" width="166" height="10" rx="5" fill="#DCCFC0"/>
+  <rect x="104" y="1848" width="142" height="10" rx="5" fill="#DCCFC0"/>
+  <rect x="104" y="1880" width="184" height="10" rx="5" fill="#DCCFC0"/>
+  <text x="84" y="1998" font-family="Inter, Arial, sans-serif" font-size="13" fill="#5D685F">Set the place, dates and first outline.</text>
+  <rect x="84" y="2040" width="228" height="50" rx="25" fill="#778873"/>
+  <text x="198" y="2071" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="600" fill="#171717">Create trip</text>
+  <text x="84" y="2180" font-family="Inter, Arial, sans-serif" font-size="10" fill="#5D685F">Card 1 of 3</text>
+  <rect x="350" y="1660" width="280" height="574" rx="28" fill="#A1BC98"/>
+  <text x="372" y="1712" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600" fill="#1F1F1F">Invite</text>
+  <rect x="58" y="2260" width="54" height="44" rx="22" fill="none" stroke="#778873"/>
+  <text x="85" y="2288" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" fill="#1F1F1F">←</text>
+  <rect x="122" y="2260" width="54" height="44" rx="22" fill="#778873"/>
+  <text x="149" y="2288" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" fill="#171717">→</text>
+  <text x="194" y="2288" font-family="Inter, Arial, sans-serif" font-size="10" fill="#5D685F">Swipe or use controls</text>
+
+  <!-- Pack -->
+  <rect x="34" y="2454" width="362" height="1080" rx="30" fill="#DCCFC0"/>
+  <text x="58" y="2510" font-family="Inter, Arial, sans-serif" font-size="9" font-weight="600" letter-spacing="1.4" fill="#778873">PACK TOGETHER · CARD RAIL</text>
+  <text x="58" y="2574" font-family="Geist, Inter, Arial, sans-serif" font-size="34" font-weight="500" fill="#1F1F1F">Pack once. Know</text>
+  <text x="58" y="2614" font-family="Geist, Inter, Arial, sans-serif" font-size="34" font-weight="500" fill="#1F1F1F">who’s bringing what.</text>
+  <text x="58" y="2660" font-family="Inter, Arial, sans-serif" font-size="13" fill="#5D685F">Share the checklist, split responsibility,</text>
+  <text x="58" y="2682" font-family="Inter, Arial, sans-serif" font-size="13" fill="#5D685F">and see what still needs attention.</text>
+  <text x="58" y="2736" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="600" letter-spacing="1" fill="#5D685F">TOUCH SCROLL DOES NOT TRAP PAGE SCROLL</text>
+  <rect x="58" y="2764" width="280" height="574" rx="28" fill="#2C352F"/>
+  <text x="84" y="2816" font-family="Geist, Inter, Arial, sans-serif" font-size="22" font-weight="600" fill="#FDF6ED">Share the checklist</text>
+  <g fill="#4F5F52">
+    <rect x="84" y="2860" width="228" height="54" rx="14"/>
+    <rect x="84" y="2928" width="228" height="54" rx="14"/>
+    <rect x="84" y="2996" width="228" height="54" rx="14"/>
+    <rect x="84" y="3064" width="228" height="54" rx="14"/>
+  </g>
+  <g fill="#A1BC98">
+    <circle cx="110" cy="2887" r="9"/><circle cx="110" cy="2955" r="9"/><circle cx="110" cy="3023" r="9"/><circle cx="110" cy="3091" r="9"/>
+  </g>
+  <text x="84" y="3182" font-family="Inter, Arial, sans-serif" font-size="13" fill="#DCCFC0">Shared and personal essentials.</text>
+  <text x="84" y="3284" font-family="Inter, Arial, sans-serif" font-size="10" fill="#DCCFC0">Card 1 of 3</text>
+  <rect x="350" y="2764" width="280" height="574" rx="28" fill="#A1BC98"/>
+  <text x="372" y="2816" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600" fill="#1F1F1F">Split</text>
+  <rect x="58" y="3362" width="54" height="44" rx="22" fill="none" stroke="#778873"/>
+  <text x="85" y="3390" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" fill="#1F1F1F">←</text>
+  <rect x="122" y="3362" width="54" height="44" rx="22" fill="#778873"/>
+  <text x="149" y="3390" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" fill="#171717">→</text>
+  <text x="194" y="3390" font-family="Inter, Arial, sans-serif" font-size="10" fill="#5D685F">Swipe or use controls</text>
+
+  <!-- Offline -->
+  <rect x="34" y="3558" width="362" height="1070" rx="30" fill="#171717"/>
+  <rect x="34" y="3558" width="362" height="1070" rx="30" fill="url(#contours)"/>
+  <text x="58" y="3616" font-family="Inter, Arial, sans-serif" font-size="9" font-weight="600" letter-spacing="1.4" fill="#A1BC98">READY ANYWHERE · #OFFLINE</text>
+  <text x="58" y="3684" font-family="Geist, Inter, Arial, sans-serif" font-size="36" font-weight="500" fill="#FDF6ED">Ready when the</text>
+  <text x="58" y="3726" font-family="Geist, Inter, Arial, sans-serif" font-size="36" font-weight="500" fill="#FDF6ED">signal isn’t.</text>
+  <text x="58" y="3776" font-family="Inter, Arial, sans-serif" font-size="13" fill="#DCCFC0">Prepare maps and essential trip details</text>
+  <text x="58" y="3798" font-family="Inter, Arial, sans-serif" font-size="13" fill="#DCCFC0">before coverage fades.</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="13">
+    <circle cx="68" cy="3854" r="8" fill="#778873"/><text x="88" y="3859" fill="#FDF6ED">Save the route</text>
+    <circle cx="68" cy="3904" r="8" fill="#A1BC98"/><text x="88" y="3909" fill="#FDF6ED">Keep details close</text>
+    <circle cx="68" cy="3954" r="8" fill="#DCCFC0"/><text x="88" y="3959" fill="#FDF6ED">Head out with confidence</text>
+  </g>
+  <rect x="58" y="4012" width="314" height="500" rx="28" fill="#2C352F" stroke="#778873"/>
+  <path d="M76 4378C130 4322 168 4406 220 4330S310 4206 354 4252" stroke="#A1BC98" stroke-width="7" stroke-linecap="round"/>
+  <path d="M76 4178C130 4224 174 4142 226 4200S310 4350 354 4326" stroke="#778873" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="156" cy="4354" r="12" fill="#FDF6ED"/>
+  <circle cx="180" cy="4346" r="12" fill="#778873"/>
+  <rect x="122" y="4070" width="186" height="104" rx="20" fill="#FDF6ED"/>
+  <rect x="144" y="4096" width="90" height="11" rx="5" fill="#778873"/>
+  <rect x="144" y="4126" width="138" height="9" rx="4" fill="#DCCFC0"/>
+  <rect x="144" y="4150" width="116" height="9" rx="4" fill="#DCCFC0"/>
+  <text x="215" y="4482" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="8" font-weight="600" letter-spacing="0.8" fill="#DCCFC0">MAP + DETAILS PLACEHOLDER</text>
+  <text x="58" y="4570" font-family="Inter, Arial, sans-serif" font-size="10" fill="#DCCFC0">Exact offline scope remains unconfirmed.</text>
+
+  <!-- How -->
+  <rect x="34" y="4652" width="362" height="848" rx="30" fill="#FDF6ED" stroke="#DCCFC0"/>
+  <text x="58" y="4710" font-family="Inter, Arial, sans-serif" font-size="9" font-weight="600" letter-spacing="1.4" fill="#778873">HOW IT WORKS</text>
+  <text x="58" y="4776" font-family="Geist, Inter, Arial, sans-serif" font-size="32" font-weight="500" fill="#1F1F1F">From “we should go”</text>
+  <text x="58" y="4814" font-family="Geist, Inter, Arial, sans-serif" font-size="32" font-weight="500" fill="#1F1F1F">to ready to leave.</text>
+  <path d="M90 4886C62 5020 112 5104 88 5222S80 5350 100 5430" stroke="#778873" stroke-width="5" stroke-linecap="round"/>
+  <g font-family="Inter, Arial, sans-serif">
+    <circle cx="90" cy="4930" r="25" fill="#778873"/><text x="90" y="4936" text-anchor="middle" font-size="14" font-weight="600" fill="#171717">1</text>
+    <text x="132" y="4922" font-size="19" font-weight="600" fill="#1F1F1F">Create the trip</text>
+    <text x="132" y="4950" font-size="12" fill="#5D685F">Place, dates and first outline.</text>
+
+    <circle cx="88" cy="5138" r="25" fill="#A1BC98"/><text x="88" y="5144" text-anchor="middle" font-size="14" font-weight="600" fill="#171717">2</text>
+    <text x="132" y="5130" font-size="19" font-weight="600" fill="#1F1F1F">Bring your people</text>
+    <text x="132" y="5158" font-size="12" fill="#5D685F">Invite and plan together.</text>
+
+    <circle cx="98" cy="5350" r="25" fill="#DCCFC0"/><text x="98" y="5356" text-anchor="middle" font-size="14" font-weight="600" fill="#171717">3</text>
+    <text x="140" y="5342" font-size="19" font-weight="600" fill="#1F1F1F">Head out ready</text>
+    <text x="140" y="5370" font-size="12" fill="#5D685F">Review and prepare offline.</text>
+  </g>
+
+  <!-- Editorial -->
+  <rect x="34" y="5524" width="362" height="658" rx="30" fill="#DCCFC0"/>
+  <text x="58" y="5582" font-family="Inter, Arial, sans-serif" font-size="9" font-weight="600" letter-spacing="1.4" fill="#778873">EDITORIAL MOMENT</text>
+  <text x="58" y="5648" font-family="Geist, Inter, Arial, sans-serif" font-size="30" font-weight="500" fill="#1F1F1F">The best trips feel</text>
+  <text x="58" y="5684" font-family="Geist, Inter, Arial, sans-serif" font-size="30" font-weight="500" fill="#1F1F1F">spontaneous. The</text>
+  <text x="58" y="5720" font-family="Geist, Inter, Arial, sans-serif" font-size="30" font-weight="500" fill="#1F1F1F">preparation shouldn’t.</text>
+  <text x="58" y="5770" font-family="Inter, Arial, sans-serif" font-size="13" fill="#5D685F">For the friend who starts the plan—</text>
+  <text x="58" y="5792" font-family="Inter, Arial, sans-serif" font-size="13" fill="#5D685F">and everyone who helps.</text>
+  <rect x="58" y="5840" width="314" height="288" rx="26" fill="url(#photoGrid)" stroke="#778873"/>
+  <line x1="80" y1="6106" x2="350" y2="5862" stroke="#778873" stroke-opacity="0.35" stroke-width="2"/>
+  <line x1="80" y1="5862" x2="350" y2="6106" stroke="#778873" stroke-opacity="0.35" stroke-width="2"/>
+  <text x="215" y="5974" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="600" letter-spacing="1" fill="#5D685F">PHOTOGRAPHY RESERVATION</text>
+  <text x="215" y="6000" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="9" fill="#5D685F">No production asset selected</text>
+
+  <!-- FAQ -->
+  <rect x="34" y="6206" width="362" height="1020" rx="30" fill="#FDF6ED" stroke="#DCCFC0"/>
+  <text x="58" y="6264" font-family="Inter, Arial, sans-serif" font-size="9" font-weight="600" letter-spacing="1.4" fill="#778873">FAQ</text>
+  <text x="58" y="6330" font-family="Geist, Inter, Arial, sans-serif" font-size="34" font-weight="500" fill="#1F1F1F">A few things to know.</text>
+  <text x="58" y="6374" font-family="Inter, Arial, sans-serif" font-size="13" fill="#5D685F">Honest answers before launch.</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="13" fill="#1F1F1F">
+    <line x1="58" y1="6422" x2="372" y2="6422" stroke="#DCCFC0"/>
+    <text x="58" y="6470">What is Accomp?</text><text x="360" y="6470" text-anchor="end" font-size="20">+</text>
+    <line x1="58" y1="6502" x2="372" y2="6502" stroke="#DCCFC0"/>
+    <text x="58" y="6550">Can everyone help plan?</text><text x="360" y="6550" text-anchor="end" font-size="20">+</text>
+    <line x1="58" y1="6582" x2="372" y2="6582" stroke="#DCCFC0"/>
+    <text x="58" y="6630">Can I use it without a signal?</text><text x="360" y="6630" text-anchor="end" font-size="20">+</text>
+    <line x1="58" y1="6662" x2="372" y2="6662" stroke="#DCCFC0"/>
+    <text x="58" y="6710">Who is Accomp for?</text><text x="360" y="6710" text-anchor="end" font-size="20">+</text>
+    <line x1="58" y1="6742" x2="372" y2="6742" stroke="#DCCFC0"/>
+    <text x="58" y="6790">Will it be on iOS and Android?</text><text x="360" y="6790" text-anchor="end" font-size="20">+</text>
+    <line x1="58" y1="6822" x2="372" y2="6822" stroke="#DCCFC0"/>
+    <text x="58" y="6870">When will Accomp launch?</text><text x="360" y="6870" text-anchor="end" font-size="20">+</text>
+    <line x1="58" y1="6902" x2="372" y2="6902" stroke="#DCCFC0"/>
+    <text x="58" y="6950">Is Accomp free?</text><text x="360" y="6950" text-anchor="end" font-size="20">+</text>
+    <line x1="58" y1="6982" x2="372" y2="6982" stroke="#DCCFC0"/>
+  </g>
+  <rect x="58" y="7034" width="314" height="136" rx="20" fill="#DCCFC0"/>
+  <text x="78" y="7074" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="600" fill="#1F1F1F">Expanded answer example</text>
+  <text x="78" y="7104" font-family="Inter, Arial, sans-serif" font-size="11" fill="#5D685F">Content height grows naturally.</text>
+  <text x="78" y="7126" font-family="Inter, Arial, sans-serif" font-size="11" fill="#5D685F">No fixed height or clipped text.</text>
+
+  <!-- CTA -->
+  <rect x="34" y="7250" width="362" height="548" rx="30" fill="#778873"/>
+  <path d="M48 7690C120 7622 170 7738 230 7666S330 7560 382 7608" stroke="#A1BC98" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="166" cy="7690" r="12" fill="#FDF6ED"/>
+  <circle cx="190" cy="7680" r="12" fill="#171717"/>
+  <text x="215" y="7312" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="9" font-weight="600" letter-spacing="1.3" fill="#171717">YOUR NEXT TRIP STARTS TOGETHER</text>
+  <text x="215" y="7384" text-anchor="middle" font-family="Geist, Inter, Arial, sans-serif" font-size="34" font-weight="500" fill="#171717">Make room for</text>
+  <text x="215" y="7424" text-anchor="middle" font-family="Geist, Inter, Arial, sans-serif" font-size="34" font-weight="500" fill="#171717">the adventure.</text>
+  <text x="215" y="7474" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#2C352F">Bring the people and the plan together</text>
+  <text x="215" y="7496" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#2C352F">before the trail begins.</text>
+  <rect x="58" y="7540" width="314" height="54" rx="27" fill="#171717"/>
+  <text x="215" y="7574" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#FDF6ED">Join the waitlist</text>
+  <text x="215" y="7630" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" fill="#2C352F">Prototype only · no data collection</text>
+
+  <!-- Footer -->
+  <rect x="34" y="7822" width="362" height="310" rx="30" fill="#171717"/>
+  <circle cx="62" cy="7862" r="14" fill="#A1BC98"/>
+  <text x="84" y="7868" font-family="Geist, Inter, Arial, sans-serif" font-size="17" font-weight="600" fill="#FDF6ED">Accomp</text>
+  <text x="58" y="7910" font-family="Inter, Arial, sans-serif" font-size="12" fill="#DCCFC0">Plan, prepare, and explore together.</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="11" fill="#FDF6ED">
+    <text x="58" y="7962">Features</text><text x="150" y="7962">How it works</text><text x="262" y="7962">Offline</text>
+    <text x="58" y="8002">FAQ</text><text x="150" y="8002">Contact · if real</text>
+    <text x="58" y="8042">Privacy · placeholder</text><text x="220" y="8042">Terms · placeholder</text>
+  </g>
+  <line x1="58" y1="8078" x2="372" y2="8078" stroke="#2C352F"/>
+  <text x="58" y="8110" font-family="Inter, Arial, sans-serif" font-size="9" fill="#DCCFC0">© 2026 Accomp · verified links only</text>
+</svg>

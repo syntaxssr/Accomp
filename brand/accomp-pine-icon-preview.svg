@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Accomp pine symbol exploration v1</title>
+  <desc id="desc">A presentation board showing the Accomp pine icon in inverse, wordmark and small-size applications.</desc>
+  <defs>
+    <symbol id="pine" viewBox="0 0 200 180">
+      <path
+        fill="currentColor"
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M100 22C95.16 22 92.23 27.13 88.48 32.52L73.68 53.79C67.72 62.36 72.55 72.83 82.99 72.83H88.66L68.12 93.83C60.64 101.48 65.97 112.31 76.67 112.31H84.72L50.53 136.73C40.68 143.76 45.65 159.29 57.75 159.29H83.28V162.86C83.28 169.04 88.29 174 94.47 174H105.53C111.71 174 116.72 169.04 116.72 162.86V159.29H142.25C154.35 159.29 159.32 143.76 149.47 136.73L115.28 112.31H123.33C134.03 112.31 139.36 101.48 131.88 93.83L111.34 72.83H117.01C127.45 72.83 132.28 62.36 126.32 53.79L111.52 32.52C107.77 27.13 104.84 22 100 22ZM88.2 78.17C91.84 73.63 95.79 71.36 100 71.36C104.21 71.36 108.16 73.63 111.8 78.17C108.25 81.08 104.32 82.53 100 82.53C95.68 82.53 91.75 81.08 88.2 78.17ZM74.91 118.34C83.03 110.55 91.39 106.66 100 106.66C108.61 106.66 116.97 110.55 125.09 118.34C117.44 123.03 109.08 125.38 100 125.38C90.92 125.38 82.56 123.03 74.91 118.34Z"
+      />
+    </symbol>
+  </defs>
+
+  <rect width="1200" height="680" fill="#FDF6ED"/>
+  <text x="72" y="72" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" letter-spacing="2.2" fill="#5D685F">ACCOMP · SYMBOL EXPLORATION V1</text>
+  <text x="1128" y="72" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="13" fill="#5D685F">PENDING REVIEW</text>
+
+  <rect x="72" y="112" width="430" height="490" rx="44" fill="#2C352F"/>
+  <use href="#pine" x="147" y="158" width="280" height="252" color="#FDF6ED"/>
+  <text x="112" y="528" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="1.8" fill="#A1BC98">INVERSE MARK</text>
+  <text x="112" y="561" font-family="Inter, Arial, sans-serif" font-size="15" fill="#DCCFC0">Soft silhouette. One continuous form.</text>
+
+  <rect x="534" y="112" width="594" height="250" rx="44" fill="#DCCFC0"/>
+  <use href="#pine" x="586" y="166" width="132" height="119" color="#778873"/>
+  <text x="741" y="252" font-family="Geist, Inter, Arial, sans-serif" font-size="54" font-weight="600" fill="#1F1F1F">Accomp</text>
+  <text x="586" y="326" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="1.8" fill="#5D685F">PROVISIONAL WORDMARK LOCKUP</text>
+
+  <rect x="534" y="394" width="594" height="208" rx="44" fill="#FDF6ED" stroke="#DCCFC0"/>
+  <text x="574" y="440" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="1.8" fill="#5D685F">SMALL-SIZE CHECK</text>
+  <use href="#pine" x="584" y="471" width="80" height="72" color="#778873"/>
+  <use href="#pine" x="706" y="483" width="54" height="49" color="#778873"/>
+  <use href="#pine" x="802" y="491" width="36" height="32" color="#778873"/>
+  <text x="624" y="570" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" fill="#5D685F">64 px</text>
+  <text x="733" y="570" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" fill="#5D685F">32 px</text>
+  <text x="820" y="570" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" fill="#5D685F">16 px</text>
+  <line x1="884" y1="456" x2="884" y2="554" stroke="#DCCFC0"/>
+  <text x="920" y="484" font-family="Geist, Inter, Arial, sans-serif" font-size="24" font-weight="600" fill="#1F1F1F">Shared Path</text>
+  <text x="920" y="514" font-family="Inter, Arial, sans-serif" font-size="14" fill="#5D685F">lives between the boughs.</text>
+  <text x="920" y="540" font-family="Inter, Arial, sans-serif" font-size="14" fill="#5D685F">SVG uses currentColor.</text>
+
+  <line x1="72" y1="638" x2="1128" y2="638" stroke="#DCCFC0"/>
+  <text x="72" y="660" font-family="Inter, Arial, sans-serif" font-size="11" fill="#5D685F">ORIGINAL ACCOMP ARTWORK · INSPIRED BY SOFT MONOCHROME SILHOUETTES · NOT A PHANTOM ASSET</text>
+</svg>

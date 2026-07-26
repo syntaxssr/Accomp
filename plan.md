@@ -1,6 +1,6 @@
 # Accomp Marketing Website — Project Plan
 
-> สถานะ: **Planning only — รออนุมัติก่อนเริ่ม Phase 0**  
+> สถานะ: **Phase 2 draft complete — รอ review/approval ก่อนเริ่ม Phase 3**
 > สร้างเมื่อ: 2026-07-26  
 > Project path: `/Users/peeraponchanthacham/Documents/GitHub/Accomp`  
 > Reference: [Phantom](https://phantom.com/?utm_source=loftlyy&utm_medium=referral&utm_campaign=phantom)
@@ -11,8 +11,44 @@
 2. ทำงานทีละ Phase เท่านั้น
 3. ก่อนเริ่ม Phase ถัดไป ต้องสรุปผล ตรวจ acceptance criteria และรอคำอนุมัติ
 4. ห้ามนำงานจาก Phase ถัดไปมาทำล่วงหน้าโดยไม่ได้รับอนุญาต
-5. ยังไม่สร้าง Git repository, commit, remote repository หรือ deploy จนกว่าจะได้รับคำสั่ง
+5. Git repository, initial commit และ remote ถูกสร้างแล้วตามคำสั่งก่อนหน้า งาน Phase ใหม่จะไม่ commit, push หรือ deploy จนกว่าจะได้รับคำสั่ง
 6. สโคปของโปรเจกต์คือ **เว็บไซต์สำหรับโปรโมตแอปมือถือ Accomp เท่านั้น** ไม่รวมการสร้าง iOS app, Android app, backend ของแอป หรือ dashboard ภายใน
+
+## 0. Phase Execution Status
+
+ผู้ใช้สั่งเริ่ม Phase 1 โดยตรงเมื่อ 2026-07-26 แม้ Phase 0 ยังไม่ได้ปิด decision อย่างเป็นทางการ จึงดำเนินงาน Phase 1 ด้วยสมมติฐานที่ย้อนกลับได้:
+
+- English-first
+- Primary CTA: `Join the waitlist`
+- ยังไม่สมมติว่าแอปเปิดตัวแล้ว
+- ใช้ pine symbol exploration v1 ร่วมกับ text wordmark placeholder จนกว่าจะได้รับ approval
+- Product claims ทั้งหมดยังต้อง validate
+- ไม่มี social proof, store badge หรือ app screenshot ที่สร้างขึ้นเอง
+
+### Phase 1 deliverables
+
+- [Phase 1 index and approval status](./docs/phase-1/README.md)
+- [Content strategy and copy deck](./docs/phase-1/content-strategy-and-copy.md)
+- [Visual direction](./docs/phase-1/visual-direction.md)
+- [Visual direction board preview](./docs/phase-1/visual-direction-board.png)
+- [Visual direction board source](./docs/phase-1/visual-direction-board.svg)
+- [Design token proposal](./docs/phase-1/design-tokens.md)
+- [Asset brief](./docs/phase-1/asset-brief.md)
+- [Motion concept](./docs/phase-1/motion-concept.md)
+- [Pine symbol exploration v1](./brand/accomp-pine-icon.svg)
+
+### Phase 2 deliverables
+
+- [Phase 2 index and approval status](./docs/phase-2/README.md)
+- [Information architecture](./docs/phase-2/information-architecture.md)
+- [Revised copy hierarchy](./docs/phase-2/copy-hierarchy.md)
+- [Interaction notes](./docs/phase-2/interaction-notes.md)
+- [Responsive behavior matrix](./docs/phase-2/responsive-behavior-matrix.md)
+- [Desktop wireframe](./docs/phase-2/desktop-wireframe.png)
+- [Mobile wireframe](./docs/phase-2/mobile-wireframe.png)
+- [Low-fidelity interaction prototype](./docs/phase-2/interaction-prototype.html)
+
+ยังไม่มี production website source code, final design, backend หรือ deployment
 
 ## 1. Project Intent
 
@@ -226,7 +262,7 @@ Friendly, calm, spacious, modern, reliable and outdoor-first.
 ### Core design language
 
 - Warm off-white/light surface สลับกับ Brand Dark
-- Accomp Green ใช้เป็น focus color
+- Trail Sage ใช้เป็น focus color บน Warm Cream canvas
 - Extra-large Geist headlines
 - Generous vertical rhythm
 - Rounded content frames
@@ -404,11 +440,11 @@ AppShell
 
 #### Deliverables
 
-- Copy deck v1
-- Visual direction board
-- Design token proposal
-- Asset brief
-- Motion concept
+- [x] Copy deck v1
+- [x] Visual direction board
+- [x] Design token proposal
+- [x] Asset brief
+- [x] Motion concept
 
 #### Acceptance criteria
 
@@ -441,18 +477,19 @@ AppShell
 
 #### Deliverables
 
-- Desktop wireframe
-- Mobile wireframe
-- Interaction notes
-- Responsive behavior matrix
-- Revised copy hierarchy
+- [x] [Desktop wireframe](./docs/phase-2/desktop-wireframe.png)
+- [x] [Mobile wireframe](./docs/phase-2/mobile-wireframe.png)
+- [x] [Interaction notes](./docs/phase-2/interaction-notes.md)
+- [x] [Responsive behavior matrix](./docs/phase-2/responsive-behavior-matrix.md)
+- [x] [Revised copy hierarchy](./docs/phase-2/copy-hierarchy.md)
+- [x] [Low-fidelity interaction prototype](./docs/phase-2/interaction-prototype.html)
 
 #### Acceptance criteria
 
-- ผู้ชมเข้าใจแอปและเห็น CTA โดยไม่ต้องอ่านทุก section
-- Mobile flow ไม่ใช่เพียง desktop ที่ถูกบีบให้แคบ
-- Carousel ใช้งานได้ด้วย touch, keyboard และ controls
-- Page order รองรับการปิด animation
+- [x] ผู้ชมเข้าใจแอปและเห็น CTA โดยไม่ต้องอ่านทุก section
+- [x] Mobile flow ไม่ใช่เพียง desktop ที่ถูกบีบให้แคบ
+- [x] Carousel ใช้งานได้ด้วย touch, keyboard และ controls ใน prototype
+- [x] Page order รองรับการปิด animation
 
 #### Exit gate
 
@@ -672,7 +709,7 @@ Implement โครงหน้าหลักและ content sections แบ�
 - Production build verification
 - Final diff and project hygiene review
 
-### Target viewports
+#### Target viewports
 
 - 320px
 - 390px
@@ -742,7 +779,7 @@ Implement โครงหน้าหลักและ content sections แบ�
 | Risk | Impact | Mitigation |
 |---|---|---|
 | พยายามเหมือน Phantom แบบตรงตัวเกินไป | ขาด brand identity และเสี่ยงด้านทรัพย์สินทางปัญญา | ใช้เฉพาะ pattern/quality bar และสร้าง Accomp assets ใหม่ |
-| ยังไม่มี logo/app screenshots | Final design ทำไม่ได้อย่างแม่นยำ | ทำ asset brief ใน Phase 1 และอนุมัติก่อน Phase 3 |
+| Pine symbol ยังไม่อนุมัติและยังไม่มี app screenshots | Final design ทำไม่ได้อย่างแม่นยำ | Review symbol v1 และ asset brief ก่อน Phase 3 |
 | CTA destination ยังไม่พร้อม | ผู้ใช้กดแล้วไปต่อไม่ได้ | ใช้ waitlist/get notified ที่มีระบบจริง หรือชะลอ CTA |
 | Product claims ยังไม่ยืนยัน | สื่อสารเกินจริง | ทำ product truth checklist ใน Phase 0 |
 | Motion มากเกินไป | หน้าเว็บช้าและใช้งานยาก | จำกัด motion budget และมี reduced-motion path |
@@ -799,12 +836,18 @@ Implement โครงหน้าหลักและ content sections แบ�
 - [x] เก็บ brand identity ใน `brand/brand-identity.md`
 - [x] ตรวจ reference Phantom บน desktop และ mobile
 - [x] สร้าง phased implementation plan
-- [ ] อนุมัติ plan
-- [ ] เริ่ม Phase 0
+- [x] ผู้ใช้อนุมัติให้เริ่ม Phase 1 เมื่อ 2026-07-26
+- [ ] ปิด Phase 0 อย่างเป็นทางการ — ใช้ working assumptions ชั่วคราว
+- [x] สร้าง Phase 1 deliverables
+- [x] Carry Phase 1 forward ด้วย provisional assumptions เมื่อผู้ใช้สั่งเริ่ม Phase 2
+- [x] เริ่ม Phase 2 เมื่อ 2026-07-26
+- [x] สร้างและ browser-test Phase 2 deliverables
+- [ ] Review และ approve Phase 2
+- [ ] เริ่ม Phase 3
 - [ ] สร้าง source code
-- [ ] สร้าง Git repository
-- [ ] Commit
-- [ ] Create remote repository
+- [x] สร้าง Git repository
+- [x] Initial commit
+- [x] Create remote repository
 - [ ] Deploy
 
-**งานถัดไปหลังจากผู้ใช้ตรวจเอกสาร:** ปรับ `plan.md` ตาม feedback หรือรับคำสั่งเริ่ม Phase 0 เท่านั้น
+**งานถัดไปหลังจากผู้ใช้ตรวจเอกสาร:** ปรับ Phase 2 deliverables ตาม feedback หรือรับคำสั่งเริ่ม Phase 3 เท่านั้น
