@@ -20,7 +20,7 @@ test("keeps marketing content in one typed source", async () => {
   assert.match(content, /export const faqItems/);
 });
 
-test("preserves the complete marketing structure through Phase 7", async () => {
+test("preserves the complete marketing structure through Phase 8", async () => {
   const page = await source("components/marketing/MarketingPage.tsx");
 
   for (const id of [
@@ -34,7 +34,7 @@ test("preserves the complete marketing structure through Phase 7", async () => {
     assert.match(page, new RegExp(`id="${id}"`));
   }
 
-  assert.match(page, /data-phase="7"/);
+  assert.match(page, /data-phase="8"/);
   assert.match(page, /data-motion-root/);
   assert.match(page, /<MotionController/);
   assert.match(page, /<SiteHeader/);

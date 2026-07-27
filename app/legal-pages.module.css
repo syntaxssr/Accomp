@@ -13,6 +13,8 @@
 }
 
 .brand {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
   display: inline-flex;
   align-items: center;
   gap: var(--space-3);
@@ -29,7 +31,7 @@
 
 .eyebrow {
   margin: 0 0 var(--space-4);
-  color: var(--color-brand);
+  color: var(--color-sage-ink);
   font-size: var(--font-size-xs);
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -115,7 +117,7 @@
   min-height: 3rem;
   padding-inline: var(--space-5);
   border-radius: var(--radius-pill);
-  color: var(--color-cream);
+  color: var(--color-night);
   background: var(--color-brand);
   font-weight: 700;
   text-decoration: none;

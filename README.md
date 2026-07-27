@@ -2,7 +2,7 @@
 
 Accomp is a static-first marketing website for the Accomp mobile app. The
 repository currently contains the Phase 6 motion-complete marketing page and
-the Phase 7 search, social, legal and performance readiness layer.
+the Phase 8 cross-device QA and release-readiness layer.
 
 ## Technology
 
@@ -37,6 +37,7 @@ npm run format:check
 npm run lint
 npm run typecheck
 npm test
+npm run audit:release
 ```
 
 ## Project structure
@@ -59,9 +60,10 @@ worker/              Cloudflare-compatible application entry
 ## Phase boundary
 
 The current routes contain the complete marketing story, calm progressive
-motion, search/social metadata, crawl endpoints, legal status notices and a
-branded 404. Analytics, live forms, final legal agreements, confirmed launch
-destinations and deployment remain gated.
+motion, search/social metadata, crawl endpoints, legal status notices, a
+branded 404 and repeatable release-readiness checks. The local candidate has no
+known critical defect. Analytics, live forms, final legal agreements, confirmed
+launch destinations and deployment remain gated.
 
-See [Phase 7 documentation](./docs/phase-7/README.md) and the main
+See [Phase 8 documentation](./docs/phase-8/README.md) and the main
 [project plan](./plan.md).

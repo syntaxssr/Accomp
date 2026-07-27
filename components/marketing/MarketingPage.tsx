@@ -23,7 +23,7 @@ import styles from "./marketing-page.module.css";
 
 export function MarketingPage() {
   return (
-    <div className={styles.site} data-motion-root data-phase="7">
+    <div className={styles.site} data-motion-root data-phase="8">
       <MotionController />
 
       <a className={styles.skipLink} href="#main">
@@ -36,7 +36,7 @@ export function MarketingPage() {
 
       <SiteHeader navigation={navigation} />
 
-      <main id="main">
+      <main id="main" tabIndex={-1}>
         <section className={styles.hero} id="top">
           <Container>
             <div className={styles.heroGrid}>

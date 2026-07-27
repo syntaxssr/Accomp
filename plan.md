@@ -1,6 +1,6 @@
 # Accomp Marketing Website — Project Plan
 
-> สถานะ: **Phase 7 draft complete — รอ review/approval ก่อนเริ่ม Phase 8**
+> สถานะ: **Phase 8 local release candidate complete — ยังไม่อนุมัติ deployment**
 > สร้างเมื่อ: 2026-07-26  
 > Project path: `/Users/peeraponchanthacham/Documents/GitHub/Accomp`  
 > Reference: [Phantom](https://phantom.com/?utm_source=loftlyy&utm_medium=referral&utm_campaign=phantom)
@@ -749,46 +749,48 @@ Implement โครงหน้าหลักและ content sections แบ�
 
 #### Work
 
-- Browser matrix QA
-- Responsive QA
-- Keyboard and screen-reader smoke test
-- Contrast and zoom test
-- Touch target test
-- Slow network test
-- Broken link and form checks
-- Console and runtime error checks
-- Content proofreading
-- Asset license audit
-- Production build verification
-- Final diff and project hygiene review
+- [x] Browser matrix QA สำหรับ in-app Chromium และ Google Chrome
+- [x] Responsive QA
+- [x] Keyboard and accessibility-tree smoke test
+- [x] Contrast and narrow-reflow zoom proxy
+- [x] Touch target test
+- [x] Slow network simulation
+- [x] Broken link and form checks
+- [x] Console and runtime error checks
+- [x] Content proofreading
+- [x] Asset license audit
+- [x] Production build verification
+- [x] Final diff and project hygiene review
 
 #### Target viewports
 
-- 320px
-- 390px
-- 768px
-- 1024px
-- 1440px
-- 1920px
+- [x] 320px
+- [x] 390px
+- [x] 768px
+- [x] 1024px
+- [x] 1440px
+- [x] 1920px
 
 #### Deliverables
 
-- QA report
-- Known limitations
-- Release checklist
-- Production-ready local project
+- [x] [QA report](./docs/phase-8/qa-report.md)
+- [x] [Known limitations](./docs/phase-8/known-limitations.md)
+- [x] [Release checklist](./docs/phase-8/release-checklist.md)
+- [x] Production-ready local candidate
 
 #### Acceptance criteria
 
-- ไม่มี critical visual, accessibility หรือ runtime defects
-- Production build สำเร็จด้วย output ที่ยืนยันได้
-- CTA ทุกจุดไปยังปลายทางจริง
-- Legal และ product claims ได้รับการอนุมัติ
-- เจ้าของโปรเจกต์อนุมัติว่าพร้อมสร้าง repo/commit/deploy
+- [x] ไม่มี critical visual, accessibility หรือ runtime defects ที่พบในการทดสอบ
+- [x] Production build สำเร็จด้วย output ที่ยืนยันได้
+- [ ] CTA waitlist มีปลายทาง production จริง
+- [ ] Legal และ product claims ได้รับการอนุมัติขั้นสุดท้าย
+- [ ] เจ้าของโปรเจกต์อนุมัติ deployment
 
 #### Exit gate
 
-หยุดและรอคำสั่งแยกต่างหากสำหรับ Git repository, commit, remote และ deployment
+Commit และ push ได้รับอนุญาตในคำสั่งเริ่ม Phase 8 รอบนี้ แต่ deployment
+ยังต้องรอคำสั่งแยกต่างหากหลังปิดรายการใน
+[release checklist](./docs/phase-8/release-checklist.md)
 
 ## 10. Quality Gates
 
@@ -926,11 +928,19 @@ Phase 3 ดำเนินต่อด้วย provisional assumptions เพ�
 - [x] ยืนยัน no-analytics/no-cookie behavior
 - [x] ตรวจ bundle, Lighthouse production audit และ performance target
 - [x] ตรวจ formatting, lint, typecheck, tests, build และ local runtime สำหรับ Phase 7
-- [ ] Review และ approve Phase 7
+- [x] Carry Phase 7 forward เมื่อผู้ใช้สั่งเริ่ม Phase 8
+- [x] เริ่ม Phase 8 เมื่อ 2026-07-28
+- [x] ตรวจ browser/responsive matrix ครบทุก target viewport
+- [x] แก้ touch target, contrast และ skip-target focusability
+- [x] เพิ่ม release audit, regression coverage และเอกสาร Phase 8
+- [x] ตรวจ formatting, lint, typecheck, tests, build และ local runtime สำหรับ Phase 8
+- [ ] Provide final domain, CTA, legal, product and analytics decisions
+- [ ] Approve public deployment
 - [x] สร้าง source code foundation
 - [x] สร้าง Git repository
 - [x] Initial commit
 - [x] Create remote repository
 - [ ] Deploy
 
-**งานถัดไปหลังจากผู้ใช้ตรวจเอกสาร:** ปรับ Phase 7 ตาม feedback หรือรับคำสั่งเริ่ม Phase 8 เท่านั้น
+**งานถัดไปหลังจากผู้ใช้ตรวจเอกสาร:** รับ launch inputs ที่ยังขาด,
+ทำ manual non-Chromium/device QA และรอคำสั่ง deployment แยกต่างหาก

@@ -33,7 +33,7 @@
 }
 
 .list summary:hover {
-  color: var(--color-brand);
+  color: var(--color-sage-ink);
 }
 
 .list details[open] summary span:last-child {

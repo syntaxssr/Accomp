@@ -3,6 +3,10 @@
   overflow-x: hidden;
 }
 
+.site main:focus {
+  outline: none;
+}
+
 .site[data-motion="enhanced"] [data-reveal] {
   opacity: 0;
   transform: translateY(1rem);
@@ -768,6 +772,8 @@
 }
 
 .footerBrand {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
   display: inline-flex;
   align-items: center;
   gap: var(--space-3);
@@ -805,6 +811,10 @@
 
 .footerLinks a {
   width: fit-content;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  display: flex;
+  align-items: center;
   color: var(--color-cream);
   text-decoration: none;
 }
