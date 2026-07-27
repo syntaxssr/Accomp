@@ -1,6 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  type KeyboardEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import type {
   FeatureCardContent,
   FeatureVisual,
@@ -87,6 +93,7 @@ function FeatureArtwork({ visual }: { visual: FeatureVisual }) {
 
 export function FeatureRail({ cards, label, tone }: FeatureRailProps) {
   const railRef = useRef<HTMLDivElement>(null);
+  const animationFrameRef = useRef<number | null>(null);
   const [index, setIndex] = useState(0);
   const [hasOverflow, setHasOverflow] = useState(false);
 
@@ -115,17 +122,32 @@ export function FeatureRail({ cards, label, tone }: FeatureRailProps) {
   useEffect(() => {
     const rail = railRef.current;
 
+    function scheduleUpdate() {
+      if (animationFrameRef.current !== null) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+
+      animationFrameRef.current = requestAnimationFrame(() => {
+        update();
+        animationFrameRef.current = null;
+      });
+    }
+
     update();
-    rail?.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
+    rail?.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
 
     return () => {
-      rail?.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
+      if (animationFrameRef.current !== null) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+
+      rail?.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
     };
   }, [update]);
 
-  function move(direction: -1 | 1) {
+  function moveTo(nextIndex: number) {
     const rail = railRef.current;
     const firstCard = rail?.querySelector<HTMLElement>("[data-feature-card]");
 
@@ -134,19 +156,40 @@ export function FeatureRail({ cards, label, tone }: FeatureRailProps) {
     }
 
     const gap = Number.parseFloat(getComputedStyle(rail).columnGap) || 0;
-    rail.scrollBy({
-      left: direction * (firstCard.getBoundingClientRect().width + gap),
-      behavior: "auto",
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const target = Math.max(0, Math.min(cards.length - 1, nextIndex));
+
+    rail.scrollTo({
+      left: target * (firstCard.getBoundingClientRect().width + gap),
+      behavior: reducedMotion ? "auto" : "smooth",
     });
   }
 
+  function onKeyDown(event: KeyboardEvent<HTMLDivElement>) {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      moveTo(index - 1);
+    } else if (event.key === "ArrowRight") {
+      event.preventDefault();
+      moveTo(index + 1);
+    } else if (event.key === "Home") {
+      event.preventDefault();
+      moveTo(0);
+    } else if (event.key === "End") {
+      event.preventDefault();
+      moveTo(cards.length - 1);
+    }
+  }
+
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} data-reveal>
       <div className={styles.controls}>
         <button
           aria-label={`Previous ${label.toLowerCase()} card`}
           disabled={!hasOverflow || index === 0}
-          onClick={() => move(-1)}
+          onClick={() => moveTo(index - 1)}
           type="button"
         >
           ←
@@ -154,7 +197,7 @@ export function FeatureRail({ cards, label, tone }: FeatureRailProps) {
         <button
           aria-label={`Next ${label.toLowerCase()} card`}
           disabled={!hasOverflow || index === cards.length - 1}
-          onClick={() => move(1)}
+          onClick={() => moveTo(index + 1)}
           type="button"
         >
           →
@@ -166,15 +209,18 @@ export function FeatureRail({ cards, label, tone }: FeatureRailProps) {
 
       <div
         aria-label={`${label} feature cards`}
+        aria-roledescription="carousel"
         className={styles.rail}
         data-tone={tone}
+        onKeyDown={onKeyDown}
         ref={railRef}
         role="region"
         tabIndex={0}
       >
-        {cards.map((card) => (
+        {cards.map((card, cardIndex) => (
           <article
             className={styles.card}
+            data-active={!hasOverflow || index === cardIndex}
             data-feature-card
             key={card.title}
           >

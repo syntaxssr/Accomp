@@ -17,12 +17,15 @@ import {
 } from "@/content/site-content";
 import { FAQList } from "./FAQList";
 import { FeatureRail } from "./FeatureRail";
+import { MotionController } from "./MotionController";
 import { SiteHeader } from "./SiteHeader";
 import styles from "./marketing-page.module.css";
 
 export function MarketingPage() {
   return (
-    <div className={styles.site} data-phase="5">
+    <div className={styles.site} data-phase="6">
+      <MotionController />
+
       <a className={styles.skipLink} href="#main">
         Skip to content
       </a>
@@ -112,7 +115,7 @@ export function MarketingPage() {
           </Container>
         </section>
 
-        <section className={styles.promise}>
+        <section className={styles.promise} data-reveal>
           <Container>
             <p>One place for the plan, the people, and the trail ahead.</p>
             <div aria-label="Accomp product promise">
@@ -126,7 +129,7 @@ export function MarketingPage() {
         <section className={styles.chapter} id="features">
           <Container>
             <Stack gap="xl">
-              <div className={styles.chapterHeading}>
+              <div className={styles.chapterHeading} data-reveal>
                 <div>
                   <Text as="p" variant="eyebrow">
                     Plan together
@@ -152,7 +155,7 @@ export function MarketingPage() {
         <section className={`${styles.chapter} ${styles.packChapter}`}>
           <Container>
             <Stack gap="xl">
-              <div className={styles.chapterHeading}>
+              <div className={styles.chapterHeading} data-reveal>
                 <div>
                   <Text as="p" variant="eyebrow">
                     Pack together
@@ -177,7 +180,7 @@ export function MarketingPage() {
 
         <section className={styles.offline} id="offline">
           <Container>
-            <div className={styles.offlineGrid}>
+            <div className={styles.offlineGrid} data-reveal>
               <Stack gap="lg">
                 <Text as="p" variant="eyebrow" tone="meadow">
                   Ready anywhere
@@ -203,15 +206,27 @@ export function MarketingPage() {
                 className={styles.offlineVisual}
                 role="img"
               >
-                <div className={styles.mapContours} aria-hidden="true" />
-                <span className={styles.mapRoute} aria-hidden="true" />
-                <span className={styles.mapPointOne} aria-hidden="true" />
-                <span className={styles.mapPointTwo} aria-hidden="true" />
+                <svg
+                  aria-hidden="true"
+                  className={styles.offlineMapRoutes}
+                  viewBox="0 0 800 760"
+                >
+                  <path
+                    className={styles.mapRouteSecondary}
+                    d="M-30 570C130 410 230 652 390 486S650 250 850 368"
+                    pathLength="1"
+                  />
+                  <path
+                    className={styles.mapRoutePrimary}
+                    d="M-20 298C120 392 246 218 390 342S626 590 840 470"
+                    pathLength="1"
+                  />
+                </svg>
+                <span className={styles.mapPin} aria-hidden="true" />
                 <div className={styles.offlineCard} aria-hidden="true">
-                  <small>✓ Prepared offline</small>
+                  <small>Prepared offline</small>
                   <strong>Khao Yai route</strong>
-                  <p>Map, itinerary and meeting details</p>
-                  <span>Illustrative UI</span>
+                  <p>Map, itinerary and meeting details · Illustrative UI</p>
                 </div>
                 <span className={styles.mapLabel}>
                   Abstract route · not real map data
@@ -224,7 +239,7 @@ export function MarketingPage() {
         <section className={styles.how} id="how-it-works">
           <Container>
             <Stack gap="xl">
-              <div className={styles.chapterHeading}>
+              <div className={styles.chapterHeading} data-reveal>
                 <div>
                   <Text as="p" variant="eyebrow">
                     How it works
@@ -238,9 +253,13 @@ export function MarketingPage() {
                 </Text>
               </div>
 
-              <ol className={styles.steps}>
+              <ol className={styles.steps} data-reveal>
                 {howItWorks.map((step, index) => (
-                  <li key={step.title}>
+                  <li
+                    data-reveal
+                    data-reveal-order={index + 1}
+                    key={step.title}
+                  >
                     <span>{index + 1}</span>
                     <h3>{step.title}</h3>
                     <p>{step.body}</p>
@@ -253,7 +272,7 @@ export function MarketingPage() {
 
         <section className={styles.editorial}>
           <Container>
-            <div className={styles.editorialGrid}>
+            <div className={styles.editorialGrid} data-reveal>
               <Stack gap="lg">
                 <Text as="p" variant="eyebrow">
                   A shared adventure
@@ -288,7 +307,7 @@ export function MarketingPage() {
 
         <section className={styles.faq} id="faq">
           <Container>
-            <div className={styles.faqGrid}>
+            <div className={styles.faqGrid} data-reveal>
               <Stack gap="md">
                 <Text as="p" variant="eyebrow">
                   FAQ
@@ -307,7 +326,7 @@ export function MarketingPage() {
 
         <section className={styles.waitlist} id="waitlist">
           <Container>
-            <div className={styles.waitlistField}>
+            <div className={styles.waitlistField} data-reveal>
               <Stack gap="lg">
                 <Text as="p" variant="eyebrow">
                   Your next trip starts together
@@ -320,7 +339,7 @@ export function MarketingPage() {
                 </Text>
               </Stack>
 
-              <div>
+              <div className={styles.waitlistForm}>
                 <div
                   aria-label="Waitlist signup is not active yet"
                   className={styles.formPreview}
@@ -338,6 +357,11 @@ export function MarketingPage() {
                 </div>
                 <p>No information is collected or submitted yet.</p>
               </div>
+
+              <span className={styles.waitlistCompanions} aria-hidden="true">
+                <i />
+                <i />
+              </span>
             </div>
           </Container>
         </section>
@@ -345,7 +369,7 @@ export function MarketingPage() {
 
       <footer className={styles.footer}>
         <Container>
-          <div className={styles.footerGrid}>
+          <div className={styles.footerGrid} data-reveal>
             <div>
               <a className={styles.footerBrand} href="#top">
                 <Icon name="pine" size="md" decorative />

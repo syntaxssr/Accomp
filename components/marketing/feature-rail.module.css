@@ -18,6 +18,18 @@
   background: transparent;
   font-size: 1.1rem;
   cursor: pointer;
+  transition:
+    background var(--motion-fast) var(--ease-standard),
+    transform var(--motion-fast) var(--ease-standard);
+}
+
+.controls button:not(:disabled):hover {
+  background: var(--color-meadow);
+  transform: translateY(-2px);
+}
+
+.controls button:not(:disabled):active {
+  transform: translateY(0);
 }
 
 .controls button:disabled {
@@ -55,6 +67,22 @@
   scroll-snap-align: start;
   overflow: hidden;
   background: var(--color-cream);
+  opacity: 0.82;
+  transform: translateY(0.4rem) scale(0.985);
+  transition:
+    box-shadow var(--motion-fast) var(--ease-standard),
+    opacity var(--motion-fast) var(--ease-standard),
+    transform var(--motion-fast) var(--ease-standard);
+}
+
+.card[data-active="true"] {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-3px) scale(1);
 }
 
 .card:nth-child(2) {
@@ -233,6 +261,18 @@
   background: var(--color-meadow);
 }
 
+.card[data-active="true"] .checklist span b {
+  animation: checklist-mark-in var(--motion-ui) var(--ease-enter) both;
+}
+
+.card[data-active="true"] .checklist span:nth-child(2) b {
+  animation-delay: 60ms;
+}
+
+.card[data-active="true"] .checklist span:nth-child(3) b {
+  animation-delay: 120ms;
+}
+
 .checklist span small {
   margin-left: auto;
   padding: 0.25rem 0.45rem;
@@ -269,6 +309,13 @@
   color: var(--color-sand);
 }
 
+@keyframes checklist-mark-in {
+  from {
+    opacity: 0.5;
+    transform: scale(0.72);
+  }
+}
+
 @media (min-width: 48rem) {
   .rail {
     grid-auto-columns: min(46vw, 26rem);
@@ -284,5 +331,19 @@
 
   .card {
     min-height: 35rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .controls button:not(:disabled):hover,
+  .controls button:not(:disabled):active,
+  .card,
+  .card[data-active="true"],
+  .card:hover {
+    transform: none;
+  }
+
+  .card[data-active="true"] .checklist span b {
+    animation: none;
   }
 }

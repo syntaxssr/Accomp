@@ -135,27 +135,29 @@
 
 .heading {
   font-family: var(--font-family-display);
-  font-weight: 580;
-  letter-spacing: -0.055em;
-  line-height: 0.95;
+  line-height: 0.98;
   text-wrap: balance;
 }
 
 .heading[data-size="display"] {
-  max-width: 11ch;
+  max-width: 8ch;
   font-size: var(--font-size-display);
+  font-weight: 560;
+  letter-spacing: -0.065em;
 }
 
 .heading[data-size="section"] {
-  max-width: 13ch;
+  max-width: 15ch;
   font-size: var(--font-size-section);
+  font-weight: 550;
+  letter-spacing: -0.055em;
 }
 
 .heading[data-size="card"] {
   max-width: 21ch;
   font-size: var(--font-size-card);
-  letter-spacing: -0.035em;
-  line-height: 1.05;
+  font-weight: 620;
+  letter-spacing: -0.03em;
 }
 
 .text {
@@ -187,6 +189,13 @@
 .heading[data-tone="sand"],
 .text[data-tone="sand"] {
   color: var(--color-sand);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button:hover:not(:disabled),
+  .button:active:not(:disabled) {
+    transform: none;
+  }
 }
 
 .heading[data-tone="meadow"],

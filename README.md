@@ -1,15 +1,16 @@
 # Accomp Marketing Website
 
 Accomp is a static-first marketing website for the Accomp mobile app. The
-repository currently contains the Phase 5 core marketing page and the approved
-design references from earlier phases.
+repository currently contains the Phase 6 motion-complete marketing page and
+the approved design references from earlier phases.
 
 ## Technology
 
 - Next-compatible React application using Vinext and Vite
 - React 19 and TypeScript in strict mode
 - CSS custom properties and CSS Modules
-- Framework-managed Geist and Inter fonts
+- Phase 3-aligned system sans-serif typography
+- Native CSS motion with a small Intersection Observer enhancement
 - ESLint, TypeScript and Node test runner
 - Cloudflare Worker-compatible build output
 
@@ -54,9 +55,9 @@ worker/              Cloudflare-compatible application entry
 
 ## Phase boundary
 
-The current route contains the complete static marketing story and essential
-navigation interactions. Advanced scroll animation, route drawing, analytics,
-live forms, launch metadata and deployment remain gated behind later phases.
+The current route contains the complete marketing story, calm progressive
+motion and reduced-motion alternatives. Analytics, live forms, launch metadata
+and deployment remain gated behind later phases.
 
-See [Phase 5 documentation](./docs/phase-5/README.md) and the main
+See [Phase 6 documentation](./docs/phase-6/README.md) and the main
 [project plan](./plan.md).

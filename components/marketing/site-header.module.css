@@ -4,6 +4,7 @@
   top: 0;
   padding: 0.75rem 0;
   pointer-events: none;
+  transition: color var(--motion-ui) var(--ease-standard);
 }
 
 .pill {
@@ -23,6 +24,39 @@
   box-shadow: 0 0.8rem 2.5rem rgb(23 23 23 / 8%);
   backdrop-filter: blur(18px);
   pointer-events: auto;
+  transition:
+    background var(--motion-ui) var(--ease-standard),
+    border-color var(--motion-ui) var(--ease-standard),
+    box-shadow var(--motion-ui) var(--ease-standard);
+}
+
+.header[data-scrolled="true"] .pill {
+  background: rgb(253 246 237 / 97%);
+  box-shadow: 0 1rem 3rem rgb(23 23 23 / 13%);
+}
+
+.header[data-theme="dark"] {
+  color: var(--color-cream);
+}
+
+.header[data-theme="dark"] .pill {
+  border-color: rgb(161 188 152 / 32%);
+  background: rgb(23 23 23 / 90%);
+  box-shadow: 0 1rem 3rem rgb(0 0 0 / 22%);
+}
+
+.header[data-theme="dark"] .desktopNav a {
+  color: var(--color-sand);
+}
+
+.header[data-theme="dark"] .headerCta {
+  color: var(--color-night);
+  background: var(--color-meadow);
+}
+
+.header[data-theme="dark"] .menuTrigger {
+  border-color: var(--color-meadow);
+  color: var(--color-cream);
 }
 
 .brand {
@@ -64,7 +98,8 @@
 }
 
 .desktopNav a:hover::after,
-.desktopNav a:focus-visible::after {
+.desktopNav a:focus-visible::after,
+.desktopNav a[data-active="true"]::after {
   transform: scaleX(1);
 }
 
@@ -128,6 +163,43 @@
   text-decoration: none;
 }
 
+.menuPanel nav a[data-active="true"] {
+  color: var(--color-brand);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .header {
+    animation: header-in var(--motion-fast) var(--ease-enter) both;
+  }
+
+  .menu:not([hidden]) {
+    animation: menu-backdrop-in var(--motion-ui) var(--ease-standard) both;
+  }
+
+  .menu:not([hidden]) .menuPanel {
+    animation: menu-panel-in var(--motion-ui) var(--ease-enter) both;
+  }
+
+  @keyframes header-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+  @keyframes menu-backdrop-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+  @keyframes menu-panel-in {
+    from {
+      opacity: 0;
+      transform: translateY(-1rem);
+    }
+  }
+}
+
 @media (min-width: 56.25rem) {
   .pill {
     min-height: 4.5rem;
@@ -153,5 +225,15 @@
   .headerCta {
     padding-inline: 0.8rem;
     font-size: 0.72rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .pill,
+  .menu,
+  .menuPanel {
+    animation: none;
+    transition: none;
   }
 }

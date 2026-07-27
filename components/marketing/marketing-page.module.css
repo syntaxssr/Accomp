@@ -3,6 +3,32 @@
   overflow-x: hidden;
 }
 
+.site[data-motion="enhanced"] [data-reveal] {
+  opacity: 0;
+  transform: translateY(1rem);
+  transition:
+    opacity var(--motion-reveal) var(--ease-enter),
+    transform var(--motion-reveal) var(--ease-enter);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.site[data-motion="enhanced"] [data-reveal][data-reveal-state="visible"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.site [data-reveal-order="1"] {
+  --reveal-delay: 60ms;
+}
+
+.site [data-reveal-order="2"] {
+  --reveal-delay: 120ms;
+}
+
+.site [data-reveal-order="3"] {
+  --reveal-delay: 180ms;
+}
+
 .skipLink {
   position: fixed;
   z-index: 200;
@@ -82,8 +108,7 @@
 }
 
 .pathOne,
-.pathTwo,
-.mapRoute {
+.pathTwo {
   position: absolute;
   height: 0.55rem;
   border-radius: var(--radius-pill);
@@ -107,9 +132,7 @@
 }
 
 .companionOne,
-.companionTwo,
-.mapPointOne,
-.mapPointTwo {
+.companionTwo {
   position: absolute;
   width: 1.3rem;
   height: 1.3rem;
@@ -344,11 +367,18 @@
 .offline {
   padding-block: var(--space-section);
   color: var(--color-cream);
-  background: var(--color-night);
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgb(119 136 115 / 24%),
+      transparent 22%
+    ),
+    var(--color-night);
 }
 
 .offlineGrid {
   align-items: center;
+  gap: 3.5rem;
 }
 
 .offlinePoints {
@@ -363,20 +393,16 @@
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  color: var(--color-sand);
+  color: var(--color-cream);
+  font-weight: 650;
 }
 
 .offlinePoints li::before {
-  content: "✓";
-  width: 1.7rem;
-  height: 1.7rem;
+  content: "";
+  width: 0.8rem;
+  aspect-ratio: 1;
   border-radius: 50%;
-  display: grid;
-  place-items: center;
-  color: var(--color-night);
   background: var(--color-meadow);
-  font-size: 0.7rem;
-  font-weight: 800;
 }
 
 .validationNote {
@@ -391,78 +417,127 @@
 
 .offlineVisual {
   position: relative;
-  min-height: clamp(31rem, 70vw, 43rem);
-  border: 1px solid rgb(253 246 237 / 12%);
+  min-height: clamp(30rem, 55vw, 43rem);
+  border: 1px solid rgb(161 188 152 / 42%);
   border-radius: var(--radius-xl);
   overflow: hidden;
   background:
-    radial-gradient(circle at 72% 30%, rgb(161 188 152 / 18%), transparent 32%),
+    linear-gradient(rgb(161 188 152 / 4%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(161 188 152 / 4%) 1px, transparent 1px),
     var(--color-sage-ink);
+  background-size: 2rem 2rem;
 }
 
-.mapRoute {
-  top: 57%;
-  left: 7%;
-  width: 89%;
-  background: var(--color-meadow);
-  transform: rotate(-18deg);
+.offlineMapRoutes {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.mapPointOne {
-  top: 58%;
-  left: 15%;
-  background: var(--color-sand);
+.mapRoutePrimary,
+.mapRouteSecondary {
+  fill: none;
+  stroke: var(--color-meadow);
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  stroke-width: 8;
+  stroke-linecap: round;
 }
 
-.mapPointTwo {
-  right: 12%;
-  bottom: 31%;
-  background: var(--color-meadow);
+.mapRouteSecondary {
+  stroke: var(--color-brand);
+  stroke-width: 5;
+}
+
+.site[data-motion="enhanced"]
+  .offlineGrid:not([data-reveal-state="visible"])
+  .mapRoutePrimary,
+.site[data-motion="enhanced"]
+  .offlineGrid:not([data-reveal-state="visible"])
+  .mapRouteSecondary {
+  stroke-dashoffset: 1;
+}
+
+.site[data-motion="enhanced"]
+  .offlineGrid[data-reveal-state="visible"]
+  .mapRoutePrimary,
+.site[data-motion="enhanced"]
+  .offlineGrid[data-reveal-state="visible"]
+  .mapRouteSecondary {
+  transition: stroke-dashoffset var(--motion-route) var(--ease-enter);
+}
+
+.site[data-motion="enhanced"]
+  .offlineGrid[data-reveal-state="visible"]
+  .mapRouteSecondary {
+  transition-delay: 80ms;
+}
+
+.mapPin {
+  position: absolute;
+  bottom: 25%;
+  left: 30%;
+  width: 1.5rem;
+  aspect-ratio: 1;
+  border: 5px solid var(--color-cream);
+  border-radius: 50%;
+  background: var(--color-brand);
+  box-shadow: 0 0 0 10px rgb(161 188 152 / 12%);
 }
 
 .offlineCard {
   position: absolute;
   z-index: 2;
-  top: 1.5rem;
-  right: 1.5rem;
-  width: min(78%, 21rem);
-  padding: var(--space-5);
-  border-radius: var(--radius-lg);
+  top: 2rem;
+  right: 2rem;
+  width: min(70%, 18.75rem);
+  padding: 1.25rem;
+  border-radius: 1.4rem;
   color: var(--color-night);
   background: var(--color-cream);
   box-shadow: var(--shadow-soft);
 }
 
 .offlineCard small,
-.offlineCard strong,
-.offlineCard span {
+.offlineCard strong {
   display: block;
 }
 
 .offlineCard small {
-  margin-bottom: var(--space-5);
-  color: var(--color-sage-ink);
-  font-weight: 750;
-}
-
-.offlineCard strong {
-  font-family: var(--font-family-display);
-  font-size: var(--font-size-card);
-}
-
-.offlineCard p {
-  margin: var(--space-2) 0 var(--space-5);
-  color: var(--color-muted);
-}
-
-.offlineCard span {
   width: fit-content;
-  padding: 0.4rem 0.6rem;
+  margin-bottom: var(--space-4);
+  padding: 0.4rem 0.65rem;
   border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
   color: var(--color-sage-ink);
   background: var(--color-meadow);
   font-size: 0.65rem;
   font-weight: 750;
+}
+
+.offlineCard small::before {
+  content: "✓";
+  width: 1rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--color-cream);
+  background: var(--color-brand);
+  font-size: 0.55rem;
+}
+
+.offlineCard strong {
+  font-family: var(--font-family-display);
+  font-size: 1.35rem;
+}
+
+.offlineCard p {
+  margin: var(--space-2) 0 0;
+  color: var(--color-muted);
 }
 
 .steps {
@@ -482,6 +557,13 @@
   left: 2.2rem;
   width: 3px;
   background: var(--color-brand);
+  transform-origin: top;
+  transition: transform var(--motion-route) var(--ease-enter);
+}
+
+.site[data-motion="enhanced"]
+  .steps:not([data-reveal-state="visible"])::before {
+  transform: scaleY(0);
 }
 
 .steps li {
@@ -592,10 +674,18 @@
 }
 
 .waitlistField {
+  position: relative;
   padding: clamp(2rem, 6vw, 5rem);
   border-radius: var(--radius-xl);
   align-items: end;
+  overflow: hidden;
+  isolation: isolate;
   background: var(--color-brand);
+}
+
+.waitlistField > *:not(.waitlistCompanions) {
+  position: relative;
+  z-index: 1;
 }
 
 .formPreview {
@@ -617,10 +707,53 @@
   background: transparent;
 }
 
-.waitlistField > div:last-child > p {
+.waitlistForm > p {
   margin: var(--space-3) 0 0;
   color: var(--color-sage-ink);
   font-size: var(--font-size-xs);
+}
+
+.waitlistCompanions {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+}
+
+.waitlistCompanions i {
+  position: absolute;
+  width: clamp(5rem, 10vw, 8rem);
+  aspect-ratio: 1;
+  border: 1rem solid rgb(253 246 237 / 22%);
+  border-radius: 50%;
+  background: var(--color-meadow);
+  transition: transform var(--motion-route) var(--ease-enter);
+}
+
+.waitlistCompanions i:first-child {
+  top: -2.5rem;
+  right: 30%;
+}
+
+.waitlistCompanions i:last-child {
+  right: -2rem;
+  bottom: -3rem;
+  background: var(--color-sage-ink);
+  transition-delay: 80ms;
+}
+
+.site[data-motion="enhanced"]
+  .waitlistField:not([data-reveal-state="visible"])
+  .waitlistCompanions
+  i:first-child {
+  transform: translateX(-6rem);
+}
+
+.site[data-motion="enhanced"]
+  .waitlistField:not([data-reveal-state="visible"])
+  .waitlistCompanions
+  i:last-child {
+  transform: translateX(6rem);
 }
 
 .footer {
@@ -731,6 +864,12 @@
     left: 2.25rem;
     width: auto;
     height: 3px;
+    transform-origin: left;
+  }
+
+  .site[data-motion="enhanced"]
+    .steps:not([data-reveal-state="visible"])::before {
+    transform: scaleX(0);
   }
 
   .steps li {
@@ -791,5 +930,115 @@
 
   .footerLinks {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .site[data-motion="enhanced"]
+    .waitlistField:not([data-reveal-state="visible"])
+    .waitlistCompanions
+    i:first-child {
+    transform: translateX(-3.5rem);
+  }
+
+  .site[data-motion="enhanced"]
+    .waitlistField:not([data-reveal-state="visible"])
+    .waitlistCompanions
+    i:last-child {
+    transform: translateX(3.5rem);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .contours {
+    animation: hero-contours-in 700ms var(--ease-enter) both;
+  }
+
+  .pathOne {
+    animation: hero-path-one var(--motion-hero) var(--ease-standard) both;
+  }
+
+  .pathTwo {
+    transform-origin: right;
+    animation: hero-path-two var(--motion-hero) var(--ease-standard) 100ms both;
+  }
+
+  .companionOne {
+    animation: companion-one-in var(--motion-route) var(--ease-enter) 180ms both;
+  }
+
+  .companionTwo {
+    animation: companion-two-in var(--motion-route) var(--ease-enter) 220ms both;
+  }
+
+  .phone {
+    animation: phone-in 700ms var(--ease-enter) 120ms both;
+  }
+
+  @keyframes hero-contours-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+  @keyframes hero-path-one {
+    from {
+      transform: rotate(28deg) scaleX(0);
+    }
+
+    to {
+      transform: rotate(28deg) scaleX(1);
+    }
+  }
+
+  @keyframes hero-path-two {
+    from {
+      transform: rotate(-25deg) scaleX(0);
+    }
+
+    to {
+      transform: rotate(-25deg) scaleX(1);
+    }
+  }
+
+  @keyframes companion-one-in {
+    from {
+      opacity: 0;
+      transform: translateX(-1.5rem);
+    }
+  }
+
+  @keyframes companion-two-in {
+    from {
+      opacity: 0;
+      transform: translateX(1.5rem);
+    }
+  }
+
+  @keyframes phone-in {
+    from {
+      opacity: 0.88;
+      transform: translate(-50%, calc(-50% + 1rem));
+    }
+
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site [data-reveal],
+  .waitlistCompanions i,
+  .steps::before,
+  .mapRoutePrimary,
+  .mapRouteSecondary {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .mapRoutePrimary,
+  .mapRouteSecondary {
+    stroke-dashoffset: 0;
   }
 }

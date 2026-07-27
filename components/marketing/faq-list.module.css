@@ -18,6 +18,7 @@
   font-weight: 650;
   cursor: pointer;
   list-style: none;
+  transition: color var(--motion-fast) var(--ease-standard);
 }
 
 .list summary::-webkit-details-marker {
@@ -28,6 +29,11 @@
   flex: 0 0 auto;
   font-size: 1.5rem;
   font-weight: 450;
+  transition: transform var(--motion-fast) var(--ease-standard);
+}
+
+.list summary:hover {
+  color: var(--color-brand);
 }
 
 .list details[open] summary span:last-child {
@@ -39,4 +45,24 @@
   margin: 0;
   padding: 0 3rem var(--space-5) 0;
   color: var(--color-muted);
+}
+
+.list details[open] p {
+  animation: answer-in var(--motion-ui) var(--ease-enter) both;
+}
+
+@keyframes answer-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.4rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .list summary span:last-child,
+  .list details[open] p {
+    animation: none;
+    transform: none;
+    transition: none;
+  }
 }

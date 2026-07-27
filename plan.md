@@ -1,6 +1,6 @@
 # Accomp Marketing Website — Project Plan
 
-> สถานะ: **Phase 5 draft complete — รอ review/approval ก่อนเริ่ม Phase 6**
+> สถานะ: **Phase 6 draft complete — รอ review/approval ก่อนเริ่ม Phase 7**
 > สร้างเมื่อ: 2026-07-26  
 > Project path: `/Users/peeraponchanthacham/Documents/GitHub/Accomp`  
 > Reference: [Phantom](https://phantom.com/?utm_source=loftlyy&utm_medium=referral&utm_campaign=phantom)
@@ -80,8 +80,15 @@
 - [Marketing component styles](./components/marketing/marketing-page.module.css)
 - [Marketing source tests](./tests/marketing-content.test.mjs)
 
-มี core marketing page แล้ว แต่ยังไม่มี advanced motion, live waitlist,
-analytics, backend หรือ deployment
+### Phase 6 deliverables
+
+- [Phase 6 index and approval status](./docs/phase-6/README.md)
+- [Interaction QA notes](./docs/phase-6/interaction-qa.md)
+- [Progressive motion controller](./components/marketing/MotionController.tsx)
+- [Motion source tests](./tests/motion.test.mjs)
+
+มี motion-complete marketing page และ reduced-motion alternative แล้ว แต่ยังไม่
+มี live waitlist, analytics, backend, launch metadata หรือ deployment
 
 ## 1. Project Intent
 
@@ -666,17 +673,17 @@ Implement โครงหน้าหลักและ content sections แบ�
 
 #### Deliverables
 
-- Motion-complete homepage
-- Reduced-motion version
-- Interaction QA notes
+- [x] [Motion-complete homepage](./components/marketing/MarketingPage.tsx)
+- [x] [Reduced-motion version](./components/marketing/MotionController.tsx)
+- [x] [Interaction QA notes](./docs/phase-6/interaction-qa.md)
 
 #### Acceptance criteria
 
-- Motion ช่วยลำดับสายตาและการเล่าเรื่อง
-- ไม่มี layout shift จาก animation
-- ไม่มี animation ที่ยาวหรือบังคับให้ผู้ใช้รอ
-- Reduced-motion mode มีข้อมูลครบ
-- Scroll และ interaction ลื่นบนอุปกรณ์ระดับกลาง
+- [x] Motion ช่วยลำดับสายตาและการเล่าเรื่อง
+- [x] ไม่มี layout shift จาก animation
+- [x] ไม่มี animation ที่ยาวหรือบังคับให้ผู้ใช้รอ
+- [x] Reduced-motion mode มีข้อมูลครบ
+- [x] Scroll และ interaction ใช้ passive listener, rAF และ native scrolling
 
 #### Exit gate
 
@@ -891,12 +898,18 @@ Phase 3 ดำเนินต่อด้วย provisional assumptions เพ�
 - [x] สร้าง core marketing page และ typed content model
 - [x] สร้าง mobile menu, feature rails และ native FAQ
 - [x] ตรวจ formatting, lint, typecheck, tests, build และ local runtime สำหรับ Phase 5
-- [ ] Review และ approve Phase 5
-- [ ] เริ่ม Phase 6
+- [x] Carry Phase 5 forward พร้อม typography และ offline map ที่ผู้ใช้ยืนยันจาก Phase 3
+- [x] เริ่ม Phase 6 เมื่อ 2026-07-28
+- [x] สร้าง hero motion, scroll reveal, route draw และ final CTA motion
+- [x] สร้าง active-card progression และ keyboard carousel behavior
+- [x] สร้าง sticky header theme/active-section transitions
+- [x] สร้าง reduced-motion alternative และ interaction QA notes
+- [x] ตรวจ formatting, lint, typecheck, tests, build และ local runtime สำหรับ Phase 6
+- [ ] Review และ approve Phase 6
 - [x] สร้าง source code foundation
 - [x] สร้าง Git repository
 - [x] Initial commit
 - [x] Create remote repository
 - [ ] Deploy
 
-**งานถัดไปหลังจากผู้ใช้ตรวจเอกสาร:** ปรับ Phase 5 ตาม feedback หรือรับคำสั่งเริ่ม Phase 6 เท่านั้น
+**งานถัดไปหลังจากผู้ใช้ตรวจเอกสาร:** ปรับ Phase 6 ตาม feedback หรือรับคำสั่งเริ่ม Phase 7 เท่านั้น

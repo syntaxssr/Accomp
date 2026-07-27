@@ -22,7 +22,7 @@ async function render() {
   );
 }
 
-test("server-renders the complete Phase 5 marketing page", async () => {
+test("server-renders the complete Phase 6 marketing page", async () => {
   const response = await render();
 
   assert.equal(response.status, 200);
@@ -32,7 +32,7 @@ test("server-renders the complete Phase 5 marketing page", async () => {
 
   assert.match(html, /<html[^>]*lang="en"/i);
   assert.match(html, /<title>Adventure Together · Accomp<\/title>/i);
-  assert.match(html, /data-phase="5"/);
+  assert.match(html, /data-phase="6"/);
   assert.match(html, /Adventure together\./i);
   assert.match(html, /Make one plan\. Bring everyone in\./);
   assert.match(html, /Pack once\. Know who/);

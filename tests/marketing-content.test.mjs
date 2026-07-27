@@ -20,7 +20,7 @@ test("keeps marketing content in one typed source", async () => {
   assert.match(content, /export const faqItems/);
 });
 
-test("implements the complete Phase 5 page structure", async () => {
+test("preserves the complete marketing structure through Phase 6", async () => {
   const page = await source("components/marketing/MarketingPage.tsx");
 
   for (const id of [
@@ -34,7 +34,8 @@ test("implements the complete Phase 5 page structure", async () => {
     assert.match(page, new RegExp(`id="${id}"`));
   }
 
-  assert.match(page, /data-phase="5"/);
+  assert.match(page, /data-phase="6"/);
+  assert.match(page, /<MotionController/);
   assert.match(page, /<SiteHeader/);
   assert.match(page, /<FeatureRail/);
   assert.match(page, /<FAQList/);
@@ -42,7 +43,7 @@ test("implements the complete Phase 5 page structure", async () => {
   assert.doesNotMatch(page, /<form|action=|onSubmit=/);
 });
 
-test("keeps advanced motion and unverified integrations out of Phase 5", async () => {
+test("keeps Phase 6 dependency-light and unverified integrations out", async () => {
   const packageJson = JSON.parse(await source("package.json"));
   const dependencies = {
     ...packageJson.dependencies,
@@ -96,4 +97,42 @@ test("declares compact, tablet and desktop layout behavior", async () => {
   assert.match(railStyles, /overflow-x: auto/);
   assert.match(railStyles, /scroll-snap-type: inline mandatory/);
   assert.match(globalStyles, /prefers-reduced-motion: reduce/);
+});
+
+test("preserves the approved Phase 3 typography and offline map artwork", async () => {
+  const [layout, globalStyles, typographyStyles, page, pageStyles] =
+    await Promise.all([
+      source("app/layout.tsx"),
+      source("app/globals.css"),
+      source("components/ui/ui.module.css"),
+      source("components/marketing/MarketingPage.tsx"),
+      source("components/marketing/marketing-page.module.css"),
+    ]);
+
+  assert.doesNotMatch(layout, /next\/font/);
+  assert.match(
+    globalStyles,
+    /--font-family-display:\s*Geist, Inter, ui-sans-serif, system-ui, sans-serif/,
+  );
+  assert.match(
+    globalStyles,
+    /--font-family-body:[\s\S]*Inter, ui-sans-serif, system-ui/,
+  );
+  assert.match(globalStyles, /clamp\(3\.65rem, 9\.2vw, 7rem\)/);
+  assert.match(globalStyles, /clamp\(2\.7rem, 6\.5vw, 4\.8rem\)/);
+  assert.match(typographyStyles, /font-weight: 560/);
+  assert.match(typographyStyles, /letter-spacing: -0\.065em/);
+  assert.match(
+    typographyStyles,
+    /\.heading\[data-size="display"\] \{[\s\S]*max-width: 8ch/,
+  );
+  assert.match(
+    typographyStyles,
+    /\.heading\[data-size="section"\] \{[\s\S]*max-width: 15ch/,
+  );
+  assert.match(page, /viewBox="0 0 800 760"/);
+  assert.match(page, /M-30 570C130 410 230 652 390 486S650 250 850 368/);
+  assert.match(page, /M-20 298C120 392 246 218 390 342S626 590 840 470/);
+  assert.match(pageStyles, /\.mapRouteSecondary/);
+  assert.match(pageStyles, /\.mapPin/);
 });

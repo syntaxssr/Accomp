@@ -1,6 +1,6 @@
 # Accomp Phase 5 — Core Marketing Page
 
-> Status: **Draft complete — waiting for review and approval**
+> Status: **Complete — carried into Phase 6**
 > Date started: 2026-07-28
 > Scope: Complete static marketing story and essential page interactions
 
@@ -96,6 +96,5 @@ Phase 5 intentionally excludes:
 
 ## Next Gate
 
-After implementation and owner review:
-
-`เริ่ม Phase 6`
+Phase 6 was authorized on 2026-07-28 after the Phase 3 typography and offline
+map treatment were restored in the production page.

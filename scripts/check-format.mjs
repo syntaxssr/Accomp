@@ -9,6 +9,7 @@ const roots = [
   "content",
   "docs/phase-4",
   "docs/phase-5",
+  "docs/phase-6",
   "scripts",
   "tests",
   "worker",

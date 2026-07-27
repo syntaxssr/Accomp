@@ -1,18 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Inter } from "next/font/google";
 import "./globals.css";
-
-const displayFont = Geist({
-  display: "swap",
-  subsets: ["latin"],
-  variable: "--font-display",
-});
-
-const bodyFont = Inter({
-  display: "swap",
-  subsets: ["latin"],
-  variable: "--font-body",
-});
 
 export const metadata: Metadata = {
   title: {
@@ -34,9 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${displayFont.variable} ${bodyFont.variable}`}>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
