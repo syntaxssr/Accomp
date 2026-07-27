@@ -2,7 +2,7 @@
 
 Accomp is a static-first marketing website for the Accomp mobile app. The
 repository currently contains the Phase 6 motion-complete marketing page and
-the approved design references from earlier phases.
+the Phase 7 search, social, legal and performance readiness layer.
 
 ## Technology
 
@@ -13,9 +13,10 @@ the approved design references from earlier phases.
 - Native CSS motion with a small Intersection Observer enhancement
 - ESLint, TypeScript and Node test runner
 - Cloudflare Worker-compatible build output
+- Request-aware metadata, crawl routes and original social preview artwork
 
-No backend, database, CMS, authentication, analytics or live waitlist is part
-of Phase 4.
+No backend, database, CMS, authentication, analytics, cookie tracking or live
+waitlist is active.
 
 ## Local development
 
@@ -47,17 +48,20 @@ components/ui/       Typography, buttons, links, cards and icon primitive
 components/marketing/Marketing sections and progressive interactions
 content/             Typed navigation, feature and FAQ content
 public/brand/        Production-facing brand assets
+public/og.png        1200 × 630 social preview
 brand/               Brand source files and identity documentation
 docs/                Phase deliverables and design references
+lib/                 Shared site identity and origin resolution
 tests/               Source-contract and rendered-output smoke tests
 worker/              Cloudflare-compatible application entry
 ```
 
 ## Phase boundary
 
-The current route contains the complete marketing story, calm progressive
-motion and reduced-motion alternatives. Analytics, live forms, launch metadata
-and deployment remain gated behind later phases.
+The current routes contain the complete marketing story, calm progressive
+motion, search/social metadata, crawl endpoints, legal status notices and a
+branded 404. Analytics, live forms, final legal agreements, confirmed launch
+destinations and deployment remain gated.
 
-See [Phase 6 documentation](./docs/phase-6/README.md) and the main
+See [Phase 7 documentation](./docs/phase-7/README.md) and the main
 [project plan](./plan.md).

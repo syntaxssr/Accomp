@@ -1,6 +1,6 @@
 # Accomp Marketing Website — Project Plan
 
-> สถานะ: **Phase 6 draft complete — รอ review/approval ก่อนเริ่ม Phase 7**
+> สถานะ: **Phase 7 draft complete — รอ review/approval ก่อนเริ่ม Phase 8**
 > สร้างเมื่อ: 2026-07-26  
 > Project path: `/Users/peeraponchanthacham/Documents/GitHub/Accomp`  
 > Reference: [Phantom](https://phantom.com/?utm_source=loftlyy&utm_medium=referral&utm_campaign=phantom)
@@ -87,8 +87,21 @@
 - [Progressive motion controller](./components/marketing/MotionController.tsx)
 - [Motion source tests](./tests/motion.test.mjs)
 
-มี motion-complete marketing page และ reduced-motion alternative แล้ว แต่ยังไม่
-มี live waitlist, analytics, backend, launch metadata หรือ deployment
+### Phase 7 deliverables
+
+- [Phase 7 index and approval status](./docs/phase-7/README.md)
+- [Search, social, analytics and legal decisions](./docs/phase-7/search-social-and-legal.md)
+- [Performance report](./docs/phase-7/performance-report.md)
+- [Request-aware metadata](./app/layout.tsx)
+- [Social preview](./public/og.png)
+- [Sitemap](./app/sitemap.xml/route.ts)
+- [Robots rules](./app/robots.txt/route.ts)
+- [Privacy status](./app/privacy/page.tsx)
+- [Terms status](./app/terms/page.tsx)
+
+มี search/social-ready marketing page, legal status routes และ performance
+baseline แล้ว แต่ยังไม่มี live waitlist, analytics, backend, final legal
+agreements, confirmed production domain หรือ deployment
 
 ## 1. Project Intent
 
@@ -697,32 +710,32 @@ Implement โครงหน้าหลักและ content sections แบ�
 
 #### Work
 
-- Title, description และ canonical metadata
-- Open Graph และ social image
-- App/software structured data เมื่อข้อมูลพร้อม
-- Sitemap และ robots rules
-- Image and font optimization
-- Bundle review
-- Analytics ตาม consent ที่อนุมัติ
-- Privacy, terms และ cookie behavior
-- Error/404 handling ตามสโคป
-- Performance profiling
+- [x] Title, description และ canonical metadata
+- [x] Open Graph และ social image
+- [x] WebSite structured data; งด SoftwareApplication จนกว่าข้อมูลพร้อม
+- [x] Sitemap และ robots rules
+- [x] Image and font optimization
+- [x] Bundle review
+- [x] ยืนยันไม่ใช้ Analytics จนกว่าจะอนุมัติ provider/consent
+- [x] Privacy, terms และ cookie behavior
+- [x] Error/404 handling ตามสโคป
+- [x] Performance profiling
 
 #### Deliverables
 
-- Search and social metadata
-- Optimized assets
-- Legal link integration
-- Analytics integration หรือเอกสารยืนยันว่าไม่ใช้
-- Performance report
+- [x] [Search and social metadata](./app/layout.tsx)
+- [x] [Optimized social asset](./public/og.png)
+- [x] [Legal link integration](./components/marketing/MarketingPage.tsx)
+- [x] [เอกสารยืนยันว่าไม่ใช้ analytics](./docs/phase-7/search-social-and-legal.md)
+- [x] [Performance report](./docs/phase-7/performance-report.md)
 
 #### Acceptance criteria
 
-- ไม่มี metadata placeholder ที่หลุดสู่ production
-- Social preview ใช้งานได้
-- ไม่มี analytics ก่อน consent ถ้านโยบายกำหนด
-- หน้าเว็บมีเป้าหมาย Lighthouse ที่เหมาะสมและไม่มี critical issue
-- Core experience ทำงานได้แม้ JavaScript สำหรับ motion โหลดไม่สำเร็จ
+- [x] ไม่มี metadata placeholder ที่หลุดสู่ production
+- [x] Social preview ใช้งานได้
+- [x] ไม่มี analytics ก่อน consent ถ้านโยบายกำหนด
+- [x] Lighthouse production audit 90/100/100/100 และไม่มี critical issue
+- [x] Core experience ทำงานได้แม้ JavaScript สำหรับ motion โหลดไม่สำเร็จ
 
 #### Exit gate
 
@@ -905,11 +918,19 @@ Phase 3 ดำเนินต่อด้วย provisional assumptions เพ�
 - [x] สร้าง sticky header theme/active-section transitions
 - [x] สร้าง reduced-motion alternative และ interaction QA notes
 - [x] ตรวจ formatting, lint, typecheck, tests, build และ local runtime สำหรับ Phase 6
-- [ ] Review และ approve Phase 6
+- [x] Carry Phase 6 forward เมื่อผู้ใช้สั่งเริ่ม Phase 7
+- [x] เริ่ม Phase 7 เมื่อ 2026-07-28
+- [x] สร้าง search/social metadata, sitemap, robots และ structured data
+- [x] สร้าง social preview ต้นฉบับของ Accomp
+- [x] เชื่อม privacy/terms status pages และ branded 404
+- [x] ยืนยัน no-analytics/no-cookie behavior
+- [x] ตรวจ bundle, Lighthouse production audit และ performance target
+- [x] ตรวจ formatting, lint, typecheck, tests, build และ local runtime สำหรับ Phase 7
+- [ ] Review และ approve Phase 7
 - [x] สร้าง source code foundation
 - [x] สร้าง Git repository
 - [x] Initial commit
 - [x] Create remote repository
 - [ ] Deploy
 
-**งานถัดไปหลังจากผู้ใช้ตรวจเอกสาร:** ปรับ Phase 6 ตาม feedback หรือรับคำสั่งเริ่ม Phase 7 เท่านั้น
+**งานถัดไปหลังจากผู้ใช้ตรวจเอกสาร:** ปรับ Phase 7 ตาม feedback หรือรับคำสั่งเริ่ม Phase 8 เท่านั้น

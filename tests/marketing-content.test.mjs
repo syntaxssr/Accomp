@@ -20,7 +20,7 @@ test("keeps marketing content in one typed source", async () => {
   assert.match(content, /export const faqItems/);
 });
 
-test("preserves the complete marketing structure through Phase 6", async () => {
+test("preserves the complete marketing structure through Phase 7", async () => {
   const page = await source("components/marketing/MarketingPage.tsx");
 
   for (const id of [
@@ -34,7 +34,8 @@ test("preserves the complete marketing structure through Phase 6", async () => {
     assert.match(page, new RegExp(`id="${id}"`));
   }
 
-  assert.match(page, /data-phase="6"/);
+  assert.match(page, /data-phase="7"/);
+  assert.match(page, /data-motion-root/);
   assert.match(page, /<MotionController/);
   assert.match(page, /<SiteHeader/);
   assert.match(page, /<FeatureRail/);
@@ -43,7 +44,7 @@ test("preserves the complete marketing structure through Phase 6", async () => {
   assert.doesNotMatch(page, /<form|action=|onSubmit=/);
 });
 
-test("keeps Phase 6 dependency-light and unverified integrations out", async () => {
+test("keeps Phase 7 dependency-light and unverified integrations out", async () => {
   const packageJson = JSON.parse(await source("package.json"));
   const dependencies = {
     ...packageJson.dependencies,
@@ -62,6 +63,14 @@ test("keeps Phase 6 dependency-light and unverified integrations out", async () 
 
   const hosting = JSON.parse(await source(".openai/hosting.json"));
   assert.deepEqual(hosting, { d1: null, r2: null });
+});
+
+test("links the factual pre-launch legal notices", async () => {
+  const page = await source("components/marketing/MarketingPage.tsx");
+
+  assert.match(page, /href="\/privacy"/);
+  assert.match(page, /href="\/terms"/);
+  assert.doesNotMatch(page, /Privacy · pending|Terms · pending/);
 });
 
 test("uses native disclosures and explicit client boundaries", async () => {

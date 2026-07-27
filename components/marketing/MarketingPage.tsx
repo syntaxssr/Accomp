@@ -23,7 +23,7 @@ import styles from "./marketing-page.module.css";
 
 export function MarketingPage() {
   return (
-    <div className={styles.site} data-phase="6">
+    <div className={styles.site} data-motion-root data-phase="7">
       <MotionController />
 
       <a className={styles.skipLink} href="#main">
@@ -393,8 +393,8 @@ export function MarketingPage() {
               </div>
               <div>
                 <h2>Legal</h2>
-                <span>Privacy · pending</span>
-                <span>Terms · pending</span>
+                <a href="/privacy">Privacy</a>
+                <a href="/terms">Terms</a>
               </div>
             </div>
           </div>

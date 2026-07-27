@@ -1,14 +1,18 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-async function render() {
+async function render(pathname = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
 
   return worker.fetch(
-    new Request("http://localhost/", {
-      headers: { accept: "text/html" },
+    new Request(new URL(pathname, "https://accomp.test"), {
+      headers: {
+        accept: "text/html",
+        "x-forwarded-host": "accomp.test",
+        "x-forwarded-proto": "https",
+      },
     }),
     {
       ASSETS: {
@@ -22,7 +26,7 @@ async function render() {
   );
 }
 
-test("server-renders the complete Phase 6 marketing page", async () => {
+test("server-renders the complete Phase 7 marketing page", async () => {
   const response = await render();
 
   assert.equal(response.status, 200);
@@ -32,12 +36,14 @@ test("server-renders the complete Phase 6 marketing page", async () => {
 
   assert.match(html, /<html[^>]*lang="en"/i);
   assert.match(html, /<title>Adventure Together · Accomp<\/title>/i);
-  assert.match(html, /data-phase="6"/);
+  assert.match(html, /data-phase="7"/);
   assert.match(html, /Adventure together\./i);
   assert.match(html, /Make one plan\. Bring everyone in\./);
   assert.match(html, /Pack once\. Know who/);
   assert.match(html, /Ready when the signal isn/);
   assert.match(html, /Make room for the adventure\./);
+  assert.match(html, /href="\/privacy"/);
+  assert.match(html, /href="\/terms"/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
 });
 
@@ -67,4 +73,50 @@ test("keeps the waitlist honest and non-submitting", async () => {
   assert.match(html, /Waitlist signup is not active yet/);
   assert.match(html, /No information is collected or submitted yet/);
   assert.match(html, /<input[^>]*disabled/i);
+});
+
+test("renders complete search and social metadata from the request origin", async () => {
+  const response = await render();
+  const html = await response.text();
+
+  assert.match(
+    html,
+    /<link rel="canonical" href="https:\/\/accomp\.test\/?"/,
+  );
+  assert.match(html, /property="og:image"/);
+  assert.match(html, /content="https:\/\/accomp\.test\/og\.png"/);
+  assert.match(html, /name="twitter:card" content="summary_large_image"/);
+  assert.match(html, /type="application\/ld\+json"/);
+  assert.match(html, /"@type":"WebSite"/);
+});
+
+test("serves legal notices, robots, sitemap and a real 404", async () => {
+  const [privacy, terms, robots, sitemap, missing] = await Promise.all([
+    render("/privacy"),
+    render("/terms"),
+    render("/robots.txt"),
+    render("/sitemap.xml"),
+    render("/not-a-real-page"),
+  ]);
+
+  assert.equal(privacy.status, 200);
+  assert.match(await privacy.text(), /does not accept waitlist submissions/);
+  assert.equal(terms.status, 200);
+  assert.match(await terms.text(), /Not a service agreement/);
+
+  assert.equal(robots.status, 200);
+  assert.match(
+    await robots.text(),
+    /Sitemap: https:\/\/accomp\.test\/sitemap\.xml/,
+  );
+
+  assert.equal(sitemap.status, 200);
+  const sitemapXml = await sitemap.text();
+  assert.match(sitemapXml, /https:\/\/accomp\.test\/privacy/);
+  assert.match(sitemapXml, /https:\/\/accomp\.test\/terms/);
+
+  assert.equal(missing.status, 404);
+  const missingHtml = await missing.text();
+  assert.match(missingHtml, /This path isn/);
+  assert.match(missingHtml, /content="noindex"/);
 });

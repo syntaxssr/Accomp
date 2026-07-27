@@ -6,7 +6,7 @@ const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 
 export function MotionController() {
   useEffect(() => {
-    const root = document.querySelector<HTMLElement>('[data-phase="6"]');
+    const root = document.querySelector<HTMLElement>("[data-motion-root]");
     const targets = Array.from(
       document.querySelectorAll<HTMLElement>("[data-reveal]"),
     );

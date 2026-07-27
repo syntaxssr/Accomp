@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styles from "./ui.module.css";
 
 type IconName = "pine";
@@ -27,10 +26,14 @@ export function Icon({
   const alt = decorative ? "" : (label ?? `${name} icon`);
 
   return (
-    <Image
+    // The source is a fixed 1.3 kB SVG; a native image avoids shipping the
+    // framework image runtime for a decorative brand mark.
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
       alt={alt}
       className={classes}
       data-size={size}
+      decoding="async"
       height={48}
       src={iconSources[name]}
       width={48}

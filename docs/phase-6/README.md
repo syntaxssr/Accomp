@@ -1,6 +1,6 @@
 # Accomp Phase 6 — Motion and Visual Storytelling
 
-> Status: **Draft complete — waiting for review and approval**
+> Status: **Complete — carried into Phase 7**
 > Date started: 2026-07-28
 > Scope: Calm progressive motion for the complete Phase 5 marketing story
 
@@ -65,12 +65,13 @@ manual device follow-up.
 
 ## Phase Boundary
 
-Phase 6 does not include SEO launch metadata, analytics, legal destinations,
-live waitlist submission, social imagery or deployment. Those remain gated
-behind later phases.
+Phase 6 did not include SEO launch metadata, analytics, legal destinations,
+live waitlist submission, social imagery or deployment. Phase 7 added the
+search/social layer and factual legal status pages; analytics, live submission
+and deployment remain gated.
 
 ## Next Gate
 
-After implementation and owner review:
+Authorized by the owner on 2026-07-28:
 
 `เริ่ม Phase 7`
