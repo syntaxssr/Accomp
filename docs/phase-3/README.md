@@ -1,6 +1,6 @@
 # Accomp Phase 3 — High-Fidelity Design
 
-> Status: **Draft complete — waiting for review and approval**
+> Status: **Carried into Phase 4 with provisional assumptions**
 > Date started: 2026-07-27
 > Scope: Final visual direction and implementation reference only
 > No production framework scaffold, backend, analytics or deployment
@@ -101,6 +101,7 @@ Phase 3 does not include:
 
 ## Next Gate
 
-After visual, responsive and interaction review:
+Phase 3 was carried forward when the owner explicitly started Phase 4. The next
+gate is now maintained in the [Phase 4 index](../phase-4/README.md).
 
-`เริ่ม Phase 4`
+`เริ่ม Phase 5`

@@ -1,6 +1,6 @@
 # Accomp Marketing Website — Project Plan
 
-> สถานะ: **Phase 3 draft complete — รอ review/approval ก่อนเริ่ม Phase 4**
+> สถานะ: **Phase 4 draft complete — รอ review/approval ก่อนเริ่ม Phase 5**
 > สร้างเมื่อ: 2026-07-26  
 > Project path: `/Users/peeraponchanthacham/Documents/GitHub/Accomp`  
 > Reference: [Phantom](https://phantom.com/?utm_source=loftlyy&utm_medium=referral&utm_campaign=phantom)
@@ -60,7 +60,18 @@
 - [Asset export list](./docs/phase-3/asset-export-list.md)
 - [Motion specification](./docs/phase-3/motion-specification.md)
 
-ยังไม่มี production website source code, backend หรือ deployment
+### Phase 4 deliverables
+
+- [Phase 4 index and approval status](./docs/phase-4/README.md)
+- [Technical decisions](./docs/phase-4/technical-decisions.md)
+- [Component contracts](./docs/phase-4/component-contracts.md)
+- [Runnable foundation preview](./app/page.tsx)
+- [Design token layer](./app/globals.css)
+- [Core component exports](./components/index.ts)
+- [Project conventions](./README.md)
+
+มี project scaffold และ design-system foundation แล้ว แต่ยังไม่มี production
+marketing sections, backend หรือ deployment
 
 ## 1. Project Intent
 
@@ -565,19 +576,19 @@ AppShell
 
 #### Deliverables
 
-- Runnable local project
-- Design token layer
-- Core primitives
-- Quality scripts
-- Project conventions
+- [x] [Runnable local project](./app/page.tsx)
+- [x] [Design token layer](./app/globals.css)
+- [x] [Core primitives](./components/index.ts)
+- [x] [Quality scripts](./package.json)
+- [x] [Project conventions](./README.md)
 
 #### Acceptance criteria
 
-- Local development ทำงานได้
-- lint และ typecheck ผ่าน
-- ไม่มี backend หรือ dependency ที่เกินสโคป
-- Core tokens ตรงกับ brand identity
-- ยังไม่มี feature section ที่นำ Phase 5 มาทำล่วงหน้า
+- [x] Local development ทำงานได้
+- [x] lint และ typecheck ผ่าน
+- [x] ไม่มี backend หรือ dependency ที่เกินสโคป
+- [x] Core tokens ตรงกับ brand identity
+- [x] ยังไม่มี feature section ที่นำ Phase 5 มาทำล่วงหน้า
 
 #### Exit gate
 
@@ -861,12 +872,16 @@ Phase 3 ดำเนินต่อด้วย provisional assumptions เพ�
 - [x] Carry Phase 2 forward ด้วย provisional assumptions เมื่อผู้ใช้สั่งเริ่ม Phase 3
 - [x] เริ่ม Phase 3 เมื่อ 2026-07-27
 - [x] สร้างและ browser-test Phase 3 deliverables
-- [ ] Review และ approve Phase 3
-- [ ] เริ่ม Phase 4
-- [ ] สร้าง source code
+- [x] Carry Phase 3 forward ด้วย provisional assumptions เมื่อผู้ใช้สั่งเริ่ม Phase 4
+- [x] เริ่ม Phase 4 เมื่อ 2026-07-28
+- [x] สร้าง project scaffold, design tokens และ core primitives
+- [x] ตรวจ formatting, lint, typecheck, tests, build และ local runtime
+- [ ] Review และ approve Phase 4
+- [ ] เริ่ม Phase 5
+- [x] สร้าง source code foundation
 - [x] สร้าง Git repository
 - [x] Initial commit
 - [x] Create remote repository
 - [ ] Deploy
 
-**งานถัดไปหลังจากผู้ใช้ตรวจเอกสาร:** ปรับ Phase 3 deliverables ตาม feedback หรือรับคำสั่งเริ่ม Phase 4 เท่านั้น
+**งานถัดไปหลังจากผู้ใช้ตรวจเอกสาร:** ปรับ Phase 4 foundation ตาม feedback หรือรับคำสั่งเริ่ม Phase 5 เท่านั้น
