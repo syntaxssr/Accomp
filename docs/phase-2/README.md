@@ -1,6 +1,6 @@
 # Accomp Phase 2 — Wireframe and Interaction Prototype
 
-> Status: **Draft complete — waiting for review and approval**  
+> Status: **Carried into Phase 3 with provisional assumptions**
 > Date: 2026-07-26  
 > Scope: Information architecture, low-fidelity wireframes and interaction behavior only  
 > No production website scaffold, framework code, backend or deployment
@@ -105,6 +105,7 @@ Phase 2 intentionally does not include:
 
 ## Next Gate
 
-After the deliverables and acceptance criteria are reviewed, the next authorized command is:
+Phase 2 was carried forward when the owner explicitly started Phase 3. The next
+gate is now maintained in the [Phase 3 index](../phase-3/README.md).
 
-`เริ่ม Phase 3`
+`เริ่ม Phase 4`

@@ -1,0 +1,2105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="High-fidelity design prototype for the Accomp mobile app marketing website."
+    />
+    <link rel="icon" href="../../brand/accomp-pine-icon.svg" type="image/svg+xml" />
+    <title>Accomp — Adventure Together</title>
+    <style>
+      :root {
+        --sage: #778873;
+        --meadow: #a1bc98;
+        --sand: #dccfc0;
+        --cream: #fdf6ed;
+        --ink: #1f1f1f;
+        --night: #171717;
+        --sage-ink: #2c352f;
+        --muted: #5d685f;
+        --line: rgba(119, 136, 115, 0.28);
+        --page: 1280px;
+        --gutter: clamp(1.25rem, 4vw, 4.5rem);
+        --section: clamp(5.5rem, 11vw, 11rem);
+        --radius-xl: clamp(2rem, 4vw, 3rem);
+        --shadow-soft: 0 1.5rem 4.5rem rgba(23, 23, 23, 0.11);
+        --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        overflow-x: hidden;
+        color: var(--ink);
+        background: var(--cream);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body.menu-open {
+        overflow: hidden;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      button,
+      .button {
+        min-height: 44px;
+        border: 0;
+        border-radius: 999px;
+        cursor: pointer;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--ink);
+        outline-offset: 4px;
+      }
+
+      .skip-link {
+        position: fixed;
+        z-index: 200;
+        top: 0.75rem;
+        left: 0.75rem;
+        padding: 0.75rem 1rem;
+        color: var(--cream);
+        background: var(--night);
+        border-radius: 999px;
+        transform: translateY(-180%);
+      }
+
+      .skip-link:focus {
+        transform: translateY(0);
+      }
+
+      .design-note {
+        margin: 0;
+        padding: 0.55rem var(--gutter);
+        color: var(--sand);
+        background: var(--night);
+        font-size: 0.68rem;
+        font-weight: 650;
+        letter-spacing: 0.08em;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .site-header {
+        position: sticky;
+        z-index: 60;
+        top: 0;
+        padding: 0.8rem 0;
+        pointer-events: none;
+      }
+
+      .nav-pill {
+        width: min(calc(100% - 2 * var(--gutter)), var(--page));
+        min-height: 64px;
+        margin-inline: auto;
+        padding: 0.55rem 0.65rem 0.55rem 1rem;
+        border: 1px solid var(--line);
+        border-radius: 1.6rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        background: rgba(253, 246, 237, 0.9);
+        box-shadow: 0 0.8rem 2.5rem rgba(23, 23, 23, 0.08);
+        backdrop-filter: blur(18px);
+        pointer-events: auto;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
+        margin-right: auto;
+        font-family: Geist, Inter, ui-sans-serif, system-ui, sans-serif;
+        font-size: 1.05rem;
+        font-weight: 720;
+        letter-spacing: -0.02em;
+        text-decoration: none;
+      }
+
+      .brand img {
+        width: 30px;
+        height: 30px;
+        object-fit: contain;
+      }
+
+      .desktop-nav {
+        display: none;
+      }
+
+      .desktop-nav a {
+        position: relative;
+        padding: 0.65rem 0.25rem;
+        color: var(--muted);
+        font-size: 0.84rem;
+        font-weight: 650;
+        text-decoration: none;
+      }
+
+      .desktop-nav a::after {
+        content: "";
+        position: absolute;
+        right: 0.25rem;
+        bottom: 0.35rem;
+        left: 0.25rem;
+        height: 2px;
+        background: var(--sage);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 180ms var(--ease);
+      }
+
+      .desktop-nav a:hover::after,
+      .desktop-nav a:focus-visible::after {
+        transform: scaleX(1);
+      }
+
+      .button,
+      .header-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.82rem 1.2rem;
+        color: var(--night);
+        background: var(--sage);
+        font-size: 0.84rem;
+        font-weight: 750;
+        text-decoration: none;
+        transition:
+          background 180ms var(--ease),
+          transform 180ms var(--ease),
+          box-shadow 180ms var(--ease);
+      }
+
+      .button:hover,
+      .header-cta:hover {
+        background: var(--meadow);
+        box-shadow: 0 0.8rem 1.8rem rgba(23, 23, 23, 0.12);
+        transform: translateY(-2px);
+      }
+
+      .button:active,
+      .header-cta:active {
+        box-shadow: none;
+        transform: translateY(0);
+      }
+
+      .button--outline {
+        color: var(--ink);
+        background: transparent;
+        border: 1px solid var(--sage);
+      }
+
+      .button--outline:hover {
+        background: rgba(161, 188, 152, 0.28);
+      }
+
+      .button--dark {
+        color: var(--cream);
+        background: var(--night);
+      }
+
+      .button--dark:hover {
+        color: var(--night);
+        background: var(--cream);
+      }
+
+      .menu-trigger {
+        min-width: 54px;
+        padding-inline: 0.8rem;
+        color: var(--ink);
+        background: transparent;
+        border: 1px solid var(--sage);
+        font-size: 0.72rem;
+        font-weight: 750;
+      }
+
+      .mobile-menu {
+        position: fixed;
+        z-index: 100;
+        inset: 0;
+        padding: 1rem;
+        display: grid;
+        align-items: start;
+        background: rgba(23, 23, 23, 0.58);
+        backdrop-filter: blur(8px);
+      }
+
+      .mobile-menu[hidden] {
+        display: none;
+      }
+
+      .mobile-menu__panel {
+        width: min(100%, 430px);
+        margin-left: auto;
+        padding: 1.25rem;
+        border: 1px solid var(--line);
+        border-radius: 2rem;
+        background: var(--cream);
+        box-shadow: var(--shadow-soft);
+        animation: menu-in 280ms var(--ease) both;
+      }
+
+      .mobile-menu__top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .mobile-menu__close {
+        width: 44px;
+        color: var(--cream);
+        background: var(--night);
+      }
+
+      .mobile-menu nav {
+        display: grid;
+        gap: 0.2rem;
+        margin-top: 1.25rem;
+      }
+
+      .mobile-menu nav a {
+        padding: 0.9rem 0.25rem;
+        border-bottom: 1px solid var(--sand);
+        font-family: Geist, Inter, sans-serif;
+        font-size: 1.3rem;
+        font-weight: 650;
+        text-decoration: none;
+      }
+
+      @keyframes menu-in {
+        from {
+          opacity: 0;
+          transform: translateY(-16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      main {
+        overflow: clip;
+      }
+
+      section {
+        scroll-margin-top: 6rem;
+      }
+
+      .shell {
+        width: min(calc(100% - 2 * var(--gutter)), var(--page));
+        margin-inline: auto;
+      }
+
+      .eyebrow {
+        margin: 0 0 1rem;
+        color: var(--sage);
+        font-size: 0.72rem;
+        font-weight: 760;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: Geist, Inter, ui-sans-serif, system-ui, sans-serif;
+        line-height: 0.98;
+      }
+
+      h1 {
+        max-width: 8ch;
+        margin-bottom: 1.5rem;
+        font-size: clamp(3.65rem, 9.2vw, 7rem);
+        font-weight: 560;
+        letter-spacing: -0.065em;
+      }
+
+      h2 {
+        max-width: 15ch;
+        margin-bottom: 1.3rem;
+        font-size: clamp(2.7rem, 6.5vw, 4.8rem);
+        font-weight: 550;
+        letter-spacing: -0.055em;
+      }
+
+      h3 {
+        margin-bottom: 0.8rem;
+        font-size: clamp(1.45rem, 2.4vw, 1.9rem);
+        font-weight: 620;
+        letter-spacing: -0.03em;
+      }
+
+      .lead {
+        max-width: 41rem;
+        color: var(--muted);
+        font-size: clamp(1.05rem, 2vw, 1.34rem);
+      }
+
+      .microcopy,
+      .art-label {
+        color: var(--muted);
+        font-size: 0.73rem;
+      }
+
+      .hero {
+        padding: clamp(2.5rem, 5vw, 4.5rem) 0 var(--section);
+      }
+
+      .hero__grid {
+        display: grid;
+        gap: 3.5rem;
+        align-items: center;
+      }
+
+      .hero__copy {
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero__copy::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: -2rem;
+        left: -2.5rem;
+        width: 7rem;
+        height: 7rem;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        opacity: 0.7;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin: 2rem 0 1.25rem;
+      }
+
+      .hero-art {
+        position: relative;
+        min-height: clamp(31rem, 58vw, 46rem);
+        border-radius: var(--radius-xl);
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 75% 20%, rgba(119, 136, 115, 0.42), transparent 28%),
+          radial-gradient(circle at 20% 78%, rgba(161, 188, 152, 0.13), transparent 30%),
+          var(--night);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .terrain {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .terrain path {
+        fill: none;
+        stroke: var(--meadow);
+        stroke-width: 1.2;
+        opacity: 0.13;
+      }
+
+      .hero-route {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .route-primary,
+      .route-secondary {
+        fill: none;
+        stroke-linecap: round;
+        stroke-dasharray: 1200;
+        animation: route-draw 900ms var(--ease) both;
+      }
+
+      .route-primary {
+        stroke: var(--sage);
+        stroke-width: 9;
+      }
+
+      .route-secondary {
+        stroke: var(--sand);
+        stroke-width: 7;
+        animation-delay: 100ms;
+      }
+
+      @keyframes route-draw {
+        from {
+          stroke-dashoffset: 1200;
+        }
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+
+      .phone {
+        position: absolute;
+        z-index: 3;
+        top: 50%;
+        left: 50%;
+        width: min(55%, 270px);
+        aspect-ratio: 0.52;
+        padding: 0.9rem;
+        border: 2px solid rgba(161, 188, 152, 0.72);
+        border-radius: 2.7rem;
+        background: #101613;
+        box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.34);
+        transform: translate(-50%, -50%);
+        animation: phone-in 700ms var(--ease) both;
+      }
+
+      @keyframes phone-in {
+        from {
+          opacity: 0.88;
+          transform: translate(-50%, calc(-50% + 16px));
+        }
+      }
+
+      .phone__screen {
+        height: 100%;
+        padding: 1.6rem 1rem 1rem;
+        border-radius: 2rem;
+        overflow: hidden;
+        color: var(--ink);
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.4), transparent 34%),
+          var(--cream);
+      }
+
+      .phone__notch {
+        position: absolute;
+        z-index: 4;
+        top: 1.3rem;
+        left: 50%;
+        width: 4.3rem;
+        height: 0.5rem;
+        border-radius: 999px;
+        background: var(--night);
+        transform: translateX(-50%);
+      }
+
+      .phone__kicker {
+        margin: 1.2rem 0 0.45rem;
+        color: var(--muted);
+        font-size: 0.58rem;
+        font-weight: 750;
+        letter-spacing: 0.12em;
+      }
+
+      .phone__title {
+        margin-bottom: 0.25rem;
+        font-family: Geist, Inter, sans-serif;
+        font-size: 1.45rem;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+      }
+
+      .phone__date {
+        color: var(--muted);
+        font-size: 0.7rem;
+      }
+
+      .avatar-row {
+        display: flex;
+        align-items: center;
+        margin: 1rem 0;
+      }
+
+      .avatar {
+        width: 1.75rem;
+        aspect-ratio: 1;
+        margin-right: -0.35rem;
+        border: 2px solid var(--cream);
+        border-radius: 50%;
+        background: var(--sage);
+      }
+
+      .avatar:nth-child(2) {
+        background: var(--meadow);
+      }
+
+      .avatar:nth-child(3) {
+        background: var(--sage-ink);
+      }
+
+      .avatar:nth-child(4) {
+        display: grid;
+        place-items: center;
+        color: var(--night);
+        background: var(--sand);
+        font-size: 0.55rem;
+        font-weight: 800;
+      }
+
+      .readiness {
+        padding: 0.9rem;
+        border-radius: 1.1rem;
+        background: var(--sand);
+      }
+
+      .readiness__top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.68rem;
+        font-weight: 750;
+      }
+
+      .progress {
+        height: 0.45rem;
+        margin: 0.7rem 0;
+        border-radius: 999px;
+        overflow: hidden;
+        background: rgba(253, 246, 237, 0.7);
+      }
+
+      .progress span {
+        display: block;
+        width: 72%;
+        height: 100%;
+        border-radius: inherit;
+        background: var(--sage);
+      }
+
+      .phone-list {
+        display: grid;
+        gap: 0.55rem;
+        margin-top: 0.9rem;
+      }
+
+      .phone-list__item {
+        padding: 0.65rem 0.7rem;
+        border: 1px solid rgba(119, 136, 115, 0.2);
+        border-radius: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        background: rgba(255, 255, 255, 0.32);
+        font-size: 0.65rem;
+      }
+
+      .phone-list__icon {
+        width: 1rem;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: var(--night);
+        background: var(--meadow);
+        font-size: 0.55rem;
+        font-weight: 800;
+      }
+
+      .illustrative-tag {
+        position: absolute;
+        z-index: 5;
+        right: 1.25rem;
+        bottom: 1.25rem;
+        padding: 0.45rem 0.7rem;
+        border: 1px solid rgba(253, 246, 237, 0.16);
+        border-radius: 999px;
+        color: var(--sand);
+        background: rgba(23, 23, 23, 0.56);
+        font-size: 0.58rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .companion-dot {
+        position: absolute;
+        z-index: 2;
+        width: 1.4rem;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: var(--cream);
+        box-shadow: 0 0 0 7px rgba(253, 246, 237, 0.08);
+      }
+
+      .companion-dot--a {
+        top: 42%;
+        left: 16%;
+      }
+
+      .companion-dot--b {
+        right: 14%;
+        bottom: 29%;
+        background: var(--sage);
+      }
+
+      .promise {
+        padding-bottom: var(--section);
+      }
+
+      .promise__panel {
+        padding: clamp(2rem, 5vw, 4rem);
+        border-radius: var(--radius-xl);
+        background: var(--sand);
+      }
+
+      .promise__statement {
+        max-width: 24ch;
+        margin-bottom: 2rem;
+        font-family: Geist, Inter, sans-serif;
+        font-size: clamp(2rem, 4.5vw, 3.6rem);
+        font-weight: 550;
+        line-height: 1.04;
+        letter-spacing: -0.045em;
+      }
+
+      .promise__items {
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(119, 136, 115, 0.35);
+        display: grid;
+        gap: 1rem;
+      }
+
+      .promise__item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-weight: 720;
+      }
+
+      .promise__item span {
+        width: 0.75rem;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: var(--sage);
+      }
+
+      .chapter {
+        padding: var(--section) 0;
+      }
+
+      .chapter--sand {
+        background: var(--sand);
+      }
+
+      .chapter__intro {
+        max-width: 53rem;
+        margin-bottom: clamp(3rem, 6vw, 5rem);
+      }
+
+      .rail-tools {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .rail-button {
+        width: 50px;
+        color: var(--ink);
+        background: transparent;
+        border: 1px solid var(--sage);
+        font-size: 1.2rem;
+        transition:
+          background 180ms var(--ease),
+          transform 180ms var(--ease);
+      }
+
+      .rail-button:not(:disabled):hover {
+        background: var(--meadow);
+        transform: translateY(-2px);
+      }
+
+      .rail-button:disabled {
+        cursor: not-allowed;
+        opacity: 0.36;
+      }
+
+      .rail-status {
+        margin-left: 0.4rem;
+        color: var(--muted);
+        font-size: 0.76rem;
+      }
+
+      .rail {
+        width: calc(100% + var(--gutter));
+        padding: 0.5rem var(--gutter) 2rem 0;
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: min(86vw, 390px);
+        gap: 1rem;
+        overflow-x: auto;
+        overscroll-behavior-inline: contain;
+        scroll-snap-type: inline proximity;
+        scrollbar-color: var(--sage) transparent;
+      }
+
+      .feature-card {
+        position: relative;
+        min-height: 450px;
+        padding: clamp(1.4rem, 3vw, 2rem);
+        border: 1px solid var(--line);
+        border-radius: 2rem;
+        overflow: hidden;
+        background: var(--cream);
+        scroll-snap-align: start;
+        transition:
+          transform 180ms var(--ease),
+          box-shadow 180ms var(--ease);
+      }
+
+      .feature-card:hover {
+        box-shadow: var(--shadow-soft);
+        transform: translateY(-3px);
+      }
+
+      .feature-card--meadow {
+        background: var(--meadow);
+      }
+
+      .feature-card--dark {
+        color: var(--cream);
+        background: var(--sage-ink);
+      }
+
+      .feature-card p {
+        max-width: 29ch;
+        color: var(--muted);
+      }
+
+      .feature-card--meadow p {
+        color: var(--sage-ink);
+      }
+
+      .feature-card--dark p {
+        color: var(--sand);
+      }
+
+      .card-art {
+        position: absolute;
+        right: 1.4rem;
+        bottom: 1.4rem;
+        left: 1.4rem;
+        height: 210px;
+        border-radius: 1.5rem;
+        overflow: hidden;
+        background: rgba(220, 207, 192, 0.8);
+      }
+
+      .feature-card--meadow .card-art {
+        background: rgba(253, 246, 237, 0.84);
+      }
+
+      .feature-card--dark .card-art {
+        background: rgba(161, 188, 152, 0.12);
+      }
+
+      .trip-form,
+      .invite-art,
+      .timeline-art,
+      .checklist-art,
+      .assign-art,
+      .gauge-art {
+        height: 100%;
+        padding: 1.25rem;
+      }
+
+      .mini-field {
+        height: 2.65rem;
+        margin-bottom: 0.75rem;
+        padding: 0.75rem;
+        border-radius: 0.85rem;
+        color: var(--muted);
+        background: var(--cream);
+        font-size: 0.7rem;
+      }
+
+      .mini-field--action {
+        color: var(--night);
+        background: var(--sage);
+        font-weight: 750;
+        text-align: center;
+      }
+
+      .invite-art {
+        display: grid;
+        place-items: center;
+      }
+
+      .invite-ring {
+        position: relative;
+        width: 10rem;
+        aspect-ratio: 1;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+      }
+
+      .invite-ring .avatar {
+        position: absolute;
+        width: 2.5rem;
+        border: 3px solid var(--cream);
+      }
+
+      .invite-ring .avatar:nth-child(1) {
+        top: -0.5rem;
+        left: 3.7rem;
+      }
+
+      .invite-ring .avatar:nth-child(2) {
+        top: 3.7rem;
+        right: -0.5rem;
+      }
+
+      .invite-ring .avatar:nth-child(3) {
+        bottom: -0.5rem;
+        left: 3.7rem;
+      }
+
+      .invite-ring .avatar:nth-child(4) {
+        top: 3.7rem;
+        left: -0.5rem;
+      }
+
+      .invite-center {
+        position: absolute;
+        inset: 50% auto auto 50%;
+        width: 4rem;
+        aspect-ratio: 1;
+        border-radius: 1.4rem;
+        display: grid;
+        place-items: center;
+        color: var(--cream);
+        background: var(--night);
+        font-size: 0.72rem;
+        font-weight: 750;
+        transform: translate(-50%, -50%);
+      }
+
+      .timeline-art {
+        position: relative;
+        display: grid;
+        align-content: center;
+        gap: 1rem;
+      }
+
+      .timeline-art::before {
+        content: "";
+        position: absolute;
+        top: 2rem;
+        bottom: 2rem;
+        left: 2rem;
+        width: 3px;
+        border-radius: 999px;
+        background: var(--sage);
+      }
+
+      .timeline-row {
+        position: relative;
+        z-index: 1;
+        margin-left: 2.8rem;
+        padding: 0.75rem 0.9rem;
+        border-radius: 0.85rem;
+        background: var(--cream);
+        font-size: 0.7rem;
+        font-weight: 700;
+      }
+
+      .timeline-row::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: -1.35rem;
+        width: 0.72rem;
+        aspect-ratio: 1;
+        border: 2px solid var(--cream);
+        border-radius: 50%;
+        background: var(--sage);
+        transform: translateY(-50%);
+      }
+
+      .checklist-art,
+      .assign-art {
+        display: grid;
+        align-content: center;
+        gap: 0.65rem;
+      }
+
+      .check-row {
+        padding: 0.75rem;
+        border-radius: 0.85rem;
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        background: rgba(253, 246, 237, 0.88);
+        color: var(--ink);
+        font-size: 0.7rem;
+        font-weight: 700;
+      }
+
+      .check-row__state {
+        width: 1rem;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: var(--meadow);
+        font-size: 0.55rem;
+      }
+
+      .assignee {
+        margin-left: auto;
+        padding: 0.2rem 0.45rem;
+        border-radius: 999px;
+        color: var(--cream);
+        background: var(--sage-ink);
+        font-size: 0.55rem;
+      }
+
+      .gauge-art {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .gauge {
+        width: 8rem;
+        aspect-ratio: 1;
+        border: 1rem solid rgba(253, 246, 237, 0.62);
+        border-top-color: var(--sage);
+        border-right-color: var(--sage);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: var(--ink);
+        font-family: Geist, Inter, sans-serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        transform: rotate(45deg);
+      }
+
+      .gauge span {
+        transform: rotate(-45deg);
+      }
+
+      .gauge-copy {
+        color: var(--ink);
+        font-size: 0.72rem;
+        font-weight: 700;
+      }
+
+      .offline {
+        padding: var(--section) 0;
+        color: var(--cream);
+        background:
+          radial-gradient(circle at 85% 15%, rgba(119, 136, 115, 0.24), transparent 22%),
+          var(--night);
+      }
+
+      .offline .eyebrow {
+        color: var(--meadow);
+      }
+
+      .offline .lead,
+      .offline .microcopy {
+        color: var(--sand);
+      }
+
+      .offline__grid {
+        display: grid;
+        gap: 3.5rem;
+        align-items: center;
+      }
+
+      .proof-list {
+        margin: 2rem 0 1rem;
+        padding: 0;
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+      }
+
+      .proof-list li {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        font-weight: 650;
+      }
+
+      .proof-list li::before {
+        content: "";
+        width: 0.8rem;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: var(--meadow);
+      }
+
+      .offline-map {
+        position: relative;
+        min-height: clamp(30rem, 55vw, 43rem);
+        border: 1px solid rgba(161, 188, 152, 0.42);
+        border-radius: var(--radius-xl);
+        overflow: hidden;
+        background:
+          linear-gradient(rgba(161, 188, 152, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(161, 188, 152, 0.04) 1px, transparent 1px),
+          var(--sage-ink);
+        background-size: 32px 32px;
+      }
+
+      .offline-map svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .map-route {
+        fill: none;
+        stroke: var(--meadow);
+        stroke-width: 8;
+        stroke-linecap: round;
+      }
+
+      .map-route--secondary {
+        stroke: var(--sage);
+        stroke-width: 5;
+      }
+
+      .offline-card {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        width: min(70%, 300px);
+        padding: 1.25rem;
+        border-radius: 1.4rem;
+        color: var(--ink);
+        background: var(--cream);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .offline-card__status {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        padding: 0.4rem 0.65rem;
+        border-radius: 999px;
+        color: var(--sage-ink);
+        background: var(--meadow);
+        font-size: 0.65rem;
+        font-weight: 750;
+      }
+
+      .offline-card__status::before {
+        content: "✓";
+        width: 1rem;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: var(--cream);
+        background: var(--sage);
+        font-size: 0.55rem;
+      }
+
+      .offline-card h3 {
+        font-size: 1.35rem;
+      }
+
+      .map-pin {
+        position: absolute;
+        left: 30%;
+        bottom: 25%;
+        width: 1.5rem;
+        aspect-ratio: 1;
+        border: 5px solid var(--cream);
+        border-radius: 50%;
+        background: var(--sage);
+        box-shadow: 0 0 0 10px rgba(161, 188, 152, 0.12);
+      }
+
+      .how {
+        padding: var(--section) 0;
+      }
+
+      .steps {
+        position: relative;
+        margin-top: clamp(3rem, 7vw, 6rem);
+        display: grid;
+        gap: 1rem;
+      }
+
+      .steps::before {
+        content: "";
+        position: absolute;
+        top: 2.25rem;
+        bottom: 2.25rem;
+        left: 2.25rem;
+        width: 4px;
+        border-radius: 999px;
+        background: var(--sage);
+      }
+
+      .step {
+        position: relative;
+        z-index: 1;
+        padding: 1.5rem 1.5rem 1.5rem 6rem;
+        border: 1px solid var(--line);
+        border-radius: 1.75rem;
+        background: var(--cream);
+      }
+
+      .step__number {
+        position: absolute;
+        top: 1.5rem;
+        left: 1.25rem;
+        width: 3rem;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: var(--night);
+        background: var(--sage);
+        font-weight: 800;
+      }
+
+      .step:nth-child(2) .step__number {
+        background: var(--meadow);
+      }
+
+      .step:nth-child(3) .step__number {
+        background: var(--sand);
+      }
+
+      .step p {
+        margin-bottom: 0;
+        color: var(--muted);
+      }
+
+      .story {
+        padding: var(--section) 0;
+        background: var(--sand);
+      }
+
+      .story__grid {
+        display: grid;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .story-art {
+        position: relative;
+        min-height: 430px;
+        border-radius: var(--radius-xl);
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 68% 20%, rgba(253, 246, 237, 0.32), transparent 24%),
+          var(--sage);
+      }
+
+      .story-art__sun {
+        position: absolute;
+        top: 10%;
+        right: 12%;
+        width: 5rem;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: var(--sand);
+        opacity: 0.72;
+      }
+
+      .story-art__hill {
+        position: absolute;
+        right: -10%;
+        bottom: -35%;
+        left: -10%;
+        height: 70%;
+        border-radius: 50% 50% 0 0;
+        background: var(--sage-ink);
+      }
+
+      .group {
+        position: absolute;
+        z-index: 2;
+        right: 12%;
+        bottom: 12%;
+        left: 12%;
+        display: flex;
+        align-items: end;
+        justify-content: center;
+      }
+
+      .person {
+        position: relative;
+        width: 28%;
+        max-width: 130px;
+        height: 170px;
+        margin-inline: -0.5rem;
+        border-radius: 5rem 5rem 1.5rem 1.5rem;
+        background: rgba(253, 246, 237, 0.68);
+      }
+
+      .person:nth-child(2) {
+        height: 200px;
+        background: rgba(161, 188, 152, 0.78);
+      }
+
+      .person:nth-child(3) {
+        height: 180px;
+        background: rgba(220, 207, 192, 0.82);
+      }
+
+      .person::before {
+        content: "";
+        position: absolute;
+        top: -2.2rem;
+        left: 50%;
+        width: 3.8rem;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: #d6ad90;
+        transform: translateX(-50%);
+      }
+
+      .map-sheet {
+        position: absolute;
+        z-index: 3;
+        right: 19%;
+        bottom: 8%;
+        width: 46%;
+        height: 28%;
+        border-radius: 1rem;
+        background: var(--cream);
+        box-shadow: var(--shadow-soft);
+        transform: rotate(-5deg);
+      }
+
+      .map-sheet::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 10%;
+        left: 10%;
+        height: 4px;
+        border-radius: 999px;
+        background: var(--sage);
+        transform: rotate(7deg);
+      }
+
+      .faq {
+        padding: var(--section) 0;
+      }
+
+      .faq__grid {
+        display: grid;
+        gap: 3rem;
+      }
+
+      .faq-list {
+        border-top: 1px solid var(--sand);
+      }
+
+      details {
+        border-bottom: 1px solid var(--sand);
+      }
+
+      summary {
+        min-height: 70px;
+        padding-block: 1.1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        cursor: pointer;
+        font-weight: 720;
+        list-style: none;
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      summary::after {
+        content: "+";
+        font-size: 1.5rem;
+        font-weight: 400;
+      }
+
+      details[open] summary::after {
+        content: "−";
+      }
+
+      details p {
+        max-width: 46rem;
+        padding: 0 2rem 1.4rem 0;
+        color: var(--muted);
+      }
+
+      .waitlist {
+        position: relative;
+        padding: var(--section) 0;
+        overflow: hidden;
+        background: var(--sage);
+        text-align: center;
+      }
+
+      .waitlist h2 {
+        margin-inline: auto;
+      }
+
+      .waitlist .eyebrow {
+        color: var(--night);
+      }
+
+      .waitlist__copy {
+        max-width: 42rem;
+        margin-inline: auto;
+        color: var(--sage-ink);
+        font-size: 1.1rem;
+      }
+
+      .waitlist-path {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .waitlist-path path {
+        fill: none;
+        stroke-linecap: round;
+      }
+
+      .field {
+        position: relative;
+        z-index: 2;
+        max-width: 570px;
+        margin: 2rem auto 1rem;
+        padding: 0.55rem;
+        border-radius: 999px;
+        display: flex;
+        gap: 0.5rem;
+        background: var(--cream);
+        box-shadow: 0 1rem 3rem rgba(23, 23, 23, 0.12);
+      }
+
+      .field input {
+        min-width: 0;
+        flex: 1;
+        padding-inline: 1rem;
+        border: 0;
+        color: var(--muted);
+        background: transparent;
+      }
+
+      .field button {
+        padding-inline: 1.3rem;
+        color: var(--cream);
+        background: var(--night);
+      }
+
+      .field button:disabled {
+        cursor: not-allowed;
+        opacity: 0.72;
+      }
+
+      .site-footer {
+        padding: 5rem 0 2rem;
+        color: var(--cream);
+        background: var(--night);
+      }
+
+      .site-footer .brand img {
+        filter: brightness(0) invert(1);
+      }
+
+      .footer-grid {
+        display: grid;
+        gap: 3rem;
+      }
+
+      .footer-intro {
+        max-width: 28rem;
+        color: var(--sand);
+      }
+
+      .footer-links {
+        display: grid;
+        gap: 2rem;
+      }
+
+      .footer-links h2 {
+        margin-bottom: 0.85rem;
+        color: var(--meadow);
+        font-family: inherit;
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .footer-links a,
+      .footer-links span {
+        display: block;
+        margin-top: 0.55rem;
+        color: var(--sand);
+        font-size: 0.88rem;
+      }
+
+      .footer-legal {
+        margin-top: 4rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--sage-ink);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 1rem;
+        color: var(--sand);
+        font-size: 0.74rem;
+      }
+
+      @media (min-width: 600px) {
+        .promise__items,
+        .steps,
+        .footer-links {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .steps::before {
+          top: 2.25rem;
+          right: 2.25rem;
+          bottom: auto;
+          left: 2.25rem;
+          width: auto;
+          height: 4px;
+        }
+
+        .step {
+          padding: 6rem 1.5rem 1.5rem;
+        }
+
+        .step__number {
+          top: 0.75rem;
+          left: 1.25rem;
+        }
+      }
+
+      @media (min-width: 900px) {
+        .nav-pill {
+          min-height: 72px;
+        }
+
+        .desktop-nav {
+          display: flex;
+          align-items: center;
+          gap: 1.35rem;
+        }
+
+        .menu-trigger {
+          display: none;
+        }
+
+        .hero__grid,
+        .offline__grid {
+          grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+        }
+
+        .story__grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .faq__grid {
+          grid-template-columns: minmax(280px, 4fr) minmax(0, 8fr);
+        }
+
+        .rail {
+          width: 100%;
+          padding-right: 0;
+          grid-auto-columns: calc((100% - 2rem) / 3);
+        }
+
+        .footer-grid {
+          grid-template-columns: 1.15fr 2fr;
+        }
+
+        .footer-links {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (max-width: 420px) {
+        .nav-pill {
+          padding-left: 0.65rem;
+        }
+
+        .brand span {
+          display: none;
+        }
+
+        .header-cta {
+          padding-inline: 0.82rem;
+          font-size: 0.72rem;
+        }
+
+        .cta-row {
+          display: grid;
+        }
+
+        .field {
+          border-radius: 1.5rem;
+          flex-direction: column;
+        }
+
+        .field input,
+        .field button {
+          min-height: 48px;
+        }
+
+        .offline-card {
+          top: 1rem;
+          right: 1rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+
+        .feature-card:hover,
+        .button:hover,
+        .header-cta:hover,
+        .rail-button:not(:disabled):hover {
+          transform: none;
+        }
+
+        .route-primary,
+        .route-secondary {
+          stroke-dashoffset: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <p class="design-note">
+      Phase 3 design prototype · Illustrative app UI · No email submission · Product claims remain provisional
+    </p>
+
+    <header class="site-header">
+      <div class="nav-pill">
+        <a class="brand" href="#top" aria-label="Accomp home">
+          <img src="../../brand/accomp-pine-icon.svg" alt="" />
+          <span>Accomp</span>
+        </a>
+        <nav class="desktop-nav" aria-label="Primary">
+          <a href="#features">Features</a>
+          <a href="#how-it-works">How it works</a>
+          <a href="#offline">Offline</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+        <a class="header-cta" href="#waitlist">Join the waitlist</a>
+        <button class="menu-trigger" type="button" aria-expanded="false" aria-controls="mobile-menu">
+          Menu
+        </button>
+      </div>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu" hidden>
+      <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-labelledby="menu-title">
+        <div class="mobile-menu__top">
+          <strong id="menu-title">Navigate Accomp</strong>
+          <button class="mobile-menu__close" type="button" aria-label="Close menu">×</button>
+        </div>
+        <nav aria-label="Mobile">
+          <a href="#features">Features</a>
+          <a href="#how-it-works">How it works</a>
+          <a href="#offline">Offline</a>
+          <a href="#faq">FAQ</a>
+          <a href="#waitlist">Join the waitlist</a>
+        </nav>
+      </div>
+    </div>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="shell hero__grid">
+          <div class="hero__copy">
+            <p class="eyebrow">Your companion for every adventure</p>
+            <h1>Adventure together.</h1>
+            <p class="lead">
+              Bring the route, the crew, the gear, and the plan into one calm place—so everyone can
+              head out ready.
+            </p>
+            <div class="cta-row">
+              <a class="button" href="#waitlist">Join the waitlist</a>
+              <a class="button button--outline" href="#features">Explore the features</a>
+            </div>
+            <p class="microcopy">A mobile app concept for planning shared outdoor trips.</p>
+          </div>
+
+          <div class="hero-art" aria-label="Illustrative Accomp trip overview with two shared paths">
+            <svg class="terrain" viewBox="0 0 800 800" aria-hidden="true">
+              <path d="M-80 130C80 10 180 220 340 104S640 34 880 160"/>
+              <path d="M-70 190C100 70 210 272 372 158S650 100 870 222"/>
+              <path d="M-90 252C84 130 232 324 390 218S660 170 890 286"/>
+              <path d="M-80 568C90 440 240 650 404 522S690 468 880 602"/>
+              <path d="M-70 630C112 508 248 704 430 584S680 536 870 670"/>
+              <path d="M-90 696C120 568 260 756 448 646S720 604 890 742"/>
+            </svg>
+            <svg class="hero-route" viewBox="0 0 800 800" aria-hidden="true">
+              <path class="route-secondary" d="M-20 610C118 562 198 486 310 500S472 624 612 540 730 430 832 410"/>
+              <path class="route-primary" d="M-22 354C118 338 216 502 342 500S516 390 626 438 730 526 830 552"/>
+            </svg>
+            <span class="companion-dot companion-dot--a"></span>
+            <span class="companion-dot companion-dot--b"></span>
+            <div class="phone" aria-hidden="true">
+              <span class="phone__notch"></span>
+              <div class="phone__screen">
+                <p class="phone__kicker">WEEKEND TRIP</p>
+                <p class="phone__title">Khao Yai</p>
+                <p class="phone__date">12–14 September · Concept data</p>
+                <div class="avatar-row">
+                  <span class="avatar"></span><span class="avatar"></span><span class="avatar"></span><span class="avatar">+1</span>
+                </div>
+                <div class="readiness">
+                  <div class="readiness__top"><span>Trip readiness</span><span>72%</span></div>
+                  <div class="progress"><span></span></div>
+                  <span class="phone__date">Illustrative status</span>
+                </div>
+                <div class="phone-list">
+                  <div class="phone-list__item"><span class="phone-list__icon">✓</span>Itinerary shared</div>
+                  <div class="phone-list__item"><span class="phone-list__icon">✓</span>Gear list ready</div>
+                  <div class="phone-list__item"><span class="phone-list__icon">↓</span>Offline map saved</div>
+                </div>
+              </div>
+            </div>
+            <span class="illustrative-tag">Illustrative UI · not a product screenshot</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="promise" id="promise">
+        <div class="shell">
+          <div class="promise__panel">
+            <p class="promise__statement">One place for the plan, the people, and the trail ahead.</p>
+            <div class="promise__items" aria-label="Accomp product promise">
+              <div class="promise__item"><span></span>Plan together</div>
+              <div class="promise__item"><span></span>Pack together</div>
+              <div class="promise__item"><span></span>Explore ready</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter" id="features">
+        <div class="shell">
+          <div class="chapter__intro">
+            <p class="eyebrow">Plan together</p>
+            <h2>Make one plan. Bring everyone in.</h2>
+            <p class="lead">Start the trip, invite your crew, and shape the days in one shared space.</p>
+          </div>
+          <div class="rail-tools">
+            <button class="rail-button" type="button" data-direction="-1" data-rail="plan-rail" aria-label="Previous planning card">←</button>
+            <button class="rail-button" type="button" data-direction="1" data-rail="plan-rail" aria-label="Next planning card">→</button>
+            <span class="rail-status" data-status="plan-rail" aria-live="polite">Card 1 of 3</span>
+          </div>
+          <div class="rail" id="plan-rail" tabindex="0" aria-label="Planning feature cards">
+            <article class="feature-card">
+              <p class="eyebrow">01 · Start</p>
+              <h3>Start with the trip</h3>
+              <p>Set the place, dates, and first outline while the idea is still fresh.</p>
+              <div class="card-art trip-form" aria-hidden="true">
+                <div class="mini-field">Trip name · Khao Yai Weekend</div>
+                <div class="mini-field">Dates · 12–14 September</div>
+                <div class="mini-field">Meeting point · Add later</div>
+                <div class="mini-field mini-field--action">Create trip</div>
+              </div>
+            </article>
+            <article class="feature-card feature-card--meadow">
+              <p class="eyebrow">02 · Invite</p>
+              <h3>Invite your crew</h3>
+              <p>Bring every companion into the same trip space and keep the context together.</p>
+              <div class="card-art invite-art" aria-hidden="true">
+                <div class="invite-ring">
+                  <span class="avatar"></span><span class="avatar"></span><span class="avatar"></span><span class="avatar">+1</span>
+                  <span class="invite-center">Invite</span>
+                </div>
+              </div>
+            </article>
+            <article class="feature-card">
+              <p class="eyebrow">03 · Shape</p>
+              <h3>Shape the days</h3>
+              <p>Turn loose ideas into a clear itinerary everyone can follow.</p>
+              <div class="card-art timeline-art" aria-hidden="true">
+                <div class="timeline-row">08:00 · Trailhead</div>
+                <div class="timeline-row">12:30 · Ridge lunch</div>
+                <div class="timeline-row">16:00 · Camp</div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter chapter--sand" id="pack">
+        <div class="shell">
+          <div class="chapter__intro">
+            <p class="eyebrow">Pack together</p>
+            <h2>Pack once. Know who’s bringing what.</h2>
+            <p class="lead">Share the checklist, split responsibility, and see what still needs attention.</p>
+          </div>
+          <div class="rail-tools">
+            <button class="rail-button" type="button" data-direction="-1" data-rail="pack-rail" aria-label="Previous packing card">←</button>
+            <button class="rail-button" type="button" data-direction="1" data-rail="pack-rail" aria-label="Next packing card">→</button>
+            <span class="rail-status" data-status="pack-rail" aria-live="polite">Card 1 of 3</span>
+          </div>
+          <div class="rail" id="pack-rail" tabindex="0" aria-label="Packing feature cards">
+            <article class="feature-card">
+              <p class="eyebrow">01 · List</p>
+              <h3>Share the checklist</h3>
+              <p>Keep personal and group essentials in one calm, readable list.</p>
+              <div class="card-art checklist-art" aria-hidden="true">
+                <div class="check-row"><span class="check-row__state">✓</span>Tent</div>
+                <div class="check-row"><span class="check-row__state">✓</span>Stove</div>
+                <div class="check-row"><span class="check-row__state">·</span>Water filter</div>
+              </div>
+            </article>
+            <article class="feature-card feature-card--dark">
+              <p class="eyebrow">02 · Assign</p>
+              <h3>Split the load</h3>
+              <p>Make responsibility visible before anyone leaves home.</p>
+              <div class="card-art assign-art" aria-hidden="true">
+                <div class="check-row"><span class="check-row__state">✓</span>Tent <span class="assignee">May</span></div>
+                <div class="check-row"><span class="check-row__state">✓</span>Stove <span class="assignee">Ton</span></div>
+                <div class="check-row"><span class="check-row__state">·</span>First aid <span class="assignee">You</span></div>
+              </div>
+            </article>
+            <article class="feature-card feature-card--meadow">
+              <p class="eyebrow">03 · Review</p>
+              <h3>See what’s ready</h3>
+              <p>A final check shows what is ready and what still needs attention.</p>
+              <div class="card-art gauge-art" aria-hidden="true">
+                <div class="gauge"><span>8/10</span></div>
+                <div class="gauge-copy">8 ready<br />2 still open<br /><br />Concept status</div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="offline" id="offline">
+        <div class="shell offline__grid">
+          <div>
+            <p class="eyebrow">Ready anywhere</p>
+            <h2>Ready when the signal isn’t.</h2>
+            <p class="lead">Prepare maps and essential trip details before coverage fades.</p>
+            <ul class="proof-list">
+              <li>Save the route</li>
+              <li>Keep details close</li>
+              <li>Head out with confidence</li>
+            </ul>
+            <p class="microcopy">Exact offline behavior remains subject to product validation.</p>
+          </div>
+          <div class="offline-map" aria-label="Illustrative offline route and trip details">
+            <svg viewBox="0 0 800 760" aria-hidden="true">
+              <path class="map-route--secondary map-route" d="M-30 570C130 410 230 652 390 486S650 250 850 368"/>
+              <path class="map-route" d="M-20 298C120 392 246 218 390 342S626 590 840 470"/>
+            </svg>
+            <span class="map-pin"></span>
+            <div class="offline-card">
+              <span class="offline-card__status">Prepared offline</span>
+              <h3>Khao Yai route</h3>
+              <p class="microcopy">Map, itinerary and meeting details · Illustrative UI</p>
+            </div>
+            <span class="illustrative-tag">Abstract route · not real map data</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="how" id="how-it-works">
+        <div class="shell">
+          <p class="eyebrow">How it works</p>
+          <h2>From “we should go” to ready to leave.</h2>
+          <div class="steps">
+            <article class="step">
+              <span class="step__number">1</span>
+              <h3>Create the trip</h3>
+              <p>Add the place, dates, and first outline.</p>
+            </article>
+            <article class="step">
+              <span class="step__number">2</span>
+              <h3>Bring your people</h3>
+              <p>Invite the crew and plan together.</p>
+            </article>
+            <article class="step">
+              <span class="step__number">3</span>
+              <h3>Head out ready</h3>
+              <p>Review the details and prepare what is needed offline.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="story" id="story">
+        <div class="shell story__grid">
+          <div>
+            <p class="eyebrow">A shared adventure</p>
+            <h2>The best trips feel spontaneous. The preparation shouldn’t.</h2>
+            <p class="lead">
+              Accomp is for the friend who starts the plan—and everyone who helps turn it into a
+              shared adventure.
+            </p>
+            <p class="microcopy">Original abstract illustration replaces photography until an asset source is approved.</p>
+          </div>
+          <div class="story-art" aria-label="Abstract illustration of three companions planning around a map">
+            <span class="story-art__sun"></span>
+            <span class="story-art__hill"></span>
+            <div class="group" aria-hidden="true">
+              <span class="person"></span><span class="person"></span><span class="person"></span>
+            </div>
+            <span class="map-sheet" aria-hidden="true"></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq" id="faq">
+        <div class="shell faq__grid">
+          <div>
+            <p class="eyebrow">FAQ</p>
+            <h2>A few things to know.</h2>
+            <p class="lead">Honest answers before launch.</p>
+          </div>
+          <div class="faq-list">
+            <details>
+              <summary>What is Accomp?</summary>
+              <p>Accomp is a mobile app concept for planning outdoor trips together in one shared trip space.</p>
+            </details>
+            <details>
+              <summary>Can everyone help plan the same trip?</summary>
+              <p>The planned experience supports invited companions contributing to trip details. Exact controls require validation.</p>
+            </details>
+            <details>
+              <summary>Can I use Accomp without a signal?</summary>
+              <p>Offline readiness is part of the direction. Final maps and data availability have not been announced.</p>
+            </details>
+            <details>
+              <summary>Who is Accomp for?</summary>
+              <p>Hiking groups, backpackers, campers, weekend adventurers, and friends who want one clear plan.</p>
+            </details>
+            <details>
+              <summary>Will Accomp be available on iOS and Android?</summary>
+              <p>Platform availability is not yet confirmed.</p>
+            </details>
+            <details>
+              <summary>When will Accomp launch?</summary>
+              <p>A launch date has not been announced.</p>
+            </details>
+            <details>
+              <summary>Is Accomp free?</summary>
+              <p>Pricing has not been announced.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="waitlist" id="waitlist">
+        <svg class="waitlist-path" viewBox="0 0 1600 800" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M-60 650C230 450 470 760 750 540S1210 330 1660 560" stroke="#A1BC98" stroke-width="14"/>
+          <path d="M-70 360C220 480 430 250 740 430S1180 700 1660 470" stroke="#FDF6ED" stroke-opacity=".7" stroke-width="10"/>
+        </svg>
+        <div class="shell">
+          <p class="eyebrow">Your next trip starts together</p>
+          <h2>Make room for the adventure.</h2>
+          <p class="waitlist__copy">Bring the people and the plan together before the trail begins.</p>
+          <div class="field" aria-label="Disabled waitlist design prototype">
+            <input type="email" value="email@example.com" aria-label="Email address example" disabled />
+            <button type="button" disabled>Prototype only</button>
+          </div>
+          <p class="microcopy">No information is collected or submitted in Phase 3.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell">
+        <div class="footer-grid">
+          <div>
+            <a class="brand" href="#top">
+              <img src="../../brand/accomp-pine-icon.svg" alt="" />
+              <span>Accomp</span>
+            </a>
+            <p class="footer-intro">One calm place for the route, the crew, the gear, and the plan.</p>
+          </div>
+          <div class="footer-links">
+            <div>
+              <h2>Product</h2>
+              <a href="#features">Features</a>
+              <a href="#how-it-works">How it works</a>
+              <a href="#offline">Offline</a>
+            </div>
+            <div>
+              <h2>Support</h2>
+              <a href="#faq">FAQ</a>
+              <span>Contact · placeholder</span>
+            </div>
+            <div>
+              <h2>Legal</h2>
+              <span>Privacy · placeholder</span>
+              <span>Terms · placeholder</span>
+            </div>
+          </div>
+        </div>
+        <div class="footer-legal">
+          <span>© 2026 Accomp · Adventure Together.</span>
+          <span>Placeholder destinations are intentionally inactive.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const menu = document.querySelector("#mobile-menu");
+      const menuTrigger = document.querySelector(".menu-trigger");
+      const menuClose = document.querySelector(".mobile-menu__close");
+      const menuPanel = document.querySelector(".mobile-menu__panel");
+      let returnFocus = null;
+
+      function openMenu() {
+        returnFocus = document.activeElement;
+        menu.hidden = false;
+        document.body.classList.add("menu-open");
+        menuTrigger.setAttribute("aria-expanded", "true");
+        menu.querySelector("nav a").focus();
+      }
+
+      function closeMenu() {
+        if (menu.hidden) return;
+        menu.hidden = true;
+        document.body.classList.remove("menu-open");
+        menuTrigger.setAttribute("aria-expanded", "false");
+        if (returnFocus) returnFocus.focus();
+      }
+
+      menuTrigger.addEventListener("click", openMenu);
+      menuClose.addEventListener("click", closeMenu);
+      menu.addEventListener("click", (event) => {
+        if (event.target === menu) closeMenu();
+      });
+
+      menu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeMenu);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeMenu();
+        if (event.key !== "Tab" || menu.hidden) return;
+
+        const focusable = [...menuPanel.querySelectorAll("a, button")];
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 900) closeMenu();
+        document.querySelectorAll(".rail").forEach(updateRail);
+      });
+
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+      function railMetrics(rail) {
+        const cards = [...rail.querySelectorAll(".feature-card")];
+        const gap = Number.parseFloat(getComputedStyle(rail).columnGap) || 0;
+        return { cards, step: cards[0].getBoundingClientRect().width + gap };
+      }
+
+      function updateRail(rail) {
+        const { cards, step } = railMetrics(rail);
+        const status = document.querySelector(`[data-status="${rail.id}"]`);
+        const buttons = [...document.querySelectorAll(`[data-rail="${rail.id}"]`)];
+        const previous = buttons.find((button) => button.dataset.direction === "-1");
+        const next = buttons.find((button) => button.dataset.direction === "1");
+        const hasOverflow = rail.scrollWidth > rail.clientWidth + 1;
+
+        if (!hasOverflow) {
+          status.textContent = `All ${cards.length} cards visible`;
+          previous.disabled = true;
+          next.disabled = true;
+          return;
+        }
+
+        const index = Math.max(0, Math.min(cards.length - 1, Math.round(rail.scrollLeft / step)));
+        status.textContent = `Card ${index + 1} of ${cards.length}`;
+        previous.disabled = index === 0;
+        next.disabled = index === cards.length - 1;
+      }
+
+      document.querySelectorAll(".rail").forEach((rail) => {
+        updateRail(rail);
+        let frame;
+        rail.addEventListener("scroll", () => {
+          cancelAnimationFrame(frame);
+          frame = requestAnimationFrame(() => updateRail(rail));
+        });
+      });
+
+      document.querySelectorAll("[data-rail]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const rail = document.getElementById(button.dataset.rail);
+          const { step } = railMetrics(rail);
+          rail.scrollBy({
+            left: step * Number(button.dataset.direction),
+            behavior: reducedMotion.matches ? "auto" : "smooth",
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

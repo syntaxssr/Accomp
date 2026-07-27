@@ -1,6 +1,6 @@
 # Accomp Marketing Website — Project Plan
 
-> สถานะ: **Phase 2 draft complete — รอ review/approval ก่อนเริ่ม Phase 3**
+> สถานะ: **Phase 3 draft complete — รอ review/approval ก่อนเริ่ม Phase 4**
 > สร้างเมื่อ: 2026-07-26  
 > Project path: `/Users/peeraponchanthacham/Documents/GitHub/Accomp`  
 > Reference: [Phantom](https://phantom.com/?utm_source=loftlyy&utm_medium=referral&utm_campaign=phantom)
@@ -48,7 +48,19 @@
 - [Mobile wireframe](./docs/phase-2/mobile-wireframe.png)
 - [Low-fidelity interaction prototype](./docs/phase-2/interaction-prototype.html)
 
-ยังไม่มี production website source code, final design, backend หรือ deployment
+### Phase 3 deliverables
+
+- [Phase 3 index and approval status](./docs/phase-3/README.md)
+- [High-fidelity design specification](./docs/phase-3/design-specification.md)
+- [High-fidelity responsive prototype](./docs/phase-3/high-fidelity-prototype.html)
+- [Desktop key screen](./docs/phase-3/desktop-key-screen.png)
+- [Tablet key screen](./docs/phase-3/tablet-key-screen.png)
+- [Mobile key screen](./docs/phase-3/mobile-key-screen.png)
+- [Component state sheet](./docs/phase-3/component-state-sheet.png)
+- [Asset export list](./docs/phase-3/asset-export-list.md)
+- [Motion specification](./docs/phase-3/motion-specification.md)
+
+ยังไม่มี production website source code, backend หรือ deployment
 
 ## 1. Project Intent
 
@@ -515,19 +527,19 @@ AppShell
 
 #### Deliverables
 
-- High-fidelity page design
-- Responsive key screens
-- Component state sheet
-- Asset export list
-- Motion specification
+- [x] [High-fidelity page design](./docs/phase-3/high-fidelity-prototype.html)
+- [x] [Responsive key screens](./docs/phase-3/README.md#deliverables)
+- [x] [Component state sheet](./docs/phase-3/component-state-sheet.png)
+- [x] [Asset export list](./docs/phase-3/asset-export-list.md)
+- [x] [Motion specification](./docs/phase-3/motion-specification.md)
 
 #### Acceptance criteria
 
-- ใช้ brand tokens อย่างสม่ำเสมอ
-- มี Accomp identity ที่จดจำได้
-- Visual, content และ interaction ได้รับอนุมัติ
-- Asset ทุกชิ้นมี source และ usage rights ชัดเจน
-- Design พร้อมให้ implement โดยไม่ต้องเดารายละเอียดสำคัญ
+- [x] ใช้ brand tokens อย่างสม่ำเสมอ
+- [x] มี Accomp identity ที่จดจำได้
+- [ ] Visual, content และ interaction ได้รับอนุมัติ — รอ owner review
+- [x] Asset ทุกชิ้นมี source/สถานะการใช้งานชัดเจน และไม่ใช้ asset ที่ยังไม่ได้รับสิทธิ์
+- [x] Design พร้อมให้ implement โดยไม่ต้องเดารายละเอียดสำคัญ
 
 #### Exit gate
 
@@ -779,7 +791,7 @@ Implement โครงหน้าหลักและ content sections แบ�
 | Risk | Impact | Mitigation |
 |---|---|---|
 | พยายามเหมือน Phantom แบบตรงตัวเกินไป | ขาด brand identity และเสี่ยงด้านทรัพย์สินทางปัญญา | ใช้เฉพาะ pattern/quality bar และสร้าง Accomp assets ใหม่ |
-| Pine symbol ยังไม่อนุมัติและยังไม่มี app screenshots | Final design ทำไม่ได้อย่างแม่นยำ | Review symbol v1 และ asset brief ก่อน Phase 3 |
+| Pine symbol ยังไม่อนุมัติและยังไม่มี app screenshots | Production implementation อาจต้องแก้ visual ภายหลัง | ใช้ symbol v1 และ illustrative UI ชั่วคราว พร้อมขอ approval ก่อน Phase 4 |
 | CTA destination ยังไม่พร้อม | ผู้ใช้กดแล้วไปต่อไม่ได้ | ใช้ waitlist/get notified ที่มีระบบจริง หรือชะลอ CTA |
 | Product claims ยังไม่ยืนยัน | สื่อสารเกินจริง | ทำ product truth checklist ใน Phase 0 |
 | Motion มากเกินไป | หน้าเว็บช้าและใช้งานยาก | จำกัด motion budget และมี reduced-motion path |
@@ -805,6 +817,10 @@ Implement โครงหน้าหลักและ content sections แบ�
 - Photography direction และ asset source
 - App Store / Google Play badge status
 - Verified social proof
+
+Phase 3 ดำเนินต่อด้วย provisional assumptions เพราะผู้ใช้สั่งเริ่ม Phase 3 โดยตรง
+และบันทึกสิ่งที่ยังขาดไว้ใน [asset export list](./docs/phase-3/asset-export-list.md)
+โดยไม่สร้าง photography, store badge, social proof หรือ product screenshot ปลอม
 
 ### Before Phase 7
 
@@ -842,12 +858,15 @@ Implement โครงหน้าหลักและ content sections แบ�
 - [x] Carry Phase 1 forward ด้วย provisional assumptions เมื่อผู้ใช้สั่งเริ่ม Phase 2
 - [x] เริ่ม Phase 2 เมื่อ 2026-07-26
 - [x] สร้างและ browser-test Phase 2 deliverables
-- [ ] Review และ approve Phase 2
-- [ ] เริ่ม Phase 3
+- [x] Carry Phase 2 forward ด้วย provisional assumptions เมื่อผู้ใช้สั่งเริ่ม Phase 3
+- [x] เริ่ม Phase 3 เมื่อ 2026-07-27
+- [x] สร้างและ browser-test Phase 3 deliverables
+- [ ] Review และ approve Phase 3
+- [ ] เริ่ม Phase 4
 - [ ] สร้าง source code
 - [x] สร้าง Git repository
 - [x] Initial commit
 - [x] Create remote repository
 - [ ] Deploy
 
-**งานถัดไปหลังจากผู้ใช้ตรวจเอกสาร:** ปรับ Phase 2 deliverables ตาม feedback หรือรับคำสั่งเริ่ม Phase 3 เท่านั้น
+**งานถัดไปหลังจากผู้ใช้ตรวจเอกสาร:** ปรับ Phase 3 deliverables ตาม feedback หรือรับคำสั่งเริ่ม Phase 4 เท่านั้น
