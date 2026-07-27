@@ -1,6 +1,6 @@
 # Accomp Phase 4 — Project Scaffold and Design System
 
-> Status: **Draft complete — waiting for review and approval**
+> Status: **Carried into Phase 5 with provisional assumptions**
 > Date started: 2026-07-28
 > Scope: Runnable project foundation, design tokens and core primitives only
 
@@ -71,6 +71,7 @@ Phase 4 intentionally does not include:
 
 ## Next Gate
 
-After implementation and owner review:
+Phase 4 was carried forward when the owner explicitly started Phase 5. The next
+gate is now maintained in the [Phase 5 index](../phase-5/README.md).
 
-`เริ่ม Phase 5`
+`เริ่ม Phase 6`

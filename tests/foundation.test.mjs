@@ -74,17 +74,6 @@ test("uses one matching pine asset for source and public output", async () => {
   assert.doesNotMatch(publicAsset, /phantom/i);
 });
 
-test("keeps the root route inside the Phase 4 boundary", async () => {
-  const page = await source("app/page.tsx");
-
-  assert.match(page, /data-phase="4"/);
-  assert.match(page, /foundation preview/i);
-  assert.doesNotMatch(
-    page,
-    /<FeatureCarousel|<SiteHeader|<MobileMenu|<FAQ|<FinalCTA/,
-  );
-});
-
 test("declares no persistence binding", async () => {
   const hosting = JSON.parse(await source(".openai/hosting.json"));
 

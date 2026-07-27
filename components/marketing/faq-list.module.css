@@ -1,0 +1,42 @@
+.list {
+  border-top: 1px solid var(--color-line);
+}
+
+.list details {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.list summary {
+  min-height: 4.8rem;
+  padding-block: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  font-family: var(--font-family-display);
+  font-size: clamp(1.05rem, 0.95rem + 0.35vw, 1.3rem);
+  font-weight: 650;
+  cursor: pointer;
+  list-style: none;
+}
+
+.list summary::-webkit-details-marker {
+  display: none;
+}
+
+.list summary span:last-child {
+  flex: 0 0 auto;
+  font-size: 1.5rem;
+  font-weight: 450;
+}
+
+.list details[open] summary span:last-child {
+  transform: rotate(45deg);
+}
+
+.list p {
+  max-width: 42rem;
+  margin: 0;
+  padding: 0 3rem var(--space-5) 0;
+  color: var(--color-muted);
+}

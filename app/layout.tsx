@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: "%s · Accomp",
   },
   description:
-    "The implementation foundation for the Accomp mobile app marketing website.",
+    "Discover Accomp, a mobile app concept for planning shared outdoor trips.",
   icons: {
     icon: "/brand/accomp-pine-icon.svg",
     shortcut: "/brand/accomp-pine-icon.svg",

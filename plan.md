@@ -1,6 +1,6 @@
 # Accomp Marketing Website — Project Plan
 
-> สถานะ: **Phase 4 draft complete — รอ review/approval ก่อนเริ่ม Phase 5**
+> สถานะ: **Phase 5 draft complete — รอ review/approval ก่อนเริ่ม Phase 6**
 > สร้างเมื่อ: 2026-07-26  
 > Project path: `/Users/peeraponchanthacham/Documents/GitHub/Accomp`  
 > Reference: [Phantom](https://phantom.com/?utm_source=loftlyy&utm_medium=referral&utm_campaign=phantom)
@@ -70,8 +70,18 @@
 - [Core component exports](./components/index.ts)
 - [Project conventions](./README.md)
 
-มี project scaffold และ design-system foundation แล้ว แต่ยังไม่มี production
-marketing sections, backend หรือ deployment
+### Phase 5 deliverables
+
+- [Phase 5 index and approval status](./docs/phase-5/README.md)
+- [Content model](./docs/phase-5/content-model.md)
+- [Interaction and accessibility notes](./docs/phase-5/interaction-and-accessibility.md)
+- [Core marketing page](./components/marketing/MarketingPage.tsx)
+- [Typed marketing content](./content/site-content.ts)
+- [Marketing component styles](./components/marketing/marketing-page.module.css)
+- [Marketing source tests](./tests/marketing-content.test.mjs)
+
+มี core marketing page แล้ว แต่ยังไม่มี advanced motion, live waitlist,
+analytics, backend หรือ deployment
 
 ## 1. Project Intent
 
@@ -618,19 +628,19 @@ Implement โครงหน้าหลักและ content sections แบ�
 
 #### Deliverables
 
-- Complete static homepage
-- Functional navigation
-- Working CTA destinations
-- Responsive content
+- [x] [Complete static homepage](./components/marketing/MarketingPage.tsx)
+- [x] [Functional navigation](./components/marketing/SiteHeader.tsx)
+- [x] Working CTA destinations
+- [x] Responsive content
 
 #### Acceptance criteria
 
-- เนื้อหาครบตาม copy ที่อนุมัติ
-- ไม่มี dead link หรือ CTA ปลอม
-- ใช้งานได้ตั้งแต่ 320px ขึ้นไป
-- Keyboard navigation ใช้งานได้
-- Layout ไม่พึ่ง motion เพื่อให้เข้าใจเนื้อหา
-- lint, typecheck และ tests ผ่าน
+- [x] เนื้อหาครบตาม copy ที่อนุมัติ
+- [x] ไม่มี dead link หรือ CTA ปลอม
+- [x] ใช้งานได้ตั้งแต่ 320px ขึ้นไป
+- [x] Keyboard navigation ใช้งานได้ใน component contract
+- [x] Layout ไม่พึ่ง motion เพื่อให้เข้าใจเนื้อหา
+- [x] lint, typecheck และ tests ผ่าน
 
 #### Exit gate
 
@@ -876,12 +886,17 @@ Phase 3 ดำเนินต่อด้วย provisional assumptions เพ�
 - [x] เริ่ม Phase 4 เมื่อ 2026-07-28
 - [x] สร้าง project scaffold, design tokens และ core primitives
 - [x] ตรวจ formatting, lint, typecheck, tests, build และ local runtime
-- [ ] Review และ approve Phase 4
-- [ ] เริ่ม Phase 5
+- [x] Carry Phase 4 forward ด้วย provisional assumptions เมื่อผู้ใช้สั่งเริ่ม Phase 5
+- [x] เริ่ม Phase 5 เมื่อ 2026-07-28
+- [x] สร้าง core marketing page และ typed content model
+- [x] สร้าง mobile menu, feature rails และ native FAQ
+- [x] ตรวจ formatting, lint, typecheck, tests, build และ local runtime สำหรับ Phase 5
+- [ ] Review และ approve Phase 5
+- [ ] เริ่ม Phase 6
 - [x] สร้าง source code foundation
 - [x] สร้าง Git repository
 - [x] Initial commit
 - [x] Create remote repository
 - [ ] Deploy
 
-**งานถัดไปหลังจากผู้ใช้ตรวจเอกสาร:** ปรับ Phase 4 foundation ตาม feedback หรือรับคำสั่งเริ่ม Phase 5 เท่านั้น
+**งานถัดไปหลังจากผู้ใช้ตรวจเอกสาร:** ปรับ Phase 5 ตาม feedback หรือรับคำสั่งเริ่ม Phase 6 เท่านั้น
