@@ -64,6 +64,7 @@ test("keeps both widget previews static, honest, and accessible", async () => {
   assert.match(component, /aria-valuenow=\{8\}/);
   assert.match(component, /alt=""/);
   assert.match(component, /aria-hidden="true"/);
+  assert.equal((component.match(/\bunoptimized\b/g) ?? []).length, 2);
   assert.doesNotMatch(component, /<button|<input|<form|onClick=/);
   assert.match(styles, /@media \(max-width: 30rem\)/);
   assert.match(styles, /@media \(min-width: 48rem\)/);

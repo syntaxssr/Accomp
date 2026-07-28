@@ -56,7 +56,7 @@ export function MarketingPage({ locale, messages }: MarketingPageProps) {
                   {copy.hero.body}
                 </Text>
                 <div className={styles.heroActions}>
-                  <ButtonLink href="#waitlist">
+                  <ButtonLink data-motion="download" href="#waitlist">
                     {copy.hero.primaryCta}
                   </ButtonLink>
                   <ButtonLink href="#features" variant="secondary">

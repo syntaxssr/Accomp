@@ -60,6 +60,30 @@
   background: var(--color-sage-ink);
 }
 
+.button[data-motion="download"] {
+  transition:
+    transform 400ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 400ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 400ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+@media (hover: hover) {
+  .button-primary[data-motion="download"]:hover:not(:disabled) {
+    background: color-mix(
+      in srgb,
+      var(--color-meadow) 78%,
+      var(--color-cream)
+    );
+    transform: scale(0.985);
+  }
+}
+
+.button-primary[data-motion="download"]:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
 .textLink {
   width: fit-content;
   display: inline-flex;

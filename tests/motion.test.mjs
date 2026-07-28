@@ -105,3 +105,21 @@ test("keeps a complete reduced-motion alternative", async () => {
   assert.match(railStyles, /animation: none/);
   assert.match(uiStyles, /\.button:hover:not\(:disabled\)[\s\S]*transform: none/);
 });
+
+test("matches the reference Download hover on waitlist CTAs", async () => {
+  const [page, header, buttonStyles] = await Promise.all([
+    source("components/marketing/MarketingPage.tsx"),
+    source("components/marketing/SiteHeader.tsx"),
+    source("components/ui/ui.module.css"),
+  ]);
+
+  assert.match(page, /data-motion="download" href="#waitlist"/);
+  assert.match(header, /data-motion="download"/);
+  assert.match(
+    buttonStyles,
+    /transform 400ms cubic-bezier\(0\.22, 1, 0\.36, 1\)/,
+  );
+  assert.match(buttonStyles, /transform: scale\(0\.985\)/);
+  assert.match(buttonStyles, /transform: scale\(0\.97\)/);
+  assert.match(buttonStyles, /@media \(hover: hover\)/);
+});

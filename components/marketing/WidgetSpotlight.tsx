@@ -69,6 +69,7 @@ export function WidgetSpotlight({ copy }: WidgetSpotlightProps) {
                   height={512}
                   sizes="(max-width: 48rem) 34vw, 11rem"
                   src={activeMascot.assetPath}
+                  unoptimized
                   width={512}
                 />
               </div>
@@ -86,6 +87,7 @@ export function WidgetSpotlight({ copy }: WidgetSpotlightProps) {
                     height={512}
                     sizes="4rem"
                     src={state.assetPath}
+                    unoptimized
                     width={512}
                   />
                   <span>{copy.countdown.states[index].range}</span>

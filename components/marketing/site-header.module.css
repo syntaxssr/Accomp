@@ -223,6 +223,18 @@
   background: var(--color-meadow);
 }
 
+@media (hover: hover) {
+  .header[data-theme="dark"]
+    .headerCta[data-motion="download"]:hover {
+    background: color-mix(
+      in srgb,
+      var(--color-meadow) 78%,
+      var(--color-cream)
+    );
+    transform: scale(0.985);
+  }
+}
+
 .header[data-theme="dark"] .menuTrigger {
   border-color: var(--color-meadow);
   color: var(--color-cream);

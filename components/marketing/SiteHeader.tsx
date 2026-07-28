@@ -336,7 +336,11 @@ export function SiteHeader({
               pathname={languagePathname}
             />
 
-            <ButtonLink className={styles.headerCta} href={waitlistHref}>
+            <ButtonLink
+              className={styles.headerCta}
+              data-motion="download"
+              href={waitlistHref}
+            >
               {copy.joinWaitlist}
             </ButtonLink>
 
