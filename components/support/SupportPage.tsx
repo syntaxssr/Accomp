@@ -162,7 +162,9 @@ export function SupportPage({ locale, messages }: SupportPageProps) {
 
             <div className={styles.supporterFooter}>
               <p>{copy.supporters.privacyNote}</p>
-              <ButtonLink href={home}>{copy.returnHome}</ButtonLink>
+              <ButtonLink data-size-lock="return-home" href={home}>
+                {copy.returnHome}
+              </ButtonLink>
             </div>
           </Container>
         </section>

@@ -246,6 +246,7 @@ export function SiteHeader({
                     <div
                       className={styles.navGroup}
                       data-active={active}
+                      data-nav-slot={index}
                       key={item.label}
                       onBlur={(event) => {
                         if (
@@ -317,6 +318,7 @@ export function SiteHeader({
                       item.current ||
                       headerState.activeHref === item.href
                     }
+                    data-nav-slot={index}
                     href={item.href}
                     key={item.href}
                     onFocus={() => setOpenGroup(null)}
@@ -339,6 +341,7 @@ export function SiteHeader({
             <ButtonLink
               className={styles.headerCta}
               data-motion="download"
+              data-size-lock="waitlist"
               href={waitlistHref}
             >
               {copy.joinWaitlist}

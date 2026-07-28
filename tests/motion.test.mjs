@@ -113,7 +113,10 @@ test("matches the reference Download hover on waitlist CTAs", async () => {
     source("components/ui/ui.module.css"),
   ]);
 
-  assert.match(page, /data-motion="download" href="#waitlist"/);
+  assert.match(
+    page,
+    /data-motion="download"\s+data-size-lock="waitlist"\s+href="#waitlist"/,
+  );
   assert.match(header, /data-motion="download"/);
   assert.match(
     buttonStyles,

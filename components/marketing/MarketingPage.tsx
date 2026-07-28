@@ -56,10 +56,18 @@ export function MarketingPage({ locale, messages }: MarketingPageProps) {
                   {copy.hero.body}
                 </Text>
                 <div className={styles.heroActions}>
-                  <ButtonLink data-motion="download" href="#waitlist">
+                  <ButtonLink
+                    data-motion="download"
+                    data-size-lock="waitlist"
+                    href="#waitlist"
+                  >
                     {copy.hero.primaryCta}
                   </ButtonLink>
-                  <ButtonLink href="#features" variant="secondary">
+                  <ButtonLink
+                    data-size-lock="hero-secondary"
+                    href="#features"
+                    variant="secondary"
+                  >
                     {copy.hero.secondaryCta}
                   </ButtonLink>
                 </div>
@@ -365,7 +373,12 @@ export function MarketingPage({ locale, messages }: MarketingPageProps) {
                     placeholder={copy.waitlist.emailPlaceholder}
                     type="email"
                   />
-                  <Button disabled type="button" variant="dark">
+                  <Button
+                    data-size-lock="compact"
+                    disabled
+                    type="button"
+                    variant="dark"
+                  >
                     {copy.waitlist.button}
                   </Button>
                 </div>

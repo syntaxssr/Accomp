@@ -111,9 +111,79 @@ test("provides accessible desktop and mobile language switching", async () => {
   assert.match(switcher, /aria-current=/);
   assert.match(switcher, /hrefLang=/);
   assert.match(switcher, /window\.location\.hash/);
+  assert.match(switcher, /data-display-locale=\{displayedLocale\}/);
+  assert.match(switcher, /styles\.indicator/);
+  assert.match(switcher, /setPendingLocale\(targetLocale\)/);
+  assert.match(
+    switcher,
+    /onClick=\{\(event\) => changeLanguage\(event, targetLocale\)\}/,
+  );
+  assert.match(switcher, /useRouter\(\)/);
+  assert.match(
+    switcher,
+    /router\.push\(destination, \{ scroll: false \}\)/,
+  );
+  assert.doesNotMatch(switcher, /window\.location\.assign/);
+  assert.match(switcher, /\? 0\s*: 520/);
+  assert.doesNotMatch(
+    switcher,
+    /onMouseEnter|onMouseLeave|onFocus|onBlur/,
+  );
   assert.match(switcherStyles, /min-height: 2\.75rem/);
+  assert.match(
+    switcherStyles,
+    /transform 520ms cubic-bezier\(0\.22, 1, 0\.36, 1\)/,
+  );
+  assert.match(switcherStyles, /@keyframes language-indicator-settle/);
+  assert.match(switcherStyles, /scaleX\(1\.1\)/);
+  assert.match(switcherStyles, /prefers-reduced-motion: reduce/);
   assert.match(header, /desktopLanguage/);
   assert.match(header, /mobileLanguage/);
+});
+
+test("keeps localized navigation and button geometry stable", async () => {
+  const [
+    header,
+    headerStyles,
+    marketingPage,
+    roadmapPage,
+    supportPage,
+    buttonStyles,
+    legalStyles,
+  ] = await Promise.all([
+    source("components/marketing/SiteHeader.tsx"),
+    source("components/marketing/site-header.module.css"),
+    source("components/marketing/MarketingPage.tsx"),
+    source("components/roadmap/RoadmapPage.tsx"),
+    source("components/support/SupportPage.tsx"),
+    source("components/ui/ui.module.css"),
+    source("app/legal-pages.module.css"),
+  ]);
+
+  assert.match(header, /data-nav-slot=\{index\}/);
+  assert.match(header, /data-size-lock="waitlist"/);
+  assert.match(headerStyles, /\[data-nav-slot="0"\]/);
+  assert.match(headerStyles, /inline-size: 7\.75rem/);
+  assert.match(headerStyles, /inline-size: 10\.25rem/);
+  assert.match(headerStyles, /width: 14\.5rem/);
+  assert.match(marketingPage, /data-size-lock="hero-secondary"/);
+  assert.match(marketingPage, /data-size-lock="compact"/);
+  assert.match(roadmapPage, /data-size-lock="return-home"/);
+  assert.match(supportPage, /data-size-lock="return-home"/);
+  assert.match(
+    buttonStyles,
+    /\.button\[data-size-lock="waitlist"\]/,
+  );
+  assert.match(
+    buttonStyles,
+    /\.button\[data-size-lock="waitlist"\]\s*\{\s*min-inline-size: 10\.25rem/,
+  );
+  assert.match(
+    buttonStyles,
+    /\.button\[data-size-lock="hero-secondary"\]\s*\{\s*min-inline-size: 14\.25rem/,
+  );
+  assert.match(buttonStyles, /min-inline-size: 10\.5rem/);
+  assert.match(legalStyles, /min-inline-size: 10\.5rem/);
 });
 
 test("keeps user-visible copy in message catalogs", async () => {

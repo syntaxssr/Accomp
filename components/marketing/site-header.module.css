@@ -75,6 +75,15 @@
     background var(--motion-fast) var(--ease-standard);
 }
 
+.desktopNav > [data-nav-slot="0"] {
+  inline-size: 7.75rem;
+}
+
+.desktopNav > [data-nav-slot="1"],
+.desktopNav > [data-nav-slot="2"] {
+  inline-size: 6.75rem;
+}
+
 .navGroup {
   position: relative;
 }
@@ -90,6 +99,7 @@
 }
 
 .groupTrigger {
+  width: 100%;
   min-width: 2.75rem;
   min-height: 2.75rem;
   padding: 0.7rem 0.75rem;
@@ -130,8 +140,7 @@
   z-index: 20;
   top: calc(100% + 0.8rem);
   left: 50%;
-  width: max-content;
-  min-width: 13rem;
+  width: 14.5rem;
   padding: 0.45rem;
   border: 1px solid rgb(119 136 115 / 16%);
   border-radius: var(--radius-md);
@@ -165,6 +174,7 @@
 }
 
 .headerCta {
+  inline-size: 10.25rem;
   flex: 0 0 auto;
   white-space: nowrap;
   box-shadow: 0 0.65rem 1.5rem rgb(119 136 115 / 16%);
@@ -181,6 +191,14 @@
   font-size: var(--font-size-sm);
   font-weight: 700;
   cursor: pointer;
+}
+
+.menuTrigger {
+  inline-size: 4.75rem;
+}
+
+.menuClose {
+  inline-size: 2.75rem;
 }
 
 .header[data-theme="dark"] {
@@ -434,14 +452,21 @@
   }
 }
 
-@media (max-width: 26.25rem) {
+@media (max-width: 36rem) {
   .brand span {
     display: none;
   }
 
   .headerCta {
+    inline-size: 8.5rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 26.25rem) {
+  .headerCta {
+    inline-size: 8rem;
     padding-inline: 0.8rem;
-    font-size: 0.72rem;
   }
 }
 

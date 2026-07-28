@@ -153,7 +153,9 @@ export function RoadmapPage({ locale, messages }: RoadmapPageProps) {
                 <h2>{copy.nextTitle}</h2>
                 <p>{copy.nextBody}</p>
               </div>
-              <ButtonLink href={home}>{copy.returnHome}</ButtonLink>
+              <ButtonLink data-size-lock="return-home" href={home}>
+                {copy.returnHome}
+              </ButtonLink>
             </div>
           </Container>
         </section>
