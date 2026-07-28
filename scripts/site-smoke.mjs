@@ -105,8 +105,8 @@ function verifyLanguage(html, locale, pathname) {
 function verifyHomepage(html, locale, pathname) {
   verifyLanguage(html, locale, pathname);
 
-  if (!/data-phase="2\.1"/.test(html)) {
-    throw new Error("Homepage does not identify the Phase 2.1 candidate.");
+  if (!/data-phase="2\.2"/.test(html)) {
+    throw new Error("Homepage does not identify the Phase 2.2 candidate.");
   }
 
   if ((html.match(/<h1\b/g) ?? []).length !== 1) {
@@ -129,6 +129,30 @@ function verifyHomepage(html, locale, pathname) {
   }
 }
 
+function verifyRoadmap(html, locale, pathname) {
+  verifyLanguage(html, locale, pathname);
+
+  if (!/data-phase="2\.2"/.test(html)) {
+    throw new Error(`${pathname} does not identify the Phase 2.2 candidate.`);
+  }
+
+  if ((html.match(/<h1\b/g) ?? []).length !== 1) {
+    throw new Error(`${pathname} must render exactly one H1.`);
+  }
+
+  if (!/<ol\b[^>]*aria-label=/i.test(html)) {
+    throw new Error(`${pathname} is missing its semantic roadmap.`);
+  }
+
+  if (!/<li\b[^>]*aria-current="step"/i.test(html)) {
+    throw new Error(`${pathname} does not identify the current phase.`);
+  }
+
+  if ((html.match(/<article\b/g) ?? []).length !== 13) {
+    throw new Error(`${pathname} must render all 13 roadmap milestones.`);
+  }
+}
+
 export async function smokeSite(value) {
   const origin = normalizeSmokeOrigin(value);
   await waitForHealth(origin);
@@ -146,7 +170,7 @@ export async function smokeSite(value) {
     verifySecurityHeaders(homepage, homepagePath);
     verifyHomepage(await homepage.text(), locale, homepagePath);
 
-    for (const route of ["/privacy", "/terms"]) {
+    for (const route of ["/privacy", "/terms", "/roadmap"]) {
       const pathname = `/${locale}${route}`;
       const response = await request(origin, pathname, 200);
       verifySecurityHeaders(response, pathname);
@@ -155,6 +179,10 @@ export async function smokeSite(value) {
 
       if (!/<h1\b/.test(html)) {
         throw new Error(`${pathname} does not render an H1.`);
+      }
+
+      if (route === "/roadmap") {
+        verifyRoadmap(html, locale, pathname);
       }
     }
 
@@ -205,6 +233,8 @@ export async function smokeSite(value) {
     "/th/privacy",
     "/en/terms",
     "/th/terms",
+    "/en/roadmap",
+    "/th/roadmap",
   ]) {
     if (!sitemapText.includes(pathname)) {
       throw new Error(`sitemap.xml is missing ${pathname}.`);
@@ -213,7 +243,7 @@ export async function smokeSite(value) {
 
   return {
     origin,
-    routes: 12,
+    routes: 14,
   };
 }
 

@@ -61,6 +61,8 @@ const manifest = {
     "/th/privacy",
     "/en/terms",
     "/th/terms",
+    "/en/roadmap",
+    "/th/roadmap",
     "/health",
     "/robots.txt",
     "/sitemap.xml",

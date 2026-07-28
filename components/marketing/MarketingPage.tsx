@@ -3,17 +3,16 @@ import {
   ButtonLink,
   Container,
   Heading,
-  Icon,
   Stack,
   Text,
 } from "@/components";
 import { createSiteContent } from "@/content/site-content";
 import type { Locale } from "@/lib/i18n/config";
-import { localizedPath } from "@/lib/i18n/config";
 import type { Messages } from "@/lib/i18n/messages";
 import { FAQList } from "./FAQList";
 import { FeatureRail } from "./FeatureRail";
 import { MotionController } from "./MotionController";
+import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
 import styles from "./marketing-page.module.css";
 
@@ -23,11 +22,11 @@ interface MarketingPageProps {
 }
 
 export function MarketingPage({ locale, messages }: MarketingPageProps) {
-  const content = createSiteContent(messages);
+  const content = createSiteContent(messages, locale);
   const copy = messages.marketing;
 
   return (
-    <div className={styles.site} data-motion-root data-phase="2.1">
+    <div className={styles.site} data-motion-root data-phase="2.2">
       <MotionController />
 
       <a className={styles.skipLink} href="#main">
@@ -375,45 +374,7 @@ export function MarketingPage({ locale, messages }: MarketingPageProps) {
         </section>
       </main>
 
-      <footer className={styles.footer}>
-        <Container>
-          <div className={styles.footerGrid} data-reveal>
-            <div>
-              <a className={styles.footerBrand} href="#top">
-                <Icon name="pine" size="md" decorative />
-                <span>Accomp</span>
-              </a>
-              <p>{copy.footer.tagline}</p>
-            </div>
-            <div className={styles.footerLinks}>
-              <div>
-                <h2>{copy.footer.product}</h2>
-                <a href="#features">{copy.footer.features}</a>
-                <a href="#how-it-works">{copy.footer.howItWorks}</a>
-                <a href="#offline">{copy.footer.offline}</a>
-              </div>
-              <div>
-                <h2>{copy.footer.support}</h2>
-                <a href="#faq">{copy.footer.faq}</a>
-                <span>{copy.footer.contact}</span>
-              </div>
-              <div>
-                <h2>{copy.footer.legal}</h2>
-                <a href={localizedPath(locale, "/privacy")}>
-                  {copy.footer.privacy}
-                </a>
-                <a href={localizedPath(locale, "/terms")}>
-                  {copy.footer.terms}
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className={styles.footerBottom}>
-            <span>{copy.footer.copyright}</span>
-            <span>{copy.footer.status}</span>
-          </div>
-        </Container>
-      </footer>
+      <SiteFooter copy={copy.footer} locale={locale} />
     </div>
   );
 }

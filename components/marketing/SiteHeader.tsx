@@ -10,16 +10,22 @@ import styles from "./site-header.module.css";
 
 interface SiteHeaderProps {
   copy: Messages["navigation"];
+  homeHref?: string;
+  languagePathname?: "/" | "/privacy" | "/roadmap" | "/terms";
   languageSwitcher: Messages["languageSwitcher"];
   locale: Locale;
   navigation: NavigationItem[];
+  waitlistHref?: string;
 }
 
 export function SiteHeader({
   copy,
+  homeHref = "#top",
+  languagePathname = "/",
   languageSwitcher,
   locale,
   navigation,
+  waitlistHref = "#waitlist",
 }: SiteHeaderProps) {
   const [open, setOpen] = useState(false);
   const [headerState, setHeaderState] = useState({
@@ -35,6 +41,7 @@ export function SiteHeader({
 
     function updateHeader() {
       const sections = navigation
+        .filter((item) => item.href.startsWith("#"))
         .map((item) => ({
           element: document.querySelector<HTMLElement>(item.href),
           href: item.href,
@@ -160,7 +167,7 @@ export function SiteHeader({
         data-theme={headerState.dark ? "dark" : "light"}
       >
         <div className={styles.pill}>
-          <a className={styles.brand} href="#top" aria-label={copy.home}>
+          <a className={styles.brand} href={homeHref} aria-label={copy.home}>
             <Icon name="pine" size="md" decorative />
             <span>Accomp</span>
           </a>
@@ -169,9 +176,15 @@ export function SiteHeader({
             {navigation.map((item) => (
               <a
                 aria-current={
-                  headerState.activeHref === item.href ? "location" : undefined
+                  item.current
+                    ? "page"
+                    : headerState.activeHref === item.href
+                      ? "location"
+                      : undefined
                 }
-                data-active={headerState.activeHref === item.href}
+                data-active={
+                  item.current || headerState.activeHref === item.href
+                }
                 href={item.href}
                 key={item.href}
               >
@@ -184,9 +197,10 @@ export function SiteHeader({
             className={styles.desktopLanguage}
             copy={languageSwitcher}
             locale={locale}
+            pathname={languagePathname}
           />
 
-          <ButtonLink className={styles.headerCta} href="#waitlist">
+          <ButtonLink className={styles.headerCta} href={waitlistHref}>
             {copy.joinWaitlist}
           </ButtonLink>
 
@@ -226,9 +240,15 @@ export function SiteHeader({
             {navigation.map((item) => (
               <a
                 aria-current={
-                  headerState.activeHref === item.href ? "location" : undefined
+                  item.current
+                    ? "page"
+                    : headerState.activeHref === item.href
+                      ? "location"
+                      : undefined
                 }
-                data-active={headerState.activeHref === item.href}
+                data-active={
+                  item.current || headerState.activeHref === item.href
+                }
                 href={item.href}
                 key={item.href}
                 onClick={() => setOpen(false)}
@@ -236,7 +256,7 @@ export function SiteHeader({
                 {item.label}
               </a>
             ))}
-            <a href="#waitlist" onClick={() => setOpen(false)}>
+            <a href={waitlistHref} onClick={() => setOpen(false)}>
               {copy.joinWaitlist}
             </a>
           </nav>
@@ -244,6 +264,7 @@ export function SiteHeader({
             className={styles.mobileLanguage}
             copy={languageSwitcher}
             locale={locale}
+            pathname={languagePathname}
           />
         </div>
       </div>

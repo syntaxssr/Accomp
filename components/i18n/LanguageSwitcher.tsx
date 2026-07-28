@@ -1,7 +1,7 @@
 "use client";
 
 import type { MouseEvent } from "react";
-import type { Locale } from "@/lib/i18n/config";
+import type { Locale, LocalizedPathname } from "@/lib/i18n/config";
 import { localizedPath } from "@/lib/i18n/config";
 import type { Messages } from "@/lib/i18n/messages";
 import styles from "./language-switcher.module.css";
@@ -10,7 +10,7 @@ interface LanguageSwitcherProps {
   className?: string;
   copy: Messages["languageSwitcher"];
   locale: Locale;
-  pathname?: "/" | "/privacy" | "/terms";
+  pathname?: LocalizedPathname;
 }
 
 const languageCodes: Record<Locale, string> = {

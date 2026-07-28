@@ -56,8 +56,8 @@ then resized and inspected in the project. The exact Thai subtitle is:
 ## Crawl Routes
 
 - `/robots.txt` allows the public site and points to the current-origin sitemap.
-- `/sitemap.xml` lists EN/TH homepage, Privacy and Terms routes with alternate
-  language links.
+- `/sitemap.xml` lists EN/TH homepage, Roadmap, Privacy and Terms routes with
+  alternate language links.
 - Each sitemap URL uses the verified configured origin or request origin.
 - Missing routes return HTTP 404 and include `noindex`.
 

@@ -1,6 +1,6 @@
 # Accomp Marketing Website — Project Plan
 
-> สถานะ: **Phase 2.1 internationalization complete — รอ owner review ภาษาไทยและยังไม่อนุมัติ deployment**
+> สถานะ: **Phase 2.2 project roadmap implementation complete — รอ owner review และยังไม่อนุมัติ deployment**
 > สร้างเมื่อ: 2026-07-26  
 > Project path: `/Users/peeraponchanthacham/Documents/GitHub/Accomp`  
 > Reference: [Phantom](https://phantom.com/?utm_source=loftlyy&utm_medium=referral&utm_campaign=phantom)
@@ -1067,6 +1067,176 @@ Phase 2.1 implementation, automated QA, commit และ push ได้รับ
 รอบนี้ แต่การอนุมัติคำแปลไทย, manual visual QA และ deployment ยังต้องได้รับ
 การตรวจหรือคำสั่งแยกต่างหาก
 
+### Phase 2.2 — Bilingual Project Roadmap
+
+#### Status
+
+**Implementation complete — รอ owner review ข้อความสาธารณะและ manual visual QA**
+
+#### Objective
+
+เพิ่มเมนูและหน้า Roadmap สาธารณะของ Accomp เพื่อเล่าเส้นทางการพัฒนาเว็บไซต์
+ตั้งแต่ Project Kickoff จนถึง Phase ปัจจุบัน ให้ผู้ใช้เข้าใจว่าแต่ละ Phase
+สร้างอะไรและทำให้โปรเจกต์ก้าวหน้าอย่างไร โดยรองรับภาษาไทยและอังกฤษครบถ้วน
+
+#### Product and content decisions
+
+- Roadmap เป็น **curated public project story** ไม่ใช่ changelog ดิบจาก Git
+- แสดงเฉพาะข้อมูลที่เหมาะกับผู้ชมภายนอก เช่น เป้าหมาย ผลลัพธ์สำคัญ และสถานะ
+- ไม่เปิดเผย commit SHA, internal blocker, credentials, production input
+  หรือรายละเอียดภายในที่ไม่จำเป็น
+- ใช้สถานะที่เข้าใจง่าย:
+  - `Completed` / `เสร็จสิ้น`
+  - `Current` / `กำลังดำเนินการ`
+  - `Planned` / `วางแผนไว้` สำหรับ Phase ในอนาคตที่ได้รับอนุมัติแล้วเท่านั้น
+- ข้อมูลวันที่เก็บเป็นค่า `YYYY-MM-DD` กลาง และแสดงผลตาม locale
+- ห้ามสร้างเปอร์เซ็นต์ความคืบหน้า วันที่เปิดตัว หรือ Phase ในอนาคตที่ยังไม่มี
+  ข้อมูลยืนยัน
+
+#### Roadmap content inventory
+
+Roadmap เวอร์ชันแรกต้องมีรายการต่อไปนี้เรียงตามเวลา:
+
+| Roadmap entry | Public focus | Date |
+| --- | --- | --- |
+| Project Kickoff | วางสโคปเว็บโปรโมตแอป, brand direction และ workflow แบบ phase-by-phase | 2026-07-26 |
+| Phase 1.1 | Content Strategy and Visual Concept | 2026-07-26 |
+| Phase 1.2 | Wireframe and Interaction Prototype | 2026-07-26 |
+| Phase 1.3 | High-Fidelity Design | 2026-07-27 |
+| Phase 1.4 | Project Scaffold and Design System | 2026-07-28 |
+| Phase 1.5 | Core Marketing Website | 2026-07-28 |
+| Phase 1.6 | Motion and Visual Storytelling | 2026-07-28 |
+| Phase 1.7 | SEO, Legal and Performance | 2026-07-28 |
+| Phase 1.8 | Cross-Device QA and Release Readiness | 2026-07-28 |
+| Phase 1.9 | Production Launch Preparation | 2026-07-28 |
+| Phase 1.10 | Release Candidate Packaging and Smoke Automation | 2026-07-28 |
+| Phase 2.1 | TH/EN Internationalization Foundation | 2026-07-28 |
+| Phase 2.2 | Bilingual Project Roadmap | 2026-07-28 |
+
+แต่ละรายการต้องมี `id`, phase label, date/date range, localized title,
+localized summary, highlights, status และลิงก์ภายในที่ผ่านการคัดเลือกเมื่อมี
+หน้าสาธารณะที่เหมาะสม
+
+#### Information architecture and routing
+
+- เพิ่ม route `/en/roadmap` สำหรับภาษาอังกฤษ
+- เพิ่ม route `/th/roadmap` สำหรับภาษาไทย
+- `/roadmap` redirect ไป `/en/roadmap` เพื่อให้สอดคล้องกับ default locale
+- เพิ่ม `Roadmap` / `โรดแมป` ใน desktop navigation และ mobile menu
+- เพิ่ม Roadmap ใน footer navigation เป็นทางเข้ารอง
+- Language switcher ต้องสลับ `/en/roadmap` ↔ `/th/roadmap` โดยคง route context
+- ลิงก์กลับหน้าหลักต้องไปยัง homepage ของ locale ปัจจุบัน
+- Route หรือ locale ที่ไม่รองรับต้องรักษาพฤติกรรม 404 เดิม
+
+#### File and code structure
+
+- [x] สร้าง `content/roadmap.ts` เป็น structural source of truth สำหรับ ID,
+      phase order, dates, status และ link keys โดยไม่มี user-visible copy
+- [x] เพิ่ม namespace `roadmap.*` ใน `messages/en.json` และ `messages/th.json`
+- [x] สร้าง `app/[locale]/roadmap/page.tsx`
+- [x] สร้าง `app/roadmap/page.tsx` สำหรับ default-locale redirect
+- [x] สร้าง reusable roadmap presentation component และ stylesheet ภายใต้
+      `components/roadmap/`
+- [x] ขยาย locale-aware navigation โดยไม่ duplicate route logic
+- [x] ไม่อ่าน Git history, Markdown หรือ filesystem ใน runtime
+
+#### Experience and visual direction
+
+- ใช้ responsive vertical timeline หรือ semantic ordered journey เป็นแกนหลัก
+- ใช้ pine marker, เส้นทาง และ palette
+  `#778873`, `#A1BC98`, `#DCCFC0`, `#FDF6ED`
+- รักษา typography, spacing, border radius และ motion language จากหน้า marketing
+  ปัจจุบัน
+- ทำให้ `Current` phase เด่นขึ้นอย่างสุขุมโดยไม่ใช้สีเพียงอย่างเดียว
+- แต่ละ Phase แสดง summary แบบสแกนง่ายและเปิดดู highlights ได้โดยไม่ทำให้
+  หน้าแน่นเกินไป
+- Mobile ต้องอ่านเป็นลำดับเดียว ไม่ใช้ horizontal overflow และไม่ซ่อนข้อมูลหลัก
+- ใช้ CSS และ asset/icon ที่มีอยู่แล้ว ไม่เพิ่ม bitmap illustration ใหม่ใน Phase นี้
+- Motion ต้องเป็น progressive enhancement และมี reduced-motion alternative
+
+#### Internationalization requirements
+
+- ข้อความที่ผู้ใช้เห็นและ accessibility copy ทั้งหมดต้องมาจาก translation catalog
+- EN/TH ต้องมี key, array shape และ placeholders ตรงกัน 100%
+- Phase ID, ISO date, status key และ route key เป็นข้อมูลกลางที่ไม่ต้องแปล
+- แปล title, summary, highlights, status label, navigation, metadata และ ARIA labels
+- Owner ต้องตรวจภาษาไทยและความถูกต้องของ public summary ก่อนอนุมัติหน้า
+
+#### Accessibility
+
+- ใช้ `<main>`, H1 หนึ่งรายการ และ `<ol>` สำหรับลำดับเหตุการณ์
+- แต่ละ Phase มี heading ที่เชื่อมกับรายการด้วย accessible name
+- ใช้ข้อความและ icon/shape ร่วมกันเพื่อสื่อสถานะ ไม่พึ่งสีเพียงอย่างเดียว
+- รายการ Phase ปัจจุบันใช้ `aria-current="step"`
+- Navigation, language switcher และลิงก์ทั้งหมดใช้งานด้วย keyboard ได้
+- Interactive target มีขนาดอย่างน้อย 44 × 44 CSS pixels
+- Heading hierarchy และ reading order ต้องตรงกันบน desktop และ mobile
+
+#### Localized SEO and discovery
+
+- เพิ่ม localized title และ description สำหรับหน้า Roadmap
+- เพิ่ม canonical, `hreflang` (`en`, `th`, `x-default`) และ Open Graph metadata
+- เพิ่ม `/en/roadmap` และ `/th/roadmap` ใน sitemap
+- ใช้ social preview ของ locale ปัจจุบันที่มีอยู่แล้ว โดยไม่สร้าง asset ซ้ำ
+- Structured data ใหม่จะเพิ่มเฉพาะเมื่อมี schema ที่ตรงกับเนื้อหาจริง
+
+#### Testing and validation
+
+- [x] ตรวจ roadmap ID ไม่ซ้ำ ลำดับเวลาไม่ย้อน และมี Kickoff–Phase 2.2 ครบ
+- [x] ตรวจว่าทุก roadmap entry อ้างถึง translation key ที่มีอยู่จริง
+- [x] ตรวจ catalog parity ของ roadmap title, summary และ highlights
+- [x] ตรวจ rendered EN/TH roadmap: `lang`, H1, ordered timeline, date และ status
+- [x] ตรวจ desktop/mobile navigation และ footer มี localized Roadmap link
+- [x] ตรวจ language switcher ไป equivalent roadmap route
+- [x] ตรวจ current phase semantics และ status ไม่สื่อด้วยสีอย่างเดียว
+- [x] ตรวจ canonical, `hreflang`, metadata และ sitemap routes
+- [x] ขยาย production smoke matrix จาก 12 เป็น 14 localized content routes
+- [ ] ตรวจ responsive layout ที่ 320, 390, 768, 1024, 1440 และ 1920px
+- [ ] ตรวจ keyboard flow, focus visibility และ 200% zoom ด้วย browser
+- [x] ตรวจ semantic keyboard path, touch-target source และ reduced motion
+- [x] รัน formatting, lint, strict TypeScript, source tests, production build,
+      rendered-output tests, release audit และ local production smoke
+
+#### Deliverables
+
+- [x] Bilingual `/en/roadmap` และ `/th/roadmap`
+- [x] Localized Roadmap menu ใน desktop, mobile และ footer
+- [x] Typed, curated roadmap data model
+- [x] `roadmap.*` message catalog ครบ EN/TH
+- [x] Localized metadata, sitemap และ equivalent-route switching
+- [x] Roadmap regression tests และเอกสาร `docs/phase-2.2/README.md`
+- [x] Updated release checklist and smoke-test contract
+
+#### Acceptance criteria
+
+- [x] ผู้ใช้เข้าหน้า Roadmap ได้จาก desktop และ mobile menu
+- [x] Roadmap แสดง Project Kickoff และ Phase 1.1–1.10, 2.1, 2.2 ครบตามลำดับ
+- [x] แต่ละ Phase อธิบายสิ่งที่ทำและผลลัพธ์สำคัญได้อย่างกระชับ
+- [x] ทุกข้อความบนหน้าและเมนูมีทั้งภาษาไทยและอังกฤษ
+- [x] การสลับภาษารักษา roadmap route context
+- [ ] หน้าใช้งานได้บน target viewports โดยไม่มีข้อความล้นหรือ horizontal scroll
+- [ ] Manual keyboard, zoom และ visual status communication ผ่าน browser QA
+- [x] Semantic timeline และ automated accessibility contracts ผ่าน QA
+- [x] Localized SEO และ production smoke ครอบคลุม route ใหม่
+- [ ] Owner อนุมัติข้อความ roadmap สาธารณะทั้ง TH/EN
+- [x] Full release-quality suite ผ่าน
+
+#### Out of scope
+
+- GitHub API, automatic commit feed หรือการอ่าน Git history ใน production
+- Issue tracker, project-management dashboard หรือ admin/CMS
+- Roadmap ที่ผู้ใช้แก้ไขได้
+- Progress percentage, voting, comments หรือ subscription notification
+- Mobile app roadmap และการพัฒนา mobile app
+- การประกาศ launch date หรือ future phase ที่ยังไม่อนุมัติ
+- Live waitlist, analytics, production input, hosted smoke และ deployment
+
+#### Exit gate
+
+Phase 2.2 implementation, automated QA, commit และ push ได้รับอนุญาตในคำสั่ง
+รอบนี้ แต่ owner review ข้อความ public roadmap, manual browser/device QA และ
+deployment ยังต้องได้รับการตรวจหรือคำสั่งแยกต่างหาก
+
 ## 10. Quality Gates
 
 ใช้กับทุก Phase ที่มี code:
@@ -1229,12 +1399,18 @@ Phase 3 ดำเนินต่อด้วย provisional assumptions เพ�
 - [x] เพิ่ม locale routes, language switcher และ localized metadata
 - [x] ตรวจ translation parity, accessibility semantics และ localized smoke
 - [ ] Owner review ภาษาไทยและ manual responsive visual QA
+- [x] วางแผน Phase 2.2 สำหรับ bilingual public project roadmap
+- [x] เริ่ม Phase 2.2 หลังได้รับคำสั่งจากผู้ใช้
+- [x] สร้าง `/en/roadmap` และ `/th/roadmap`
+- [x] เพิ่ม Roadmap menu ใน desktop, mobile และ footer
+- [x] ตรวจ public summaries, translation parity, accessibility และ localized SEO
 - [x] สร้าง source code foundation
 - [x] สร้าง Git repository
 - [x] Initial commit
 - [x] Create remote repository
 - [ ] Deploy
 
-**งานถัดไปหลังจากผู้ใช้ตรวจเอกสาร:** ตรวจภาษาไทยและ responsive layout ด้วยตา
-จากนั้น production input, manual browser/device/legal gates, hosted smoke และ
-deployment ยังคงเป็นงานที่ต้องได้รับข้อมูลหรือคำสั่งแยกต่างหาก
+**งานถัดไปหลังจากผู้ใช้ตรวจงาน:** owner review ภาษาไทยจาก Phase 2.1 และข้อความ
+public roadmap จาก Phase 2.2 จากนั้น production input,
+manual browser/device/legal gates, hosted smoke และ deployment ยังคงเป็นงานที่
+ต้องได้รับข้อมูลหรือคำสั่งแยกต่างหาก

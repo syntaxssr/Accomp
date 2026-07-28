@@ -59,6 +59,7 @@ test("defines a complete route and security smoke contract", async () => {
     "/health",
     "/privacy",
     "/terms",
+    "/roadmap",
     "/robots.txt",
     "/sitemap.xml",
     "/phase-2-1-missing-route",
@@ -71,7 +72,7 @@ test("defines a complete route and security smoke contract", async () => {
   assert.match(smoke, /x-frame-options/);
   assert.match(smoke, /Cache-Control: no-store/);
   assert.match(smoke, /\["en", "th"\]/);
-  assert.match(smoke, /routes: 12/);
+  assert.match(smoke, /routes: 14/);
 });
 
 test("packages only a clean committed tree with a SHA-256 manifest", async () => {

@@ -27,13 +27,15 @@ remain intentionally unchecked.
 
 Phase 10 adds an HTTP smoke test and clean-commit release package. Phase 2.1
 expands that smoke contract to twelve requests across the EN/TH routes,
-but it does not close any owner-controlled approval.
+and Phase 2.2 expands it to fourteen requests with the bilingual roadmap.
+Neither phase closes any owner-controlled approval.
 
 - [ ] Confirm the production domain and set `NEXT_PUBLIC_SITE_URL`.
 - [ ] Provide the real waitlist or app-store destination.
 - [ ] Confirm the legal entity and public contact.
 - [ ] Approve final Privacy and Terms content.
 - [ ] Approve the final Thai translation.
+- [ ] Approve the public roadmap summaries in both languages.
 - [ ] Approve the exact product and offline-capability claims.
 - [ ] Confirm platform availability, pricing and launch timing, if published.
 - [ ] Decide analytics and consent behavior.

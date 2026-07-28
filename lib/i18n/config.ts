@@ -3,6 +3,11 @@ export type Locale = (typeof SUPPORTED_LOCALES)[number];
 
 export const DEFAULT_LOCALE: Locale = "en";
 export const LOCALE_HEADER = "x-accomp-locale";
+export type LocalizedPathname =
+  | "/"
+  | "/privacy"
+  | "/roadmap"
+  | "/terms";
 
 interface HeaderReader {
   get(name: string): string | null;
@@ -26,7 +31,7 @@ export function getLocaleFromHeaders(headers: HeaderReader): Locale {
 
 export function localizedPath(
   locale: Locale,
-  pathname: "/" | "/privacy" | "/terms" = "/",
+  pathname: LocalizedPathname = "/",
 ): string {
   return pathname === "/" ? `/${locale}` : `/${locale}${pathname}`;
 }

@@ -24,7 +24,8 @@
     "features": "Features",
     "howItWorks": "How it works",
     "offline": "Offline",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "roadmap": "Roadmap"
   },
   "languageSwitcher": {
     "label": "Change language",
@@ -239,12 +240,159 @@
       "features": "Features",
       "howItWorks": "How it works",
       "offline": "Offline",
+      "roadmap": "Roadmap",
       "faq": "FAQ",
       "contact": "Contact · coming later",
       "privacy": "Privacy",
       "terms": "Terms",
       "copyright": "© 2026 Accomp · Adventure Together.",
       "status": "Pre-launch product concept"
+    }
+  },
+  "roadmap": {
+    "metaTitle": "Project roadmap",
+    "metaDescription": "Follow the Accomp marketing website journey from project kickoff through its current bilingual roadmap phase.",
+    "skipToContent": "Skip to roadmap",
+    "eyebrow": "Project journey",
+    "title": "Every trail mark that brought us here.",
+    "lede": "A clear look at how the Accomp marketing website grew from an outdoor-app idea into a bilingual, release-ready product story.",
+    "curatedNote": "A curated public history · Updated as each phase is completed",
+    "visualLabel": "An illustrated trail connecting Accomp project milestones",
+    "visualCaption": "One shared direction, shaped one phase at a time.",
+    "timelineEyebrow": "Kickoff to today",
+    "timelineTitle": "The route so far.",
+    "timelineBody": "Each phase had one focused purpose: define the story, shape the experience, build it carefully, and make every release safer.",
+    "timelineLabel": "Accomp project milestones",
+    "kickoffLabel": "Project kickoff",
+    "phaseLabel": "Phase",
+    "status": {
+      "completed": "Completed",
+      "current": "Current",
+      "planned": "Planned"
+    },
+    "currentNote": "You are here — this is the current project phase.",
+    "nextEyebrow": "The journey continues",
+    "nextTitle": "Built calmly. Improved deliberately.",
+    "nextBody": "Future phases will appear here only after their scope is approved. For now, explore the Accomp product story and the outdoor planning experience it is designed to support.",
+    "returnHome": "Explore Accomp",
+    "items": {
+      "kickoff": {
+        "title": "Setting the trailhead",
+        "summary": "We defined Accomp as a marketing-only website for a future mobile companion that helps groups prepare for outdoor trips together.",
+        "highlights": [
+          "Set a focused promotional-website scope",
+          "Established a phase-by-phase working rhythm",
+          "Recorded the first brand and product assumptions"
+        ]
+      },
+      "phase11": {
+        "title": "Finding the voice and visual direction",
+        "summary": "We shaped the brand story, content hierarchy, pine identity, outdoor palette, and the first visual system for Accomp.",
+        "highlights": [
+          "Defined the product promise and audience",
+          "Created the pine symbol direction",
+          "Planned the content, motion, and design tokens"
+        ]
+      },
+      "phase12": {
+        "title": "Turning the story into a journey",
+        "summary": "We translated the strategy into page structure, responsive wireframes, and an interaction prototype that made the complete story testable.",
+        "highlights": [
+          "Mapped the information architecture",
+          "Built desktop and mobile wireframes",
+          "Documented responsive and interaction behavior"
+        ]
+      },
+      "phase13": {
+        "title": "Bringing the experience into focus",
+        "summary": "We developed the high-fidelity visual language, including the offline map treatment, component states, and motion specifications.",
+        "highlights": [
+          "Created a high-fidelity responsive prototype",
+          "Established the offline-map visual direction",
+          "Specified component and motion states"
+        ]
+      },
+      "phase14": {
+        "title": "Laying a reliable foundation",
+        "summary": "We created the runnable project, converted the visual direction into design tokens, and built reusable layout and interface primitives.",
+        "highlights": [
+          "Established the application architecture",
+          "Implemented the Accomp design-token layer",
+          "Created reusable core components"
+        ]
+      },
+      "phase15": {
+        "title": "Building the complete product story",
+        "summary": "We assembled the responsive marketing page with the hero, feature chapters, offline story, FAQ, waitlist preview, and footer.",
+        "highlights": [
+          "Built the core marketing experience",
+          "Added accessible mobile navigation and FAQs",
+          "Connected content to a typed model"
+        ]
+      },
+      "phase16": {
+        "title": "Adding motion with purpose",
+        "summary": "We introduced progressive movement that supports the story without getting in the way of reading, navigation, or reduced-motion preferences.",
+        "highlights": [
+          "Animated the hero and route narrative",
+          "Added scroll and active-section progression",
+          "Protected the reduced-motion experience"
+        ]
+      },
+      "phase17": {
+        "title": "Improving discovery, trust, and speed",
+        "summary": "We prepared search and social metadata, honest legal status pages, a branded not-found route, and performance checks.",
+        "highlights": [
+          "Added search and social foundations",
+          "Published clear pre-launch legal notices",
+          "Verified performance and tracking choices"
+        ]
+      },
+      "phase18": {
+        "title": "Testing every important path",
+        "summary": "We reviewed the experience across target screen sizes and strengthened touch targets, contrast, focus behavior, and release documentation.",
+        "highlights": [
+          "Covered the responsive viewport matrix",
+          "Improved accessibility and interaction details",
+          "Created a repeatable release checklist"
+        ]
+      },
+      "phase19": {
+        "title": "Preparing a safe launch path",
+        "summary": "We added automated quality checks, production-origin validation, security headers, and a deployment handoff that keeps owner approvals explicit.",
+        "highlights": [
+          "Introduced continuous quality checks",
+          "Added production preflight safeguards",
+          "Documented the deployment process"
+        ]
+      },
+      "phase110": {
+        "title": "Making releases repeatable",
+        "summary": "We created a production smoke-test matrix and a clean-commit release package with a verifiable manifest.",
+        "highlights": [
+          "Added HTTP-level route smoke tests",
+          "Packaged clean release candidates",
+          "Recorded commit and checksum evidence"
+        ]
+      },
+      "phase21": {
+        "title": "Welcoming Thai and English audiences",
+        "summary": "We moved every user-facing message into matched translation catalogs and introduced locale-aware routes, switching, metadata, and tests.",
+        "highlights": [
+          "Added complete TH and EN catalogs",
+          "Localized routes and language switching",
+          "Expanded bilingual SEO and regression coverage"
+        ]
+      },
+      "phase22": {
+        "title": "Making the journey visible",
+        "summary": "We turned the project history into this bilingual roadmap so every completed phase and its contribution can be understood at a glance.",
+        "highlights": [
+          "Created a curated milestone model",
+          "Built an accessible responsive timeline",
+          "Connected bilingual navigation, SEO, and tests"
+        ]
+      }
     }
   },
   "accessibility": {
