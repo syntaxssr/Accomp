@@ -49,18 +49,6 @@
   transform: translateY(0);
 }
 
-.previewNote {
-  margin: 0;
-  padding: 0.55rem var(--layout-gutter);
-  color: var(--color-sand);
-  background: var(--color-night);
-  font-size: 0.68rem;
-  font-weight: 650;
-  letter-spacing: 0.08em;
-  text-align: center;
-  text-transform: uppercase;
-}
-
 .hero {
   padding-block: clamp(4rem, 8vw, 8rem) clamp(5rem, 9vw, 9rem);
 }

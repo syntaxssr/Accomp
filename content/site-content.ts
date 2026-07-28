@@ -2,11 +2,18 @@ import type { Messages } from "@/lib/i18n/messages";
 import type { Locale } from "@/lib/i18n/config";
 import { localizedPath } from "@/lib/i18n/config";
 
-export interface NavigationItem {
+export interface NavigationLink {
   current?: boolean;
   href: string;
   label: string;
 }
+
+export interface NavigationGroup {
+  items: NavigationLink[];
+  label: string;
+}
+
+export type NavigationItem = NavigationGroup | NavigationLink;
 
 export type FeatureVisual =
   | "assign"
@@ -32,12 +39,6 @@ const navigationDefinitions = [
   { href: "#features", key: "features" },
   { href: "#how-it-works", key: "howItWorks" },
   { href: "#offline", key: "offline" },
-  { href: "#faq", key: "faq" },
-] as const;
-
-const pageNavigationDefinitions = [
-  { key: "roadmap", pathname: "/roadmap" },
-  { key: "supportDeveloper", pathname: "/support" },
 ] as const;
 
 const planningVisuals: FeatureVisual[] = ["trip", "invite", "itinerary"];
@@ -80,17 +81,27 @@ function createNavigation(
   currentPathname?: "/roadmap" | "/support",
 ): NavigationItem[] {
   const home = localizedPath(locale);
+  const anchorHref = (href: string) =>
+    currentPathname ? `${home}${href}` : href;
 
   return [
-    ...navigationDefinitions.map(({ href, key }) => ({
-      href: currentPathname ? `${home}${href}` : href,
-      label: messages.navigation[key],
-    })),
-    ...pageNavigationDefinitions.map(({ key, pathname }) => ({
-      current: currentPathname === pathname,
-      href: localizedPath(locale, pathname),
-      label: messages.navigation[key],
-    })),
+    {
+      items: navigationDefinitions.map(({ href, key }) => ({
+        href: anchorHref(href),
+        label: messages.navigation[key],
+      })),
+      label: messages.navigation.product,
+    },
+    {
+      current: currentPathname === "/roadmap",
+      href: localizedPath(locale, "/roadmap"),
+      label: messages.navigation.roadmap,
+    },
+    {
+      current: currentPathname === "/support",
+      href: localizedPath(locale, "/support"),
+      label: messages.navigation.support,
+    },
   ];
 }
 

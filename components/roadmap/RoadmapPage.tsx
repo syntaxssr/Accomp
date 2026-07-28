@@ -36,8 +36,6 @@ export function RoadmapPage({ locale, messages }: RoadmapPageProps) {
         {copy.skipToContent}
       </a>
 
-      <p className={styles.previewNote}>{messages.marketing.previewNote}</p>
-
       <SiteHeader
         copy={messages.navigation}
         homeHref={home}

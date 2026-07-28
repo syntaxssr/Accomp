@@ -1,9 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ButtonLink, Icon } from "@/components";
 import { LanguageSwitcher } from "@/components/i18n/LanguageSwitcher";
-import type { NavigationItem } from "@/content/site-content";
+import type {
+  NavigationGroup,
+  NavigationItem,
+  NavigationLink,
+} from "@/content/site-content";
 import type { Locale, LocalizedPathname } from "@/lib/i18n/config";
 import type { Messages } from "@/lib/i18n/messages";
 import styles from "./site-header.module.css";
@@ -18,6 +22,12 @@ interface SiteHeaderProps {
   waitlistHref?: string;
 }
 
+function isNavigationGroup(
+  item: NavigationItem,
+): item is NavigationGroup {
+  return "items" in item;
+}
+
 export function SiteHeader({
   copy,
   homeHref = "#top",
@@ -28,19 +38,28 @@ export function SiteHeader({
   waitlistHref = "#waitlist",
 }: SiteHeaderProps) {
   const [open, setOpen] = useState(false);
+  const [openGroup, setOpenGroup] = useState<string | null>(null);
   const [headerState, setHeaderState] = useState({
     activeHref: "",
     dark: false,
     scrolled: false,
   });
+  const desktopNavRef = useRef<HTMLElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  const navigationLinks = useMemo(
+    () =>
+      navigation.flatMap((item) =>
+        isNavigationGroup(item) ? item.items : [item],
+      ),
+    [navigation],
+  );
 
   useEffect(() => {
     let animationFrame: number | null = null;
 
     function updateHeader() {
-      const sections = navigation
+      const sections = navigationLinks
         .filter((item) => item.href.startsWith("#"))
         .map((item) => ({
           element: document.querySelector<HTMLElement>(item.href),
@@ -51,7 +70,7 @@ export function SiteHeader({
             section,
           ): section is {
             element: HTMLElement;
-            href: NavigationItem["href"];
+            href: NavigationLink["href"];
           } => section.element !== null,
         )
         .sort(
@@ -104,7 +123,42 @@ export function SiteHeader({
       window.removeEventListener("resize", scheduleUpdate);
       window.removeEventListener("scroll", scheduleUpdate);
     };
-  }, [navigation]);
+  }, [navigationLinks]);
+
+  useEffect(() => {
+    if (openGroup === null) {
+      return;
+    }
+
+    function closeFromOutside(event: PointerEvent) {
+      if (
+        event.target instanceof Node &&
+        !desktopNavRef.current?.contains(event.target)
+      ) {
+        setOpenGroup(null);
+      }
+    }
+
+    function closeWithEscape(event: KeyboardEvent) {
+      if (event.key !== "Escape") {
+        return;
+      }
+
+      const trigger = desktopNavRef.current?.querySelector<HTMLButtonElement>(
+        `[data-group-trigger="${openGroup}"]`,
+      );
+      setOpenGroup(null);
+      trigger?.focus();
+    }
+
+    document.addEventListener("pointerdown", closeFromOutside);
+    document.addEventListener("keydown", closeWithEscape);
+
+    return () => {
+      document.removeEventListener("pointerdown", closeFromOutside);
+      document.removeEventListener("keydown", closeWithEscape);
+    };
+  }, [openGroup]);
 
   useEffect(() => {
     if (!open) {
@@ -143,7 +197,7 @@ export function SiteHeader({
     }
 
     function onResize() {
-      if (window.innerWidth >= 1248) {
+      if (window.innerWidth >= 1088) {
         setOpen(false);
       }
     }
@@ -173,25 +227,104 @@ export function SiteHeader({
           </a>
 
           <div className={styles.navPill}>
-            <nav className={styles.desktopNav} aria-label={copy.primary}>
-              {navigation.map((item) => (
-                <a
-                  aria-current={
-                    item.current
-                      ? "page"
-                      : headerState.activeHref === item.href
-                        ? "location"
-                        : undefined
-                  }
-                  data-active={
-                    item.current || headerState.activeHref === item.href
-                  }
-                  href={item.href}
-                  key={item.href}
-                >
-                  {item.label}
-                </a>
-              ))}
+            <nav
+              className={styles.desktopNav}
+              aria-label={copy.primary}
+              ref={desktopNavRef}
+            >
+              {navigation.map((item, index) => {
+                if (isNavigationGroup(item)) {
+                  const groupId = `desktop-nav-group-${index}`;
+                  const expanded = openGroup === groupId;
+                  const active = item.items.some(
+                    (link) =>
+                      link.current ||
+                      headerState.activeHref === link.href,
+                  );
+
+                  return (
+                    <div
+                      className={styles.navGroup}
+                      data-active={active}
+                      key={item.label}
+                      onBlur={(event) => {
+                        if (
+                          !(event.relatedTarget instanceof Node) ||
+                          !event.currentTarget.contains(event.relatedTarget)
+                        ) {
+                          setOpenGroup(null);
+                        }
+                      }}
+                      onMouseEnter={() => setOpenGroup(groupId)}
+                      onMouseLeave={() =>
+                        setOpenGroup((current) =>
+                          current === groupId ? null : current,
+                        )
+                      }
+                    >
+                      <button
+                        aria-controls={`${groupId}-panel`}
+                        aria-expanded={expanded}
+                        className={styles.groupTrigger}
+                        data-group-trigger={groupId}
+                        onClick={() => setOpenGroup(groupId)}
+                        type="button"
+                      >
+                        {item.label}
+                        <span aria-hidden="true" />
+                      </button>
+
+                      <div
+                        className={styles.dropdown}
+                        hidden={!expanded}
+                        id={`${groupId}-panel`}
+                      >
+                        {item.items.map((link) => (
+                          <a
+                            aria-current={
+                              link.current
+                                ? "page"
+                                : headerState.activeHref === link.href
+                                  ? "location"
+                                  : undefined
+                            }
+                            data-active={
+                              link.current ||
+                              headerState.activeHref === link.href
+                            }
+                            href={link.href}
+                            key={link.href}
+                            onClick={() => setOpenGroup(null)}
+                          >
+                            {link.label}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                }
+
+                return (
+                  <a
+                    aria-current={
+                      item.current
+                        ? "page"
+                        : headerState.activeHref === item.href
+                          ? "location"
+                          : undefined
+                    }
+                    data-active={
+                      item.current ||
+                      headerState.activeHref === item.href
+                    }
+                    href={item.href}
+                    key={item.href}
+                    onFocus={() => setOpenGroup(null)}
+                  >
+                    {item.label}
+                  </a>
+                );
+              })}
             </nav>
           </div>
 
@@ -211,7 +344,10 @@ export function SiteHeader({
               aria-controls="mobile-menu"
               aria-expanded={open}
               className={styles.menuTrigger}
-              onClick={() => setOpen(true)}
+              onClick={() => {
+                setOpenGroup(null);
+                setOpen(true);
+              }}
               ref={triggerRef}
               type="button"
             >
@@ -241,25 +377,52 @@ export function SiteHeader({
             </button>
           </div>
           <nav aria-label={copy.mobile}>
-            {navigation.map((item) => (
-              <a
-                aria-current={
-                  item.current
-                    ? "page"
-                    : headerState.activeHref === item.href
-                      ? "location"
-                      : undefined
-                }
-                data-active={
-                  item.current || headerState.activeHref === item.href
-                }
-                href={item.href}
-                key={item.href}
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
-              </a>
-            ))}
+            {navigation.map((item) =>
+              isNavigationGroup(item) ? (
+                <div className={styles.mobileGroup} key={item.label}>
+                  <p>{item.label}</p>
+                  {item.items.map((link) => (
+                    <a
+                      aria-current={
+                        link.current
+                          ? "page"
+                          : headerState.activeHref === link.href
+                            ? "location"
+                            : undefined
+                      }
+                      data-active={
+                        link.current ||
+                        headerState.activeHref === link.href
+                      }
+                      href={link.href}
+                      key={link.href}
+                      onClick={() => setOpen(false)}
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              ) : (
+                <a
+                  aria-current={
+                    item.current
+                      ? "page"
+                      : headerState.activeHref === item.href
+                        ? "location"
+                        : undefined
+                  }
+                  data-active={
+                    item.current ||
+                    headerState.activeHref === item.href
+                  }
+                  href={item.href}
+                  key={item.href}
+                  onClick={() => setOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ),
+            )}
             <a href={waitlistHref} onClick={() => setOpen(false)}>
               {copy.joinWaitlist}
             </a>

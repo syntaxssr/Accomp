@@ -21,12 +21,13 @@
     "menuTitle": "Navigate Accomp",
     "closeMenu": "Close menu",
     "joinWaitlist": "Join the waitlist",
+    "product": "Product",
+    "support": "Support",
     "features": "Features",
     "howItWorks": "How it works",
     "offline": "Offline",
     "faq": "FAQ",
-    "roadmap": "Roadmap",
-    "supportDeveloper": "Support the developer"
+    "roadmap": "Roadmap"
   },
   "languageSwitcher": {
     "label": "Change language",
@@ -35,7 +36,6 @@
   },
   "marketing": {
     "skipToContent": "Skip to content",
-    "previewNote": "Product preview · Illustrative app UI · Waitlist submission is not active",
     "hero": {
       "eyebrow": "Your companion for every adventure",
       "title": "Adventure together.",
@@ -333,45 +333,45 @@
   },
   "support": {
     "metaTitle": "Support the developer",
-    "metaDescription": "Learn how future support can help the independent development of Accomp and meet the people who choose to be recognized publicly.",
+    "metaDescription": "Support Accomp's independent product work and see its public supporters.",
     "skipToContent": "Skip to support information",
     "eyebrow": "Support Accomp",
     "title": "Help keep the path moving.",
-    "lede": "Accomp is being shaped as a calm companion for outdoor groups. Thoughtful support can create more room for research, careful design, and reliable product work.",
+    "lede": "Support gives Accomp more time to learn, design, and test the app carefully.",
     "visualLabel": "An illustrated group of companions supporting the Accomp trail",
-    "visualCaption": "Independent work, supported by people who believe in the direction.",
+    "visualCaption": "Independent product work, backed by the community.",
     "impactEyebrow": "What support can help with",
-    "impactTitle": "More time for the work that matters.",
-    "impactBody": "Support will never buy control of the roadmap or guarantee a feature. It can help the developer spend more focused time learning, designing, and testing Accomp.",
+    "impactTitle": "Support focused work.",
+    "impactBody": "Support helps with three essentials—without buying roadmap control.",
     "impactItems": [
       {
         "title": "Product learning",
-        "body": "Talk with outdoor groups and validate which planning problems are worth solving first."
+        "body": "Validate the right problems with outdoor groups."
       },
       {
         "title": "Careful design",
-        "body": "Refine accessible, calm flows for shared trips, gear, and offline preparation."
+        "body": "Refine calm, accessible trip-planning flows."
       },
       {
         "title": "Reliable foundations",
-        "body": "Invest time in testing, privacy, safety, and the technical work behind a dependable app."
+        "body": "Strengthen testing, privacy, and safety."
       }
     ],
     "supportAction": {
       "eyebrow": "Support channel",
-      "title": "A safe way to support is being prepared.",
-      "body": "A verified support destination has not been connected yet. When one is approved, this page will link to it clearly without collecting payment details on Accomp.",
-      "status": "Support payments are not active yet."
+      "title": "Support channel coming soon.",
+      "body": "A verified destination will appear here. Accomp will not collect payment details.",
+      "status": "Not active yet."
     },
     "supporters": {
       "eyebrow": "Supporter wall",
-      "title": "People helping Accomp move forward.",
-      "body": "Names and portraits appear here only when a real supporter has chosen to be recognized publicly.",
+      "title": "Accomp supporters",
+      "body": "Approved names and portraits appear here with consent.",
       "listLabel": "Public Accomp supporters",
       "imageAlt": "Portrait of {name}",
       "emptyTitle": "No public supporters yet.",
-      "emptyBody": "When supporters opt in to public recognition, their approved name and portrait will appear here.",
-      "privacyNote": "Public recognition is always optional. Supporters can ask to update or remove their name and portrait."
+      "emptyBody": "Approved supporters will appear here.",
+      "privacyNote": "Public recognition is optional and can be updated or removed."
     },
     "returnHome": "Explore Accomp"
   },

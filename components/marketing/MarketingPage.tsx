@@ -33,8 +33,6 @@ export function MarketingPage({ locale, messages }: MarketingPageProps) {
         {copy.skipToContent}
       </a>
 
-      <p className={styles.previewNote}>{copy.previewNote}</p>
-
       <SiteHeader
         copy={messages.navigation}
         languageSwitcher={messages.languageSwitcher}

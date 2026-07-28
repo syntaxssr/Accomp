@@ -66,6 +66,8 @@ test("server-renders complete and distinct Phase 2.3 EN/TH pages", async () => {
   assert.match(thai, /data-phase="2\.3"/);
   assert.match(english, /Adventure together\./i);
   assert.match(thai, /ผจญภัยไปด้วยกัน/);
+  assert.doesNotMatch(english, /Product preview ·/);
+  assert.doesNotMatch(thai, /ตัวอย่างผลิตภัณฑ์ ·/);
   assert.match(english, /href="\/th"/);
   assert.match(thai, /href="\/en"/);
   assert.match(english, /href="\/en\/privacy"/);
@@ -135,8 +137,8 @@ test("renders a safe bilingual support experience and supporter empty state", as
   assert.equal((thai.match(/<h1\b/g) ?? []).length, 1);
   assert.match(english, /No public supporters yet/);
   assert.match(thai, /ยังไม่มีผู้สนับสนุนที่แสดงชื่อสาธารณะ/);
-  assert.match(english, /Support payments are not active yet/);
-  assert.match(thai, /ระบบรับการสนับสนุนยังไม่เปิดใช้งาน/);
+  assert.match(english, /Not active yet/);
+  assert.match(thai, /ยังไม่เปิดใช้งาน/);
   assert.match(english, /href="\/th\/support"/);
   assert.match(thai, /href="\/en\/support"/);
   assert.match(

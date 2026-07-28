@@ -11,7 +11,8 @@ async function source(path) {
 test("builds typed marketing content from localized messages", async () => {
   const content = await source("content/site-content.ts");
 
-  assert.match(content, /export interface NavigationItem/);
+  assert.match(content, /export interface NavigationGroup/);
+  assert.match(content, /export type NavigationItem/);
   assert.match(content, /export interface FeatureCardContent/);
   assert.match(content, /export interface FAQItem/);
   assert.match(content, /export function createSiteContent/);
@@ -42,6 +43,7 @@ test("preserves the complete marketing structure through Phase 2.3", async () =>
   assert.match(page, /data-motion-root/);
   assert.match(page, /<MotionController/);
   assert.match(page, /<SiteHeader/);
+  assert.doesNotMatch(page, /previewNote/);
   assert.match(page, /<FeatureRail/);
   assert.match(page, /<FAQList/);
   assert.match(page, /copy\.waitlist\.notice/);
@@ -75,7 +77,16 @@ test("links the factual pre-launch legal notices", async () => {
 
   assert.match(page, /localizedPath\(locale, "\/privacy"\)/);
   assert.match(page, /localizedPath\(locale, "\/terms"\)/);
+  assert.match(page, /\$\{home\}#faq/);
   assert.doesNotMatch(page, /Privacy · pending|Terms · pending/);
+});
+
+test("keeps FAQ in the footer and makes Support a direct link", async () => {
+  const navigation = await source("content/site-content.ts");
+
+  assert.doesNotMatch(navigation, /anchorHref\("#faq"\)/);
+  assert.match(navigation, /href: localizedPath\(locale, "\/support"\)/);
+  assert.match(navigation, /label: messages\.navigation\.support/);
 });
 
 test("uses native disclosures and explicit client boundaries", async () => {
@@ -92,6 +103,10 @@ test("uses native disclosures and explicit client boundaries", async () => {
   assert.match(rail, /^"use client";/);
   assert.match(header, /event\.key === "Escape"/);
   assert.match(header, /event\.key !== "Tab"/);
+  assert.match(header, /aria-expanded=/);
+  assert.match(header, /isNavigationGroup/);
+  assert.match(header, /onMouseEnter=/);
+  assert.match(header, /onMouseLeave=/);
   assert.match(rail, /aria-live="polite"/);
 });
 
@@ -107,7 +122,13 @@ test("declares compact, tablet and desktop layout behavior", async () => {
   assert.match(pageStyles, /@media \(min-width: 48rem\)/);
   assert.match(pageStyles, /@media \(min-width: 56\.25rem\)/);
   assert.match(headerStyles, /@media \(max-width: 26\.25rem\)/);
-  assert.match(headerStyles, /@media \(min-width: 78rem\)/);
+  assert.match(headerStyles, /@media \(min-width: 68rem\)/);
+  assert.match(headerStyles, /\.dropdown/);
+  assert.match(headerStyles, /@keyframes dropdown-expand/);
+  assert.match(
+    headerStyles,
+    /cubic-bezier\(0\.22, 1, 0\.36, 1\)/,
+  );
   assert.match(railStyles, /overflow-x: auto/);
   assert.match(railStyles, /scroll-snap-type: inline mandatory/);
   assert.match(globalStyles, /prefers-reduced-motion: reduce/);

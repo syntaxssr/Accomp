@@ -97,6 +97,7 @@ test("renders a semantic, responsive, locale-aware roadmap experience", async ()
   assert.match(localizedRoute, /localizedPath\("en", "\/roadmap"\)/);
   assert.match(switcher, /pathname\?: LocalizedPathname/);
   assert.match(navigation, /createRoadmapNavigation/);
-  assert.match(navigation, /\{ key: "roadmap", pathname: "\/roadmap" \}/);
+  assert.match(navigation, /messages\.navigation\.roadmap/);
+  assert.match(navigation, /localizedPath\(locale, "\/roadmap"\)/);
   assert.doesNotMatch(`${page}\n${localizedRoute}`, /node:fs|git log|\.md"/);
 });

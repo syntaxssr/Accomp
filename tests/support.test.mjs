@@ -47,7 +47,8 @@ test("renders a semantic bilingual support page without payment collection", asy
   assert.match(route, /localizedPath\("en", "\/support"\)/);
   assert.match(route, /localizedPath\("th", "\/support"\)/);
   assert.match(navigation, /createSupportNavigation/);
-  assert.match(navigation, /messages\.navigation\[key\]/);
+  assert.match(navigation, /messages\.navigation\.support/);
+  assert.match(navigation, /localizedPath\(locale, "\/support"\)/);
 });
 
 test("keeps the support layout responsive and motion-safe", async () => {

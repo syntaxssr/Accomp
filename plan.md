@@ -1348,8 +1348,11 @@ public display name, permission status และวันที่เจ้า�
 #### Experience and visual direction
 
 - ใช้ topbar รูปแบบ Accomp ปัจจุบัน: brand ซ้าย, menu capsule กลาง และ actions ขวา
-- เมื่อเพิ่มเมนูที่หก ต้องตรวจความกว้างของแคปซูลทั้ง EN/TH และเลื่อน breakpoint
-  ไปใช้ mobile menu ก่อนเกิดการชนกัน
+- รวมเมนูเป็น `Product` dropdown พร้อม hover expansion และ keyboard fallback
+  ส่วน `Roadmap` กับ `Support` เป็น direct link โดย mobile menu ต้องรักษาลำดับ
+  ชั้นเดียวกัน
+- เก็บ FAQ ไว้เฉพาะใน footer ไม่แสดงใน topbar หรือ Support dropdown
+- ตัดแถบ preview สีดำด้านบนออกจากทุก public page
 - Hero ใช้ pine/path motif และ palette
   `#778873`, `#A1BC98`, `#DCCFC0`, `#FDF6ED`
 - Supporter wall เป็น responsive card grid ที่ให้รูปและชื่อมีน้ำหนักเท่ากัน

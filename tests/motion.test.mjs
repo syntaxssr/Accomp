@@ -67,6 +67,8 @@ test("adds calm header state and touch-keyboard rail progression", async () => {
   assert.match(header, /aria-current=/);
   assert.match(headerStyles, /\.header\[data-theme="dark"\]/);
   assert.match(headerStyles, /a\[data-active="true"\]/);
+  assert.match(headerStyles, /dropdown-expand/);
+  assert.match(header, /onMouseEnter/);
 
   for (const key of ["ArrowLeft", "ArrowRight", "Home", "End"]) {
     assert.match(rail, new RegExp(`event\\.key === "${key}"`));

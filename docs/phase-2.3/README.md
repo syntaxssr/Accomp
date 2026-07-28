@@ -20,8 +20,13 @@ amounts were added.
 | `/en/support` | English Support page |
 | `/th/support` | Thai Support page |
 
-The desktop navigation, mobile menu and footer link to the localized route.
-The language switcher preserves the Support-page context.
+The compact desktop navigation groups Features, How it works and Offline under
+Product, while Roadmap and Support are direct links. FAQ appears only in the
+footer. Product expands on hover with the same interaction available through
+click and Escape. The mobile menu keeps the same information hierarchy, the
+footer links directly to the localized route, and the language switcher
+preserves the Support-page context. The earlier black preview strip has been
+removed from all public pages.
 
 ## Experience
 

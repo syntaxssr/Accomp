@@ -25,8 +25,6 @@ export function SupportPage({ locale, messages }: SupportPageProps) {
         {copy.skipToContent}
       </a>
 
-      <p className={styles.previewNote}>{messages.marketing.previewNote}</p>
-
       <SiteHeader
         copy={messages.navigation}
         homeHref={home}
@@ -45,6 +43,25 @@ export function SupportPage({ locale, messages }: SupportPageProps) {
                 <p className={styles.eyebrow}>{copy.eyebrow}</p>
                 <h1>{copy.title}</h1>
                 <p className={styles.lede}>{copy.lede}</p>
+
+                <div
+                  aria-labelledby="support-channel-title"
+                  className={styles.channelPanel}
+                >
+                  <div>
+                    <p className={styles.channelEyebrow}>
+                      {copy.supportAction.eyebrow}
+                    </p>
+                    <h2 id="support-channel-title">
+                      {copy.supportAction.title}
+                    </h2>
+                    <p>{copy.supportAction.body}</p>
+                  </div>
+                  <p className={styles.channelStatus} role="status">
+                    <span aria-hidden="true" />
+                    {copy.supportAction.status}
+                  </p>
+                </div>
               </div>
 
               <div
@@ -88,29 +105,6 @@ export function SupportPage({ locale, messages }: SupportPageProps) {
                   <p>{item.body}</p>
                 </article>
               ))}
-            </div>
-          </Container>
-        </section>
-
-        <section
-          aria-labelledby="support-channel-title"
-          className={styles.supportChannel}
-        >
-          <Container>
-            <div className={styles.channelPanel}>
-              <div>
-                <p className={styles.eyebrow}>
-                  {copy.supportAction.eyebrow}
-                </p>
-                <h2 id="support-channel-title">
-                  {copy.supportAction.title}
-                </h2>
-                <p>{copy.supportAction.body}</p>
-              </div>
-              <p className={styles.channelStatus} role="status">
-                <span aria-hidden="true" />
-                {copy.supportAction.status}
-              </p>
             </div>
           </Container>
         </section>
