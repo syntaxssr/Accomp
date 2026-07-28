@@ -105,8 +105,8 @@ function verifyLanguage(html, locale, pathname) {
 function verifyHomepage(html, locale, pathname) {
   verifyLanguage(html, locale, pathname);
 
-  if (!/data-phase="2\.2"/.test(html)) {
-    throw new Error("Homepage does not identify the Phase 2.2 candidate.");
+  if (!/data-phase="2\.3"/.test(html)) {
+    throw new Error("Homepage does not identify the Phase 2.3 candidate.");
   }
 
   if ((html.match(/<h1\b/g) ?? []).length !== 1) {
@@ -132,8 +132,8 @@ function verifyHomepage(html, locale, pathname) {
 function verifyRoadmap(html, locale, pathname) {
   verifyLanguage(html, locale, pathname);
 
-  if (!/data-phase="2\.2"/.test(html)) {
-    throw new Error(`${pathname} does not identify the Phase 2.2 candidate.`);
+  if (!/data-phase="2\.3"/.test(html)) {
+    throw new Error(`${pathname} does not identify the Phase 2.3 candidate.`);
   }
 
   if ((html.match(/<h1\b/g) ?? []).length !== 1) {
@@ -148,8 +148,32 @@ function verifyRoadmap(html, locale, pathname) {
     throw new Error(`${pathname} does not identify the current phase.`);
   }
 
-  if ((html.match(/<article\b/g) ?? []).length !== 13) {
-    throw new Error(`${pathname} must render all 13 roadmap milestones.`);
+  if ((html.match(/<article\b/g) ?? []).length !== 6) {
+    throw new Error(`${pathname} must render all 6 mobile app roadmap stages.`);
+  }
+}
+
+function verifySupport(html, locale, pathname) {
+  verifyLanguage(html, locale, pathname);
+
+  if (!/data-phase="2\.3"/.test(html)) {
+    throw new Error(`${pathname} does not identify the Phase 2.3 candidate.`);
+  }
+
+  if ((html.match(/<h1\b/g) ?? []).length !== 1) {
+    throw new Error(`${pathname} must render exactly one H1.`);
+  }
+
+  if (/<form\b/i.test(html)) {
+    throw new Error(`${pathname} unexpectedly contains a live form.`);
+  }
+
+  if (!/<p\b[^>]*role="status"/i.test(html)) {
+    throw new Error(`${pathname} is missing its inactive support status.`);
+  }
+
+  if (!/<div\b[^>]*role="status"/i.test(html)) {
+    throw new Error(`${pathname} is missing its intentional empty state.`);
   }
 }
 
@@ -170,7 +194,7 @@ export async function smokeSite(value) {
     verifySecurityHeaders(homepage, homepagePath);
     verifyHomepage(await homepage.text(), locale, homepagePath);
 
-    for (const route of ["/privacy", "/terms", "/roadmap"]) {
+    for (const route of ["/privacy", "/terms", "/roadmap", "/support"]) {
       const pathname = `/${locale}${route}`;
       const response = await request(origin, pathname, 200);
       verifySecurityHeaders(response, pathname);
@@ -183,6 +207,10 @@ export async function smokeSite(value) {
 
       if (route === "/roadmap") {
         verifyRoadmap(html, locale, pathname);
+      }
+
+      if (route === "/support") {
+        verifySupport(html, locale, pathname);
       }
     }
 
@@ -235,6 +263,8 @@ export async function smokeSite(value) {
     "/th/terms",
     "/en/roadmap",
     "/th/roadmap",
+    "/en/support",
+    "/th/support",
   ]) {
     if (!sitemapText.includes(pathname)) {
       throw new Error(`sitemap.xml is missing ${pathname}.`);
@@ -243,7 +273,7 @@ export async function smokeSite(value) {
 
   return {
     origin,
-    routes: 14,
+    routes: 16,
   };
 }
 

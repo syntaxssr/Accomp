@@ -1,106 +1,58 @@
 import type { Messages } from "@/lib/i18n/messages";
 
-export type RoadmapStatus = "completed" | "current" | "planned";
+export type RoadmapStatus = "current" | "planned";
+export type RoadmapHorizon = "now" | "next" | "later";
 export type RoadmapCopyKey = keyof Messages["roadmap"]["items"];
 
 export interface RoadmapEntry {
   copyKey: RoadmapCopyKey;
-  date: `${number}-${number}-${number}`;
+  horizon: RoadmapHorizon;
   id: string;
-  phase: string | null;
+  stage: string;
   status: RoadmapStatus;
 }
 
 export const roadmapEntries = [
   {
-    copyKey: "kickoff",
-    date: "2026-07-26",
-    id: "project-kickoff",
-    phase: null,
-    status: "completed",
-  },
-  {
-    copyKey: "phase11",
-    date: "2026-07-26",
-    id: "phase-1-1",
-    phase: "1.1",
-    status: "completed",
-  },
-  {
-    copyKey: "phase12",
-    date: "2026-07-26",
-    id: "phase-1-2",
-    phase: "1.2",
-    status: "completed",
-  },
-  {
-    copyKey: "phase13",
-    date: "2026-07-27",
-    id: "phase-1-3",
-    phase: "1.3",
-    status: "completed",
-  },
-  {
-    copyKey: "phase14",
-    date: "2026-07-28",
-    id: "phase-1-4",
-    phase: "1.4",
-    status: "completed",
-  },
-  {
-    copyKey: "phase15",
-    date: "2026-07-28",
-    id: "phase-1-5",
-    phase: "1.5",
-    status: "completed",
-  },
-  {
-    copyKey: "phase16",
-    date: "2026-07-28",
-    id: "phase-1-6",
-    phase: "1.6",
-    status: "completed",
-  },
-  {
-    copyKey: "phase17",
-    date: "2026-07-28",
-    id: "phase-1-7",
-    phase: "1.7",
-    status: "completed",
-  },
-  {
-    copyKey: "phase18",
-    date: "2026-07-28",
-    id: "phase-1-8",
-    phase: "1.8",
-    status: "completed",
-  },
-  {
-    copyKey: "phase19",
-    date: "2026-07-28",
-    id: "phase-1-9",
-    phase: "1.9",
-    status: "completed",
-  },
-  {
-    copyKey: "phase110",
-    date: "2026-07-28",
-    id: "phase-1-10",
-    phase: "1.10",
-    status: "completed",
-  },
-  {
-    copyKey: "phase21",
-    date: "2026-07-28",
-    id: "phase-2-1",
-    phase: "2.1",
-    status: "completed",
-  },
-  {
-    copyKey: "phase22",
-    date: "2026-07-28",
-    id: "phase-2-2",
-    phase: "2.2",
+    copyKey: "discovery",
+    horizon: "now",
+    id: "product-discovery",
+    stage: "1",
     status: "current",
+  },
+  {
+    copyKey: "tripPlanning",
+    horizon: "next",
+    id: "shared-trip-planning",
+    stage: "2",
+    status: "planned",
+  },
+  {
+    copyKey: "gearCoordination",
+    horizon: "next",
+    id: "shared-gear-coordination",
+    stage: "3",
+    status: "planned",
+  },
+  {
+    copyKey: "offlineReadiness",
+    horizon: "later",
+    id: "offline-readiness",
+    stage: "4",
+    status: "planned",
+  },
+  {
+    copyKey: "privateBeta",
+    horizon: "later",
+    id: "private-beta",
+    stage: "5",
+    status: "planned",
+  },
+  {
+    copyKey: "launchReadiness",
+    horizon: "later",
+    id: "launch-readiness",
+    stage: "6",
+    status: "planned",
   },
 ] as const satisfies readonly RoadmapEntry[];

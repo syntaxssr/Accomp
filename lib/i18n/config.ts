@@ -7,6 +7,7 @@ export type LocalizedPathname =
   | "/"
   | "/privacy"
   | "/roadmap"
+  | "/support"
   | "/terms";
 
 interface HeaderReader {

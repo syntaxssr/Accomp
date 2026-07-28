@@ -26,10 +26,11 @@ async function render(pathname = "/en") {
   );
 }
 
-test("redirects the unprefixed homepage to English", async () => {
-  const [response, roadmap] = await Promise.all([
+test("redirects unprefixed public pages to English", async () => {
+  const [response, roadmap, support] = await Promise.all([
     render("/"),
     render("/roadmap"),
+    render("/support"),
   ]);
 
   assert.equal(response.status, 307);
@@ -39,9 +40,14 @@ test("redirects the unprefixed homepage to English", async () => {
     roadmap.headers.get("location"),
     "https://accomp.test/en/roadmap",
   );
+  assert.equal(support.status, 307);
+  assert.equal(
+    support.headers.get("location"),
+    "https://accomp.test/en/support",
+  );
 });
 
-test("server-renders complete and distinct Phase 2.2 EN/TH pages", async () => {
+test("server-renders complete and distinct Phase 2.3 EN/TH pages", async () => {
   const [englishResponse, thaiResponse] = await Promise.all([
     render("/en"),
     render("/th"),
@@ -56,8 +62,8 @@ test("server-renders complete and distinct Phase 2.2 EN/TH pages", async () => {
   assert.match(thai, /<html[^>]*lang="th"/i);
   assert.match(english, /<title>Adventure Together · Accomp<\/title>/i);
   assert.match(thai, /<title>ผจญภัยไปด้วยกัน · Accomp<\/title>/i);
-  assert.match(english, /data-phase="2\.2"/);
-  assert.match(thai, /data-phase="2\.2"/);
+  assert.match(english, /data-phase="2\.3"/);
+  assert.match(thai, /data-phase="2\.3"/);
   assert.match(english, /Adventure together\./i);
   assert.match(thai, /ผจญภัยไปด้วยกัน/);
   assert.match(english, /href="\/th"/);
@@ -67,7 +73,7 @@ test("server-renders complete and distinct Phase 2.2 EN/TH pages", async () => {
   assert.doesNotMatch(thai, /Make one plan\. Bring everyone in\./);
 });
 
-test("renders a complete semantic TH/EN project roadmap", async () => {
+test("renders a complete semantic TH/EN mobile app roadmap", async () => {
   const [englishResponse, thaiResponse] = await Promise.all([
     render("/en/roadmap"),
     render("/th/roadmap"),
@@ -80,16 +86,16 @@ test("renders a complete semantic TH/EN project roadmap", async () => {
 
   assert.match(english, /<html[^>]*lang="en"/i);
   assert.match(thai, /<html[^>]*lang="th"/i);
-  assert.match(english, /<title>Project roadmap · Accomp<\/title>/i);
-  assert.match(thai, /<title>โรดแมปโปรเจกต์ · Accomp<\/title>/i);
+  assert.match(english, /<title>Mobile app roadmap · Accomp<\/title>/i);
+  assert.match(thai, /<title>โรดแมปแอปมือถือ · Accomp<\/title>/i);
   assert.match(english, /content="https:\/\/accomp\.test\/og\.png"/);
   assert.match(thai, /content="https:\/\/accomp\.test\/og-th\.png"/);
-  assert.match(english, /data-phase="2\.2"/);
-  assert.match(thai, /data-phase="2\.2"/);
+  assert.match(english, /data-phase="2\.3"/);
+  assert.match(thai, /data-phase="2\.3"/);
   assert.equal((english.match(/<h1\b/g) ?? []).length, 1);
   assert.equal((thai.match(/<h1\b/g) ?? []).length, 1);
-  assert.equal((english.match(/<article\b/g) ?? []).length, 13);
-  assert.equal((thai.match(/<article\b/g) ?? []).length, 13);
+  assert.equal((english.match(/<article\b/g) ?? []).length, 6);
+  assert.equal((thai.match(/<article\b/g) ?? []).length, 6);
   assert.match(english, /<ol\b[^>]*aria-label=/i);
   assert.match(thai, /<ol\b[^>]*aria-label=/i);
   assert.match(english, /aria-current="step"/);
@@ -104,8 +110,44 @@ test("renders a complete semantic TH/EN project roadmap", async () => {
     thai,
     /<a[^>]*aria-current="page"[^>]*href="\/th\/roadmap"/,
   );
-  assert.match(english, /Setting the trailhead/);
-  assert.match(thai, /กำหนดจุดเริ่มต้นของเส้นทาง/);
+  assert.match(english, /Shape the right companion/);
+  assert.match(thai, /สร้างเพื่อนร่วมทางที่ตอบโจทย์/);
+});
+
+test("renders a safe bilingual support experience and supporter empty state", async () => {
+  const [englishResponse, thaiResponse] = await Promise.all([
+    render("/en/support"),
+    render("/th/support"),
+  ]);
+
+  assert.equal(englishResponse.status, 200);
+  assert.equal(thaiResponse.status, 200);
+  const english = await englishResponse.text();
+  const thai = await thaiResponse.text();
+
+  assert.match(english, /<html[^>]*lang="en"/i);
+  assert.match(thai, /<html[^>]*lang="th"/i);
+  assert.match(english, /<title>Support the developer · Accomp<\/title>/i);
+  assert.match(thai, /<title>สนับสนุนผู้พัฒนา · Accomp<\/title>/i);
+  assert.match(english, /data-phase="2\.3"/);
+  assert.match(thai, /data-phase="2\.3"/);
+  assert.equal((english.match(/<h1\b/g) ?? []).length, 1);
+  assert.equal((thai.match(/<h1\b/g) ?? []).length, 1);
+  assert.match(english, /No public supporters yet/);
+  assert.match(thai, /ยังไม่มีผู้สนับสนุนที่แสดงชื่อสาธารณะ/);
+  assert.match(english, /Support payments are not active yet/);
+  assert.match(thai, /ระบบรับการสนับสนุนยังไม่เปิดใช้งาน/);
+  assert.match(english, /href="\/th\/support"/);
+  assert.match(thai, /href="\/en\/support"/);
+  assert.match(
+    english,
+    /<a[^>]*aria-current="page"[^>]*href="\/en\/support"/,
+  );
+  assert.match(
+    thai,
+    /<a[^>]*aria-current="page"[^>]*href="\/th\/support"/,
+  );
+  assert.doesNotMatch(`${english}${thai}`, /<form\b/i);
 });
 
 test("renders semantic landmarks, complete anchors and native FAQ items in both languages", async () => {
@@ -211,6 +253,8 @@ test("serves localized legal notices, sitemap and real EN/TH 404 pages", async (
     "/th/terms",
     "/en/roadmap",
     "/th/roadmap",
+    "/en/support",
+    "/th/support",
   ]) {
     assert.match(sitemapXml, new RegExp(`https://accomp\\.test${pathname}`));
   }

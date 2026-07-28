@@ -18,18 +18,6 @@ interface RoadmapPageProps {
   messages: Messages;
 }
 
-function formatRoadmapDate(date: string, locale: Locale): string {
-  const dateLocale =
-    locale === "th" ? "th-TH-u-ca-gregory" : "en-US";
-
-  return new Intl.DateTimeFormat(dateLocale, {
-    day: "numeric",
-    month: "long",
-    timeZone: "UTC",
-    year: "numeric",
-  }).format(new Date(`${date}T00:00:00Z`));
-}
-
 function statusLabel(
   copy: Messages["roadmap"],
   status: RoadmapStatus,
@@ -43,7 +31,7 @@ export function RoadmapPage({ locale, messages }: RoadmapPageProps) {
   const navigation = createRoadmapNavigation(messages, locale);
 
   return (
-    <div className={styles.site} data-phase="2.2">
+    <div className={styles.site} data-phase="2.3">
       <a className={styles.skipLink} href="#main">
         {copy.skipToContent}
       </a>
@@ -110,10 +98,7 @@ export function RoadmapPage({ locale, messages }: RoadmapPageProps) {
               {roadmapEntries.map((entry) => {
                 const item = copy.items[entry.copyKey];
                 const headingId = `${entry.id}-title`;
-                const phaseLabel =
-                  entry.phase === null
-                    ? copy.kickoffLabel
-                    : `${copy.phaseLabel} ${entry.phase}`;
+                const stageLabel = `${copy.stageLabel} ${entry.stage}`;
 
                 return (
                   <li
@@ -125,18 +110,15 @@ export function RoadmapPage({ locale, messages }: RoadmapPageProps) {
                     id={entry.id}
                     key={entry.id}
                   >
-                    <time
-                      className={styles.date}
-                      dateTime={entry.date}
-                    >
-                      {formatRoadmapDate(entry.date, locale)}
-                    </time>
+                    <span className={styles.horizon}>
+                      {copy.horizon[entry.horizon]}
+                    </span>
                     <article
                       aria-labelledby={headingId}
                       className={styles.milestone}
                     >
                       <div className={styles.milestoneMeta}>
-                        <span className={styles.phase}>{phaseLabel}</span>
+                        <span className={styles.phase}>{stageLabel}</span>
                         <span
                           className={styles.status}
                           data-status={entry.status}

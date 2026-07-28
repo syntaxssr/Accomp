@@ -26,7 +26,7 @@ export function MarketingPage({ locale, messages }: MarketingPageProps) {
   const copy = messages.marketing;
 
   return (
-    <div className={styles.site} data-motion-root data-phase="2.2">
+    <div className={styles.site} data-motion-root data-phase="2.3">
       <MotionController />
 
       <a className={styles.skipLink} href="#main">

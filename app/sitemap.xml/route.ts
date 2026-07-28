@@ -7,6 +7,7 @@ import { getSiteOrigin } from "@/lib/site";
 const routes = [
   { path: "/", changeFrequency: "monthly", priority: "1.0" },
   { path: "/roadmap", changeFrequency: "monthly", priority: "0.7" },
+  { path: "/support", changeFrequency: "monthly", priority: "0.6" },
   { path: "/privacy", changeFrequency: "yearly", priority: "0.3" },
   { path: "/terms", changeFrequency: "yearly", priority: "0.3" },
 ] as const;

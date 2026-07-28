@@ -1,6 +1,6 @@
 # Accomp Marketing Website — Project Plan
 
-> สถานะ: **Phase 2.2 project roadmap implementation complete — รอ owner review และยังไม่อนุมัติ deployment**
+> สถานะ: **Phase 2.3 implementation complete with safe empty state — รอข้อมูลผู้สนับสนุนจริงและ owner review**
 > สร้างเมื่อ: 2026-07-26  
 > Project path: `/Users/peeraponchanthacham/Documents/GitHub/Accomp`  
 > Reference: [Phantom](https://phantom.com/?utm_source=loftlyy&utm_medium=referral&utm_campaign=phantom)
@@ -1067,7 +1067,7 @@ Phase 2.1 implementation, automated QA, commit และ push ได้รับ
 รอบนี้ แต่การอนุมัติคำแปลไทย, manual visual QA และ deployment ยังต้องได้รับ
 การตรวจหรือคำสั่งแยกต่างหาก
 
-### Phase 2.2 — Bilingual Project Roadmap
+### Phase 2.2 — Bilingual Mobile App Roadmap
 
 #### Status
 
@@ -1075,47 +1075,37 @@ Phase 2.1 implementation, automated QA, commit และ push ได้รับ
 
 #### Objective
 
-เพิ่มเมนูและหน้า Roadmap สาธารณะของ Accomp เพื่อเล่าเส้นทางการพัฒนาเว็บไซต์
-ตั้งแต่ Project Kickoff จนถึง Phase ปัจจุบัน ให้ผู้ใช้เข้าใจว่าแต่ละ Phase
-สร้างอะไรและทำให้โปรเจกต์ก้าวหน้าอย่างไร โดยรองรับภาษาไทยและอังกฤษครบถ้วน
+เพิ่มเมนูและหน้า Roadmap สาธารณะของ Accomp เพื่อสื่อทิศทางคร่าว ๆ ของ
+**แอปมือถือ Accomp ในอนาคต** ตั้งแต่ product discovery จนถึง launch
+preparation โดยรองรับภาษาไทยและอังกฤษครบถ้วน ทั้งนี้ Phase นี้แก้เฉพาะเว็บไซต์
+โปรโมตและไม่เริ่มพัฒนาแอปมือถือ
 
 #### Product and content decisions
 
-- Roadmap เป็น **curated public project story** ไม่ใช่ changelog ดิบจาก Git
-- แสดงเฉพาะข้อมูลที่เหมาะกับผู้ชมภายนอก เช่น เป้าหมาย ผลลัพธ์สำคัญ และสถานะ
-- ไม่เปิดเผย commit SHA, internal blocker, credentials, production input
-  หรือรายละเอียดภายในที่ไม่จำเป็น
+- Roadmap เป็น **high-level mobile product direction** ไม่ใช่ประวัติการสร้างเว็บ
+- แสดงเฉพาะลำดับเป้าหมายกว้าง ๆ ของแอป ไม่ลงรายละเอียด implementation
 - ใช้สถานะที่เข้าใจง่าย:
-  - `Completed` / `เสร็จสิ้น`
-  - `Current` / `กำลังดำเนินการ`
-  - `Planned` / `วางแผนไว้` สำหรับ Phase ในอนาคตที่ได้รับอนุมัติแล้วเท่านั้น
-- ข้อมูลวันที่เก็บเป็นค่า `YYYY-MM-DD` กลาง และแสดงผลตาม locale
-- ห้ามสร้างเปอร์เซ็นต์ความคืบหน้า วันที่เปิดตัว หรือ Phase ในอนาคตที่ยังไม่มี
-  ข้อมูลยืนยัน
+  - `Current focus` / `กำลังให้ความสำคัญ` สำหรับ product discovery
+  - `Planned` / `วางแผนไว้` สำหรับขั้นถัดไป
+- ใช้ horizon `Now`, `Next`, `Later` แทนวันที่ที่ยังยืนยันไม่ได้
+- ห้ามสร้างเปอร์เซ็นต์ความคืบหน้า วันที่เปิดตัว แพลตฟอร์ม หรือคำสัญญาฟีเจอร์
+  ที่ยังไม่ได้ validate
 
 #### Roadmap content inventory
 
-Roadmap เวอร์ชันแรกต้องมีรายการต่อไปนี้เรียงตามเวลา:
+Roadmap เวอร์ชันแก้ไขมี 6 ขั้นเรียงตามทิศทางผลิตภัณฑ์:
 
-| Roadmap entry | Public focus | Date |
+| Stage | Horizon | Public focus |
 | --- | --- | --- |
-| Project Kickoff | วางสโคปเว็บโปรโมตแอป, brand direction และ workflow แบบ phase-by-phase | 2026-07-26 |
-| Phase 1.1 | Content Strategy and Visual Concept | 2026-07-26 |
-| Phase 1.2 | Wireframe and Interaction Prototype | 2026-07-26 |
-| Phase 1.3 | High-Fidelity Design | 2026-07-27 |
-| Phase 1.4 | Project Scaffold and Design System | 2026-07-28 |
-| Phase 1.5 | Core Marketing Website | 2026-07-28 |
-| Phase 1.6 | Motion and Visual Storytelling | 2026-07-28 |
-| Phase 1.7 | SEO, Legal and Performance | 2026-07-28 |
-| Phase 1.8 | Cross-Device QA and Release Readiness | 2026-07-28 |
-| Phase 1.9 | Production Launch Preparation | 2026-07-28 |
-| Phase 1.10 | Release Candidate Packaging and Smoke Automation | 2026-07-28 |
-| Phase 2.1 | TH/EN Internationalization Foundation | 2026-07-28 |
-| Phase 2.2 | Bilingual Project Roadmap | 2026-07-28 |
+| 1. Product discovery | Now | ตรวจสอบผู้ใช้ ปัญหาหลัก และ core trip flow |
+| 2. Shared trip planning | Next | สร้างทริป ชวนเพื่อน กำหนดการและรายละเอียดร่วม |
+| 3. Shared gear coordination | Next | checklist, assignment และ readiness แบบง่าย |
+| 4. Offline readiness | Later | ข้อมูลทริปสำคัญ สถานะออฟไลน์และการซิงก์ |
+| 5. Private beta | Later | ทดลองกับกลุ่มเล็กและปรับจากการใช้งานจริง |
+| 6. Launch readiness | Later | privacy, safety, accessibility, support และ store readiness |
 
-แต่ละรายการต้องมี `id`, phase label, date/date range, localized title,
-localized summary, highlights, status และลิงก์ภายในที่ผ่านการคัดเลือกเมื่อมี
-หน้าสาธารณะที่เหมาะสม
+แต่ละรายการมี `id`, stage, horizon, localized title, localized summary,
+highlights และ status โดยไม่มีวันที่เปิดตัว
 
 #### Information architecture and routing
 
@@ -1131,7 +1121,7 @@ localized summary, highlights, status และลิงก์ภายในท
 #### File and code structure
 
 - [x] สร้าง `content/roadmap.ts` เป็น structural source of truth สำหรับ ID,
-      phase order, dates, status และ link keys โดยไม่มี user-visible copy
+      stage order, horizon, status และ copy keys โดยไม่มี user-visible copy
 - [x] เพิ่ม namespace `roadmap.*` ใน `messages/en.json` และ `messages/th.json`
 - [x] สร้าง `app/[locale]/roadmap/page.tsx`
 - [x] สร้าง `app/roadmap/page.tsx` สำหรับ default-locale redirect
@@ -1147,8 +1137,8 @@ localized summary, highlights, status และลิงก์ภายในท
   `#778873`, `#A1BC98`, `#DCCFC0`, `#FDF6ED`
 - รักษา typography, spacing, border radius และ motion language จากหน้า marketing
   ปัจจุบัน
-- ทำให้ `Current` phase เด่นขึ้นอย่างสุขุมโดยไม่ใช้สีเพียงอย่างเดียว
-- แต่ละ Phase แสดง summary แบบสแกนง่ายและเปิดดู highlights ได้โดยไม่ทำให้
+- ทำให้ `Current focus` เด่นขึ้นอย่างสุขุมโดยไม่ใช้สีเพียงอย่างเดียว
+- แต่ละ Stage แสดง summary แบบสแกนง่ายและ highlights เพียง 2 รายการ
   หน้าแน่นเกินไป
 - Mobile ต้องอ่านเป็นลำดับเดียว ไม่ใช้ horizontal overflow และไม่ซ่อนข้อมูลหลัก
 - ใช้ CSS และ asset/icon ที่มีอยู่แล้ว ไม่เพิ่ม bitmap illustration ใหม่ใน Phase นี้
@@ -1158,16 +1148,16 @@ localized summary, highlights, status และลิงก์ภายในท
 
 - ข้อความที่ผู้ใช้เห็นและ accessibility copy ทั้งหมดต้องมาจาก translation catalog
 - EN/TH ต้องมี key, array shape และ placeholders ตรงกัน 100%
-- Phase ID, ISO date, status key และ route key เป็นข้อมูลกลางที่ไม่ต้องแปล
+- Stage number, horizon key, status key และ route key เป็นข้อมูลกลางที่ไม่ต้องแปล
 - แปล title, summary, highlights, status label, navigation, metadata และ ARIA labels
 - Owner ต้องตรวจภาษาไทยและความถูกต้องของ public summary ก่อนอนุมัติหน้า
 
 #### Accessibility
 
 - ใช้ `<main>`, H1 หนึ่งรายการ และ `<ol>` สำหรับลำดับเหตุการณ์
-- แต่ละ Phase มี heading ที่เชื่อมกับรายการด้วย accessible name
+- แต่ละ Stage มี heading ที่เชื่อมกับรายการด้วย accessible name
 - ใช้ข้อความและ icon/shape ร่วมกันเพื่อสื่อสถานะ ไม่พึ่งสีเพียงอย่างเดียว
-- รายการ Phase ปัจจุบันใช้ `aria-current="step"`
+- Product discovery ใช้ `aria-current="step"`
 - Navigation, language switcher และลิงก์ทั้งหมดใช้งานด้วย keyboard ได้
 - Interactive target มีขนาดอย่างน้อย 44 × 44 CSS pixels
 - Heading hierarchy และ reading order ต้องตรงกันบน desktop และ mobile
@@ -1182,10 +1172,11 @@ localized summary, highlights, status และลิงก์ภายในท
 
 #### Testing and validation
 
-- [x] ตรวจ roadmap ID ไม่ซ้ำ ลำดับเวลาไม่ย้อน และมี Kickoff–Phase 2.2 ครบ
+- [x] ตรวจ roadmap ID ไม่ซ้ำ ลำดับ Stage ถูกต้อง และมี product discovery–launch
+      readiness ครบ 6 ขั้น
 - [x] ตรวจว่าทุก roadmap entry อ้างถึง translation key ที่มีอยู่จริง
 - [x] ตรวจ catalog parity ของ roadmap title, summary และ highlights
-- [x] ตรวจ rendered EN/TH roadmap: `lang`, H1, ordered timeline, date และ status
+- [x] ตรวจ rendered EN/TH roadmap: `lang`, H1, ordered timeline, horizon และ status
 - [x] ตรวจ desktop/mobile navigation และ footer มี localized Roadmap link
 - [x] ตรวจ language switcher ไป equivalent roadmap route
 - [x] ตรวจ current phase semantics และ status ไม่สื่อด้วยสีอย่างเดียว
@@ -1210,8 +1201,8 @@ localized summary, highlights, status และลิงก์ภายในท
 #### Acceptance criteria
 
 - [x] ผู้ใช้เข้าหน้า Roadmap ได้จาก desktop และ mobile menu
-- [x] Roadmap แสดง Project Kickoff และ Phase 1.1–1.10, 2.1, 2.2 ครบตามลำดับ
-- [x] แต่ละ Phase อธิบายสิ่งที่ทำและผลลัพธ์สำคัญได้อย่างกระชับ
+- [x] Roadmap แสดง 6 ขั้นของทิศทางแอปมือถือครบตามลำดับ
+- [x] แต่ละ Stage อธิบายเป้าหมายคร่าว ๆ โดยไม่ลงรายละเอียดเกินจำเป็น
 - [x] ทุกข้อความบนหน้าและเมนูมีทั้งภาษาไทยและอังกฤษ
 - [x] การสลับภาษารักษา roadmap route context
 - [ ] หน้าใช้งานได้บน target viewports โดยไม่มีข้อความล้นหรือ horizontal scroll
@@ -1223,12 +1214,12 @@ localized summary, highlights, status และลิงก์ภายในท
 
 #### Out of scope
 
-- GitHub API, automatic commit feed หรือการอ่าน Git history ใน production
-- Issue tracker, project-management dashboard หรือ admin/CMS
+- การลงมือพัฒนา iOS app, Android app, backend หรือระบบ sync จริง
+- การรับรองว่าแต่ละฟีเจอร์จะเปิดใช้จริงตามลำดับนี้
+- Issue tracker, project-management dashboard, GitHub feed หรือ admin/CMS
 - Roadmap ที่ผู้ใช้แก้ไขได้
 - Progress percentage, voting, comments หรือ subscription notification
-- Mobile app roadmap และการพัฒนา mobile app
-- การประกาศ launch date หรือ future phase ที่ยังไม่อนุมัติ
+- การประกาศ launch date, platform availability หรือ feature-complete date
 - Live waitlist, analytics, production input, hosted smoke และ deployment
 
 #### Exit gate
@@ -1236,6 +1227,241 @@ localized summary, highlights, status และลิงก์ภายในท
 Phase 2.2 implementation, automated QA, commit และ push ได้รับอนุญาตในคำสั่ง
 รอบนี้ แต่ owner review ข้อความ public roadmap, manual browser/device QA และ
 deployment ยังต้องได้รับการตรวจหรือคำสั่งแยกต่างหาก
+
+### Phase 2.3 — Support the Developer and Supporter Wall
+
+#### Status
+
+**Implementation complete with safe empty state — รอข้อมูลผู้สนับสนุนจริง,
+approved support destination และ owner review**
+
+#### Objective
+
+เพิ่มเมนูและหน้าสาธารณะ **“สนับสนุนผู้พัฒนา” / “Support the developer”**
+เพื่ออธิบายว่าการสนับสนุนช่วย Accomp อย่างไร และแสดง supporter wall ที่มี
+รูปภาพกับชื่อสาธารณะของผู้สนับสนุนจริง โดยรองรับภาษาไทยและอังกฤษครบถ้วน
+
+Phase นี้ยังอยู่ในสโคปเว็บไซต์โปรโมต ไม่สร้างระบบชำระเงินเอง ไม่สร้าง backend
+และไม่เปิดเผยชื่อหรือรูปของบุคคลใดโดยไม่มีความยินยอม
+
+#### Product and trust decisions
+
+- ใช้ข้อมูลผู้สนับสนุนจริงที่เจ้าของโปรเจกต์จัดเตรียมและยืนยันแล้วเท่านั้น
+- ห้ามสร้างชื่อ รูปบุคคล หรือ testimonial สมมติเพื่อทำให้หน้าดูมีข้อมูล
+- ผู้สนับสนุนเลือกใช้ชื่อจริง นามแฝง หรือไม่แสดงตัวตนได้
+- แสดงเฉพาะชื่อสาธารณะและรูปที่ได้รับอนุญาต ไม่มีจำนวนเงิน อันดับ หรือ tier
+  ในเวอร์ชันแรก
+- ลำดับการแสดงผลเป็น `sortOrder` ที่เจ้าของกำหนด ไม่สื่อว่าคนแรกสนับสนุนมากกว่า
+- ต้องมีวิธีถอดชื่อหรือรูปออกเมื่อผู้สนับสนุนถอนความยินยอม
+- CTA สนับสนุนจะเปิดใช้งานเมื่อมี HTTPS destination ที่เจ้าของอนุมัติแล้ว
+- หากยังไม่มี destination ให้แสดงสถานะ “ช่องทางสนับสนุนกำลังเตรียมการ”
+  อย่างตรงไปตรงมา และไม่ใช้ปุ่มที่ดูเหมือนชำระเงินได้
+- หากใช้แพลตฟอร์มภายนอก ให้เป็น outbound link ที่ระบุชัดว่าออกจาก Accomp
+  ไม่ฝังช่องกรอกบัตรหรือรับข้อมูลการเงินบนเว็บไซต์
+
+#### Information architecture and routing
+
+- เพิ่ม route `/en/support` สำหรับภาษาอังกฤษ
+- เพิ่ม route `/th/support` สำหรับภาษาไทย
+- `/support` redirect ไป `/en/support` ตาม default locale
+- เพิ่ม `Support the developer` / `สนับสนุนผู้พัฒนา` ใน desktop navigation
+  และ mobile menu
+- เพิ่มลิงก์หน้า Support ใน footer
+- Language switcher ต้องสลับ `/en/support` ↔ `/th/support`
+- โลโก้และลิงก์กลับหน้าหลักต้องรักษา locale ปัจจุบัน
+- CTA จากหน้า Support กลับไป product story หรือไป approved support destination
+  ตามสถานะที่ตรวจสอบแล้ว
+- Route และ locale ที่ไม่รองรับต้องรักษาพฤติกรรม 404 เดิม
+
+#### Page content
+
+หน้า Support เวอร์ชันแรกประกอบด้วย:
+
+1. Hero ที่อธิบายการสนับสนุนแบบกระชับ
+2. “What support helps with” / “การสนับสนุนช่วยเรื่องอะไร”
+3. Support CTA หรือสถานะกำลังเตรียมช่องทางอย่างตรงไปตรงมา
+4. Supporter wall พร้อมรูปและชื่อสาธารณะ
+5. Empty state ที่สุภาพเมื่อยังไม่มีผู้สนับสนุนที่อนุมัติให้เผยแพร่
+6. Privacy note ว่ารายชื่อและรูปแสดงโดยได้รับความยินยอม
+
+ข้อความต้องไม่อ้างว่าเงินสนับสนุนรับประกันฟีเจอร์ สิทธิ์ควบคุม roadmap
+ผลตอบแทนทางการเงิน หรือวันเปิดตัว
+
+#### Supporter data model
+
+- [x] สร้าง `content/supporters.ts` เป็น source of truth แบบ static
+- แต่ละ supporter entry มีเฉพาะ:
+  - `id` ที่ไม่ใช้ข้อมูลส่วนตัวโดยตรง
+  - `displayName`
+  - `imagePath`
+  - `sortOrder`
+- ข้อมูลที่ผู้ใช้เห็นนอกเหนือจากชื่อเฉพาะต้องมาจาก translation catalog
+- Proper name และนามแฝงไม่แปลข้ามภาษา
+- ไม่เก็บ email, payment ID, transaction amount, address หรือ private consent
+  evidence ใน repository
+- Empty array ต้อง render empty state ได้โดยไม่ทำให้ build ล้ม
+- Duplicate ID, duplicate image path และ duplicate sort order ต้องถูกปฏิเสธ
+- Runtime ห้ามอ่าน payment provider, Git history, Markdown หรือ filesystem
+
+#### Supporter image requirements
+
+- เก็บ asset ที่อนุมัติแล้วใน `public/supporters/`
+- ใช้ภาพอัตราส่วน 1:1 ที่ crop อย่างเคารพเจ้าของภาพ
+- ใช้ WebP หรือ AVIF เมื่อแปลงได้โดยไม่เสียคุณภาพอย่างเห็นได้ชัด
+- กำหนด `width` และ `height` เพื่อป้องกัน layout shift
+- ใช้ lazy loading และ asynchronous decoding สำหรับรูปที่อยู่นอก viewport
+- เป้าหมายขนาดไม่เกิน 200 KB ต่อภาพ และไม่เกิน 1.5 MB ตาม global asset budget
+- ลบ EXIF/GPS metadata ก่อนนำเข้า repository
+- ห้ามใช้รูปจาก social media, search engine หรือบุคคลที่สามโดยเดาสิทธิ์ใช้งาน
+- Alt text ใช้ template ที่แปลได้ เช่น `Portrait of {name}` /
+  `รูปของ {name}` และ placeholder ต้องตรงกันระหว่าง TH/EN
+- หากผู้สนับสนุนไม่ต้องการใช้รูป ให้รอ asset ที่ได้รับอนุมัติหรือใช้ anonymous
+  treatment ที่เจ้าของยืนยัน ห้ามสร้างใบหน้าทดแทนเอง
+
+#### Consent and privacy workflow
+
+ก่อนเพิ่ม supporter entry เจ้าของโปรเจกต์ต้องยืนยัน:
+
+- ชื่อสาธารณะที่ต้องการแสดง
+- ไฟล์รูปที่มีสิทธิ์เผยแพร่
+- ความยินยอมให้แสดงชื่อและรูปบนเว็บไซต์สาธารณะ
+- การยืนยันว่าบุคคลในภาพเป็นผู้ใหญ่ หรือมี guardian consent ที่ตรวจสอบแล้ว
+- ช่องทางรับคำขอลบหรือแก้ไขข้อมูล
+
+สร้าง `docs/phase-2.3/supporter-publication-register.md` สำหรับรายการ asset,
+public display name, permission status และวันที่เจ้าของอนุมัติเท่านั้น
+หลักฐานความยินยอมส่วนตัวต้องเก็บนอก public repository
+
+#### File and code structure
+
+- [x] ขยาย `LocalizedPathname` ให้รองรับ `/support`
+- [x] สร้าง `app/[locale]/support/page.tsx`
+- [x] สร้าง `app/support/page.tsx` สำหรับ default-locale redirect
+- [x] สร้าง `components/support/SupportPage.tsx`
+- [x] สร้าง `components/support/support-page.module.css`
+- [x] สร้าง `content/supporters.ts`
+- [x] เพิ่ม namespace `support.*` ใน `messages/en.json` และ `messages/th.json`
+- [x] ขยาย shared navigation และ footer โดยไม่ duplicate route logic
+- [x] เพิ่ม publication register และ regression tests
+- [ ] เพิ่ม supporter assets หลังได้รับไฟล์และ publication permission จริง
+
+#### Experience and visual direction
+
+- ใช้ topbar รูปแบบ Accomp ปัจจุบัน: brand ซ้าย, menu capsule กลาง และ actions ขวา
+- เมื่อเพิ่มเมนูที่หก ต้องตรวจความกว้างของแคปซูลทั้ง EN/TH และเลื่อน breakpoint
+  ไปใช้ mobile menu ก่อนเกิดการชนกัน
+- Hero ใช้ pine/path motif และ palette
+  `#778873`, `#A1BC98`, `#DCCFC0`, `#FDF6ED`
+- Supporter wall เป็น responsive card grid ที่ให้รูปและชื่อมีน้ำหนักเท่ากัน
+- รูปใช้กรอบวงกลมหรือ rounded square แบบเดียวกันทุกคน
+- ไม่ใช้ขนาด card, สี หรือ badge เพื่อสื่อมูลค่าเงินสนับสนุน
+- Mobile ต้องเป็นลำดับเดียว อ่านง่าย ไม่มี horizontal overflow
+- Motion เป็น progressive enhancement และมี reduced-motion alternative
+- Empty state ต้องดูตั้งใจ ไม่แสดง broken image หรือ skeleton ถาวร
+
+#### Internationalization
+
+- เพิ่ม localized navigation, hero, support explanation, CTA/status, section
+  headings, empty state, consent note, metadata และ ARIA labels
+- EN/TH ต้องมี key, array shape และ placeholders ตรงกัน 100%
+- `displayName`, asset path และ structural ID เป็นข้อมูลกลางที่ไม่แปล
+- Language switcher ต้องรักษา support route context
+- Owner review ภาษาไทยและอังกฤษก่อนถือว่า public copy approved
+
+#### Accessibility
+
+- ใช้ `<main>`, H1 หนึ่งรายการ และ semantic section headings
+- Supporter wall ใช้ `<ul>`/`<li>` หรือโครงสร้างรายการที่เทียบเท่า
+- รูปทุกภาพมี localized meaningful alt text
+- ไม่ซ้ำชื่อใน alt text และ visible text แบบสร้างเสียงรบกวนโดยไม่จำเป็น
+- Support CTA, menu และ language switcher ใช้ keyboard ได้
+- Interactive target มีขนาดอย่างน้อย 44 × 44 CSS pixels
+- Focus state ชัดเจนและ reading order ตรงกันทุก viewport
+- Empty state และ external-link notice ต้องอ่านได้ด้วย screen reader
+
+#### Localized SEO and discovery
+
+- เพิ่ม localized title และ description สำหรับหน้า Support
+- เพิ่ม canonical, `hreflang` (`en`, `th`, `x-default`) และ Open Graph metadata
+- เพิ่ม `/en/support` และ `/th/support` ใน sitemap
+- ใช้ social preview ตาม locale ที่มีอยู่แล้ว
+- ไม่ใส่ `Person` structured data สำหรับผู้สนับสนุนโดยอัตโนมัติ
+- ไม่ใส่ donation/payment schema จนกว่าจะมีปลายทางและสถานะที่ยืนยันแล้ว
+
+#### Testing and validation
+
+- [x] ตรวจ supporter ID, image path และ sort order ไม่ซ้ำ
+- [ ] ตรวจทุก supporter entry มีชื่อและ asset ที่มีอยู่จริง
+- [ ] ตรวจ image format, dimensions, file size และไม่มี EXIF/GPS metadata
+- [x] ตรวจ catalog parity รวม `{name}` placeholder
+- [x] ตรวจ rendered EN/TH support page: `lang`, H1 และ empty state
+- [x] ตรวจ image contract มี dimensions, lazy loading, decoding และ localized alt
+- [x] ตรวจ desktop/mobile navigation และ footer มี localized Support link
+- [x] ตรวจ language switcher ไป equivalent support route
+- [ ] ตรวจ approved external link เป็น HTTPS และมี safe external-link behavior
+- [x] ตรวจ disabled/inactive state ไม่มี form หรือ submission surface
+- [x] ตรวจ canonical, `hreflang`, metadata และ sitemap routes
+- [x] ขยาย production smoke matrix จาก 14 เป็น 16 localized content routes
+- [ ] ตรวจ topbar และ card grid ที่ 320, 390, 768, 1024, 1440 และ 1920px
+- [ ] ตรวจ keyboard flow, focus visibility, 200% zoom และ reduced motion
+- [x] รัน formatting, lint, strict TypeScript, source tests, production build,
+      rendered-output tests, release audit และ local production smoke
+
+#### Deliverables
+
+- [x] Bilingual `/en/support` และ `/th/support`
+- [x] Localized Support menu ใน desktop, mobile และ footer
+- [ ] Responsive supporter wall พร้อมรูปและชื่อที่ได้รับอนุญาต
+- [x] Honest inactive preparation state
+- [x] Typed static supporter data model
+- [x] Publication register
+- [ ] Optimized supporter assets หลังได้รับรูปที่ได้รับอนุญาตจริง
+- [x] `support.*` message catalog ครบ EN/TH
+- [x] Localized metadata, sitemap และ equivalent-route switching
+- [x] Regression tests และ `docs/phase-2.3/README.md`
+- [x] Updated release checklist and smoke-test contract
+
+#### Acceptance criteria
+
+- [x] ผู้ใช้เข้าหน้า Support ได้จาก desktop และ mobile menu
+- [ ] หน้าแสดงรูปและชื่อผู้สนับสนุนจริงตามข้อมูลที่ได้รับอนุมัติ
+- [x] ไม่มีชื่อ รูป จำนวนเงิน หรือ claim ที่สร้างขึ้นเอง
+- [ ] ผู้สนับสนุนทุกคนมี publication permission ที่เจ้าของยืนยัน
+- [x] ทุกข้อความบนหน้าและเมนูมีทั้งภาษาไทยและอังกฤษ
+- [x] การสลับภาษารักษา support route context
+- [ ] หน้าใช้ได้ทุก target viewport โดยไม่มีเมนูชน ข้อความล้น หรือ horizontal scroll
+- [ ] Semantic list, alt text, keyboard navigation และ empty state ผ่าน QA
+- [x] Localized SEO และ production smoke ครอบคลุม route ใหม่
+- [ ] Owner อนุมัติ support destination และ public supporter wall
+- [x] Full release-quality suite ผ่าน
+
+#### Out of scope
+
+- Payment processing, wallet, subscription หรือรับข้อมูลบัตรบนเว็บไซต์
+- Backend, database, supporter login หรือ self-service profile
+- Automatic sync จาก Patreon, Buy Me a Coffee, GitHub Sponsors หรือ provider อื่น
+- Upload form สำหรับชื่อและรูป
+- Support tier, leaderboard, amount, badge หรือ reward system
+- Public comment, testimonial หรือ social profile link
+- การพัฒนาแอปมือถือ
+- Analytics, final legal approval, production input, hosted smoke และ deployment
+
+#### Owner inputs required before implementation can be considered complete
+
+- Approved support destination หรือยืนยันให้ใช้ preparation state
+- รายชื่อสาธารณะของผู้สนับสนุนแต่ละคน
+- รูป 1:1 ที่มีสิทธิ์เผยแพร่ของแต่ละคน
+- Confirmation ว่าทุกคนยินยอมให้เผยแพร่ชื่อและรูป
+- ลำดับการแสดงผลที่ต้องการ
+- ช่องทางติดต่อสำหรับคำขอลบหรือแก้ไข
+
+#### Exit gate
+
+ผู้ใช้อนุญาต implementation, commit และ push ในคำสั่งรอบนี้ หน้า Support
+ทำงานด้วย safe empty state โดยไม่มีชื่อ รูป หรือระบบรับเงินสมมติ การเติม
+supporter wall ให้มีข้อมูลจริงยังต้องได้รับชื่อ รูปและ permission ก่อน ส่วน
+owner review, manual browser/device QA และ deployment ต้องได้รับการตรวจหรือ
+คำสั่งแยกต่างหาก
 
 ## 10. Quality Gates
 
@@ -1399,18 +1625,27 @@ Phase 3 ดำเนินต่อด้วย provisional assumptions เพ�
 - [x] เพิ่ม locale routes, language switcher และ localized metadata
 - [x] ตรวจ translation parity, accessibility semantics และ localized smoke
 - [ ] Owner review ภาษาไทยและ manual responsive visual QA
-- [x] วางแผน Phase 2.2 สำหรับ bilingual public project roadmap
+- [x] วางแผน Phase 2.2 สำหรับ bilingual mobile app roadmap
 - [x] เริ่ม Phase 2.2 หลังได้รับคำสั่งจากผู้ใช้
 - [x] สร้าง `/en/roadmap` และ `/th/roadmap`
 - [x] เพิ่ม Roadmap menu ใน desktop, mobile และ footer
 - [x] ตรวจ public summaries, translation parity, accessibility และ localized SEO
+- [x] ปรับ Roadmap จากประวัติเฟสของเว็บไซต์เป็นทิศทางคร่าว ๆ ของแอปมือถือ
+- [x] วางแผน Phase 2.3 สำหรับเมนูสนับสนุนผู้พัฒนาและ supporter wall
+- [x] เริ่ม Phase 2.3 หลังได้รับคำสั่งจากผู้ใช้
+- [x] ใช้ inactive preparation state จนกว่าจะได้รับ approved support destination
+- [ ] รับชื่อ รูป และ publication permission ของผู้สนับสนุน
+- [x] สร้าง `/en/support` และ `/th/support`
+- [x] เพิ่ม Support menu ใน desktop, mobile และ footer
+- [x] ตรวจ safe supporter model, translation, accessibility และ SEO
 - [x] สร้าง source code foundation
 - [x] สร้าง Git repository
 - [x] Initial commit
 - [x] Create remote repository
 - [ ] Deploy
 
-**งานถัดไปหลังจากผู้ใช้ตรวจงาน:** owner review ภาษาไทยจาก Phase 2.1 และข้อความ
-public roadmap จาก Phase 2.2 จากนั้น production input,
-manual browser/device/legal gates, hosted smoke และ deployment ยังคงเป็นงานที่
-ต้องได้รับข้อมูลหรือคำสั่งแยกต่างหาก
+**งานถัดไป:** รับ approved support destination และชื่อ รูป ลำดับ พร้อม
+publication permission ของผู้สนับสนุนจริงเพื่อแทน safe empty state ส่วน owner
+review ภาษาไทยและ public copy, production input, manual browser/device/legal
+gates, hosted smoke และ deployment ยังคงเป็นงานที่ต้องได้รับข้อมูลหรือคำสั่ง
+แยกต่างหาก

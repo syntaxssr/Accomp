@@ -25,7 +25,8 @@
     "howItWorks": "How it works",
     "offline": "Offline",
     "faq": "FAQ",
-    "roadmap": "Roadmap"
+    "roadmap": "Roadmap",
+    "supportDeveloper": "Support the developer"
   },
   "languageSwitcher": {
     "label": "Change language",
@@ -241,6 +242,7 @@
       "howItWorks": "How it works",
       "offline": "Offline",
       "roadmap": "Roadmap",
+      "supportDeveloper": "Support the developer",
       "faq": "FAQ",
       "contact": "Contact · coming later",
       "privacy": "Privacy",
@@ -250,150 +252,128 @@
     }
   },
   "roadmap": {
-    "metaTitle": "Project roadmap",
-    "metaDescription": "Follow the Accomp marketing website journey from project kickoff through its current bilingual roadmap phase.",
+    "metaTitle": "Mobile app roadmap",
+    "metaDescription": "See the early direction for the Accomp mobile app, from product discovery and shared trip planning to offline readiness and launch preparation.",
     "skipToContent": "Skip to roadmap",
-    "eyebrow": "Project journey",
-    "title": "Every trail mark that brought us here.",
-    "lede": "A clear look at how the Accomp marketing website grew from an outdoor-app idea into a bilingual, release-ready product story.",
-    "curatedNote": "A curated public history · Updated as each phase is completed",
-    "visualLabel": "An illustrated trail connecting Accomp project milestones",
-    "visualCaption": "One shared direction, shaped one phase at a time.",
-    "timelineEyebrow": "Kickoff to today",
-    "timelineTitle": "The route so far.",
-    "timelineBody": "Each phase had one focused purpose: define the story, shape the experience, build it carefully, and make every release safer.",
-    "timelineLabel": "Accomp project milestones",
-    "kickoffLabel": "Project kickoff",
-    "phaseLabel": "Phase",
+    "eyebrow": "Mobile app direction",
+    "title": "From shared plans to trail-ready trips.",
+    "lede": "A simple view of how we want Accomp to grow into a calm mobile companion for planning, packing, and exploring together.",
+    "curatedNote": "Direction, not a launch promise · Timing remains flexible",
+    "visualLabel": "An illustrated trail connecting the planned stages of the Accomp mobile app",
+    "visualCaption": "Start with the shared plan. Build toward the trail.",
+    "timelineEyebrow": "Now, next, later",
+    "timelineTitle": "What we want to build, in order.",
+    "timelineBody": "The roadmap stays intentionally broad. We will validate the core group-trip experience first, then expand only when each step is useful and reliable.",
+    "timelineLabel": "Accomp mobile app roadmap",
+    "stageLabel": "Stage",
+    "horizon": {
+      "now": "Now",
+      "next": "Next",
+      "later": "Later"
+    },
     "status": {
-      "completed": "Completed",
-      "current": "Current",
+      "current": "Current focus",
       "planned": "Planned"
     },
-    "currentNote": "You are here — this is the current project phase.",
-    "nextEyebrow": "The journey continues",
-    "nextTitle": "Built calmly. Improved deliberately.",
-    "nextBody": "Future phases will appear here only after their scope is approved. For now, explore the Accomp product story and the outdoor planning experience it is designed to support.",
+    "currentNote": "Current focus — understand the right problems before building the mobile app.",
+    "nextEyebrow": "A flexible direction",
+    "nextTitle": "Learn first. Build what helps.",
+    "nextBody": "This roadmap will change as we learn from outdoor groups. Features, platforms, timing, and launch plans remain subject to validation.",
     "returnHome": "Explore Accomp",
     "items": {
-      "kickoff": {
-        "title": "Setting the trailhead",
-        "summary": "We defined Accomp as a marketing-only website for a future mobile companion that helps groups prepare for outdoor trips together.",
+      "discovery": {
+        "title": "Shape the right companion",
+        "summary": "Clarify who Accomp is for, which trip-planning problems matter most, and what the smallest useful mobile experience should be.",
         "highlights": [
-          "Set a focused promotional-website scope",
-          "Established a phase-by-phase working rhythm",
-          "Recorded the first brand and product assumptions"
+          "Validate the core needs of outdoor groups",
+          "Prototype the essential trip flow"
         ]
       },
-      "phase11": {
-        "title": "Finding the voice and visual direction",
-        "summary": "We shaped the brand story, content hierarchy, pine identity, outdoor palette, and the first visual system for Accomp.",
+      "tripPlanning": {
+        "title": "Plan one trip together",
+        "summary": "Create a trip, invite companions, and keep the route, schedule, meeting details, and shared decisions in one place.",
         "highlights": [
-          "Defined the product promise and audience",
-          "Created the pine symbol direction",
-          "Planned the content, motion, and design tokens"
+          "Shared trip space and invitations",
+          "Clear itinerary and trip details"
         ]
       },
-      "phase12": {
-        "title": "Turning the story into a journey",
-        "summary": "We translated the strategy into page structure, responsive wireframes, and an interaction prototype that made the complete story testable.",
+      "gearCoordination": {
+        "title": "Know who's bringing what",
+        "summary": "Add a shared gear checklist so the group can divide responsibilities and see what still needs attention before leaving.",
         "highlights": [
-          "Mapped the information architecture",
-          "Built desktop and mobile wireframes",
-          "Documented responsive and interaction behavior"
+          "Personal and group gear lists",
+          "Assignments and simple readiness states"
         ]
       },
-      "phase13": {
-        "title": "Bringing the experience into focus",
-        "summary": "We developed the high-fidelity visual language, including the offline map treatment, component states, and motion specifications.",
+      "offlineReadiness": {
+        "title": "Stay prepared beyond signal",
+        "summary": "Explore reliable offline access to the essential route and trip information people need when connectivity becomes limited.",
         "highlights": [
-          "Created a high-fidelity responsive prototype",
-          "Established the offline-map visual direction",
-          "Specified component and motion states"
+          "Downloadable trip essentials",
+          "Clear offline and sync status"
         ]
       },
-      "phase14": {
-        "title": "Laying a reliable foundation",
-        "summary": "We created the runnable project, converted the visual direction into design tokens, and built reusable layout and interface primitives.",
+      "privateBeta": {
+        "title": "Learn on real trips",
+        "summary": "Invite a small group of testers to use Accomp before a wider release and learn where planning, packing, and offline use still need work.",
         "highlights": [
-          "Established the application architecture",
-          "Implemented the Accomp design-token layer",
-          "Created reusable core components"
+          "Private testing with outdoor groups",
+          "Feedback, reliability, and usability improvements"
         ]
       },
-      "phase15": {
-        "title": "Building the complete product story",
-        "summary": "We assembled the responsive marketing page with the hero, feature chapters, offline story, FAQ, waitlist preview, and footer.",
+      "launchReadiness": {
+        "title": "Prepare for a responsible release",
+        "summary": "Complete the privacy, safety, accessibility, support, and store-readiness work needed before considering a public mobile app launch.",
         "highlights": [
-          "Built the core marketing experience",
-          "Added accessible mobile navigation and FAQs",
-          "Connected content to a typed model"
-        ]
-      },
-      "phase16": {
-        "title": "Adding motion with purpose",
-        "summary": "We introduced progressive movement that supports the story without getting in the way of reading, navigation, or reduced-motion preferences.",
-        "highlights": [
-          "Animated the hero and route narrative",
-          "Added scroll and active-section progression",
-          "Protected the reduced-motion experience"
-        ]
-      },
-      "phase17": {
-        "title": "Improving discovery, trust, and speed",
-        "summary": "We prepared search and social metadata, honest legal status pages, a branded not-found route, and performance checks.",
-        "highlights": [
-          "Added search and social foundations",
-          "Published clear pre-launch legal notices",
-          "Verified performance and tracking choices"
-        ]
-      },
-      "phase18": {
-        "title": "Testing every important path",
-        "summary": "We reviewed the experience across target screen sizes and strengthened touch targets, contrast, focus behavior, and release documentation.",
-        "highlights": [
-          "Covered the responsive viewport matrix",
-          "Improved accessibility and interaction details",
-          "Created a repeatable release checklist"
-        ]
-      },
-      "phase19": {
-        "title": "Preparing a safe launch path",
-        "summary": "We added automated quality checks, production-origin validation, security headers, and a deployment handoff that keeps owner approvals explicit.",
-        "highlights": [
-          "Introduced continuous quality checks",
-          "Added production preflight safeguards",
-          "Documented the deployment process"
-        ]
-      },
-      "phase110": {
-        "title": "Making releases repeatable",
-        "summary": "We created a production smoke-test matrix and a clean-commit release package with a verifiable manifest.",
-        "highlights": [
-          "Added HTTP-level route smoke tests",
-          "Packaged clean release candidates",
-          "Recorded commit and checksum evidence"
-        ]
-      },
-      "phase21": {
-        "title": "Welcoming Thai and English audiences",
-        "summary": "We moved every user-facing message into matched translation catalogs and introduced locale-aware routes, switching, metadata, and tests.",
-        "highlights": [
-          "Added complete TH and EN catalogs",
-          "Localized routes and language switching",
-          "Expanded bilingual SEO and regression coverage"
-        ]
-      },
-      "phase22": {
-        "title": "Making the journey visible",
-        "summary": "We turned the project history into this bilingual roadmap so every completed phase and its contribution can be understood at a glance.",
-        "highlights": [
-          "Created a curated milestone model",
-          "Built an accessible responsive timeline",
-          "Connected bilingual navigation, SEO, and tests"
+          "Privacy, safety, and accessibility review",
+          "Support and app-store preparation"
         ]
       }
     }
+  },
+  "support": {
+    "metaTitle": "Support the developer",
+    "metaDescription": "Learn how future support can help the independent development of Accomp and meet the people who choose to be recognized publicly.",
+    "skipToContent": "Skip to support information",
+    "eyebrow": "Support Accomp",
+    "title": "Help keep the path moving.",
+    "lede": "Accomp is being shaped as a calm companion for outdoor groups. Thoughtful support can create more room for research, careful design, and reliable product work.",
+    "visualLabel": "An illustrated group of companions supporting the Accomp trail",
+    "visualCaption": "Independent work, supported by people who believe in the direction.",
+    "impactEyebrow": "What support can help with",
+    "impactTitle": "More time for the work that matters.",
+    "impactBody": "Support will never buy control of the roadmap or guarantee a feature. It can help the developer spend more focused time learning, designing, and testing Accomp.",
+    "impactItems": [
+      {
+        "title": "Product learning",
+        "body": "Talk with outdoor groups and validate which planning problems are worth solving first."
+      },
+      {
+        "title": "Careful design",
+        "body": "Refine accessible, calm flows for shared trips, gear, and offline preparation."
+      },
+      {
+        "title": "Reliable foundations",
+        "body": "Invest time in testing, privacy, safety, and the technical work behind a dependable app."
+      }
+    ],
+    "supportAction": {
+      "eyebrow": "Support channel",
+      "title": "A safe way to support is being prepared.",
+      "body": "A verified support destination has not been connected yet. When one is approved, this page will link to it clearly without collecting payment details on Accomp.",
+      "status": "Support payments are not active yet."
+    },
+    "supporters": {
+      "eyebrow": "Supporter wall",
+      "title": "People helping Accomp move forward.",
+      "body": "Names and portraits appear here only when a real supporter has chosen to be recognized publicly.",
+      "listLabel": "Public Accomp supporters",
+      "imageAlt": "Portrait of {name}",
+      "emptyTitle": "No public supporters yet.",
+      "emptyBody": "When supporters opt in to public recognition, their approved name and portrait will appear here.",
+      "privacyNote": "Public recognition is always optional. Supporters can ask to update or remove their name and portrait."
+    },
+    "returnHome": "Explore Accomp"
   },
   "accessibility": {
     "featureRail": {

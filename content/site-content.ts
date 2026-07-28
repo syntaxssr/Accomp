@@ -35,6 +35,11 @@ const navigationDefinitions = [
   { href: "#faq", key: "faq" },
 ] as const;
 
+const pageNavigationDefinitions = [
+  { key: "roadmap", pathname: "/roadmap" },
+  { key: "supportDeveloper", pathname: "/support" },
+] as const;
+
 const planningVisuals: FeatureVisual[] = ["trip", "invite", "itinerary"];
 const packingVisuals: FeatureVisual[] = [
   "checklist",
@@ -56,16 +61,7 @@ export function createSiteContent(messages: Messages, locale: Locale) {
   return {
     faqItems: messages.marketing.faq.items as FAQItem[],
     howItWorks: messages.marketing.howItWorks.steps,
-    navigation: [
-      ...navigationDefinitions.map(({ href, key }) => ({
-        href,
-        label: messages.navigation[key],
-      })),
-      {
-        href: localizedPath(locale, "/roadmap"),
-        label: messages.navigation.roadmap,
-      },
-    ] as NavigationItem[],
+    navigation: createNavigation(messages, locale),
     packingFeatures: addVisuals(
       messages.marketing.pack.cards,
       packingVisuals,
@@ -78,21 +74,36 @@ export function createSiteContent(messages: Messages, locale: Locale) {
   };
 }
 
-export function createRoadmapNavigation(
+function createNavigation(
   messages: Messages,
   locale: Locale,
+  currentPathname?: "/roadmap" | "/support",
 ): NavigationItem[] {
   const home = localizedPath(locale);
 
   return [
     ...navigationDefinitions.map(({ href, key }) => ({
-      href: `${home}${href}`,
+      href: currentPathname ? `${home}${href}` : href,
       label: messages.navigation[key],
     })),
-    {
-      current: true,
-      href: localizedPath(locale, "/roadmap"),
-      label: messages.navigation.roadmap,
-    },
+    ...pageNavigationDefinitions.map(({ key, pathname }) => ({
+      current: currentPathname === pathname,
+      href: localizedPath(locale, pathname),
+      label: messages.navigation[key],
+    })),
   ];
+}
+
+export function createRoadmapNavigation(
+  messages: Messages,
+  locale: Locale,
+): NavigationItem[] {
+  return createNavigation(messages, locale, "/roadmap");
+}
+
+export function createSupportNavigation(
+  messages: Messages,
+  locale: Locale,
+): NavigationItem[] {
+  return createNavigation(messages, locale, "/support");
 }

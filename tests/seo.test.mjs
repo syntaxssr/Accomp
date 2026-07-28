@@ -52,6 +52,7 @@ test("publishes crawl routes without hard-coded deployment placeholders", async 
   assert.match(sitemap, /SUPPORTED_LOCALES/);
   assert.match(sitemap, /localizedPath/);
   assert.match(sitemap, /path: "\/roadmap"/);
+  assert.match(sitemap, /path: "\/support"/);
   assert.match(sitemap, /hreflang/);
   assert.doesNotMatch(`${robots}\\n${sitemap}`, /example\\.com|your-domain/i);
 });

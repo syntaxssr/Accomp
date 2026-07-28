@@ -27,10 +27,10 @@ function contrast(foreground, background) {
   return (Math.max(first, second) + 0.05) / (Math.min(first, second) + 0.05);
 }
 
-test("marks the reviewed experience as Phase 2.2 and keeps the skip target focusable", async () => {
+test("marks the reviewed experience as Phase 2.3 and keeps the skip target focusable", async () => {
   const page = await source("components/marketing/MarketingPage.tsx");
 
-  assert.match(page, /data-phase="2\.2"/);
+  assert.match(page, /data-phase="2\.3"/);
   assert.match(page, /<main id="main" tabIndex=\{-1\}>/);
 });
 

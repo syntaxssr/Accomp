@@ -107,6 +107,7 @@ test("keeps user-visible copy in message catalogs", async () => {
     "components/legal/LocalizedNotFound.tsx",
     "components/marketing/SiteFooter.tsx",
     "components/roadmap/RoadmapPage.tsx",
+    "components/support/SupportPage.tsx",
   ];
   const runtime = (
     await Promise.all(files.map((file) => source(file)))
@@ -125,10 +126,12 @@ test("keeps user-visible copy in message catalogs", async () => {
   }
 });
 
-test("localizes homepage, roadmap, legal and not-found route sources", async () => {
-  const [home, roadmap, privacy, terms, missing, sitemap] = await Promise.all([
+test("localizes homepage, roadmap, support, legal and not-found route sources", async () => {
+  const [home, roadmap, support, privacy, terms, missing, sitemap] =
+    await Promise.all([
     source("app/[locale]/page.tsx"),
     source("app/[locale]/roadmap/page.tsx"),
+    source("app/[locale]/support/page.tsx"),
     source("app/[locale]/privacy/page.tsx"),
     source("app/[locale]/terms/page.tsx"),
     source("app/[locale]/[...missing]/page.tsx"),
@@ -138,6 +141,8 @@ test("localizes homepage, roadmap, legal and not-found route sources", async () 
   assert.match(home, /MarketingPage locale=\{locale\} messages=\{messages\}/);
   assert.match(roadmap, /RoadmapPage locale=\{locale\} messages=\{messages\}/);
   assert.match(roadmap, /localizedPath\(locale, "\/roadmap"\)/);
+  assert.match(support, /SupportPage locale=\{locale\} messages=\{messages\}/);
+  assert.match(support, /localizedPath\(locale, "\/support"\)/);
   assert.match(privacy, /localizedPath\(locale, "\/privacy"\)/);
   assert.match(terms, /localizedPath\(locale, "\/terms"\)/);
   assert.match(missing, /notFound\(\)/);

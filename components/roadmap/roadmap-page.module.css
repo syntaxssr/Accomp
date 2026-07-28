@@ -266,12 +266,14 @@
     0 0 0 0.55rem rgb(119 136 115 / 22%);
 }
 
-.date {
+.horizon {
   display: block;
   margin-bottom: var(--space-3);
   color: var(--color-sage-ink);
   font-size: var(--font-size-sm);
   font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .milestone {
@@ -425,7 +427,7 @@
     display: grid;
   }
 
-  .date {
+  .horizon {
     padding-top: 1.2rem;
     text-align: right;
   }

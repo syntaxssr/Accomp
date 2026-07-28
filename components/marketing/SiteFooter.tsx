@@ -35,6 +35,9 @@ export function SiteFooter({ copy, locale }: SiteFooterProps) {
             </div>
             <div>
               <h2>{copy.support}</h2>
+              <a href={localizedPath(locale, "/support")}>
+                {copy.supportDeveloper}
+              </a>
               <a href={`${home}#faq`}>{copy.faq}</a>
               <span>{copy.contact}</span>
             </div>

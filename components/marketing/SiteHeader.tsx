@@ -4,14 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import { ButtonLink, Icon } from "@/components";
 import { LanguageSwitcher } from "@/components/i18n/LanguageSwitcher";
 import type { NavigationItem } from "@/content/site-content";
-import type { Locale } from "@/lib/i18n/config";
+import type { Locale, LocalizedPathname } from "@/lib/i18n/config";
 import type { Messages } from "@/lib/i18n/messages";
 import styles from "./site-header.module.css";
 
 interface SiteHeaderProps {
   copy: Messages["navigation"];
   homeHref?: string;
-  languagePathname?: "/" | "/privacy" | "/roadmap" | "/terms";
+  languagePathname?: LocalizedPathname;
   languageSwitcher: Messages["languageSwitcher"];
   locale: Locale;
   navigation: NavigationItem[];
@@ -143,7 +143,7 @@ export function SiteHeader({
     }
 
     function onResize() {
-      if (window.innerWidth >= 900) {
+      if (window.innerWidth >= 1248) {
         setOpen(false);
       }
     }
@@ -172,48 +172,52 @@ export function SiteHeader({
             <span>Accomp</span>
           </a>
 
-          <nav className={styles.desktopNav} aria-label={copy.primary}>
-            {navigation.map((item) => (
-              <a
-                aria-current={
-                  item.current
-                    ? "page"
-                    : headerState.activeHref === item.href
-                      ? "location"
-                      : undefined
-                }
-                data-active={
-                  item.current || headerState.activeHref === item.href
-                }
-                href={item.href}
-                key={item.href}
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
+          <div className={styles.navPill}>
+            <nav className={styles.desktopNav} aria-label={copy.primary}>
+              {navigation.map((item) => (
+                <a
+                  aria-current={
+                    item.current
+                      ? "page"
+                      : headerState.activeHref === item.href
+                        ? "location"
+                        : undefined
+                  }
+                  data-active={
+                    item.current || headerState.activeHref === item.href
+                  }
+                  href={item.href}
+                  key={item.href}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+          </div>
 
-          <LanguageSwitcher
-            className={styles.desktopLanguage}
-            copy={languageSwitcher}
-            locale={locale}
-            pathname={languagePathname}
-          />
+          <div className={styles.actions}>
+            <LanguageSwitcher
+              className={styles.desktopLanguage}
+              copy={languageSwitcher}
+              locale={locale}
+              pathname={languagePathname}
+            />
 
-          <ButtonLink className={styles.headerCta} href={waitlistHref}>
-            {copy.joinWaitlist}
-          </ButtonLink>
+            <ButtonLink className={styles.headerCta} href={waitlistHref}>
+              {copy.joinWaitlist}
+            </ButtonLink>
 
-          <button
-            aria-controls="mobile-menu"
-            aria-expanded={open}
-            className={styles.menuTrigger}
-            onClick={() => setOpen(true)}
-            ref={triggerRef}
-            type="button"
-          >
-            {copy.menu}
-          </button>
+            <button
+              aria-controls="mobile-menu"
+              aria-expanded={open}
+              className={styles.menuTrigger}
+              onClick={() => setOpen(true)}
+              ref={triggerRef}
+              type="button"
+            >
+              {copy.menu}
+            </button>
+          </div>
         </div>
       </header>
 

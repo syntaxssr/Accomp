@@ -21,7 +21,7 @@ test("builds typed marketing content from localized messages", async () => {
   assert.doesNotMatch(content, /Adventure together|Join the waitlist/);
 });
 
-test("preserves the complete marketing structure through Phase 2.2", async () => {
+test("preserves the complete marketing structure through Phase 2.3", async () => {
   const [page, english] = await Promise.all([
     source("components/marketing/MarketingPage.tsx"),
     source("messages/en.json"),
@@ -38,7 +38,7 @@ test("preserves the complete marketing structure through Phase 2.2", async () =>
     assert.match(page, new RegExp(`id="${id}"`));
   }
 
-  assert.match(page, /data-phase="2\.2"/);
+  assert.match(page, /data-phase="2\.3"/);
   assert.match(page, /data-motion-root/);
   assert.match(page, /<MotionController/);
   assert.match(page, /<SiteHeader/);
@@ -107,7 +107,7 @@ test("declares compact, tablet and desktop layout behavior", async () => {
   assert.match(pageStyles, /@media \(min-width: 48rem\)/);
   assert.match(pageStyles, /@media \(min-width: 56\.25rem\)/);
   assert.match(headerStyles, /@media \(max-width: 26\.25rem\)/);
-  assert.match(headerStyles, /@media \(min-width: 68rem\)/);
+  assert.match(headerStyles, /@media \(min-width: 78rem\)/);
   assert.match(railStyles, /overflow-x: auto/);
   assert.match(railStyles, /scroll-snap-type: inline mandatory/);
   assert.match(globalStyles, /prefers-reduced-motion: reduce/);
