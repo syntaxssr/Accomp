@@ -26,7 +26,7 @@ async function render(pathname = "/") {
   );
 }
 
-test("server-renders the complete Phase 8 marketing page", async () => {
+test("server-renders the complete Phase 9 marketing page", async () => {
   const response = await render();
 
   assert.equal(response.status, 200);
@@ -36,7 +36,7 @@ test("server-renders the complete Phase 8 marketing page", async () => {
 
   assert.match(html, /<html[^>]*lang="en"/i);
   assert.match(html, /<title>Adventure Together · Accomp<\/title>/i);
-  assert.match(html, /data-phase="8"/);
+  assert.match(html, /data-phase="9"/);
   assert.match(html, /Adventure together\./i);
   assert.match(html, /Make one plan\. Bring everyone in\./);
   assert.match(html, /Pack once\. Know who/);
@@ -119,4 +119,35 @@ test("serves legal notices, robots, sitemap and a real 404", async () => {
   const missingHtml = await missing.text();
   assert.match(missingHtml, /This path isn/);
   assert.match(missingHtml, /content="noindex"/);
+});
+
+test("serves a health check with production security headers", async () => {
+  const [homepage, health] = await Promise.all([render(), render("/health")]);
+
+  for (const response of [homepage, health]) {
+    assert.equal(
+      response.headers.get("x-content-type-options"),
+      "nosniff",
+    );
+    assert.equal(response.headers.get("x-frame-options"), "DENY");
+    assert.equal(
+      response.headers.get("referrer-policy"),
+      "strict-origin-when-cross-origin",
+    );
+    assert.match(
+      response.headers.get("content-security-policy") ?? "",
+      /default-src 'self'/,
+    );
+    assert.equal(
+      response.headers.get("strict-transport-security"),
+      "max-age=31536000",
+    );
+  }
+
+  assert.equal(health.status, 200);
+  assert.equal(health.headers.get("cache-control"), "no-store");
+  assert.deepEqual(await health.json(), {
+    service: "accomp",
+    status: "ok",
+  });
 });

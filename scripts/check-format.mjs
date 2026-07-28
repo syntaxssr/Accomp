@@ -3,6 +3,7 @@ import { extname, join } from "node:path";
 
 const root = process.cwd();
 const roots = [
+  ".github",
   "app",
   "build",
   "components",
@@ -12,12 +13,14 @@ const roots = [
   "docs/phase-6",
   "docs/phase-7",
   "docs/phase-8",
+  "docs/phase-9",
   "lib",
   "scripts",
   "tests",
   "worker",
 ];
 const rootFiles = [
+  ".env.example",
   ".openai/hosting.json",
   "README.md",
   "eslint.config.mjs",
@@ -33,6 +36,7 @@ const checkedExtensions = new Set([
   ".mjs",
   ".ts",
   ".tsx",
+  ".yml",
 ]);
 const files = [...rootFiles];
 

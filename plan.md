@@ -1,6 +1,6 @@
 # Accomp Marketing Website — Project Plan
 
-> สถานะ: **Phase 8 local release candidate complete — ยังไม่อนุมัติ deployment**
+> สถานะ: **Phase 9 production launch preparation complete — ยังไม่อนุมัติ deployment**
 > สร้างเมื่อ: 2026-07-26  
 > Project path: `/Users/peeraponchanthacham/Documents/GitHub/Accomp`  
 > Reference: [Phantom](https://phantom.com/?utm_source=loftlyy&utm_medium=referral&utm_campaign=phantom)
@@ -792,6 +792,48 @@ Commit และ push ได้รับอนุญาตในคำสั่�
 ยังต้องรอคำสั่งแยกต่างหากหลังปิดรายการใน
 [release checklist](./docs/phase-8/release-checklist.md)
 
+### Phase 9 — Production Launch Preparation
+
+#### Objective
+
+เตรียม engineering launch path ให้ตรวจซ้ำได้และปลอดภัยขึ้น โดยไม่สมมติ
+production domain, legal approval, CTA ปลายทางจริง หรือสิทธิ์ deploy
+
+#### Work
+
+- [x] GitHub Actions quality gate สำหรับ push และ pull request
+- [x] Production origin preflight
+- [x] Machine-readable release blocker report
+- [x] Worker-level response security headers
+- [x] No-store health endpoint
+- [x] Environment contract สำหรับ production URL
+- [x] Regression coverage สำหรับ launch controls
+- [x] Production input worksheet และ deployment runbook
+
+#### Deliverables
+
+- [x] [Phase 9 overview](./docs/phase-9/README.md)
+- [x] [Production readiness report](./docs/phase-9/production-readiness.md)
+- [x] [Production input worksheet](./docs/phase-9/production-inputs.md)
+- [x] [Deployment runbook](./docs/phase-9/deployment-runbook.md)
+- [x] CI workflow, preflight scripts, health route และ security headers
+
+#### Acceptance criteria
+
+- [x] Repository quality gate รันได้ทั้ง local และ GitHub Actions
+- [x] Production preflight ปฏิเสธ local/reserved/non-HTTPS origin
+- [x] Production preflight รายงาน owner-controlled blockers ครบ
+- [x] Health route และ security headers มี rendered-output tests
+- [x] Production build และ full quality suite สำเร็จ
+- [ ] Owner supplies and approves every production input
+- [ ] Strict production preflight passes with the real origin
+- [ ] Owner explicitly approves public deployment
+
+#### Exit gate
+
+Commit และ push ได้รับอนุญาตในคำสั่งเริ่ม Phase 9 รอบนี้ แต่ยังห้าม deploy
+จนกว่าจะปิด owner-controlled checklist และได้รับคำสั่ง deployment แยกต่างหาก
+
 ## 10. Quality Gates
 
 ใช้กับทุก Phase ที่มี code:
@@ -936,11 +978,18 @@ Phase 3 ดำเนินต่อด้วย provisional assumptions เพ�
 - [x] ตรวจ formatting, lint, typecheck, tests, build และ local runtime สำหรับ Phase 8
 - [ ] Provide final domain, CTA, legal, product and analytics decisions
 - [ ] Approve public deployment
+- [x] เริ่ม Phase 9 เมื่อ 2026-07-28
+- [x] เพิ่ม CI quality gate, production preflight และ environment contract
+- [x] เพิ่ม health endpoint และ Worker security headers
+- [x] เพิ่ม Phase 9 regression coverage และ deployment handoff documents
+- [ ] Close Phase 9 owner-controlled production inputs
+- [ ] Pass strict production preflight with the approved real origin
 - [x] สร้าง source code foundation
 - [x] สร้าง Git repository
 - [x] Initial commit
 - [x] Create remote repository
 - [ ] Deploy
 
-**งานถัดไปหลังจากผู้ใช้ตรวจเอกสาร:** รับ launch inputs ที่ยังขาด,
-ทำ manual non-Chromium/device QA และรอคำสั่ง deployment แยกต่างหาก
+**งานถัดไปหลังจากผู้ใช้ตรวจเอกสาร:** กรอก
+[production input worksheet](./docs/phase-9/production-inputs.md), ปิด manual
+browser/device/legal gates และรอคำสั่ง deployment แยกต่างหาก

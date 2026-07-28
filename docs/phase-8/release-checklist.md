@@ -21,6 +21,10 @@
 
 ## Required Before Public Deployment
 
+Phase 9 now automates the repository quality gate, production-origin validation,
+health endpoint and response security headers. The owner-controlled items below
+remain intentionally unchecked.
+
 - [ ] Confirm the production domain and set `NEXT_PUBLIC_SITE_URL`.
 - [ ] Provide the real waitlist or app-store destination.
 - [ ] Confirm the legal entity and public contact.

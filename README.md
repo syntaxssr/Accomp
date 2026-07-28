@@ -1,8 +1,8 @@
 # Accomp Marketing Website
 
 Accomp is a static-first marketing website for the Accomp mobile app. The
-repository currently contains the Phase 6 motion-complete marketing page and
-the Phase 8 cross-device QA and release-readiness layer.
+repository contains the motion-complete marketing page and the Phase 9
+production-launch preparation layer.
 
 ## Technology
 
@@ -14,6 +14,8 @@ the Phase 8 cross-device QA and release-readiness layer.
 - ESLint, TypeScript and Node test runner
 - Cloudflare Worker-compatible build output
 - Request-aware metadata, crawl routes and original social preview artwork
+- Worker-level security headers and a no-store health endpoint
+- GitHub Actions quality checks and strict production preflight
 
 No backend, database, CMS, authentication, analytics, cookie tracking or live
 waitlist is active.
@@ -38,6 +40,7 @@ npm run lint
 npm run typecheck
 npm test
 npm run audit:release
+npm run preflight:status
 ```
 
 ## Project structure
@@ -53,6 +56,7 @@ public/og.png        1200 × 630 social preview
 brand/               Brand source files and identity documentation
 docs/                Phase deliverables and design references
 lib/                 Shared site identity and origin resolution
+scripts/             Repeatable quality and production preflight checks
 tests/               Source-contract and rendered-output smoke tests
 worker/              Cloudflare-compatible application entry
 ```
@@ -61,9 +65,10 @@ worker/              Cloudflare-compatible application entry
 
 The current routes contain the complete marketing story, calm progressive
 motion, search/social metadata, crawl endpoints, legal status notices, a
-branded 404 and repeatable release-readiness checks. The local candidate has no
-known critical defect. Analytics, live forms, final legal agreements, confirmed
-launch destinations and deployment remain gated.
+branded 404, repeatable release checks, a health endpoint and runtime security
+headers. The local candidate has no known critical defect. Analytics, live
+forms, final legal agreements, confirmed launch destinations and deployment
+remain gated.
 
-See [Phase 8 documentation](./docs/phase-8/README.md) and the main
+See [Phase 9 documentation](./docs/phase-9/README.md) and the main
 [project plan](./plan.md).

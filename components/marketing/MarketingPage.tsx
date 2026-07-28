@@ -23,7 +23,7 @@ import styles from "./marketing-page.module.css";
 
 export function MarketingPage() {
   return (
-    <div className={styles.site} data-motion-root data-phase="8">
+    <div className={styles.site} data-motion-root data-phase="9">
       <MotionController />
 
       <a className={styles.skipLink} href="#main">
