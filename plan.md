@@ -1,6 +1,6 @@
 # Accomp Marketing Website — Project Plan
 
-> สถานะ: **Phase 9 production launch preparation complete — ยังไม่อนุมัติ deployment**
+> สถานะ: **Phase 10 release candidate automation complete — ยังไม่อนุมัติ deployment**
 > สร้างเมื่อ: 2026-07-26  
 > Project path: `/Users/peeraponchanthacham/Documents/GitHub/Accomp`  
 > Reference: [Phantom](https://phantom.com/?utm_source=loftlyy&utm_medium=referral&utm_campaign=phantom)
@@ -834,6 +834,48 @@ production domain, legal approval, CTA ปลายทางจริง หร�
 Commit และ push ได้รับอนุญาตในคำสั่งเริ่ม Phase 9 รอบนี้ แต่ยังห้าม deploy
 จนกว่าจะปิด owner-controlled checklist และได้รับคำสั่ง deployment แยกต่างหาก
 
+### Phase 10 — Release Candidate Packaging and Smoke Automation
+
+#### Objective
+
+ทำให้ release candidate ทุกชุดตรวจผ่าน HTTP ได้และผูกกับ Git commit เดียว
+ก่อนส่งต่อไปยัง hosted-version workflow
+
+#### Work
+
+- [x] URL-driven production smoke test
+- [x] Managed local production-server smoke
+- [x] Homepage, legal, crawl, health และ 404 route matrix
+- [x] Security header, hash-link และ inactive-form assertions
+- [x] Clean-tree Git archive packager
+- [x] Commit SHA และ SHA-256 release manifest
+- [x] CI release-quality gate
+- [x] Regression coverage และ handoff documents
+
+#### Deliverables
+
+- [x] [Phase 10 overview](./docs/phase-10/README.md)
+- [x] [Smoke-test contract](./docs/phase-10/smoke-test-contract.md)
+- [x] [Release package contract](./docs/phase-10/release-package.md)
+- [x] Smoke, local-server และ release-packaging scripts
+- [x] CI integration และ regression tests
+
+#### Acceptance criteria
+
+- [x] Full quality suite และ production build สำเร็จ
+- [x] Local production smoke ตรวจครบ 7 routes
+- [x] Smoke test ปฏิเสธ insecure non-local origin
+- [x] Release packager ปฏิเสธ dirty working tree
+- [x] Clean commit สร้าง archive และ checksum manifest ได้
+- [x] Archive checksum ตรงกับ manifest
+- [ ] Hosted-origin smoke passes on the approved production URL
+- [ ] Owner explicitly approves public deployment
+
+#### Exit gate
+
+Commit, package verification และ push ได้รับอนุญาตในคำสั่งเริ่ม Phase 10
+รอบนี้ แต่ยังห้าม upload, save hosted version หรือ deploy
+
 ## 10. Quality Gates
 
 ใช้กับทุก Phase ที่มี code:
@@ -984,6 +1026,11 @@ Phase 3 ดำเนินต่อด้วย provisional assumptions เพ�
 - [x] เพิ่ม Phase 9 regression coverage และ deployment handoff documents
 - [ ] Close Phase 9 owner-controlled production inputs
 - [ ] Pass strict production preflight with the approved real origin
+- [x] เริ่ม Phase 10 เมื่อ 2026-07-28
+- [x] เพิ่ม production smoke route matrix และ managed local server
+- [x] เพิ่ม clean-commit archive, SHA-256 manifest และ CI release gate
+- [x] เพิ่ม Phase 10 regression coverage และ release handoff documents
+- [ ] Run hosted-origin smoke on the approved production URL
 - [x] สร้าง source code foundation
 - [x] สร้าง Git repository
 - [x] Initial commit
@@ -992,4 +1039,4 @@ Phase 3 ดำเนินต่อด้วย provisional assumptions เพ�
 
 **งานถัดไปหลังจากผู้ใช้ตรวจเอกสาร:** กรอก
 [production input worksheet](./docs/phase-9/production-inputs.md), ปิด manual
-browser/device/legal gates และรอคำสั่ง deployment แยกต่างหาก
+browser/device/legal gates, รัน hosted smoke และรอคำสั่ง deployment แยกต่างหาก

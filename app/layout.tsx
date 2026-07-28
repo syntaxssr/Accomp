@@ -61,17 +61,6 @@ export async function generateMetadata(): Promise<Metadata> {
       description: SITE_DESCRIPTION,
       images: ["/og.png"],
     },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-        "max-video-preview": -1,
-      },
-    },
   };
 }
 

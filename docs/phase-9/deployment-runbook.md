@@ -15,6 +15,7 @@ Set `NEXT_PUBLIC_SITE_URL` to the approved HTTPS origin, then run:
 ```bash
 npm run check
 npm run preflight:production
+npm run smoke:site -- https://approved-production-origin.example
 git diff --check
 ```
 
@@ -27,8 +28,9 @@ After the owner explicitly requests deployment:
 1. Reuse the persisted Sites project ID when one exists.
 2. If no Sites project exists, create it once and save the returned ID exactly.
 3. Push the exact source state being released.
-4. Save a Sites version using that pushed commit SHA.
-5. Deploy only the saved version.
+4. Run `npm run package:release` from that clean commit and verify its checksum.
+5. Save a Sites version using that pushed commit SHA.
+6. Deploy only the saved version.
 
 ## 4. Production Smoke Test
 

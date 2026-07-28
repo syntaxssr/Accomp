@@ -9,8 +9,9 @@ async function source(path) {
 }
 
 test("defines request-aware canonical and social metadata", async () => {
-  const [layout, site] = await Promise.all([
+  const [layout, page, site] = await Promise.all([
     source("app/layout.tsx"),
+    source("app/page.tsx"),
     source("lib/site.ts"),
   ]);
 
@@ -18,7 +19,7 @@ test("defines request-aware canonical and social metadata", async () => {
   assert.match(layout, /alternates:[\s\S]*canonical: "\/"/);
   assert.match(layout, /openGraph:[\s\S]*\/og\.png/);
   assert.match(layout, /twitter:[\s\S]*summary_large_image/);
-  assert.match(layout, /max-image-preview/);
+  assert.match(page, /max-image-preview/);
   assert.match(site, /NEXT_PUBLIC_SITE_URL/);
   assert.match(site, /x-forwarded-host/);
   assert.doesNotMatch(layout, /example\\.com|your-domain|TODO/i);

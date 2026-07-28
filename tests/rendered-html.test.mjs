@@ -26,7 +26,7 @@ async function render(pathname = "/") {
   );
 }
 
-test("server-renders the complete Phase 9 marketing page", async () => {
+test("server-renders the complete Phase 10 marketing page", async () => {
   const response = await render();
 
   assert.equal(response.status, 200);
@@ -36,7 +36,7 @@ test("server-renders the complete Phase 9 marketing page", async () => {
 
   assert.match(html, /<html[^>]*lang="en"/i);
   assert.match(html, /<title>Adventure Together · Accomp<\/title>/i);
-  assert.match(html, /data-phase="9"/);
+  assert.match(html, /data-phase="10"/);
   assert.match(html, /Adventure together\./i);
   assert.match(html, /Make one plan\. Bring everyone in\./);
   assert.match(html, /Pack once\. Know who/);
@@ -119,6 +119,7 @@ test("serves legal notices, robots, sitemap and a real 404", async () => {
   const missingHtml = await missing.text();
   assert.match(missingHtml, /This path isn/);
   assert.match(missingHtml, /content="noindex"/);
+  assert.doesNotMatch(missingHtml, /content="index, follow"/);
 });
 
 test("serves a health check with production security headers", async () => {

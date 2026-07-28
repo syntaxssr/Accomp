@@ -13,6 +13,7 @@
 /coverage/
 /work/
 /outputs/
+/release-artifacts/
 
 # Environment files
 .env*

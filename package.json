@@ -12,13 +12,17 @@
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern docs",
     "typecheck": "tsc --noEmit",
     "format:check": "node scripts/check-format.mjs",
-    "test:source": "node --test tests/foundation.test.mjs tests/marketing-content.test.mjs tests/motion.test.mjs tests/production-readiness.test.mjs tests/release-readiness.test.mjs tests/seo.test.mjs",
+    "test:source": "node --test tests/foundation.test.mjs tests/marketing-content.test.mjs tests/motion.test.mjs tests/production-readiness.test.mjs tests/release-automation.test.mjs tests/release-readiness.test.mjs tests/seo.test.mjs",
     "test:render": "node --test tests/rendered-html.test.mjs",
     "test": "npm run test:source && npm run build && npm run test:render",
     "audit:release": "node scripts/release-audit.mjs",
     "preflight:status": "node scripts/production-preflight.mjs",
     "preflight:production": "node scripts/production-preflight.mjs --strict",
-    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run audit:release"
+    "smoke:site": "node scripts/site-smoke.mjs",
+    "smoke:local": "node scripts/local-production-smoke.mjs",
+    "package:release": "node scripts/package-release.mjs",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run audit:release",
+    "check:release": "npm run check && npm run smoke:local"
   },
   "dependencies": {
     "next": "16.2.6",
