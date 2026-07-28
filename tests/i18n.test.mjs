@@ -119,6 +119,7 @@ test("provides accessible desktop and mobile language switching", async () => {
 test("keeps user-visible copy in message catalogs", async () => {
   const files = [
     "components/marketing/MarketingPage.tsx",
+    "components/marketing/WidgetSpotlight.tsx",
     "components/marketing/SiteHeader.tsx",
     "components/marketing/FeatureRail.tsx",
     "components/legal/LegalNoticePage.tsx",

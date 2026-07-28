@@ -105,7 +105,7 @@ test("renders a semantic, responsive, locale-aware roadmap experience", async ()
   assert.match(page, /"step"/);
   assert.match(page, /copy\.horizon\[entry\.horizon\]/);
   assert.match(page, /copy\.stageLabel/);
-  assert.match(page, /data-phase="2\.3"/);
+  assert.match(page, /data-phase="2\.4"/);
   assert.match(styles, /@media \(min-width: 48rem\)/);
   assert.match(styles, /prefers-reduced-motion: reduce/);
   assert.match(styles, /min-height: 2\.75rem/);

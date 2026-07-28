@@ -19,6 +19,7 @@ const roots = [
   "docs/phase-2.1",
   "docs/phase-2.2",
   "docs/phase-2.3",
+  "docs/phase-2.4",
   "lib",
   "messages",
   "scripts",

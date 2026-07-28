@@ -1,0 +1,357 @@
+.section {
+  padding: var(--space-section) 0;
+  overflow: clip;
+  background:
+    radial-gradient(
+      circle at 8% 18%,
+      rgb(161 188 152 / 32%),
+      transparent 30rem
+    ),
+    var(--color-cream);
+}
+
+.heading {
+  margin-bottom: clamp(2.5rem, 6vw, 5rem);
+  display: grid;
+  gap: var(--space-6);
+}
+
+.heading > div {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.card {
+  min-width: 0;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-xl);
+  display: grid;
+  align-content: start;
+  gap: var(--space-6);
+}
+
+.countdownCard {
+  color: var(--color-cream);
+  background: var(--color-sage-ink);
+  box-shadow: var(--shadow-soft);
+}
+
+.gearCard {
+  background: var(--color-sand);
+}
+
+.cardCopy {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-4);
+}
+
+.cardCopy h3,
+.cardCopy p {
+  margin: 0;
+}
+
+.cardCopy h3 {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-card);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.cardCopy p {
+  margin-top: var(--space-2);
+  color: inherit;
+  opacity: 0.75;
+}
+
+.cardNumber {
+  width: 2.35rem;
+  height: 2.35rem;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: var(--font-size-xs);
+  font-weight: 750;
+  opacity: 0.72;
+}
+
+.countdownPreview,
+.gearPreview {
+  min-height: 20rem;
+  padding: clamp(1.1rem, 3vw, 1.75rem);
+  border-radius: var(--radius-lg);
+  position: relative;
+}
+
+.countdownPreview {
+  display: grid;
+  align-content: end;
+  color: var(--color-night);
+  background: var(--color-meadow);
+}
+
+.previewLabel {
+  width: fit-content;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid currentColor;
+  border-radius: var(--radius-pill);
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  font-size: 0.66rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.countdownContent {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(7.5rem, 11rem);
+  align-items: end;
+  gap: var(--space-3);
+}
+
+.countdownContent > div {
+  padding-bottom: var(--space-3);
+}
+
+.countdownContent small,
+.gearHeader small {
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.countdownContent strong {
+  margin-top: var(--space-2);
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  font-family: var(--font-family-display);
+  font-size: clamp(4rem, 12vw, 7.5rem);
+  font-weight: 560;
+  letter-spacing: -0.08em;
+  line-height: 0.82;
+}
+
+.countdownContent strong span {
+  font-size: var(--font-size-body);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.countdownContent p {
+  margin: var(--space-3) 0 0;
+  font-size: var(--font-size-sm);
+}
+
+.activeMascot {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 1rem 1.5rem rgb(44 53 47 / 18%));
+}
+
+.mascotProgression {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--space-2);
+  list-style: none;
+}
+
+.mascotProgression li {
+  min-width: 0;
+  padding: var(--space-2);
+  border: 1px solid rgb(253 246 237 / 16%);
+  border-radius: var(--radius-sm);
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.mascotProgression img {
+  width: min(100%, 4rem);
+  height: auto;
+  transition: transform var(--motion-ui) var(--ease-standard);
+}
+
+.mascotProgression li:hover img {
+  transform: translateY(-0.2rem) scale(1.04);
+}
+
+.mascotProgression span,
+.mascotProgression small {
+  overflow-wrap: anywhere;
+}
+
+.mascotProgression span {
+  margin-top: var(--space-1);
+  font-size: clamp(0.58rem, 1.5vw, var(--font-size-xs));
+  font-weight: 750;
+}
+
+.mascotProgression small {
+  color: var(--color-sand);
+  font-size: clamp(0.52rem, 1.3vw, 0.68rem);
+}
+
+.gearPreview {
+  border: 1px solid rgb(119 136 115 / 36%);
+  color: var(--color-ink);
+  background: var(--color-cream);
+  box-shadow: 0 1rem 3rem rgb(44 53 47 / 10%);
+}
+
+.gearHeader {
+  margin-top: var(--space-7);
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.gearHeader strong {
+  margin-top: var(--space-2);
+  display: block;
+  font-family: var(--font-family-display);
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  letter-spacing: -0.06em;
+  line-height: 0.95;
+}
+
+.gearHeader > span {
+  padding: 0.4rem 0.7rem;
+  border-radius: var(--radius-pill);
+  color: var(--color-sage-ink);
+  background: var(--color-meadow);
+  font-size: var(--font-size-xs);
+  font-weight: 750;
+}
+
+.progress {
+  height: 0.55rem;
+  margin-top: var(--space-5);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  background: rgb(119 136 115 / 18%);
+}
+
+.progress span {
+  width: 80%;
+  height: 100%;
+  border-radius: inherit;
+  display: block;
+  background: var(--color-brand);
+}
+
+.remainingLabel {
+  margin: var(--space-6) 0 var(--space-3);
+  color: var(--color-muted);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+}
+
+.gearList {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  list-style: none;
+}
+
+.gearList li {
+  min-height: 3.5rem;
+  border-top: 1px solid var(--color-line);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.gearList li > span {
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 2px solid var(--color-brand);
+  border-radius: 0.35rem;
+}
+
+.gearList strong {
+  font-size: var(--font-size-sm);
+}
+
+.gearList small {
+  color: var(--color-muted);
+  font-size: var(--font-size-xs);
+}
+
+.conceptNote {
+  max-width: 52rem;
+  margin: var(--space-5) auto 0;
+  color: var(--color-muted);
+  font-size: var(--font-size-xs);
+  text-align: center;
+}
+
+@media (max-width: 30rem) {
+  .countdownPreview,
+  .gearPreview {
+    min-height: 18rem;
+  }
+
+  .countdownContent {
+    grid-template-columns: minmax(0, 1fr) minmax(6rem, 8rem);
+  }
+
+  .mascotProgression {
+    gap: var(--space-1);
+  }
+
+  .mascotProgression li {
+    padding: var(--space-1);
+  }
+
+  .mascotProgression small {
+    display: none;
+  }
+
+  .gearHeader {
+    align-items: start;
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 48rem) {
+  .heading {
+    grid-template-columns: minmax(0, 0.85fr) minmax(18rem, 1fr);
+    align-items: end;
+  }
+}
+
+@media (min-width: 56.25rem) {
+  .grid {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    align-items: stretch;
+  }
+
+  .card {
+    min-height: 42rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mascotProgression li:hover img {
+    transform: none;
+  }
+}

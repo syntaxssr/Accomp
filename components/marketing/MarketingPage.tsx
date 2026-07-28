@@ -14,6 +14,7 @@ import { FeatureRail } from "./FeatureRail";
 import { MotionController } from "./MotionController";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
+import { WidgetSpotlight } from "./WidgetSpotlight";
 import styles from "./marketing-page.module.css";
 
 interface MarketingPageProps {
@@ -26,7 +27,7 @@ export function MarketingPage({ locale, messages }: MarketingPageProps) {
   const copy = messages.marketing;
 
   return (
-    <div className={styles.site} data-motion-root data-phase="2.3">
+    <div className={styles.site} data-motion-root data-phase="2.4">
       <MotionController />
 
       <a className={styles.skipLink} href="#main">
@@ -248,6 +249,7 @@ export function MarketingPage({ locale, messages }: MarketingPageProps) {
             </div>
           </Container>
         </section>
+        <WidgetSpotlight copy={copy.widgets} />
         </div>
 
         <section className={styles.how} id="how-it-works">

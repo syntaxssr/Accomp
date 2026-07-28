@@ -161,6 +161,65 @@
       "cardBody": "Map, itinerary and meeting details · Illustrative UI",
       "mapLabel": "Abstract route · not real map data"
     },
+    "widgets": {
+      "eyebrow": "Companion surfaces",
+      "title": "Your trip, at a glance.",
+      "body": "Bring the same shared plan closer to the Home Screen with a countdown companion and a compact gear checklist.",
+      "sectionLabel": "Two planned Home Screen widget concepts",
+      "previewLabel": "Widget concept",
+      "conceptNote": "Concept preview only · Platform availability, refresh behavior, and native interactions are not confirmed.",
+      "countdown": {
+        "title": "Countdown Companion",
+        "body": "See how many days remain while the Accomp mascot grows happier as the trip gets closer.",
+        "previewAriaLabel": "Illustrative countdown widget showing five days until an outdoor trip and an excited Accomp mascot",
+        "tripLabel": "Next outdoor trip",
+        "daysValue": "5",
+        "daysLabel": "days",
+        "dateLabel": "12–14 September · Concept data",
+        "progressionLabel": "Planned mascot moods by days remaining",
+        "states": [
+          {
+            "range": "31+ days",
+            "mood": "Calm"
+          },
+          {
+            "range": "30–8",
+            "mood": "Smiling"
+          },
+          {
+            "range": "7–3",
+            "mood": "Excited"
+          },
+          {
+            "range": "2–1",
+            "mood": "Eager"
+          },
+          {
+            "range": "Today",
+            "mood": "Ready"
+          }
+        ]
+      },
+      "gear": {
+        "title": "Gear Checklist",
+        "body": "Keep the remaining essentials visible without opening the full shared trip plan.",
+        "tripLabel": "Khao Yai weekend",
+        "progressValue": "8 / 10 ready",
+        "status": "2 remaining",
+        "progressAriaLabel": "Eight of ten gear items are ready",
+        "remainingLabel": "Still to prepare",
+        "items": [
+          {
+            "name": "Fuel canister",
+            "status": "Open"
+          },
+          {
+            "name": "Rain cover",
+            "status": "Open"
+          }
+        ]
+      }
+    },
     "howItWorks": {
       "eyebrow": "How it works",
       "title": "One shared plan from the first idea to the trailhead.",
@@ -289,18 +348,18 @@
       },
       "tripPlanning": {
         "title": "Build the shared trip plan",
-        "summary": "Create a trip, invite companions, and keep the route, schedule, meeting details, and shared decisions in one place.",
+        "summary": "Create a trip, invite companions, and keep the route, schedule, meeting details, and shared decisions in one place—with a planned countdown surface for quick Home Screen context.",
         "highlights": [
           "Shared trip space and invitations",
-          "Clear itinerary and trip details"
+          "Clear itinerary and planned countdown companion"
         ]
       },
       "gearCoordination": {
         "title": "Add gear coordination to the plan",
-        "summary": "Extend the same shared trip plan with gear checklists, assignments, and a clear view of what still needs attention before leaving.",
+        "summary": "Extend the same shared trip plan with gear checklists, assignments, and a planned compact surface for what still needs attention before leaving.",
         "highlights": [
           "Personal and group gear lists",
-          "Assignments and simple readiness states"
+          "Assignments, readiness, and a planned checklist widget"
         ]
       },
       "offlineReadiness": {

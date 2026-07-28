@@ -54,10 +54,33 @@ to the trailhead.
 - Open prepared trip information without an internet connection.
 - Show clear download, offline, and sync status.
 
+## Planned Companion Surfaces
+
+Home Screen Widgets are planned presentation surfaces for the same shared trip
+plan. They are not a new core feature and do not add a fourth capability.
+
+### Countdown Companion Widget
+
+Reuses the trip start date and readiness context to show a day countdown with
+the Accomp mascot becoming happier and more excited as the trip approaches.
+
+### Gear Checklist Widget
+
+Reuses the shared gear plan to show compact progress and the items that still
+need attention.
+
+Platform availability, native interaction, refresh behavior, and sync are not
+confirmed. The promotional website may present these widgets only as an
+illustrative concept until the mobile implementation is validated.
+
+Phase 2.4 implements that promotional preview inside the website's Features
+story. The native widgets themselves remain planned and unvalidated.
+
 ## Presentation Rules
 
 - Accomp has one core user-facing feature, not three separate products.
 - Gear preparation and offline readiness always belong to the shared trip plan.
+- Home Screen Widgets are companion surfaces, not a fourth capability.
 - The website may give each capability a dedicated visual chapter so the story
   is easy to scan.
 - The Offline chapter is a product differentiator, but it is not a separate

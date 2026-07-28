@@ -20,7 +20,7 @@ export function SupportPage({ locale, messages }: SupportPageProps) {
   const navigation = createSupportNavigation(messages, locale);
 
   return (
-    <div className={styles.site} data-phase="2.3">
+    <div className={styles.site} data-phase="2.4">
       <a className={styles.skipLink} href="#main">
         {copy.skipToContent}
       </a>

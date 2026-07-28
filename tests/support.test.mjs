@@ -32,7 +32,7 @@ test("renders a semantic bilingual support page without payment collection", asy
     source("content/site-content.ts"),
   ]);
 
-  assert.match(page, /data-phase="2\.3"/);
+  assert.match(page, /data-phase="2\.4"/);
   assert.match(page, /<main id="main" tabIndex=\{-1\}>/);
   assert.match(page, /<h1>/);
   assert.match(page, /supporters\.length > 0/);

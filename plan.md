@@ -1,6 +1,6 @@
 # Accomp Marketing Website — Project Plan
 
-> สถานะ: **Phase 2.3 implementation complete with safe empty state — รอข้อมูลผู้สนับสนุนจริงและ owner review**
+> สถานะ: **Phase 2.4 implementation complete — รอ owner visual review และ final mascot**
 > สร้างเมื่อ: 2026-07-26  
 > Project path: `/Users/peeraponchanthacham/Documents/GitHub/Accomp`  
 > Reference: [Phantom](https://phantom.com/?utm_source=loftlyy&utm_medium=referral&utm_campaign=phantom)
@@ -1486,6 +1486,241 @@ supporter wall ให้มีข้อมูลจริงยังต้อ�
 owner review, manual browser/device QA และ deployment ต้องได้รับการตรวจหรือ
 คำสั่งแยกต่างหาก
 
+### Phase 2.4 — Home Screen Widget Spotlight
+
+#### Status
+
+**Implementation complete — Widget spotlight, TH/EN, provisional assets,
+Roadmap integration, documentation และ automated regression coverage พร้อมแล้ว**
+
+#### Product classification decision
+
+Home Screen Widgets **ไม่ใช่ฟีเจอร์หลักใหม่** และไม่ใช่ความสามารถลำดับที่ 4
+ของ Accomp แต่เป็น **Companion Surface / ช่องทางแสดงผลเสริม** ที่นำข้อมูลจาก
+ฟีเจอร์หลัก `Shared Trip Planning / วางแผนทริปร่วมกัน` มาให้ผู้ใช้เห็นและ
+เข้าถึงได้รวดเร็วจากหน้าจอ Home หรือหน้าจอ Widget ของมือถือ
+
+Widget ทั้งสองแบบเชื่อมกลับไปยังความสามารถเดิม:
+
+- Countdown Mascot Widget นำวันเริ่มทริปและสถานะความพร้อมจากแผนทริปมาแสดง
+- Gear Checklist Widget นำรายการอุปกรณ์และความพร้อมจากแผนทริปมาแสดง
+
+เว็บไซต์สามารถให้ Widgets เป็นบทโปรโมตเด่นภายใน `Features` ได้ แต่ห้ามเพิ่ม
+เป็น top-level navigation, ห้ามเรียกว่า core feature ใหม่ และห้ามทำให้เข้าใจว่า
+เป็นผลิตภัณฑ์ที่แยกจากแผนทริปร่วม
+
+#### Objective
+
+เพิ่มส่วนโปรโมต Widgets บนหน้า Home ภาษาไทยและอังกฤษ เพื่อสื่อว่า Accomp
+สามารถนำข้อมูลสำคัญจากแผนทริปมาอยู่ใกล้ผู้ใช้มากขึ้น โดยนำเสนอแนวคิด Widget
+สองแบบอย่างชัดเจน ซื่อสัตย์ และไม่อ้างว่าเปิดใช้งานบนแพลตฟอร์มใดแล้ว
+
+Phase นี้แก้เฉพาะเว็บไซต์โปรโมต ไม่พัฒนา WidgetKit, Android App Widget,
+mobile app, background sync, notification หรือ deep link จริง
+
+#### Widget concept 1 — Countdown Companion
+
+Widget แสดงข้อมูลขั้นต่ำ:
+
+- ชื่อทริป หรือ privacy-safe label ที่ผู้ใช้เลือก
+- วันที่เริ่มทริป
+- จำนวนวันนับถอยหลัง
+- มาสคอตต้นสน Accomp ที่มีความสุขและตื่นเต้นขึ้นเมื่อวันเดินทางใกล้เข้ามา
+- สถานะ `Today / วันนี้` เมื่อถึงวันเริ่มทริป โดยไม่แสดงเลขติดลบ
+
+แนวทาง mascot progression สำหรับ prototype:
+
+| Countdown state | Mascot direction | Required text |
+| --- | --- | --- |
+| 31 วันขึ้นไป | สงบและเริ่มสนใจ | จำนวนวันที่เหลือ |
+| 30–8 วัน | ยิ้มเล็กน้อย | จำนวนวันที่เหลือ |
+| 7–3 วัน | ตื่นเต้นชัดขึ้น | จำนวนวันที่เหลือ |
+| 2–1 วัน | มีความสุขมากและพร้อม | จำนวนวันที่เหลือ |
+| วันเดินทาง | พร้อมออกเดินทาง | `Today / วันนี้` |
+
+สีหรือสีหน้ามาสคอตเป็นเพียง visual reinforcement จำนวนวันและข้อความต้อง
+สื่อสถานะได้ด้วยตนเอง หากวันเริ่มทริปผ่านไปแล้ว preview ต้องเปลี่ยนเป็น
+สถานะทริปกำลังดำเนินอยู่หรือจบการนับถอยหลัง ไม่แสดงค่าติดลบ
+
+การคำนวณวันสำหรับ product concept ต้องอิง calendar day และ timezone ของทริป
+ไม่ใช่การหารจำนวนชั่วโมงด้วย 24 ตรง ๆ เพื่อหลีกเลี่ยงวันที่คลาดเคลื่อน
+
+#### Widget concept 2 — Gear Checklist
+
+Widget แสดงข้อมูลขั้นต่ำ:
+
+- ชื่อทริปหรือ label แบบย่อ
+- จำนวนอุปกรณ์ที่พร้อมเทียบกับทั้งหมด เช่น `8/10`
+- รายการที่ยังต้องเตรียมจำนวนจำกัดเพื่อให้อ่านได้บนพื้นที่เล็ก
+- สถานะว่าใครรับผิดชอบ เมื่อข้อมูลดังกล่าวได้รับการยืนยันในแอป
+- ทางเข้าสู่รายการอุปกรณ์ฉบับเต็มในแอปในอนาคต
+
+เว็บไซต์เวอร์ชันแรกต้องนำเสนอเป็น illustrative preview ไม่ทำ checkbox ที่ดู
+เหมือนกดแล้วบันทึกข้อมูลได้จริง พฤติกรรม interactive widget, deep link และ
+การอัปเดต checklist จากหน้า Home ต้องรอการยืนยัน platform และ mobile
+implementation
+
+#### Privacy and trust requirements
+
+- หน้าจอ Home เป็นพื้นที่ที่คนอื่นอาจมองเห็นได้ ต้องวางแผน privacy-safe mode
+- ผู้ใช้ควรเลือกได้ในอนาคตว่าจะใช้ชื่อทริปจริงหรือ generic label
+- ห้ามแสดงพิกัด จุดนัดพบ รายชื่อผู้ร่วมทาง หรือข้อมูลที่ละเอียดอ่อนใน preview
+- Gear Widget แสดงเฉพาะชื่ออุปกรณ์ที่จำเป็นและไม่เปิดเผยข้อมูลส่วนตัว
+- เว็บไซต์ต้องระบุว่า Widget เป็น product concept และ platform availability
+  ยังไม่ยืนยัน
+- ห้ามใช้หน้าตา iOS หรือ Android ที่สื่อว่าได้รับ approval จาก platform
+- ห้ามอ้าง real-time sync, background refresh หรือ interactive controls
+  จนกว่าจะผ่าน technical validation
+
+#### Website information architecture
+
+- ไม่มี route ใหม่
+- ไม่มี topbar หรือ footer menu ใหม่
+- เพิ่ม Widget spotlight ภายใน wrapper `#features` หลัง Offline capability
+  และก่อน `#how-it-works`
+- ใช้ชื่อบทแนะนำ:
+  - EN: `Your trip at a glance`
+  - TH: `เห็นทริปได้ทันที`
+- อธิบายว่า Widgets เป็น companion surfaces ของ shared trip plan
+- แสดง widget preview สองแบบเคียงกันบน desktop และเรียงแนวตั้งบน mobile
+- เชื่อมเรื่องกลับไปยังแผนเดียวกัน ไม่ใช้ CTA แยกที่สื่อว่าดาวน์โหลด Widget ได้
+- Roadmap ยังคงจำนวน Stage เดิม โดยอาจเพิ่มข้อความสั้นใน Stage ที่เกี่ยวข้อง
+  แทนการสร้าง top-level feature หรือ Stage ใหม่
+
+#### Content direction
+
+โครงข้อความที่ต้องมีใน `messages/en.json` และ `messages/th.json`:
+
+- Section eyebrow, title และ body
+- คำอธิบายว่าเป็นส่วนขยายของ shared trip plan
+- ชื่อและคำอธิบาย Countdown Companion Widget
+- ชื่อและคำอธิบาย Gear Checklist Widget
+- ตัวอย่างจำนวนวัน, `Today / วันนี้`, checklist progress และ empty state
+- Concept disclaimer และ platform-validation note
+- ARIA label สำหรับ widget preview และ mascot expression
+
+ข้อความต้องหลีกเลี่ยงคำว่า “available now”, “works on iOS/Android”,
+“real-time”, “always updated” หรือคำรับรองการทำงานที่ยังไม่ได้พิสูจน์
+
+#### Visual and motion direction
+
+- ใช้ temporary mascot logo ปัจจุบันเป็น reference เท่านั้น และแยก asset
+  ออกจาก final logo เพื่อเปลี่ยนภายหลังได้
+- Countdown preview ใช้ expression states ที่อ่านออกในขนาดเล็ก
+- Gear preview ใช้ typography และ checklist language เดียวกับ feature cards
+- ใช้กรอบ Widget ที่ platform-neutral ไม่คัดลอก proprietary system UI
+- ใช้ palette `#778873`, `#A1BC98`, `#DCCFC0`, `#FDF6ED`
+- Motion บนเว็บไซต์อาจแสดง progression อย่างสงบเมื่อ section reveal เท่านั้น
+- ห้ามใช้ countdown ที่เดินจริงหรือ loop สีหน้ารวดเร็ว
+- Reduced motion แสดง state แบบคงที่โดยไม่สูญเสียข้อมูล
+
+#### Asset plan
+
+- เตรียม mascot expression 5 state จากไฟล์ที่เจ้าของอนุมัติ
+- ใช้ WebP หรือ AVIF พร้อม transparency
+- เก็บ provisional widget assets ภายใต้ `public/brand/widget-mascot/`
+- เป้าหมายไม่เกิน 60 KB ต่อ state และไม่เกิน 300 KB รวม
+- ระบุทุก asset ว่า temporary จนกว่า final mascot/logo จะได้รับอนุมัติ
+- ห้ามให้ AI แก้สีหน้าโลโก้หรือสร้าง variant เพิ่มก่อนเจ้าของอนุญาตใน
+  implementation turn
+
+#### File and code plan
+
+- [x] อัปเดต `brand/product-definition.md` ด้วย planned companion surfaces
+- [x] เพิ่ม `marketing.widgets.*` ใน `messages/en.json` และ `messages/th.json`
+- [x] เพิ่ม typed widget preview content ใน `content/site-content.ts` หรือ
+      `content/widgets.ts`
+- [x] สร้าง `WidgetSpotlight` component และ CSS Module
+- [x] วาง section ใหม่ภายใน `#features` โดยไม่เพิ่ม navigation destination
+- [x] เพิ่ม provisional mascot states จาก temporary mascot reference
+- [x] อัปเดต Roadmap copy เฉพาะจุดที่จำเป็น โดยไม่เพิ่ม top-level feature
+- [x] เพิ่ม source, translation และ rendered-output regression tests
+- [x] สร้าง `docs/phase-2.4/README.md` หลัง implementation
+
+#### Internationalization
+
+- ทุกข้อความที่ผู้ใช้เห็นต้องอยู่ใน file-based TH/EN catalogs
+- ใช้ locale-aware date label และ day-count wording
+- EN ต้องจัดการ `1 day` กับ `2 days`; TH ใช้รูปแบบที่เป็นธรรมชาติ
+- `Today / วันนี้` และ empty state ต้องไม่ประกอบ string ใน component
+- Translation keys, arrays และ placeholders ต้องตรงกัน 100%
+- ตัวเลขตัวอย่างต้องถูกระบุว่าเป็น concept data ทั้งสองภาษา
+
+#### Accessibility
+
+- Widget preview ต้องมี accessible name และคำอธิบายที่ไม่พึ่งภาพมาสคอต
+- สีหน้า สี และ animation ห้ามเป็นวิธีเดียวที่สื่อจำนวนวันที่เหลือ
+- Checklist state ต้องมีข้อความพร้อม/ยังไม่พร้อม ไม่ใช้ checkmark อย่างเดียว
+- Decorative mascot และ device chrome ต้องถูกซ่อนจาก screen reader
+- Reading order ต้องเป็น Countdown ก่อน Gear Checklist ในทุก viewport
+- รองรับ keyboard, visible focus, 200% zoom และ reduced motion
+- ข้อความใน preview ต้องอ่านได้ที่ขนาด 320px โดยไม่ล้น
+
+#### Testing and validation
+
+- [x] ตรวจว่า Widget section อยู่ภายใน `#features`
+- [x] ตรวจว่าไม่มี Widget link ใหม่ใน topbar หรือ footer
+- [x] ตรวจว่า product definition ยังคงหนึ่ง core feature และสาม capabilities
+- [x] ตรวจ Countdown state ครบ, ไม่มีค่าติดลบ และมี `Today / วันนี้`
+- [x] บันทึก day-count locale และ timezone assumptions สำหรับ mobile phase
+- [x] ตรวจ Gear preview มี progress และรายการที่ยังต้องเตรียม
+- [x] ตรวจว่า preview ไม่มี control ที่ดูเหมือนบันทึกข้อมูลจริง
+- [x] ตรวจ platform disclaimer และไม่มี availability claim
+- [x] ตรวจ TH/EN key, array และ placeholder parity
+- [x] ตรวจ image format, dimensions, transparency และ asset budget
+- [x] ตรวจ semantic output, accessible labels และ reduced-motion fallback
+- [ ] ตรวจ responsive layout ที่ 320, 390, 768, 1024, 1440 และ 1920px
+- [x] รัน formatting, lint, strict TypeScript, source tests, production build,
+      rendered-output tests, release audit และ local production smoke
+
+#### Deliverables
+
+- [x] Product-definition update สำหรับ planned companion surfaces
+- [x] Bilingual Widget spotlight บนหน้า Home
+- [x] Countdown Companion Widget preview พร้อม mascot progression
+- [x] Gear Checklist Widget preview
+- [x] Platform-neutral responsive presentation
+- [x] Provisional mascot expression assets สำหรับ owner review
+- [x] TH/EN messages และ accessibility copy
+- [x] Regression tests และ `docs/phase-2.4/README.md`
+
+#### Acceptance criteria
+
+- [x] Copy ระบุว่า Widgets นำข้อมูลจาก shared trip plan มาแสดง
+- [x] Countdown แสดงจำนวนวันและ mascot progression พร้อมข้อความกำกับ
+- [x] Gear Widget แสดง progress และสิ่งที่ยังต้องเตรียมอย่างกระชับ
+- [x] Widgets ไม่ถูกนำเสนอเป็น core feature หรือ top-level menu ใหม่
+- [x] ไม่มี platform, sync, interaction หรือ availability claim ที่ยังไม่ยืนยัน
+- [x] Temporary mascot เปลี่ยนเป็น final asset ภายหลังได้โดยไม่แก้โครง component
+- [x] ทุกข้อความและ accessibility label รองรับ TH/EN
+- [ ] Layout และข้อความผ่าน responsive, keyboard, zoom และ reduced-motion QA
+- [x] Full release-quality suite ผ่าน
+- [ ] Owner อนุมัติ public copy, mascot states และ widget presentation
+
+#### Out of scope
+
+- การสร้าง WidgetKit, Android App Widget หรือ native mobile code
+- Background refresh, notification, live countdown service หรือ sync engine
+- Interactive checklist, deep link หรือ app intent ที่ทำงานจริง
+- การยืนยัน iOS/Android availability หรือ OS version support
+- Calendar integration, lock-screen widget, Live Activity หรือ wearable
+- Widget customization UI ภายในแอป
+- Analytics, production deployment หรือ public launch
+
+#### Remaining owner review
+
+- อนุมัติชื่อ `Countdown Companion` และ `Gear Checklist`
+- อนุมัติ mascot expression progression ทั้ง 5 state
+- ยืนยันให้ใช้ temporary logo เป็นฐานสำหรับ mascot variants
+- เลือกว่าจะแสดงชื่อทริปจริงหรือ generic label ใน public preview
+- อนุมัติ concept disclaimer ภาษาไทยและอังกฤษ
+
+#### Exit gate
+
+ผู้ใช้อนุญาต implementation, commit และ push ในคำสั่งรอบนี้แล้ว งาน native
+mobile widget, final mascot, owner visual review, manual browser/device QA และ
+deployment ยังอยู่นอกคำสั่งและต้องได้รับการตรวจหรือคำสั่งแยกต่างหาก
+
 ## 10. Quality Gates
 
 ใช้กับทุก Phase ที่มี code:
@@ -1666,6 +1901,9 @@ Phase 3 ดำเนินต่อด้วย provisional assumptions เพ�
   ไม่ถือเป็น final logo หรือ app icon
 - [x] ล็อก product feature hierarchy เป็นหนึ่งฟีเจอร์หลัก `Shared Trip
   Planning` พร้อมสามความสามารถ: วางแผน เตรียมอุปกรณ์ และพร้อมใช้งานออฟไลน์
+- [x] วางแผน Phase 2.4 สำหรับ Countdown Companion และ Gear Checklist Widgets
+  ในฐานะ companion surfaces ของ shared trip plan
+- [ ] เริ่ม Phase 2.4 หลังได้รับคำสั่งจากผู้ใช้
 - [x] สร้าง source code foundation
 - [x] สร้าง Git repository
 - [x] Initial commit

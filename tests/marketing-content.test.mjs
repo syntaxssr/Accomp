@@ -48,7 +48,7 @@ test("locks one core feature with three capabilities as product truth", async ()
   assert.match(thai.marketing.offline.eyebrow, /ความสามารถ 03/);
 });
 
-test("preserves the complete marketing structure through Phase 2.3", async () => {
+test("preserves the complete marketing structure through Phase 2.4", async () => {
   const [page, english] = await Promise.all([
     source("components/marketing/MarketingPage.tsx"),
     source("messages/en.json"),
@@ -65,12 +65,13 @@ test("preserves the complete marketing structure through Phase 2.3", async () =>
     assert.match(page, new RegExp(`id="${id}"`));
   }
 
-  assert.match(page, /data-phase="2\.3"/);
+  assert.match(page, /data-phase="2\.4"/);
   assert.match(page, /data-motion-root/);
   assert.match(page, /<MotionController/);
   assert.match(page, /<SiteHeader/);
   assert.doesNotMatch(page, /previewNote/);
   assert.match(page, /<FeatureRail/);
+  assert.match(page, /<WidgetSpotlight/);
   assert.match(page, /<FAQList/);
   assert.match(page, /copy\.waitlist\.notice/);
   assert.match(english, /No information is collected or submitted yet/);

@@ -18,5 +18,15 @@ product features. They may have dedicated marketing chapters or roadmap stages
 only when the copy clearly identifies them as capabilities of the same shared
 trip plan.
 
+Home Screen Widgets are planned companion surfaces, not a fourth capability:
+
+- Countdown Companion reuses the trip date and readiness context.
+- Gear Checklist reuses the shared gear plan.
+
+Follow the Phase 2.4 plan before changing widget-facing copy or presentation,
+and do not claim platform availability or native interaction before validation.
+The website now contains a static promotional preview; this does not mean the
+native mobile widgets have been implemented.
+
 Keep all public copy in `messages/en.json` and `messages/th.json`, preserve key
 parity, and qualify unconfirmed collaboration and offline behavior.

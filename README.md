@@ -4,7 +4,8 @@ Accomp is a static-first marketing website for the Accomp mobile app. The
 repository contains the motion-complete bilingual marketing page, the Phase 10
 release-candidate automation layer, the Phase 2.1 TH/EN foundation and the
 Phase 2.2 bilingual mobile app roadmap. Phase 2.3 adds a safe bilingual Support
-experience and a consent-driven supporter wall.
+experience and a consent-driven supporter wall. Phase 2.4 adds two planned
+Home Screen companion-surface concepts inside the shared trip-planning story.
 
 The canonical mobile-product definition is
 [brand/product-definition.md](./brand/product-definition.md). Accomp has one
@@ -28,6 +29,7 @@ prepare the gear, and keep maps and essential trip details ready offline.
 - High-level bilingual product roadmap for the future Accomp mobile app
 - Bilingual Support page with an inactive support status and supporter empty
   state
+- Bilingual Countdown Companion and Gear Checklist widget previews
 
 No backend, database, CMS, authentication, analytics, cookie tracking or live
 waitlist is active.
@@ -71,6 +73,7 @@ components/support/  Bilingual support experience and supporter wall
 content/             Typed localized content composition
 messages/            Complete English and Thai message catalogs
 public/brand/        Production-facing brand assets
+public/brand/widget-mascot/ Provisional transparent countdown mascot states
 public/og.png        1200 × 630 social preview
 public/og-th.png     1200 × 630 Thai social preview
 brand/               Brand source files and identity documentation
@@ -89,11 +92,13 @@ The `/en` and `/th` routes contain the complete marketing story;
 local candidate also includes calm progressive motion, search/social metadata,
 crawl endpoints, legal status notices, a branded 404, repeatable release
 checks, a health endpoint, runtime security headers and commit-bound release
-packaging. Analytics, live forms, payment collection, real supporter
-publication, final legal agreements, confirmed launch destinations and
-deployment remain gated.
+packaging. The homepage also presents static, platform-neutral Countdown and
+Gear Checklist widget concepts. Analytics, live forms, payment collection, real
+supporter publication, native widget implementation, final legal agreements,
+confirmed launch destinations and deployment remain gated.
 
-See [Phase 2.3 documentation](./docs/phase-2.3/README.md),
+See [Phase 2.4 documentation](./docs/phase-2.4/README.md),
+[Phase 2.3 documentation](./docs/phase-2.3/README.md),
 [Phase 2.2 documentation](./docs/phase-2.2/README.md),
 [Phase 2.1 documentation](./docs/phase-2.1/README.md),
 [product definition](./brand/product-definition.md),

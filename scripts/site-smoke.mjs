@@ -105,8 +105,8 @@ function verifyLanguage(html, locale, pathname) {
 function verifyHomepage(html, locale, pathname) {
   verifyLanguage(html, locale, pathname);
 
-  if (!/data-phase="2\.3"/.test(html)) {
-    throw new Error("Homepage does not identify the Phase 2.3 candidate.");
+  if (!/data-phase="2\.4"/.test(html)) {
+    throw new Error("Homepage does not identify the Phase 2.4 candidate.");
   }
 
   if ((html.match(/<h1\b/g) ?? []).length !== 1) {
@@ -132,8 +132,8 @@ function verifyHomepage(html, locale, pathname) {
 function verifyRoadmap(html, locale, pathname) {
   verifyLanguage(html, locale, pathname);
 
-  if (!/data-phase="2\.3"/.test(html)) {
-    throw new Error(`${pathname} does not identify the Phase 2.3 candidate.`);
+  if (!/data-phase="2\.4"/.test(html)) {
+    throw new Error(`${pathname} does not identify the Phase 2.4 candidate.`);
   }
 
   if ((html.match(/<h1\b/g) ?? []).length !== 1) {
@@ -156,8 +156,8 @@ function verifyRoadmap(html, locale, pathname) {
 function verifySupport(html, locale, pathname) {
   verifyLanguage(html, locale, pathname);
 
-  if (!/data-phase="2\.3"/.test(html)) {
-    throw new Error(`${pathname} does not identify the Phase 2.3 candidate.`);
+  if (!/data-phase="2\.4"/.test(html)) {
+    throw new Error(`${pathname} does not identify the Phase 2.4 candidate.`);
   }
 
   if ((html.match(/<h1\b/g) ?? []).length !== 1) {

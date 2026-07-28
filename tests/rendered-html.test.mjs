@@ -47,7 +47,7 @@ test("redirects unprefixed public pages to English", async () => {
   );
 });
 
-test("server-renders complete and distinct Phase 2.3 EN/TH pages", async () => {
+test("server-renders complete and distinct Phase 2.4 EN/TH pages", async () => {
   const [englishResponse, thaiResponse] = await Promise.all([
     render("/en"),
     render("/th"),
@@ -62,8 +62,8 @@ test("server-renders complete and distinct Phase 2.3 EN/TH pages", async () => {
   assert.match(thai, /<html[^>]*lang="th"/i);
   assert.match(english, /<title>Adventure Together · Accomp<\/title>/i);
   assert.match(thai, /<title>ผจญภัยไปด้วยกัน · Accomp<\/title>/i);
-  assert.match(english, /data-phase="2\.3"/);
-  assert.match(thai, /data-phase="2\.3"/);
+  assert.match(english, /data-phase="2\.4"/);
+  assert.match(thai, /data-phase="2\.4"/);
   assert.match(english, /Adventure together\./i);
   assert.match(thai, /ผจญภัยไปด้วยกัน/);
   assert.doesNotMatch(english, /Product preview ·/);
@@ -73,6 +73,16 @@ test("server-renders complete and distinct Phase 2.3 EN/TH pages", async () => {
   assert.match(english, /href="\/en\/privacy"/);
   assert.match(thai, /href="\/th\/privacy"/);
   assert.doesNotMatch(thai, /Make one plan\. Bring everyone in\./);
+  assert.match(english, /Your trip, at a glance\./);
+  assert.match(thai, /เห็นทริปได้ทันที/);
+  assert.match(english, /Countdown Companion/);
+  assert.match(thai, /ตัวช่วยนับถอยหลัง/);
+  assert.match(english, /Gear Checklist/);
+  assert.match(thai, /รายการอุปกรณ์/);
+  assert.match(english, /Platform availability[^<]*not confirmed/);
+  assert.match(thai, /ยังไม่ยืนยันแพลตฟอร์ม/);
+  assert.match(english, /role="progressbar"/);
+  assert.match(thai, /role="progressbar"/);
 });
 
 test("renders a complete semantic TH/EN mobile app roadmap", async () => {
@@ -92,8 +102,8 @@ test("renders a complete semantic TH/EN mobile app roadmap", async () => {
   assert.match(thai, /<title>โรดแมปแอปมือถือ · Accomp<\/title>/i);
   assert.match(english, /content="https:\/\/accomp\.test\/og\.png"/);
   assert.match(thai, /content="https:\/\/accomp\.test\/og-th\.png"/);
-  assert.match(english, /data-phase="2\.3"/);
-  assert.match(thai, /data-phase="2\.3"/);
+  assert.match(english, /data-phase="2\.4"/);
+  assert.match(thai, /data-phase="2\.4"/);
   assert.equal((english.match(/<h1\b/g) ?? []).length, 1);
   assert.equal((thai.match(/<h1\b/g) ?? []).length, 1);
   assert.equal((english.match(/<article\b/g) ?? []).length, 6);
@@ -131,8 +141,8 @@ test("renders a safe bilingual support experience and supporter empty state", as
   assert.match(thai, /<html[^>]*lang="th"/i);
   assert.match(english, /<title>Support the developer · Accomp<\/title>/i);
   assert.match(thai, /<title>สนับสนุนผู้พัฒนา · Accomp<\/title>/i);
-  assert.match(english, /data-phase="2\.3"/);
-  assert.match(thai, /data-phase="2\.3"/);
+  assert.match(english, /data-phase="2\.4"/);
+  assert.match(thai, /data-phase="2\.4"/);
   assert.equal((english.match(/<h1\b/g) ?? []).length, 1);
   assert.equal((thai.match(/<h1\b/g) ?? []).length, 1);
   assert.match(english, /No public supporters yet/);
