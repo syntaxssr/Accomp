@@ -42,8 +42,8 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
     icons: {
-      icon: "/brand/accomp-pine-icon.svg",
-      shortcut: "/brand/accomp-pine-icon.svg",
+      icon: "/brand/accomp-logo-temporary.webp",
+      shortcut: "/brand/accomp-logo-temporary.webp",
     },
     openGraph: {
       type: "website",

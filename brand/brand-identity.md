@@ -1,15 +1,19 @@
 # Accomp Brand Identity
 
-> สถานะ: Brand baseline v0.1  
-> วันที่จัดทำ: 2026-07-26  
-> เจ้าของแบรนด์: Accomp  
+> สถานะ: Brand baseline v0.1
+> วันที่จัดทำ: 2026-07-26
+> เจ้าของแบรนด์: Accomp
 > เอกสารนี้เป็น source of truth สำหรับเว็บไซต์โปรโมต Accomp จนกว่าจะมีการอนุมัติฉบับใหม่
+
+นิยามฟีเจอร์ล่าสุดอยู่ที่
+[Accomp Product Definition](./product-definition.md) และมีลำดับความสำคัญเหนือ
+feature hierarchy ในเอกสาร Phase เก่า
 
 ## 1. Brand Snapshot
 
 - **Brand:** Accomp
 - **Industry:** Outdoor Technology / Adventure Planning
-- **Platform being promoted:** Mobile App (iOS & Android)
+- **Platform being promoted:** Mobile App (platforms not yet confirmed)
 - **Website scope:** เว็บไซต์โปรโมตแอปเท่านั้น
 - **Founded:** 2026
 - **Tagline:** *Adventure Together.*
@@ -103,14 +107,16 @@ Every trail is an opportunity to discover something new.
 
 ## 6. Product Truths to Communicate
 
-เว็บไซต์สามารถสื่อสารความสามารถต่อไปนี้ได้เมื่อเจ้าของโปรเจกต์ยืนยันว่าเป็นข้อมูลจริงของแอป:
+Accomp มีฟีเจอร์หลักหนึ่งเดียวคือ **Shared Trip Planning /
+วางแผนทริปร่วมกัน** โดยมีสามความสามารถที่อยู่ภายในแผนทริปเดียวกัน:
 
-- Create and organize hiking or outdoor trips
-- Invite friends and plan together
-- Build shared itineraries
-- Manage collaborative gear checklists
-- Store important trip information
-- Navigate with offline maps
+1. Plan the trip / วางแผน
+2. Prepare the gear / เตรียมอุปกรณ์
+3. Ready offline / พร้อมใช้งานออฟไลน์
+
+การเตรียมอุปกรณ์และความพร้อมออฟไลน์ไม่ใช่ top-level feature แยก แม้เว็บไซต์
+จะแบ่งเป็นบทเพื่อช่วยเล่าเรื่องก็ตาม รายละเอียดฉบับเต็มและ validation boundary
+อยู่ใน [product definition](./product-definition.md)
 
 ห้ามสร้างตัวเลขผู้ใช้ รีวิว รางวัล พาร์ตเนอร์ ความพร้อมใช้งาน หรือคำกล่าวอ้างด้านความปลอดภัยขึ้นเอง
 
@@ -150,7 +156,7 @@ Every trail is an opportunity to discover something new.
 
 ข้อความนี้เป็นแนวทางสำหรับการออกแบบเนื้อหา ยังไม่ถือว่าอนุมัติ:
 
-**Plan together. Pack together. Explore together.**
+**Plan together. Prepare together. Stay ready.**
 
 ## 8. Color System
 
@@ -271,7 +277,10 @@ motif เหล่านี้ต้องเป็นงานต้นฉบ�
 
 ### Current status
 
-มี [pine symbol exploration v1](./accomp-pine-icon.svg) สำหรับ review แล้ว แต่ยังไม่มี final wordmark หรือไฟล์โลโก้ที่อนุมัติ เว็บไซต์จะยังไม่เริ่มออกแบบ final header, favicon หรือ app icon จนกว่า symbol นี้จะได้รับ approval
+มี [pine symbol exploration v1](./accomp-pine-icon.svg) สำหรับใช้เป็น
+องค์ประกอบประกอบฉาก และใช้ภาพมาสคอตต้นสนที่เจ้าของโปรเจกต์ส่งให้เป็น temporary
+logo ใน header, footer, legal navigation, 404 และ favicon ก่อน ภาพนี้ยังไม่ใช่
+final logo หรือ app icon และต้องเปลี่ยนเมื่อเจ้าของโปรเจกต์ยืนยันแนวทางใหม่
 
 ## 12. Iconography
 

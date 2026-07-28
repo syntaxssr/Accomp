@@ -22,14 +22,19 @@ navigation provide a roadmap entry point in both locales.
 
 ## Product Direction
 
-The roadmap contains six broad stages:
+The roadmap contains six broad delivery stages:
 
 1. Product discovery
-2. Shared trip planning
-3. Shared gear coordination
-4. Offline readiness
+2. Build the shared trip plan
+3. Add gear coordination to the plan
+4. Take the shared plan offline
 5. Private beta
 6. Launch readiness
+
+Stages 2–4 sequence the three capabilities of Accomp's single core feature,
+Shared Trip Planning. They are delivery stages, not separate top-level product
+features. The current hierarchy is defined in
+[`brand/product-definition.md`](../../brand/product-definition.md).
 
 Product discovery is the current focus. Every later stage is marked as planned,
 and the page deliberately avoids calendar dates, progress percentages or a

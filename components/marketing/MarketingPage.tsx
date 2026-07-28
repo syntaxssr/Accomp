@@ -131,7 +131,13 @@ export function MarketingPage({ locale, messages }: MarketingPageProps) {
           </Container>
         </section>
 
-        <section className={styles.chapter} id="features">
+        <div
+          aria-label={copy.promise.label}
+          data-core-feature="shared-trip-planning"
+          id="features"
+          role="group"
+        >
+        <section className={styles.chapter}>
           <Container>
             <Stack gap="xl">
               <div className={styles.chapterHeading} data-reveal>
@@ -242,6 +248,7 @@ export function MarketingPage({ locale, messages }: MarketingPageProps) {
             </div>
           </Container>
         </section>
+        </div>
 
         <section className={styles.how} id="how-it-works">
           <Container>

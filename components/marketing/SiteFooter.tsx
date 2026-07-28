@@ -18,7 +18,7 @@ export function SiteFooter({ copy, locale }: SiteFooterProps) {
         <div className={styles.footerGrid}>
           <div>
             <a className={styles.footerBrand} href={home}>
-              <Icon name="pine" size="md" decorative />
+              <Icon name="logo" size="md" decorative />
               <span>Accomp</span>
             </a>
             <p>{copy.tagline}</p>
@@ -28,7 +28,6 @@ export function SiteFooter({ copy, locale }: SiteFooterProps) {
               <h2>{copy.product}</h2>
               <a href={`${home}#features`}>{copy.features}</a>
               <a href={`${home}#how-it-works`}>{copy.howItWorks}</a>
-              <a href={`${home}#offline`}>{copy.offline}</a>
               <a href={localizedPath(locale, "/roadmap")}>
                 {copy.roadmap}
               </a>

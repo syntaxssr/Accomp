@@ -128,6 +128,12 @@
   height: 3rem;
 }
 
+.icon[data-name="logo"][data-size="md"] {
+  width: 2.5rem;
+  height: 2.5rem;
+  filter: drop-shadow(0 0.3rem 0.65rem rgb(23 23 23 / 16%));
+}
+
 .heading,
 .text {
   margin: 0;

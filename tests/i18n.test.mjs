@@ -64,6 +64,24 @@ test("keeps complete TH/EN catalogs with identical keys and placeholders", async
   assert.match(thai.privacy.title, /[\u0E00-\u0E7F]/);
   assert.match(thai.terms.title, /[\u0E00-\u0E7F]/);
   assert.equal(english.marketing.faq.items.length, 7);
+  assert.equal(
+    english.marketing.promise.body,
+    "One core feature: Shared Trip Planning.",
+  );
+  assert.equal(
+    thai.marketing.promise.body,
+    "หนึ่งฟีเจอร์หลัก: วางแผนทริปร่วมกัน",
+  );
+  assert.deepEqual(english.marketing.promise.items, [
+    "Plan the trip",
+    "Prepare the gear",
+    "Ready offline",
+  ]);
+  assert.deepEqual(thai.marketing.promise.items, [
+    "วางแผน",
+    "เตรียมอุปกรณ์",
+    "พร้อมใช้งานออฟไลน์",
+  ]);
 });
 
 test("defines a two-locale, URL-driven i18n foundation", async () => {

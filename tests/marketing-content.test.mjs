@@ -22,6 +22,32 @@ test("builds typed marketing content from localized messages", async () => {
   assert.doesNotMatch(content, /Adventure together|Join the waitlist/);
 });
 
+test("locks one core feature with three capabilities as product truth", async () => {
+  const [definition, agents, page, english, thai] = await Promise.all([
+    source("brand/product-definition.md"),
+    source("AGENTS.md"),
+    source("components/marketing/MarketingPage.tsx"),
+    source("messages/en.json").then(JSON.parse),
+    source("messages/th.json").then(JSON.parse),
+  ]);
+
+  assert.match(
+    definition,
+    /single\s+core feature is \*\*Shared Trip Planning\*\*/,
+  );
+  assert.match(definition, /Capability 1 — Plan the trip/);
+  assert.match(definition, /Capability 2 — Prepare the gear/);
+  assert.match(definition, /Capability 3 — Ready offline/);
+  assert.match(agents, /Do not present gear preparation or offline readiness/);
+  assert.match(page, /data-core-feature="shared-trip-planning"/);
+  assert.match(english.marketing.plan.eyebrow, /Capability 01/);
+  assert.match(english.marketing.pack.eyebrow, /Capability 02/);
+  assert.match(english.marketing.offline.eyebrow, /Capability 03/);
+  assert.match(thai.marketing.plan.eyebrow, /ความสามารถ 01/);
+  assert.match(thai.marketing.pack.eyebrow, /ความสามารถ 02/);
+  assert.match(thai.marketing.offline.eyebrow, /ความสามารถ 03/);
+});
+
 test("preserves the complete marketing structure through Phase 2.3", async () => {
   const [page, english] = await Promise.all([
     source("components/marketing/MarketingPage.tsx"),
@@ -87,6 +113,26 @@ test("keeps FAQ in the footer and makes Support a direct link", async () => {
   assert.doesNotMatch(navigation, /anchorHref\("#faq"\)/);
   assert.match(navigation, /href: localizedPath\(locale, "\/support"\)/);
   assert.match(navigation, /label: messages\.navigation\.support/);
+});
+
+test("keeps Offline Maps inside Features instead of a navigation destination", async () => {
+  const [navigation, footer] = await Promise.all([
+    source("content/site-content.ts"),
+    source("components/marketing/SiteFooter.tsx"),
+  ]);
+
+  assert.doesNotMatch(
+    navigation,
+    /\{ href: "#offline", key: "offline" \}/,
+  );
+  assert.doesNotMatch(footer, /href=\{`\$\{home\}#offline`\}/);
+  assert.match(navigation, /\{ href: "#features", key: "features" \}/);
+  assert.match(
+    navigation,
+    /\{ href: "#how-it-works", key: "howItWorks" \}/,
+  );
+  assert.match(footer, /href=\{`\$\{home\}#features`\}/);
+  assert.match(footer, /href=\{`\$\{home\}#how-it-works`\}/);
 });
 
 test("uses native disclosures and explicit client boundaries", async () => {

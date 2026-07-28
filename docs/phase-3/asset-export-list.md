@@ -9,6 +9,7 @@
 |---|---|---|---|---|
 | Pine symbol master | `brand/accomp-pine-icon.svg` | SVG/currentColor | Provisional | Header, footer, favicon candidate |
 | Pine symbol preview | `brand/accomp-pine-icon-preview.svg` | SVG/PNG | Review only | Do not ship |
+| Temporary mascot logo | `public/brand/accomp-logo-temporary.webp` | WebP/512 × 512 | Temporary | Header, footer, legal navigation, 404 and favicon |
 | Text wordmark | System type in prototype | Live text | Placeholder | Replace if custom wordmark is approved |
 
 ## 2. Phase 3 Design Assets

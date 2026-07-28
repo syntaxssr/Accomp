@@ -2,7 +2,7 @@
   "meta": {
     "title": "Adventure Together · Accomp",
     "titleTemplate": "%s · Accomp",
-    "description": "Plan outdoor trips together with shared itineraries, gear checklists, trip details, and offline-ready maps in Accomp.",
+    "description": "Plan one outdoor trip together—from the itinerary and shared gear to maps and essential details ready offline with Accomp.",
     "keywords": [
       "outdoor trip planner",
       "group hiking planner",
@@ -25,7 +25,6 @@
     "support": "Support",
     "features": "Features",
     "howItWorks": "How it works",
-    "offline": "Offline",
     "faq": "FAQ",
     "roadmap": "Roadmap"
   },
@@ -39,10 +38,10 @@
     "hero": {
       "eyebrow": "Your companion for every adventure",
       "title": "Adventure together.",
-      "body": "Bring the route, the crew, the gear, and the plan into one calm place—so everyone can head out ready.",
+      "body": "Plan one outdoor trip together—from the itinerary and shared gear to maps and essential details ready offline.",
       "primaryCta": "Join the waitlist",
-      "secondaryCta": "Explore the features",
-      "note": "A mobile app concept for planning shared outdoor trips.",
+      "secondaryCta": "Explore the shared plan",
+      "note": "A mobile app concept built around one shared trip plan.",
       "visualLabel": "Illustrative Accomp trip overview with shared paths",
       "visualDisclaimer": "Illustrative UI · not a product screenshot",
       "phone": {
@@ -58,19 +57,19 @@
       }
     },
     "promise": {
-      "body": "One place for the plan, the people, and the trail ahead.",
-      "label": "Accomp product promise",
+      "body": "One core feature: Shared Trip Planning.",
+      "label": "Three capabilities within Accomp's shared trip planning feature",
       "items": [
-        "Plan together",
-        "Pack together",
-        "Explore ready"
+        "Plan the trip",
+        "Prepare the gear",
+        "Ready offline"
       ]
     },
     "plan": {
-      "eyebrow": "Plan together",
-      "title": "Make one plan. Bring everyone in.",
-      "body": "Start the trip, invite your crew, and shape the days in one shared space.",
-      "railLabel": "Planning",
+      "eyebrow": "Capability 01 · Plan",
+      "title": "One shared trip plan for everyone.",
+      "body": "Create the trip, invite your crew, and keep the itinerary, route, meeting point, and essential details in one shared space.",
+      "railLabel": "Plan the trip",
       "cards": [
         {
           "eyebrow": "01 · Start",
@@ -90,10 +89,10 @@
       ]
     },
     "pack": {
-      "eyebrow": "Pack together",
-      "title": "Pack once. Know who's bringing what.",
-      "body": "Share the checklist, split responsibility, and see what still needs attention.",
-      "railLabel": "Packing",
+      "eyebrow": "Capability 02 · Prepare gear",
+      "title": "Keep the gear list inside the same plan.",
+      "body": "Share personal and group checklists, assign responsibility, and see what still needs attention before leaving.",
+      "railLabel": "Prepare the gear",
       "cards": [
         {
           "eyebrow": "01 · List",
@@ -147,13 +146,13 @@
       }
     },
     "offline": {
-      "eyebrow": "Ready anywhere",
-      "title": "Ready when the signal isn't.",
-      "body": "Prepare maps and essential trip details before coverage fades.",
+      "eyebrow": "Capability 03 · Ready offline",
+      "title": "Keep the shared plan close when the signal isn't.",
+      "body": "Download maps, routes, the itinerary, meeting point, and essential details before coverage fades.",
       "points": [
-        "Save the route",
-        "Keep details close",
-        "Head out with confidence"
+        "Download maps and routes",
+        "Keep trip details on the device",
+        "See offline and sync status"
       ],
       "validation": "Exact offline behavior remains subject to product validation.",
       "visualLabel": "Illustrative offline route and trip details",
@@ -164,20 +163,20 @@
     },
     "howItWorks": {
       "eyebrow": "How it works",
-      "title": "From “we should go” to ready to leave.",
-      "body": "One shared path from the first idea to the trailhead.",
+      "title": "One shared plan from the first idea to the trailhead.",
+      "body": "Plan the trip, prepare the gear, and keep the essentials ready offline.",
       "steps": [
         {
           "title": "Create the trip",
           "body": "Add the place, dates, and first outline."
         },
         {
-          "title": "Bring your people",
-          "body": "Invite the crew and plan together."
+          "title": "Plan together",
+          "body": "Invite the crew, shape the itinerary, and divide the gear."
         },
         {
-          "title": "Head out ready",
-          "body": "Review the details and prepare what is needed offline."
+          "title": "Prepare for offline",
+          "body": "Download the maps, route, and essential trip details."
         }
       ]
     },
@@ -195,7 +194,7 @@
       "items": [
         {
           "question": "What is Accomp?",
-          "answer": "Accomp is a mobile app concept for planning outdoor trips together. It brings the itinerary, companions, shared gear, important details, and offline preparation into one trip space."
+          "answer": "Accomp is a mobile app concept with one core feature: shared trip planning. It brings planning, gear preparation, and offline-ready trip information into one shared trip space."
         },
         {
           "question": "Can everyone help plan the same trip?",
@@ -234,13 +233,12 @@
       "notice": "No information is collected or submitted yet."
     },
     "footer": {
-      "tagline": "One calm place for the route, the crew, the gear, and the plan.",
+      "tagline": "One shared plan for the route, the crew, the gear, and the trail ahead.",
       "product": "Product",
       "support": "Support",
       "legal": "Legal",
       "features": "Features",
       "howItWorks": "How it works",
-      "offline": "Offline",
       "roadmap": "Roadmap",
       "supportDeveloper": "Support the developer",
       "faq": "FAQ",
@@ -253,17 +251,17 @@
   },
   "roadmap": {
     "metaTitle": "Mobile app roadmap",
-    "metaDescription": "See the early direction for the Accomp mobile app, from product discovery and shared trip planning to offline readiness and launch preparation.",
+    "metaDescription": "See how Accomp plans to develop one shared trip-planning experience, from trip setup and gear coordination to offline readiness and launch preparation.",
     "skipToContent": "Skip to roadmap",
     "eyebrow": "Mobile app direction",
     "title": "From shared plans to trail-ready trips.",
-    "lede": "A simple view of how we want Accomp to grow into a calm mobile companion for planning, packing, and exploring together.",
+    "lede": "A simple view of how one shared trip plan can grow to cover planning, gear preparation, and offline-ready essentials.",
     "curatedNote": "Direction, not a launch promise · Timing remains flexible",
     "visualLabel": "An illustrated trail connecting the planned stages of the Accomp mobile app",
     "visualCaption": "Start with the shared plan. Build toward the trail.",
     "timelineEyebrow": "Now, next, later",
     "timelineTitle": "What we want to build, in order.",
-    "timelineBody": "The roadmap stays intentionally broad. We will validate the core group-trip experience first, then expand only when each step is useful and reliable.",
+    "timelineBody": "The roadmap stays intentionally broad. We will validate the single shared trip-planning feature first, then add its three capabilities only when each step is useful and reliable.",
     "timelineLabel": "Accomp mobile app roadmap",
     "stageLabel": "Stage",
     "horizon": {
@@ -290,7 +288,7 @@
         ]
       },
       "tripPlanning": {
-        "title": "Plan one trip together",
+        "title": "Build the shared trip plan",
         "summary": "Create a trip, invite companions, and keep the route, schedule, meeting details, and shared decisions in one place.",
         "highlights": [
           "Shared trip space and invitations",
@@ -298,16 +296,16 @@
         ]
       },
       "gearCoordination": {
-        "title": "Know who's bringing what",
-        "summary": "Add a shared gear checklist so the group can divide responsibilities and see what still needs attention before leaving.",
+        "title": "Add gear coordination to the plan",
+        "summary": "Extend the same shared trip plan with gear checklists, assignments, and a clear view of what still needs attention before leaving.",
         "highlights": [
           "Personal and group gear lists",
           "Assignments and simple readiness states"
         ]
       },
       "offlineReadiness": {
-        "title": "Stay prepared beyond signal",
-        "summary": "Explore reliable offline access to the essential route and trip information people need when connectivity becomes limited.",
+        "title": "Take the shared plan offline",
+        "summary": "Extend the same shared trip plan with reliable offline access to maps, routes, and essential details when connectivity becomes limited.",
         "highlights": [
           "Downloadable trip essentials",
           "Clear offline and sync status"
@@ -315,7 +313,7 @@
       },
       "privateBeta": {
         "title": "Learn on real trips",
-        "summary": "Invite a small group of testers to use Accomp before a wider release and learn where planning, packing, and offline use still need work.",
+        "summary": "Invite a small group of testers to use the complete shared trip-planning experience and learn where planning, gear preparation, and offline use still need work.",
         "highlights": [
           "Private testing with outdoor groups",
           "Feedback, reliability, and usability improvements"

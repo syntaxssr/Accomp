@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { readFile, stat } from "node:fs/promises";
 import test from "node:test";
 
 const root = new URL("../", import.meta.url);
@@ -72,6 +72,28 @@ test("uses one matching pine asset for source and public output", async () => {
   assert.equal(publicAsset, sourceAsset);
   assert.match(publicAsset, /color="#778873"/i);
   assert.doesNotMatch(publicAsset, /phantom/i);
+});
+
+test("uses the owner-provided temporary mascot for brand-logo placements", async () => {
+  const [icon, header, footer, legal, notFound, layout, logo] =
+    await Promise.all([
+      source("components/ui/Icon.tsx"),
+      source("components/marketing/SiteHeader.tsx"),
+      source("components/marketing/SiteFooter.tsx"),
+      source("components/legal/LegalNoticePage.tsx"),
+      source("components/legal/LocalizedNotFound.tsx"),
+      source("app/layout.tsx"),
+      stat(new URL("public/brand/accomp-logo-temporary.webp", root)),
+    ]);
+
+  assert.match(icon, /logo: "\/brand\/accomp-logo-temporary\.webp"/);
+  assert.match(header, /<Icon name="logo" size="md" decorative \/>/);
+  assert.match(footer, /<Icon name="logo" size="md" decorative \/>/);
+  assert.match(legal, /<Icon name="logo" size="md" decorative \/>/);
+  assert.match(notFound, /<Icon name="logo" size="md" decorative \/>/);
+  assert.match(layout, /icon: "\/brand\/accomp-logo-temporary\.webp"/);
+  assert.ok(logo.size > 0);
+  assert.ok(logo.size < 100_000);
 });
 
 test("declares no persistence binding", async () => {

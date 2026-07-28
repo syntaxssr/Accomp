@@ -20,13 +20,17 @@ amounts were added.
 | `/en/support` | English Support page |
 | `/th/support` | Thai Support page |
 
-The compact desktop navigation groups Features, How it works and Offline under
-Product, while Roadmap and Support are direct links. FAQ appears only in the
-footer. Product expands on hover with the same interaction available through
-click and Escape. The mobile menu keeps the same information hierarchy, the
-footer links directly to the localized route, and the language switcher
-preserves the Support-page context. The earlier black preview strip has been
-removed from all public pages.
+The compact desktop navigation groups Features and How it works under Product,
+while Roadmap and Support are direct links. Offline Maps remains a highlighted
+part of the Features story rather than a separate topbar or footer destination.
+The planning, gear, and offline chapters are three capabilities of the single
+Shared Trip Planning feature, following the current
+[product definition](../../brand/product-definition.md).
+FAQ appears only in the footer. Product expands on hover with the same
+interaction available through click and Escape. The mobile menu keeps the same
+information hierarchy, the footer Product group links to Features, How it works
+and Roadmap, and the language switcher preserves the Support-page context. The
+earlier black preview strip has been removed from all public pages.
 
 ## Experience
 

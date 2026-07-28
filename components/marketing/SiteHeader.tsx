@@ -222,7 +222,7 @@ export function SiteHeader({
       >
         <div className={styles.pill}>
           <a className={styles.brand} href={homeHref} aria-label={copy.home}>
-            <Icon name="pine" size="md" decorative />
+            <Icon name="logo" size="md" decorative />
             <span>Accomp</span>
           </a>
 

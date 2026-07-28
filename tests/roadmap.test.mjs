@@ -71,6 +71,22 @@ test("connects every roadmap entry to complete TH/EN copy", async () => {
     Object.keys(english.roadmap.items),
     Object.keys(thai.roadmap.items),
   );
+  assert.match(
+    english.roadmap.timelineBody,
+    /single shared trip-planning feature/,
+  );
+  assert.match(
+    thai.roadmap.timelineBody,
+    /ฟีเจอร์วางแผนทริปร่วมกันหนึ่งเดียว/,
+  );
+  assert.match(
+    english.roadmap.items.gearCoordination.title,
+    /to the plan/,
+  );
+  assert.match(
+    english.roadmap.items.offlineReadiness.title,
+    /shared plan offline/,
+  );
 });
 
 test("renders a semantic, responsive, locale-aware roadmap experience", async () => {

@@ -27,7 +27,7 @@ export function LegalNoticePage({
             className={styles.brand}
             href={localizedPath(locale)}
           >
-            <Icon name="pine" size="md" decorative />
+            <Icon name="logo" size="md" decorative />
             <span>Accomp</span>
           </a>
           <LanguageSwitcher

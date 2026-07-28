@@ -42,6 +42,7 @@
 - [Asset brief](./docs/phase-1/asset-brief.md)
 - [Motion concept](./docs/phase-1/motion-concept.md)
 - [Pine symbol exploration v1](./brand/accomp-pine-icon.svg)
+- [Current product definition](./brand/product-definition.md)
 
 ### Phase 2 deliverables
 
@@ -181,7 +182,7 @@ agreements, confirmed production domain หรือ deployment
 |---|---|
 | Cinematic product hero | กลุ่มเพื่อน + เส้นทาง + phone mockup + topographic motion |
 | Large product statement | “Adventure Together.” และ value proposition ที่เน้น planning |
-| Feature card carousel | Plan Together / Shared Gear / Trip Info / Offline Maps |
+| Feature capability chapters | Plan / Prepare Gear / Ready Offline ภายใน shared trip plan เดียว |
 | Brand mascot inserted in copy | Original path/companion symbol หลังมีโลโก้ที่อนุมัติ |
 | Light/dark chapters | Surface light สำหรับ planning และ Brand Dark สำหรับ offline reliability |
 | Repeated download CTA | App Store / Google Play หรือ waitlist ตามสถานะจริง |
@@ -191,11 +192,20 @@ agreements, confirmed production domain หรือ deployment
 
 เป้าหมายคือความใกล้เคียงด้าน **คุณภาพ จังหวะ และ interaction model** ไม่ใช่การคัดลอกแบบ pixel-for-pixel ห้ามใช้ข้อความ asset โลโก้ illustration video source code หรือ visual signature ของ Phantom
 
-## 4. Brand Source of Truth
+## 4. Brand and Product Sources of Truth
 
 Brand identity ถูกเก็บไว้ที่:
 
 `brand/brand-identity.md`
+
+นิยามผลิตภัณฑ์ล่าสุดถูกเก็บไว้ที่:
+
+`brand/product-definition.md`
+
+Product definition กำหนดว่า Accomp มีฟีเจอร์หลักเดียวคือ `Shared Trip
+Planning / วางแผนทริปร่วมกัน` พร้อมสามความสามารถ: วางแผน เตรียมอุปกรณ์
+และพร้อมใช้งานออฟไลน์ เอกสารนี้มีลำดับความสำคัญเหนือ feature hierarchy
+ใน Phase artifacts เก่า
 
 เอกสารนั้นครอบคลุม:
 
@@ -213,15 +223,16 @@ Brand identity ถูกเก็บไว้ที่:
 
 ## 5. Recommended Story Architecture
 
-ลำดับด้านล่างเป็น proposed information architecture ต้องอนุมัติใน Phase 0:
+ลำดับด้านล่างเริ่มจาก proposed information architecture ใน Phase 0 และได้รับ
+การปรับตาม product definition ล่าสุด บท Plan, Gear และ Offline เป็นบทเล่าเรื่อง
+ของสามความสามารถภายใต้ฟีเจอร์หลักเดียว ไม่ใช่ top-level feature แยก:
 
 ### 5.1 Header
 
 - Accomp logo/wordmark
-- Features
-- How it works
-- Offline
-- FAQ
+- Product dropdown: Features และ How it works
+- Roadmap direct link
+- Support direct link
 - Primary CTA
 - Mobile hamburger menu
 
@@ -248,21 +259,21 @@ Brand identity ถูกเก็บไว้ที่:
 - Verified rating/review/press/usage proof เท่านั้น
 - ถ้ายังไม่มี proof ให้ใช้ข้อความ product promise แทน ห้ามสร้างตัวเลขขึ้นเอง
 
-### 5.4 Chapter 1 — Plan Together
+### 5.4 Capability Chapter 1 — Plan
 
 - Create a trip
 - Invite friends
 - Build a shared itinerary
 - Feature cards 3–4 ใบ
 
-### 5.5 Chapter 2 — Pack Together
+### 5.5 Capability Chapter 2 — Prepare Gear
 
 - Shared gear checklist
 - Assign responsibility
 - See what is packed and what is missing
 - ใช้ layered checklist cards และ calm micro-interactions
 
-### 5.6 Chapter 3 — Ready Anywhere
+### 5.6 Capability Chapter 3 — Ready Offline
 
 - Store essential trip information
 - Offline maps
@@ -1098,11 +1109,16 @@ Roadmap เวอร์ชันแก้ไขมี 6 ขั้นเรีย
 | Stage | Horizon | Public focus |
 | --- | --- | --- |
 | 1. Product discovery | Now | ตรวจสอบผู้ใช้ ปัญหาหลัก และ core trip flow |
-| 2. Shared trip planning | Next | สร้างทริป ชวนเพื่อน กำหนดการและรายละเอียดร่วม |
-| 3. Shared gear coordination | Next | checklist, assignment และ readiness แบบง่าย |
-| 4. Offline readiness | Later | ข้อมูลทริปสำคัญ สถานะออฟไลน์และการซิงก์ |
+| 2. Build the shared trip plan | Next | สร้างทริป ชวนเพื่อน กำหนดการและรายละเอียดร่วม |
+| 3. Add gear coordination | Next | เพิ่ม checklist, assignment และ readiness เข้าในแผนเดิม |
+| 4. Take the plan offline | Later | เพิ่มข้อมูลทริปออฟไลน์และสถานะการซิงก์เข้าในแผนเดิม |
 | 5. Private beta | Later | ทดลองกับกลุ่มเล็กและปรับจากการใช้งานจริง |
 | 6. Launch readiness | Later | privacy, safety, accessibility, support และ store readiness |
+
+Stage 2–4 เป็นลำดับการพัฒนาสามความสามารถภายใต้ฟีเจอร์หลักเดียวคือ
+`Shared Trip Planning / วางแผนทริปร่วมกัน` ไม่ใช่ top-level feature แยก
+โดยให้ [product definition](./brand/product-definition.md) เป็น source of truth
+ล่าสุดเหนือเอกสาร Phase เก่า
 
 แต่ละรายการมี `id`, stage, horizon, localized title, localized summary,
 highlights และ status โดยไม่มีวันที่เปิดตัว
@@ -1351,6 +1367,10 @@ public display name, permission status และวันที่เจ้า�
 - รวมเมนูเป็น `Product` dropdown พร้อม hover expansion และ keyboard fallback
   ส่วน `Roadmap` กับ `Support` เป็น direct link โดย mobile menu ต้องรักษาลำดับ
   ชั้นเดียวกัน
+- Product dropdown แสดงเฉพาะ `Features` และ `How it works`; Offline Maps เป็น
+  ส่วนหนึ่งของ Features และไม่มี topbar destination แยก
+- Footer หมวด Product ใช้โครงเดียวกันโดยไม่มี Offline link แยก และยังคง
+  `Roadmap` เป็นเส้นทางรอง
 - เก็บ FAQ ไว้เฉพาะใน footer ไม่แสดงใน topbar หรือ Support dropdown
 - ตัดแถบ preview สีดำด้านบนออกจากทุก public page
 - Hero ใช้ pine/path motif และ palette
@@ -1554,7 +1574,8 @@ Phase 3 ดำเนินต่อด้วย provisional assumptions เพ�
 โปรเจกต์ถือว่าเสร็จเมื่อ:
 
 - เป็นเว็บไซต์โปรโมตแอป Accomp ที่ responsive และเข้าถึงได้
-- สื่อสารว่า Accomp ช่วย plan, invite, pack, organize และ explore offline
+- สื่อสารว่า Accomp มีฟีเจอร์หลักเดียวคือ Shared Trip Planning พร้อมความสามารถ
+  ด้านการวางแผน เตรียมอุปกรณ์ และพร้อมใช้งานออฟไลน์
 - มี Accomp visual identity ชัดเจน
 - มี storytelling quality และ interaction polish ตามระดับ reference
 - ไม่คัดลอก proprietary content หรือ visual identity ของ Phantom
@@ -1641,6 +1662,10 @@ Phase 3 ดำเนินต่อด้วย provisional assumptions เพ�
 - [x] สร้าง `/en/support` และ `/th/support`
 - [x] เพิ่ม Support menu ใน desktop, mobile และ footer
 - [x] ตรวจ safe supporter model, translation, accessibility และ SEO
+- [x] ใช้ mascot pine image ที่เจ้าของโปรเจกต์ส่งให้เป็น temporary logo โดยยัง
+  ไม่ถือเป็น final logo หรือ app icon
+- [x] ล็อก product feature hierarchy เป็นหนึ่งฟีเจอร์หลัก `Shared Trip
+  Planning` พร้อมสามความสามารถ: วางแผน เตรียมอุปกรณ์ และพร้อมใช้งานออฟไลน์
 - [x] สร้าง source code foundation
 - [x] สร้าง Git repository
 - [x] Initial commit

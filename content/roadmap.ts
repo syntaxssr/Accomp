@@ -12,6 +12,8 @@ export interface RoadmapEntry {
   status: RoadmapStatus;
 }
 
+// Stages 2–4 sequence capabilities of the single Shared Trip Planning
+// feature. They are delivery stages, not separate top-level features.
 export const roadmapEntries = [
   {
     copyKey: "discovery",

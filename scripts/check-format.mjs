@@ -5,6 +5,7 @@ const root = process.cwd();
 const roots = [
   ".github",
   "app",
+  "brand",
   "build",
   "components",
   "content",
@@ -25,6 +26,7 @@ const roots = [
   "worker",
 ];
 const rootFiles = [
+  "AGENTS.md",
   ".env.example",
   ".openai/hosting.json",
   "README.md",

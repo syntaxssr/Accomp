@@ -38,7 +38,6 @@ export interface FAQItem {
 const navigationDefinitions = [
   { href: "#features", key: "features" },
   { href: "#how-it-works", key: "howItWorks" },
-  { href: "#offline", key: "offline" },
 ] as const;
 
 const planningVisuals: FeatureVisual[] = ["trip", "invite", "itinerary"];

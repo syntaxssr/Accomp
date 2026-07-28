@@ -6,6 +6,11 @@ release-candidate automation layer, the Phase 2.1 TH/EN foundation and the
 Phase 2.2 bilingual mobile app roadmap. Phase 2.3 adds a safe bilingual Support
 experience and a consent-driven supporter wall.
 
+The canonical mobile-product definition is
+[brand/product-definition.md](./brand/product-definition.md). Accomp has one
+core feature—Shared Trip Planning—with three capabilities: plan the trip,
+prepare the gear, and keep maps and essential trip details ready offline.
+
 ## Technology
 
 - Next-compatible React application using Vinext and Vite
@@ -91,5 +96,6 @@ deployment remain gated.
 See [Phase 2.3 documentation](./docs/phase-2.3/README.md),
 [Phase 2.2 documentation](./docs/phase-2.2/README.md),
 [Phase 2.1 documentation](./docs/phase-2.1/README.md),
+[product definition](./brand/product-definition.md),
 [Phase 10 release automation](./docs/phase-10/README.md) and the main
 [project plan](./plan.md).

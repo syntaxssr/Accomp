@@ -1,9 +1,10 @@
 import styles from "./ui.module.css";
 
-type IconName = "pine";
+type IconName = "logo" | "pine";
 type IconSize = "sm" | "md" | "lg";
 
 const iconSources: Record<IconName, string> = {
+  logo: "/brand/accomp-logo-temporary.webp",
   pine: "/brand/accomp-pine-icon.svg",
 };
 
@@ -32,6 +33,7 @@ export function Icon({
     <img
       alt={alt}
       className={classes}
+      data-name={name}
       data-size={size}
       decoding="async"
       height={48}
