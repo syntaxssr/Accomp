@@ -59,6 +59,11 @@
   color: var(--color-cream);
 }
 
+.header[data-theme="dark"] .desktopLanguage {
+  border-color: rgb(161 188 152 / 32%);
+  background: rgb(23 23 23 / 72%);
+}
+
 .brand {
   min-width: 2.75rem;
   min-height: 2.75rem;
@@ -112,6 +117,10 @@
 
 .headerCta {
   flex: 0 0 auto;
+}
+
+.desktopLanguage {
+  display: none;
 }
 
 .menuTrigger,
@@ -174,6 +183,10 @@
   color: var(--color-brand);
 }
 
+.mobileLanguage {
+  margin-top: var(--space-5);
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .header {
     animation: header-in var(--motion-fast) var(--ease-enter) both;
@@ -216,7 +229,11 @@
   .desktopNav {
     display: flex;
     align-items: center;
-    gap: 1.35rem;
+    gap: 1rem;
+  }
+
+  .desktopLanguage {
+    display: inline-flex;
   }
 
   .menuTrigger {

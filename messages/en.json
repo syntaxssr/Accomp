@@ -1,0 +1,327 @@
+{
+  "meta": {
+    "title": "Adventure Together · Accomp",
+    "titleTemplate": "%s · Accomp",
+    "description": "Plan outdoor trips together with shared itineraries, gear checklists, trip details, and offline-ready maps in Accomp.",
+    "keywords": [
+      "outdoor trip planner",
+      "group hiking planner",
+      "shared gear checklist",
+      "offline trip planning"
+    ],
+    "ogAlt": "Accomp — Adventure Together, with a shared route and trip-planning visual",
+    "openGraphLocale": "en_US",
+    "inLanguage": "en"
+  },
+  "navigation": {
+    "home": "Accomp home",
+    "primary": "Primary navigation",
+    "mobile": "Mobile navigation",
+    "menu": "Menu",
+    "menuTitle": "Navigate Accomp",
+    "closeMenu": "Close menu",
+    "joinWaitlist": "Join the waitlist",
+    "features": "Features",
+    "howItWorks": "How it works",
+    "offline": "Offline",
+    "faq": "FAQ"
+  },
+  "languageSwitcher": {
+    "label": "Change language",
+    "english": "English",
+    "thai": "Thai"
+  },
+  "marketing": {
+    "skipToContent": "Skip to content",
+    "previewNote": "Product preview · Illustrative app UI · Waitlist submission is not active",
+    "hero": {
+      "eyebrow": "Your companion for every adventure",
+      "title": "Adventure together.",
+      "body": "Bring the route, the crew, the gear, and the plan into one calm place—so everyone can head out ready.",
+      "primaryCta": "Join the waitlist",
+      "secondaryCta": "Explore the features",
+      "note": "A mobile app concept for planning shared outdoor trips.",
+      "visualLabel": "Illustrative Accomp trip overview with shared paths",
+      "visualDisclaimer": "Illustrative UI · not a product screenshot",
+      "phone": {
+        "tripType": "Weekend trip",
+        "place": "Khao Yai",
+        "date": "12–14 September · Concept data",
+        "readiness": "Trip readiness",
+        "readinessValue": "72%",
+        "status": "Illustrative status",
+        "itinerary": "Itinerary shared",
+        "gear": "Gear list ready",
+        "offline": "Offline map saved"
+      }
+    },
+    "promise": {
+      "body": "One place for the plan, the people, and the trail ahead.",
+      "label": "Accomp product promise",
+      "items": [
+        "Plan together",
+        "Pack together",
+        "Explore ready"
+      ]
+    },
+    "plan": {
+      "eyebrow": "Plan together",
+      "title": "Make one plan. Bring everyone in.",
+      "body": "Start the trip, invite your crew, and shape the days in one shared space.",
+      "railLabel": "Planning",
+      "cards": [
+        {
+          "eyebrow": "01 · Start",
+          "title": "Start with the trip",
+          "body": "Set the place, dates, and first outline while the idea is still fresh."
+        },
+        {
+          "eyebrow": "02 · Invite",
+          "title": "Invite your crew",
+          "body": "Bring every companion into the same trip space and keep the context together."
+        },
+        {
+          "eyebrow": "03 · Shape",
+          "title": "Shape the days",
+          "body": "Turn loose ideas into a clear itinerary everyone can follow."
+        }
+      ]
+    },
+    "pack": {
+      "eyebrow": "Pack together",
+      "title": "Pack once. Know who's bringing what.",
+      "body": "Share the checklist, split responsibility, and see what still needs attention.",
+      "railLabel": "Packing",
+      "cards": [
+        {
+          "eyebrow": "01 · List",
+          "title": "Share the checklist",
+          "body": "Keep personal and group essentials in one calm, readable list."
+        },
+        {
+          "eyebrow": "02 · Assign",
+          "title": "Split the load",
+          "body": "Make responsibility visible before anyone leaves home."
+        },
+        {
+          "eyebrow": "03 · Review",
+          "title": "See what's ready",
+          "body": "A final check shows what is ready and what still needs attention."
+        }
+      ]
+    },
+    "featureArtwork": {
+      "trip": {
+        "name": "Trip name · Khao Yai Weekend",
+        "dates": "Dates · 12–14 September",
+        "meetingPoint": "Meeting point · Add later",
+        "action": "Create trip"
+      },
+      "invite": {
+        "action": "Invite",
+        "more": "+1"
+      },
+      "itinerary": [
+        "08:00 · Trailhead",
+        "12:30 · Ridge lunch",
+        "16:00 · Camp"
+      ],
+      "checklist": {
+        "tent": "Tent",
+        "stove": "Stove",
+        "waterFilter": "Water filter"
+      },
+      "assign": {
+        "tent": "Tent",
+        "stove": "Stove",
+        "firstAid": "First aid",
+        "may": "May",
+        "ton": "Ton",
+        "you": "You"
+      },
+      "readiness": {
+        "value": "8/10",
+        "status": "8 ready · 2 still open"
+      }
+    },
+    "offline": {
+      "eyebrow": "Ready anywhere",
+      "title": "Ready when the signal isn't.",
+      "body": "Prepare maps and essential trip details before coverage fades.",
+      "points": [
+        "Save the route",
+        "Keep details close",
+        "Head out with confidence"
+      ],
+      "validation": "Exact offline behavior remains subject to product validation.",
+      "visualLabel": "Illustrative offline route and trip details",
+      "cardEyebrow": "Prepared offline",
+      "cardTitle": "Khao Yai route",
+      "cardBody": "Map, itinerary and meeting details · Illustrative UI",
+      "mapLabel": "Abstract route · not real map data"
+    },
+    "howItWorks": {
+      "eyebrow": "How it works",
+      "title": "From “we should go” to ready to leave.",
+      "body": "One shared path from the first idea to the trailhead.",
+      "steps": [
+        {
+          "title": "Create the trip",
+          "body": "Add the place, dates, and first outline."
+        },
+        {
+          "title": "Bring your people",
+          "body": "Invite the crew and plan together."
+        },
+        {
+          "title": "Head out ready",
+          "body": "Review the details and prepare what is needed offline."
+        }
+      ]
+    },
+    "editorial": {
+      "eyebrow": "A shared adventure",
+      "title": "The best trips feel spontaneous. The preparation shouldn't.",
+      "body": "Accomp is for the friend who starts the plan—and everyone who helps turn it into a shared adventure.",
+      "validation": "Original abstract composition used until photography is approved.",
+      "visualLabel": "Abstract illustration of three companions planning around a map"
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "A few things to know.",
+      "body": "Honest answers before launch.",
+      "items": [
+        {
+          "question": "What is Accomp?",
+          "answer": "Accomp is a mobile app concept for planning outdoor trips together. It brings the itinerary, companions, shared gear, important details, and offline preparation into one trip space."
+        },
+        {
+          "question": "Can everyone help plan the same trip?",
+          "answer": "The planned experience lets invited companions view and contribute to shared trip details. Exact collaboration controls will be confirmed before launch."
+        },
+        {
+          "question": "Can I use Accomp without a signal?",
+          "answer": "Accomp is being designed around offline readiness, including prepared maps and essential trip information. Final offline capabilities will be announced before launch."
+        },
+        {
+          "question": "Who is Accomp for?",
+          "answer": "Accomp is designed for hiking groups, backpackers, campers, weekend adventurers, and friends who want one clear plan before heading outdoors."
+        },
+        {
+          "question": "Will Accomp be available on iOS and Android?",
+          "answer": "Platform availability has not been confirmed yet. This site will be updated when the release plan is ready."
+        },
+        {
+          "question": "When will Accomp launch?",
+          "answer": "A launch date has not been announced. The waitlist shown here remains a design preview until a consented signup system is available."
+        },
+        {
+          "question": "Is Accomp free?",
+          "answer": "Pricing has not been announced. Confirmed product and launch details will appear here before release."
+        }
+      ]
+    },
+    "waitlist": {
+      "eyebrow": "Your next trip starts together",
+      "title": "Make room for the adventure.",
+      "body": "Bring the people and the plan together before the trail begins.",
+      "groupLabel": "Waitlist signup is not active yet",
+      "emailLabel": "Email address preview",
+      "emailPlaceholder": "email@example.com",
+      "button": "Coming soon",
+      "notice": "No information is collected or submitted yet."
+    },
+    "footer": {
+      "tagline": "One calm place for the route, the crew, the gear, and the plan.",
+      "product": "Product",
+      "support": "Support",
+      "legal": "Legal",
+      "features": "Features",
+      "howItWorks": "How it works",
+      "offline": "Offline",
+      "faq": "FAQ",
+      "contact": "Contact · coming later",
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "copyright": "© 2026 Accomp · Adventure Together.",
+      "status": "Pre-launch product concept"
+    }
+  },
+  "accessibility": {
+    "featureRail": {
+      "previous": "Previous {label} card",
+      "next": "Next {label} card",
+      "status": "Card {current} of {total}",
+      "allVisible": "All {total} cards visible",
+      "region": "{label} feature cards",
+      "roleDescription": "carousel"
+    }
+  },
+  "privacy": {
+    "metaTitle": "Privacy",
+    "metaDescription": "Current privacy and data-handling status for the Accomp marketing website.",
+    "eyebrow": "Site notice",
+    "title": "Privacy at Accomp.",
+    "lede": "This page records how the pre-launch marketing website currently handles information.",
+    "noticeTitle": "Pre-launch status",
+    "noticeBody": "This is an operational privacy notice for the current preview, not the final policy for the Accomp mobile app.",
+    "sections": [
+      {
+        "title": "Information collection",
+        "body": "The current website does not accept waitlist submissions, create accounts, process purchases, or ask visitors to provide personal information."
+      },
+      {
+        "title": "Analytics and cookies",
+        "body": "Accomp has not enabled analytics, advertising trackers, or application cookies on this website. Because there are no optional cookies, no consent banner is shown."
+      },
+      {
+        "title": "Future changes",
+        "body": "Before any form, analytics service, or optional cookie is activated, this notice will be replaced with an approved privacy policy and an appropriate consent experience."
+      },
+      {
+        "title": "Contact readiness",
+        "body": "A verified legal entity and public privacy contact have not been supplied yet. Both remain release requirements before personal information can be collected."
+      }
+    ],
+    "dateLabel": "Status reviewed:",
+    "dateText": "28 July 2026",
+    "returnHome": "Return to Accomp"
+  },
+  "terms": {
+    "metaTitle": "Terms",
+    "metaDescription": "Current preview terms and product-status notice for the Accomp marketing website.",
+    "eyebrow": "Preview terms",
+    "title": "A clear pre-launch status.",
+    "lede": "These terms explain the limited role of the current Accomp marketing preview.",
+    "noticeTitle": "Not a service agreement",
+    "noticeBody": "The Accomp app has not launched, so this page does not create an app account, subscription, purchase, or service relationship.",
+    "sections": [
+      {
+        "title": "Website purpose",
+        "body": "This website introduces the Accomp mobile app concept and its intended direction. It is informational and does not currently provide the app itself."
+      },
+      {
+        "title": "Illustrative content",
+        "body": "App interfaces, trip information, readiness states, maps, and dates shown on the site are illustrative. Product capabilities, platforms, pricing, and launch timing remain subject to confirmation."
+      },
+      {
+        "title": "No submissions or transactions",
+        "body": "The waitlist control is disabled. The website does not accept personal information, payments, bookings, or user-generated content."
+      },
+      {
+        "title": "Release requirement",
+        "body": "Final terms, a verified legal entity, and a public contact must be approved before Accomp offers a live service or accepts a registration."
+      }
+    ],
+    "dateLabel": "Status reviewed:",
+    "dateText": "28 July 2026",
+    "returnHome": "Return to Accomp"
+  },
+  "notFound": {
+    "metaTitle": "Page not found",
+    "eyebrow": "404 · Off route",
+    "title": "This path isn't on the map.",
+    "lede": "The page may have moved, or the address may be incomplete.",
+    "returnHome": "Return to Accomp"
+  }
+}

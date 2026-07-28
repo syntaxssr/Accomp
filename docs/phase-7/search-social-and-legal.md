@@ -47,10 +47,17 @@ Prompt summary:
 > shared-route and trip-planning composition; avoid unverified claims,
 > third-party branding and invented text.
 
+Phase 2.1 adds `public/og-th.png`, a 1200 × 630 localized derivative for Thai
+routes. It was produced with the built-in ImageGen text-localization edit path,
+then resized and inspected in the project. The exact Thai subtitle is:
+
+- `ผจญภัยไปด้วยกัน`
+
 ## Crawl Routes
 
 - `/robots.txt` allows the public site and points to the current-origin sitemap.
-- `/sitemap.xml` lists `/`, `/privacy` and `/terms`.
+- `/sitemap.xml` lists EN/TH homepage, Privacy and Terms routes with alternate
+  language links.
 - Each sitemap URL uses the verified configured origin or request origin.
 - Missing routes return HTTP 404 and include `noindex`.
 
@@ -68,7 +75,7 @@ privacy policy must be updated before data collection begins.
 
 ## Legal Links
 
-The footer now links to `/privacy` and `/terms`. These pages document the
+The footer links to locale-matching Privacy and Terms routes. These pages document the
 current, factual pre-launch state:
 
 - no data submissions;

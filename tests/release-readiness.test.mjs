@@ -27,10 +27,10 @@ function contrast(foreground, background) {
   return (Math.max(first, second) + 0.05) / (Math.min(first, second) + 0.05);
 }
 
-test("marks the reviewed experience as Phase 10 and keeps the skip target focusable", async () => {
+test("marks the reviewed experience as Phase 2.1 and keeps the skip target focusable", async () => {
   const page = await source("components/marketing/MarketingPage.tsx");
 
-  assert.match(page, /data-phase="10"/);
+  assert.match(page, /data-phase="2\.1"/);
   assert.match(page, /<main id="main" tabIndex=\{-1\}>/);
 });
 
@@ -58,10 +58,9 @@ test("uses accessible foreground pairs for release-critical controls", () => {
 });
 
 test("keeps release-blocked integrations honest and inactive", async () => {
-  const [page, privacy, terms, packageJsonSource] = await Promise.all([
+  const [page, english, packageJsonSource] = await Promise.all([
     source("components/marketing/MarketingPage.tsx"),
-    source("app/privacy/page.tsx"),
-    source("app/terms/page.tsx"),
+    source("messages/en.json"),
     source("package.json"),
   ]);
   const packageJson = JSON.parse(packageJsonSource);
@@ -71,9 +70,9 @@ test("keeps release-blocked integrations honest and inactive", async () => {
   });
 
   assert.doesNotMatch(page, /<form\b|onSubmit=|action=/i);
-  assert.match(page, /No information is collected or submitted yet/);
-  assert.match(privacy, /has not enabled analytics/);
-  assert.match(terms, /waitlist control is disabled/i);
+  assert.match(english, /No information is collected or submitted yet/);
+  assert.match(english, /has not enabled analytics/);
+  assert.match(english, /waitlist control is disabled/i);
   assert.equal(
     packageNames.some((name) =>
       /analytics|posthog|segment|plausible|hotjar/i.test(name),

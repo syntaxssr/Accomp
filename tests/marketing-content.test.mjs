@@ -8,20 +8,24 @@ async function source(path) {
   return readFile(new URL(path, root), "utf8");
 }
 
-test("keeps marketing content in one typed source", async () => {
+test("builds typed marketing content from localized messages", async () => {
   const content = await source("content/site-content.ts");
 
   assert.match(content, /export interface NavigationItem/);
   assert.match(content, /export interface FeatureCardContent/);
   assert.match(content, /export interface FAQItem/);
-  assert.match(content, /export const navigation/);
-  assert.match(content, /export const planningFeatures/);
-  assert.match(content, /export const packingFeatures/);
-  assert.match(content, /export const faqItems/);
+  assert.match(content, /export function createSiteContent/);
+  assert.match(content, /messages\.marketing\.plan\.cards/);
+  assert.match(content, /messages\.marketing\.pack\.cards/);
+  assert.match(content, /messages\.marketing\.faq\.items/);
+  assert.doesNotMatch(content, /Adventure together|Join the waitlist/);
 });
 
-test("preserves the complete marketing structure through Phase 10", async () => {
-  const page = await source("components/marketing/MarketingPage.tsx");
+test("preserves the complete marketing structure through Phase 2.1", async () => {
+  const [page, english] = await Promise.all([
+    source("components/marketing/MarketingPage.tsx"),
+    source("messages/en.json"),
+  ]);
 
   for (const id of [
     "top",
@@ -34,13 +38,14 @@ test("preserves the complete marketing structure through Phase 10", async () => 
     assert.match(page, new RegExp(`id="${id}"`));
   }
 
-  assert.match(page, /data-phase="10"/);
+  assert.match(page, /data-phase="2\.1"/);
   assert.match(page, /data-motion-root/);
   assert.match(page, /<MotionController/);
   assert.match(page, /<SiteHeader/);
   assert.match(page, /<FeatureRail/);
   assert.match(page, /<FAQList/);
-  assert.match(page, /No information is collected or submitted yet/);
+  assert.match(page, /copy\.waitlist\.notice/);
+  assert.match(english, /No information is collected or submitted yet/);
   assert.doesNotMatch(page, /<form|action=|onSubmit=/);
 });
 
@@ -68,8 +73,8 @@ test("keeps Phase 7 dependency-light and unverified integrations out", async () 
 test("links the factual pre-launch legal notices", async () => {
   const page = await source("components/marketing/MarketingPage.tsx");
 
-  assert.match(page, /href="\/privacy"/);
-  assert.match(page, /href="\/terms"/);
+  assert.match(page, /localizedPath\(locale, "\/privacy"\)/);
+  assert.match(page, /localizedPath\(locale, "\/terms"\)/);
   assert.doesNotMatch(page, /Privacy · pending|Terms · pending/);
 });
 

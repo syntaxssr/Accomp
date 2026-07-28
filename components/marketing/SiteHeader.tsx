@@ -2,14 +2,25 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ButtonLink, Icon } from "@/components";
+import { LanguageSwitcher } from "@/components/i18n/LanguageSwitcher";
 import type { NavigationItem } from "@/content/site-content";
+import type { Locale } from "@/lib/i18n/config";
+import type { Messages } from "@/lib/i18n/messages";
 import styles from "./site-header.module.css";
 
 interface SiteHeaderProps {
+  copy: Messages["navigation"];
+  languageSwitcher: Messages["languageSwitcher"];
+  locale: Locale;
   navigation: NavigationItem[];
 }
 
-export function SiteHeader({ navigation }: SiteHeaderProps) {
+export function SiteHeader({
+  copy,
+  languageSwitcher,
+  locale,
+  navigation,
+}: SiteHeaderProps) {
   const [open, setOpen] = useState(false);
   const [headerState, setHeaderState] = useState({
     activeHref: "",
@@ -149,12 +160,12 @@ export function SiteHeader({ navigation }: SiteHeaderProps) {
         data-theme={headerState.dark ? "dark" : "light"}
       >
         <div className={styles.pill}>
-          <a className={styles.brand} href="#top" aria-label="Accomp home">
+          <a className={styles.brand} href="#top" aria-label={copy.home}>
             <Icon name="pine" size="md" decorative />
             <span>Accomp</span>
           </a>
 
-          <nav className={styles.desktopNav} aria-label="Primary">
+          <nav className={styles.desktopNav} aria-label={copy.primary}>
             {navigation.map((item) => (
               <a
                 aria-current={
@@ -169,8 +180,14 @@ export function SiteHeader({ navigation }: SiteHeaderProps) {
             ))}
           </nav>
 
+          <LanguageSwitcher
+            className={styles.desktopLanguage}
+            copy={languageSwitcher}
+            locale={locale}
+          />
+
           <ButtonLink className={styles.headerCta} href="#waitlist">
-            Join the waitlist
+            {copy.joinWaitlist}
           </ButtonLink>
 
           <button
@@ -181,7 +198,7 @@ export function SiteHeader({ navigation }: SiteHeaderProps) {
             ref={triggerRef}
             type="button"
           >
-            Menu
+            {copy.menu}
           </button>
         </div>
       </header>
@@ -195,9 +212,9 @@ export function SiteHeader({ navigation }: SiteHeaderProps) {
           role="dialog"
         >
           <div className={styles.menuTop}>
-            <strong id="mobile-menu-title">Navigate Accomp</strong>
+            <strong id="mobile-menu-title">{copy.menuTitle}</strong>
             <button
-              aria-label="Close menu"
+              aria-label={copy.closeMenu}
               className={styles.menuClose}
               onClick={() => setOpen(false)}
               type="button"
@@ -205,7 +222,7 @@ export function SiteHeader({ navigation }: SiteHeaderProps) {
               ×
             </button>
           </div>
-          <nav aria-label="Mobile">
+          <nav aria-label={copy.mobile}>
             {navigation.map((item) => (
               <a
                 aria-current={
@@ -220,9 +237,14 @@ export function SiteHeader({ navigation }: SiteHeaderProps) {
               </a>
             ))}
             <a href="#waitlist" onClick={() => setOpen(false)}>
-              Join the waitlist
+              {copy.joinWaitlist}
             </a>
           </nav>
+          <LanguageSwitcher
+            className={styles.mobileLanguage}
+            copy={languageSwitcher}
+            locale={locale}
+          />
         </div>
       </div>
     </>

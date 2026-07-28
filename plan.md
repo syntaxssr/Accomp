@@ -1,6 +1,6 @@
 # Accomp Marketing Website — Project Plan
 
-> สถานะ: **Phase 10 release candidate automation complete — ยังไม่อนุมัติ deployment**
+> สถานะ: **Phase 2.1 internationalization complete — รอ owner review ภาษาไทยและยังไม่อนุมัติ deployment**
 > สร้างเมื่อ: 2026-07-26  
 > Project path: `/Users/peeraponchanthacham/Documents/GitHub/Accomp`  
 > Reference: [Phantom](https://phantom.com/?utm_source=loftlyy&utm_medium=referral&utm_campaign=phantom)
@@ -13,6 +13,12 @@
 4. ห้ามนำงานจาก Phase ถัดไปมาทำล่วงหน้าโดยไม่ได้รับอนุญาต
 5. Git repository, initial commit และ remote ถูกสร้างแล้วตามคำสั่งก่อนหน้า งาน Phase ใหม่จะไม่ commit, push หรือ deploy จนกว่าจะได้รับคำสั่ง
 6. สโคปของโปรเจกต์คือ **เว็บไซต์สำหรับโปรโมตแอปมือถือ Accomp เท่านั้น** ไม่รวมการสร้าง iOS app, Android app, backend ของแอป หรือ dashboard ภายใน
+
+### Phase naming from this point forward
+
+- งานเดิม Phase 1–10 ให้นับเป็น Accomp Website Phase 1.1–1.10
+- งานรอบถัดไปเริ่มที่ **Phase 2.1**
+- ชื่อโฟลเดอร์และเอกสารเดิมยังคงไว้เพื่อรักษา Git history และลิงก์อ้างอิง
 
 ## 0. Phase Execution Status
 
@@ -876,6 +882,191 @@ Commit และ push ได้รับอนุญาตในคำสั่�
 Commit, package verification และ push ได้รับอนุญาตในคำสั่งเริ่ม Phase 10
 รอบนี้ แต่ยังห้าม upload, save hosted version หรือ deploy
 
+### Phase 2.1 — TH/EN Internationalization Foundation
+
+#### Status
+
+**Implementation complete — รอ owner review ภาษาไทยและ manual visual QA**
+
+#### Objective
+
+เพิ่มระบบเปลี่ยนภาษาไทยและอังกฤษแบบ file-based โดยข้อความทุกส่วนที่ผู้ใช้
+มองเห็นหรือโปรแกรมช่วยการเข้าถึงอ่านได้ต้องมาจาก translation files และมี
+ข้อความครบทั้ง `TH/EN`
+
+#### Routing and locale decisions
+
+- รองรับ locale ที่อนุญาตเพียง `en` และ `th`
+- ใช้ URL เป็นแหล่งสถานะภาษา:
+  - `/en` สำหรับภาษาอังกฤษ
+  - `/th` สำหรับภาษาไทย
+  - `/en/privacy`, `/th/privacy`
+  - `/en/terms`, `/th/terms`
+- `/` redirect ไป `/en` เป็นค่าเริ่มต้น
+- ไม่ใช้ cookie, local storage, IP location หรือระบบติดตามเพื่อเลือกภาษา
+- Language switcher ต้องเปลี่ยนไปยังหน้าเดียวกันในอีกภาษาและรักษา hash
+  destination เมื่อเป็นไปได้
+- Locale ที่ไม่รองรับต้องไม่ fallback แบบเงียบ ๆ และต้องตอบเป็น 404
+
+#### File and code structure
+
+- [x] สร้าง `messages/en.json` เป็นข้อความภาษาอังกฤษต้นฉบับ
+- [x] สร้าง `messages/th.json` เป็นคำแปลภาษาไทย
+- [x] สร้าง `lib/i18n/config.ts` สำหรับ locale constants และ validation
+- [x] สร้าง `lib/i18n/messages.ts` สำหรับ static message loading ที่ใช้กับ
+      Worker-compatible build
+- [x] สร้าง type/schema จาก English catalog เพื่อบังคับ shape ของทั้งสองภาษา
+- [x] รองรับตัวแปรในข้อความ เช่น `{current}` และ `{total}` โดยตรวจ placeholder
+      parity ระหว่าง TH/EN
+- [x] แยกข้อมูลที่ไม่ใช่ภาษา เช่น anchor IDs, visual keys และ component variants
+      ออกจาก translation catalog
+- [x] ย้าย typed marketing content เดิมออกจาก hard-coded English copy ให้
+      component รับ localized content
+
+#### Message catalog coverage
+
+ทุกกลุ่มต่อไปนี้ต้องมี key ใน `messages/en.json` และ `messages/th.json`:
+
+- [x] Site metadata: title, description, Open Graph, social และ structured data
+- [x] Navigation, language switcher, mobile menu และ CTA
+- [x] Hero, promise strip และข้อความประกอบภาพ
+- [x] Plan, Pack และ Offline feature chapters
+- [x] Feature cards, artwork labels และ carousel status
+- [x] How It Works, editorial story และ final CTA
+- [x] FAQ questions and answers
+- [x] Waitlist inactive-state notice
+- [x] Footer labels and navigation
+- [x] Privacy page
+- [x] Terms page
+- [x] 404 page
+- [x] Visible status, empty-state และ error copy
+- [x] Accessibility copy: `aria-label`, `aria-roledescription`, live-region text,
+      image alt text และ screen-reader-only labels
+
+ชื่อแบรนด์ `Accomp`, URL, anchor IDs, route names ในระบบ, product identifiers
+และ machine-readable `/health` payload ไม่ถือเป็นข้อความที่ต้องแปล
+
+#### Translation catalog shape
+
+ใช้ nested namespaces ที่อ่านและตรวจสอบง่าย:
+
+```text
+messages/
+├── en.json
+└── th.json
+
+meta.*
+common.*
+navigation.*
+languageSwitcher.*
+hero.*
+chapters.plan.*
+chapters.pack.*
+chapters.offline.*
+howItWorks.*
+editorial.*
+faq.*
+waitlist.*
+footer.*
+privacy.*
+terms.*
+notFound.*
+accessibility.*
+```
+
+English catalog เป็น schema reference แต่ทั้งสองภาษาต้องมี key และ placeholder
+ตรงกัน 100% ห้าม fallback ไปอีกภาษาใน production เพราะ fallback จะซ่อนข้อความ
+ที่ยังแปลไม่ครบ
+
+#### Language switcher
+
+- [x] เพิ่มตัวเลือก `TH` และ `EN` ใน desktop header
+- [x] เพิ่มตัวเลือกภาษาใน mobile menu
+- [x] ระบุภาษาปัจจุบันด้วย state ที่มองเห็นได้และ `aria-current`
+- [x] มีชื่อที่โปรแกรมอ่านหน้าจอเข้าใจ เช่น `Change language` /
+      `เปลี่ยนภาษา`
+- [x] ใช้ link จริงเพื่อให้ทำงานได้แม้ client JavaScript ไม่พร้อม
+- [x] รองรับ keyboard และมี touch target อย่างน้อย 44 × 44 CSS pixels
+- [ ] ตรวจ visual ว่า header, mobile menu และ CTA ไม่ล้นที่ความกว้าง 320px
+
+#### Thai content and typography
+
+- [x] แปลโดยรักษาน้ำเสียง calm, friendly, reliable และ outdoor-first
+- [x] ไม่เพิ่ม product claim, launch claim หรือ offline claim ที่ต้นฉบับไม่ได้
+      รับรอง
+- [x] เลือก Thai-capable system fallback ที่ไม่เพิ่ม network dependency
+- [x] กำหนด Thai line-height, line breaking และ text wrapping ที่เหมาะสม
+- [ ] ตรวจ visual ของคำยาวใน CTA, navigation, cards และ legal pages
+- [ ] ให้ owner review คำแปลไทยก่อนถือว่า copy approved
+
+#### Localized SEO and crawl behavior
+
+- [x] ตั้ง `<html lang="en">` และ `<html lang="th">` จาก route
+- [x] สร้าง canonical URL แยกตาม locale
+- [x] เพิ่ม `hreflang` สำหรับ `en`, `th` และ `x-default`
+- [x] สร้าง localized title, description, Open Graph locale และ structured data
+- [x] อัปเดต sitemap ให้มีหน้า EN/TH ครบ
+- [x] คง `robots.txt` แบบไม่ hard-code placeholder domain
+- [x] ใช้ `og.png` สำหรับ EN และสร้าง `og-th.png` สำหรับ TH
+- [x] หน้า 404 ทุกภาษาต้องมี `noindex` โดยไม่มี index metadata ที่ขัดกัน
+
+#### Testing and validation
+
+- [x] เพิ่ม catalog parity test: key, type, array shape และ placeholder ตรงกัน
+- [x] ปฏิเสธ empty message และ unresolved message key
+- [x] เพิ่ม source guard สำหรับ user-visible hard-coded English/Thai ที่หลุดจาก
+      catalog
+- [x] Render homepage, Privacy, Terms และ 404 ครบทั้ง EN/TH
+- [x] ตรวจ `lang`, canonical, `hreflang`, metadata และ localized structured data
+- [x] ตรวจ language switcher เปลี่ยนไปยัง equivalent route และรักษา hash
+- [x] ตรวจ navigation, FAQ, carousel live region และ accessibility labels ทั้งสองภาษา
+- [x] ขยาย production smoke route matrix ให้ครอบคลุม localized routes
+- [ ] ทำ manual responsive review ที่ 320, 390, 768, 1024, 1440 และ 1920px
+- [x] ตรวจ keyboard/source semantics และ reduced-motion path
+- [x] รัน formatting, lint, strict TypeScript, source tests, production build,
+      rendered-output tests, release audit และ local production smoke
+
+#### Deliverables
+
+- [x] `messages/en.json`
+- [x] `messages/th.json`
+- [x] Locale configuration, loader, formatter และ type contracts
+- [x] Locale-aware route structure
+- [x] Accessible desktop/mobile language switcher
+- [x] Localized homepage, Privacy, Terms, 404 และ metadata
+- [x] Translation completeness and rendered-output regression tests
+- [x] `docs/phase-2.1/README.md`
+- [x] `docs/phase-2.1/translation-key-map.md`
+- [x] Updated release checklist and smoke-test contract
+
+#### Acceptance criteria
+
+- [x] ทุกข้อความที่ผู้ใช้เห็นมีทั้งภาษาไทยและภาษาอังกฤษ
+- [x] ไม่มี user-visible copy ที่ hard-code อยู่ใน React components
+- [x] `messages/en.json` และ `messages/th.json` มี key/placeholder parity 100%
+- [x] ผู้ใช้สลับภาษาได้จาก desktop และ mobile โดยไม่เสีย route context
+- [x] ทุก localized route มีภาษา, canonical และ alternate metadata ถูกต้อง
+- [ ] Owner ยืนยันว่า Thai copy ไม่มีข้อความล้น, ถูกตัด หรือทำให้ interaction ใช้งานไม่ได้
+- [x] Core experience ใช้งานได้แม้ client-side JavaScript ไม่พร้อม
+- [x] Full release-quality suite และ localized smoke tests ผ่าน
+- [ ] Owner review และอนุมัติคำแปลภาษาไทย
+
+#### Out of scope
+
+- ภาษาอื่นนอกเหนือจากไทยและอังกฤษ
+- Translation API, automatic translation service หรือ CMS
+- Backend-stored language preference หรือ account preference
+- IP-based geolocation และ automatic locale tracking
+- RTL layout
+- Live waitlist, analytics, final legal approval หรือ mobile-app localization
+- Public deployment
+
+#### Exit gate
+
+Phase 2.1 implementation, automated QA, commit และ push ได้รับอนุญาตในคำสั่ง
+รอบนี้ แต่การอนุมัติคำแปลไทย, manual visual QA และ deployment ยังต้องได้รับ
+การตรวจหรือคำสั่งแยกต่างหาก
+
 ## 10. Quality Gates
 
 ใช้กับทุก Phase ที่มี code:
@@ -1031,12 +1222,19 @@ Phase 3 ดำเนินต่อด้วย provisional assumptions เพ�
 - [x] เพิ่ม clean-commit archive, SHA-256 manifest และ CI release gate
 - [x] เพิ่ม Phase 10 regression coverage และ release handoff documents
 - [ ] Run hosted-origin smoke on the approved production URL
+- [x] วางแผน Phase 2.1 สำหรับ file-based TH/EN internationalization
+- [x] เริ่ม Phase 2.1 หลังได้รับคำสั่งจากผู้ใช้
+- [x] สร้าง `messages/en.json` และ `messages/th.json`
+- [x] ย้าย user-visible copy ทั้งหมดเข้าสู่ translation catalogs
+- [x] เพิ่ม locale routes, language switcher และ localized metadata
+- [x] ตรวจ translation parity, accessibility semantics และ localized smoke
+- [ ] Owner review ภาษาไทยและ manual responsive visual QA
 - [x] สร้าง source code foundation
 - [x] สร้าง Git repository
 - [x] Initial commit
 - [x] Create remote repository
 - [ ] Deploy
 
-**งานถัดไปหลังจากผู้ใช้ตรวจเอกสาร:** กรอก
-[production input worksheet](./docs/phase-9/production-inputs.md), ปิด manual
-browser/device/legal gates, รัน hosted smoke และรอคำสั่ง deployment แยกต่างหาก
+**งานถัดไปหลังจากผู้ใช้ตรวจเอกสาร:** ตรวจภาษาไทยและ responsive layout ด้วยตา
+จากนั้น production input, manual browser/device/legal gates, hosted smoke และ
+deployment ยังคงเป็นงานที่ต้องได้รับข้อมูลหรือคำสั่งแยกต่างหาก

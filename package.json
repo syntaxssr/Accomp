@@ -12,7 +12,7 @@
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern docs",
     "typecheck": "tsc --noEmit",
     "format:check": "node scripts/check-format.mjs",
-    "test:source": "node --test tests/foundation.test.mjs tests/marketing-content.test.mjs tests/motion.test.mjs tests/production-readiness.test.mjs tests/release-automation.test.mjs tests/release-readiness.test.mjs tests/seo.test.mjs",
+    "test:source": "node --test tests/foundation.test.mjs tests/i18n.test.mjs tests/marketing-content.test.mjs tests/motion.test.mjs tests/production-readiness.test.mjs tests/release-automation.test.mjs tests/release-readiness.test.mjs tests/seo.test.mjs",
     "test:render": "node --test tests/rendered-html.test.mjs",
     "test": "npm run test:source && npm run build && npm run test:render",
     "audit:release": "node scripts/release-audit.mjs",

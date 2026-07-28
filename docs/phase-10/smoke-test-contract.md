@@ -18,16 +18,18 @@ server or an approved HTTPS origin after deployment.
 
 | Route | Expected result |
 |---|---|
-| `/` | 200, Phase 10 marker, one H1, complete hash targets, no form |
-| `/privacy` | 200 with an H1 |
-| `/terms` | 200 with an H1 |
+| `/` | Resolves to default English `/en` |
+| `/en`, `/th` | 200, Phase 2.1 marker, matching `lang`, one H1, complete hash targets, no form |
+| `/en/privacy`, `/th/privacy` | 200 with matching `lang` and an H1 |
+| `/en/terms`, `/th/terms` | 200 with matching `lang` and an H1 |
 | `/health` | 200 JSON and `Cache-Control: no-store` |
 | `/robots.txt` | 200 with an absolute sitemap URL |
-| `/sitemap.xml` | 200 with Privacy and Terms URLs |
-| Missing route | 404 with `noindex` |
+| `/sitemap.xml` | 200 with EN/TH homepage, Privacy and Terms URLs |
+| Missing EN/TH routes | 404 with matching `lang` and `noindex` |
 
-The homepage, legal pages and health response must include the critical
-security headers introduced in Phase 9.
+The twelve-request matrix also requires the homepage, legal pages, localized
+404 pages and health response to include the critical security headers
+introduced in Phase 9.
 
 ## Commands
 

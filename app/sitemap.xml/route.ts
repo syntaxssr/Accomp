@@ -1,3 +1,7 @@
+import {
+  localizedPath,
+  SUPPORTED_LOCALES,
+} from "@/lib/i18n/config";
 import { getSiteOrigin } from "@/lib/site";
 
 const routes = [
@@ -6,21 +10,44 @@ const routes = [
   { path: "/terms", changeFrequency: "yearly", priority: "0.3" },
 ] as const;
 
+function escapeXml(value: string): string {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&apos;");
+}
+
 export function GET(request: Request) {
   const origin = getSiteOrigin(request.url);
   const lastModified = "2026-07-28";
   const urls = routes
-    .map(
-      ({ path, changeFrequency, priority }) => `  <url>
-    <loc>${new URL(path, origin).toString()}</loc>
+    .flatMap(({ path, changeFrequency, priority }) =>
+      SUPPORTED_LOCALES.map((locale) => {
+        const localized = localizedPath(locale, path);
+        const alternates = SUPPORTED_LOCALES.map(
+          (alternateLocale) =>
+            `    <xhtml:link rel="alternate" hreflang="${alternateLocale}" href="${escapeXml(
+              new URL(
+                localizedPath(alternateLocale, path),
+                origin,
+              ).toString(),
+            )}" />`,
+        ).join("\n");
+
+        return `  <url>
+    <loc>${escapeXml(new URL(localized, origin).toString())}</loc>
     <lastmod>${lastModified}</lastmod>
     <changefreq>${changeFrequency}</changefreq>
     <priority>${priority}</priority>
-  </url>`,
+${alternates}
+  </url>`;
+      }),
     )
     .join("\n");
   const body = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${urls}
 </urlset>
 `;

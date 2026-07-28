@@ -27,11 +27,18 @@ for (const directory of ["brand", "docs"]) {
   await collect(directory, markdownFiles, new Set([".md"]));
 }
 
-for (const directory of ["app", "components", "content", "lib", "worker"]) {
+for (const directory of [
+  "app",
+  "components",
+  "content",
+  "lib",
+  "messages",
+  "worker",
+]) {
   await collect(
     directory,
     runtimeFiles,
-    new Set([".css", ".mjs", ".ts", ".tsx"]),
+    new Set([".css", ".json", ".mjs", ".ts", ".tsx"]),
   );
 }
 
@@ -65,6 +72,7 @@ for (const file of markdownFiles.sort()) {
 const allowedRuntimeOrigins = [
   "http://localhost:3000",
   "http://www.sitemaps.org",
+  "http://www.w3.org",
   "https://schema.org",
 ];
 

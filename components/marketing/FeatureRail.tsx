@@ -11,22 +11,32 @@ import type {
   FeatureCardContent,
   FeatureVisual,
 } from "@/content/site-content";
+import { formatMessage } from "@/lib/i18n/format";
+import type { Messages } from "@/lib/i18n/messages";
 import styles from "./feature-rail.module.css";
 
 interface FeatureRailProps {
+  artwork: Messages["marketing"]["featureArtwork"];
   cards: FeatureCardContent[];
+  copy: Messages["accessibility"]["featureRail"];
   label: string;
   tone: "cream" | "sand";
 }
 
-function FeatureArtwork({ visual }: { visual: FeatureVisual }) {
+function FeatureArtwork({
+  copy,
+  visual,
+}: {
+  copy: Messages["marketing"]["featureArtwork"];
+  visual: FeatureVisual;
+}) {
   if (visual === "trip") {
     return (
       <div className={styles.tripForm} aria-hidden="true">
-        <span>Trip name · Khao Yai Weekend</span>
-        <span>Dates · 12–14 September</span>
-        <span>Meeting point · Add later</span>
-        <b>Create trip</b>
+        <span>{copy.trip.name}</span>
+        <span>{copy.trip.dates}</span>
+        <span>{copy.trip.meetingPoint}</span>
+        <b>{copy.trip.action}</b>
       </div>
     );
   }
@@ -36,9 +46,9 @@ function FeatureArtwork({ visual }: { visual: FeatureVisual }) {
       <div className={styles.companions} aria-hidden="true">
         <span />
         <span />
-        <b>Invite</b>
+        <b>{copy.invite.action}</b>
         <span />
-        <span>+1</span>
+        <span>{copy.invite.more}</span>
       </div>
     );
   }
@@ -46,9 +56,9 @@ function FeatureArtwork({ visual }: { visual: FeatureVisual }) {
   if (visual === "itinerary") {
     return (
       <div className={styles.timeline} aria-hidden="true">
-        <span>08:00 · Trailhead</span>
-        <span>12:30 · Ridge lunch</span>
-        <span>16:00 · Camp</span>
+        {copy.itinerary.map((item) => (
+          <span key={item}>{item}</span>
+        ))}
       </div>
     );
   }
@@ -57,14 +67,14 @@ function FeatureArtwork({ visual }: { visual: FeatureVisual }) {
     const rows =
       visual === "checklist"
         ? [
-            ["✓", "Tent", ""],
-            ["✓", "Stove", ""],
-            ["·", "Water filter", ""],
+            ["✓", copy.checklist.tent, ""],
+            ["✓", copy.checklist.stove, ""],
+            ["·", copy.checklist.waterFilter, ""],
           ]
         : [
-            ["✓", "Tent", "May"],
-            ["✓", "Stove", "Ton"],
-            ["·", "First aid", "You"],
+            ["✓", copy.assign.tent, copy.assign.may],
+            ["✓", copy.assign.stove, copy.assign.ton],
+            ["·", copy.assign.firstAid, copy.assign.you],
           ];
 
     return (
@@ -82,16 +92,22 @@ function FeatureArtwork({ visual }: { visual: FeatureVisual }) {
 
   return (
     <div className={styles.readiness} aria-hidden="true">
-      <strong>8/10</strong>
+      <strong>{copy.readiness.value}</strong>
       <span>
         <i />
       </span>
-      <small>8 ready · 2 still open</small>
+      <small>{copy.readiness.status}</small>
     </div>
   );
 }
 
-export function FeatureRail({ cards, label, tone }: FeatureRailProps) {
+export function FeatureRail({
+  artwork,
+  cards,
+  copy,
+  label,
+  tone,
+}: FeatureRailProps) {
   const railRef = useRef<HTMLDivElement>(null);
   const animationFrameRef = useRef<number | null>(null);
   const [index, setIndex] = useState(0);
@@ -187,7 +203,7 @@ export function FeatureRail({ cards, label, tone }: FeatureRailProps) {
     <div className={styles.wrapper} data-reveal>
       <div className={styles.controls}>
         <button
-          aria-label={`Previous ${label.toLowerCase()} card`}
+          aria-label={formatMessage(copy.previous, { label })}
           disabled={!hasOverflow || index === 0}
           onClick={() => moveTo(index - 1)}
           type="button"
@@ -195,7 +211,7 @@ export function FeatureRail({ cards, label, tone }: FeatureRailProps) {
           ←
         </button>
         <button
-          aria-label={`Next ${label.toLowerCase()} card`}
+          aria-label={formatMessage(copy.next, { label })}
           disabled={!hasOverflow || index === cards.length - 1}
           onClick={() => moveTo(index + 1)}
           type="button"
@@ -203,13 +219,18 @@ export function FeatureRail({ cards, label, tone }: FeatureRailProps) {
           →
         </button>
         <span aria-live="polite">
-          {hasOverflow ? `Card ${index + 1} of ${cards.length}` : `All ${cards.length} cards visible`}
+          {hasOverflow
+            ? formatMessage(copy.status, {
+                current: index + 1,
+                total: cards.length,
+              })
+            : formatMessage(copy.allVisible, { total: cards.length })}
         </span>
       </div>
 
       <div
-        aria-label={`${label} feature cards`}
-        aria-roledescription="carousel"
+        aria-label={formatMessage(copy.region, { label })}
+        aria-roledescription={copy.roleDescription}
         className={styles.rail}
         data-tone={tone}
         onKeyDown={onKeyDown}
@@ -227,7 +248,7 @@ export function FeatureRail({ cards, label, tone }: FeatureRailProps) {
             <p>{card.eyebrow}</p>
             <h3>{card.title}</h3>
             <p>{card.body}</p>
-            <FeatureArtwork visual={card.visual} />
+            <FeatureArtwork copy={artwork} visual={card.visual} />
           </article>
         ))}
       </div>

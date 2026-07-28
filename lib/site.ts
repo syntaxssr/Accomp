@@ -1,9 +1,10 @@
+import en from "@/messages/en.json";
+
 const LOCAL_ORIGIN = new URL("http://localhost:3000");
 
 export const SITE_NAME = "Accomp";
-export const SITE_TITLE = "Adventure Together · Accomp";
-export const SITE_DESCRIPTION =
-  "Plan outdoor trips together with shared itineraries, gear checklists, trip details, and offline-ready maps in Accomp.";
+export const SITE_TITLE = en.meta.title;
+export const SITE_DESCRIPTION = en.meta.description;
 
 interface HeaderReader {
   get(name: string): string | null;

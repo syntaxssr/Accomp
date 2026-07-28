@@ -96,9 +96,17 @@ function verifySecurityHeaders(response, pathname) {
   }
 }
 
-function verifyHomepage(html) {
-  if (!/data-phase="10"/.test(html)) {
-    throw new Error("Homepage does not identify the Phase 10 candidate.");
+function verifyLanguage(html, locale, pathname) {
+  if (!new RegExp(`<html[^>]*lang="${locale}"`, "i").test(html)) {
+    throw new Error(`${pathname} does not declare lang="${locale}".`);
+  }
+}
+
+function verifyHomepage(html, locale, pathname) {
+  verifyLanguage(html, locale, pathname);
+
+  if (!/data-phase="2\.1"/.test(html)) {
+    throw new Error("Homepage does not identify the Phase 2.1 candidate.");
   }
 
   if ((html.match(/<h1\b/g) ?? []).length !== 1) {
@@ -125,17 +133,51 @@ export async function smokeSite(value) {
   const origin = normalizeSmokeOrigin(value);
   await waitForHealth(origin);
 
-  const homepage = await request(origin, "/", 200);
-  verifySecurityHeaders(homepage, "/");
-  verifyHomepage(await homepage.text());
+  const root = await request(origin, "/", 200);
+  verifySecurityHeaders(root, "/");
 
-  for (const pathname of ["/privacy", "/terms"]) {
-    const response = await request(origin, pathname, 200);
-    verifySecurityHeaders(response, pathname);
-    const html = await response.text();
+  if (new URL(root.url).pathname !== "/en") {
+    throw new Error("/ must resolve to the default English locale.");
+  }
 
-    if (!/<h1\b/.test(html)) {
-      throw new Error(`${pathname} does not render an H1.`);
+  for (const locale of ["en", "th"]) {
+    const homepagePath = `/${locale}`;
+    const homepage = await request(origin, homepagePath, 200);
+    verifySecurityHeaders(homepage, homepagePath);
+    verifyHomepage(await homepage.text(), locale, homepagePath);
+
+    for (const route of ["/privacy", "/terms"]) {
+      const pathname = `/${locale}${route}`;
+      const response = await request(origin, pathname, 200);
+      verifySecurityHeaders(response, pathname);
+      const html = await response.text();
+      verifyLanguage(html, locale, pathname);
+
+      if (!/<h1\b/.test(html)) {
+        throw new Error(`${pathname} does not render an H1.`);
+      }
+    }
+
+    const missingPath = `/${locale}/phase-2-1-missing-route`;
+    const missing = await request(origin, missingPath, 404);
+    verifySecurityHeaders(missing, missingPath);
+    const missingHtml = await missing.text();
+    verifyLanguage(missingHtml, locale, missingPath);
+
+    if (
+      !/<meta\b[^>]*(?:name="robots"[^>]*content="noindex"|content="noindex"[^>]*name="robots")[^>]*>/i.test(
+        missingHtml,
+      )
+    ) {
+      throw new Error(`${missingPath} is missing noindex.`);
+    }
+
+    if (
+      /<meta\b[^>]*(?:name="robots"[^>]*content="index, follow"|content="index, follow"[^>]*name="robots")[^>]*>/i.test(
+        missingHtml,
+      )
+    ) {
+      throw new Error(`${missingPath} has conflicting index metadata.`);
     }
   }
 
@@ -156,34 +198,22 @@ export async function smokeSite(value) {
   const sitemap = await request(origin, "/sitemap.xml", 200);
   const sitemapText = await sitemap.text();
 
-  for (const pathname of ["/privacy", "/terms"]) {
+  for (const pathname of [
+    "/en",
+    "/th",
+    "/en/privacy",
+    "/th/privacy",
+    "/en/terms",
+    "/th/terms",
+  ]) {
     if (!sitemapText.includes(pathname)) {
       throw new Error(`sitemap.xml is missing ${pathname}.`);
     }
   }
 
-  const missing = await request(origin, "/phase-10-missing-route", 404);
-  const missingHtml = await missing.text();
-
-  if (
-    !/<meta\b[^>]*(?:name="robots"[^>]*content="noindex"|content="noindex"[^>]*name="robots")[^>]*>/i.test(
-      missingHtml,
-    )
-  ) {
-    throw new Error("The not-found response is missing noindex.");
-  }
-
-  if (
-    /<meta\b[^>]*(?:name="robots"[^>]*content="index, follow"|content="index, follow"[^>]*name="robots")[^>]*>/i.test(
-      missingHtml,
-    )
-  ) {
-    throw new Error("The not-found response has conflicting index metadata.");
-  }
-
   return {
     origin,
-    routes: 7,
+    routes: 12,
   };
 }
 

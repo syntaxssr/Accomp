@@ -7,34 +7,41 @@ import {
   Stack,
   Text,
 } from "@/components";
-import {
-  faqItems,
-  howItWorks,
-  navigation,
-  packingFeatures,
-  planningFeatures,
-  promiseLabels,
-} from "@/content/site-content";
+import { createSiteContent } from "@/content/site-content";
+import type { Locale } from "@/lib/i18n/config";
+import { localizedPath } from "@/lib/i18n/config";
+import type { Messages } from "@/lib/i18n/messages";
 import { FAQList } from "./FAQList";
 import { FeatureRail } from "./FeatureRail";
 import { MotionController } from "./MotionController";
 import { SiteHeader } from "./SiteHeader";
 import styles from "./marketing-page.module.css";
 
-export function MarketingPage() {
+interface MarketingPageProps {
+  locale: Locale;
+  messages: Messages;
+}
+
+export function MarketingPage({ locale, messages }: MarketingPageProps) {
+  const content = createSiteContent(messages);
+  const copy = messages.marketing;
+
   return (
-    <div className={styles.site} data-motion-root data-phase="10">
+    <div className={styles.site} data-motion-root data-phase="2.1">
       <MotionController />
 
       <a className={styles.skipLink} href="#main">
-        Skip to content
+        {copy.skipToContent}
       </a>
 
-      <p className={styles.previewNote}>
-        Product preview · Illustrative app UI · Waitlist submission is not active
-      </p>
+      <p className={styles.previewNote}>{copy.previewNote}</p>
 
-      <SiteHeader navigation={navigation} />
+      <SiteHeader
+        copy={messages.navigation}
+        languageSwitcher={messages.languageSwitcher}
+        locale={locale}
+        navigation={content.navigation}
+      />
 
       <main id="main" tabIndex={-1}>
         <section className={styles.hero} id="top">
@@ -42,28 +49,29 @@ export function MarketingPage() {
             <div className={styles.heroGrid}>
               <Stack className={styles.heroCopy} gap="lg">
                 <Text as="p" variant="eyebrow">
-                  Your companion for every adventure
+                  {copy.hero.eyebrow}
                 </Text>
                 <Heading as="h1" size="display">
-                  Adventure together.
+                  {copy.hero.title}
                 </Heading>
                 <Text as="p" variant="lead" tone="muted">
-                  Bring the route, the crew, the gear, and the plan into one calm
-                  place—so everyone can head out ready.
+                  {copy.hero.body}
                 </Text>
                 <div className={styles.heroActions}>
-                  <ButtonLink href="#waitlist">Join the waitlist</ButtonLink>
+                  <ButtonLink href="#waitlist">
+                    {copy.hero.primaryCta}
+                  </ButtonLink>
                   <ButtonLink href="#features" variant="secondary">
-                    Explore the features
+                    {copy.hero.secondaryCta}
                   </ButtonLink>
                 </div>
                 <Text as="p" tone="muted" className={styles.heroNote}>
-                  A mobile app concept for planning shared outdoor trips.
+                  {copy.hero.note}
                 </Text>
               </Stack>
 
               <div
-                aria-label="Illustrative Accomp trip overview with shared paths"
+                aria-label={copy.hero.visualLabel}
                 className={styles.heroVisual}
                 role="img"
               >
@@ -75,9 +83,9 @@ export function MarketingPage() {
 
                 <div className={styles.phone} aria-hidden="true">
                   <span className={styles.phoneNotch} />
-                  <small>Weekend trip</small>
-                  <strong>Khao Yai</strong>
-                  <p>12–14 September · Concept data</p>
+                  <small>{copy.hero.phone.tripType}</small>
+                  <strong>{copy.hero.phone.place}</strong>
+                  <p>{copy.hero.phone.date}</p>
                   <div className={styles.avatars}>
                     <span />
                     <span />
@@ -86,29 +94,29 @@ export function MarketingPage() {
                   </div>
                   <div className={styles.progressCard}>
                     <span>
-                      <b>Trip readiness</b>
-                      <b>72%</b>
+                      <b>{copy.hero.phone.readiness}</b>
+                      <b>{copy.hero.phone.readinessValue}</b>
                     </span>
                     <i>
                       <em />
                     </i>
-                    <small>Illustrative status</small>
+                    <small>{copy.hero.phone.status}</small>
                   </div>
                   <ul>
                     <li>
-                      <b>✓</b> Itinerary shared
+                      <b>✓</b> {copy.hero.phone.itinerary}
                     </li>
                     <li>
-                      <b>✓</b> Gear list ready
+                      <b>✓</b> {copy.hero.phone.gear}
                     </li>
                     <li>
-                      <b>↓</b> Offline map saved
+                      <b>↓</b> {copy.hero.phone.offline}
                     </li>
                   </ul>
                 </div>
 
                 <span className={styles.visualLabel}>
-                  Illustrative UI · not a product screenshot
+                  {copy.hero.visualDisclaimer}
                 </span>
               </div>
             </div>
@@ -117,9 +125,9 @@ export function MarketingPage() {
 
         <section className={styles.promise} data-reveal>
           <Container>
-            <p>One place for the plan, the people, and the trail ahead.</p>
-            <div aria-label="Accomp product promise">
-              {promiseLabels.map((label) => (
+            <p>{copy.promise.body}</p>
+            <div aria-label={copy.promise.label}>
+              {content.promiseLabels.map((label) => (
                 <span key={label}>{label}</span>
               ))}
             </div>
@@ -132,20 +140,21 @@ export function MarketingPage() {
               <div className={styles.chapterHeading} data-reveal>
                 <div>
                   <Text as="p" variant="eyebrow">
-                    Plan together
+                    {copy.plan.eyebrow}
                   </Text>
                   <Heading as="h2" size="section">
-                    Make one plan. Bring everyone in.
+                    {copy.plan.title}
                   </Heading>
                 </div>
                 <Text as="p" variant="lead" tone="muted">
-                  Start the trip, invite your crew, and shape the days in one
-                  shared space.
+                  {copy.plan.body}
                 </Text>
               </div>
               <FeatureRail
-                cards={planningFeatures}
-                label="Planning"
+                artwork={copy.featureArtwork}
+                cards={content.planningFeatures}
+                copy={messages.accessibility.featureRail}
+                label={copy.plan.railLabel}
                 tone="cream"
               />
             </Stack>
@@ -158,20 +167,21 @@ export function MarketingPage() {
               <div className={styles.chapterHeading} data-reveal>
                 <div>
                   <Text as="p" variant="eyebrow">
-                    Pack together
+                    {copy.pack.eyebrow}
                   </Text>
                   <Heading as="h2" size="section">
-                    Pack once. Know who&apos;s bringing what.
+                    {copy.pack.title}
                   </Heading>
                 </div>
                 <Text as="p" variant="lead" tone="muted">
-                  Share the checklist, split responsibility, and see what still
-                  needs attention.
+                  {copy.pack.body}
                 </Text>
               </div>
               <FeatureRail
-                cards={packingFeatures}
-                label="Packing"
+                artwork={copy.featureArtwork}
+                cards={content.packingFeatures}
+                copy={messages.accessibility.featureRail}
+                label={copy.pack.railLabel}
                 tone="sand"
               />
             </Stack>
@@ -183,26 +193,26 @@ export function MarketingPage() {
             <div className={styles.offlineGrid} data-reveal>
               <Stack gap="lg">
                 <Text as="p" variant="eyebrow" tone="meadow">
-                  Ready anywhere
+                  {copy.offline.eyebrow}
                 </Text>
                 <Heading as="h2" size="section" tone="inverse">
-                  Ready when the signal isn&apos;t.
+                  {copy.offline.title}
                 </Heading>
                 <Text as="p" variant="lead" tone="sand">
-                  Prepare maps and essential trip details before coverage fades.
+                  {copy.offline.body}
                 </Text>
                 <ul className={styles.offlinePoints}>
-                  <li>Save the route</li>
-                  <li>Keep details close</li>
-                  <li>Head out with confidence</li>
+                  {copy.offline.points.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
                 </ul>
                 <p className={styles.validationNote}>
-                  Exact offline behavior remains subject to product validation.
+                  {copy.offline.validation}
                 </p>
               </Stack>
 
               <div
-                aria-label="Illustrative offline route and trip details"
+                aria-label={copy.offline.visualLabel}
                 className={styles.offlineVisual}
                 role="img"
               >
@@ -224,12 +234,12 @@ export function MarketingPage() {
                 </svg>
                 <span className={styles.mapPin} aria-hidden="true" />
                 <div className={styles.offlineCard} aria-hidden="true">
-                  <small>Prepared offline</small>
-                  <strong>Khao Yai route</strong>
-                  <p>Map, itinerary and meeting details · Illustrative UI</p>
+                  <small>{copy.offline.cardEyebrow}</small>
+                  <strong>{copy.offline.cardTitle}</strong>
+                  <p>{copy.offline.cardBody}</p>
                 </div>
                 <span className={styles.mapLabel}>
-                  Abstract route · not real map data
+                  {copy.offline.mapLabel}
                 </span>
               </div>
             </div>
@@ -242,19 +252,19 @@ export function MarketingPage() {
               <div className={styles.chapterHeading} data-reveal>
                 <div>
                   <Text as="p" variant="eyebrow">
-                    How it works
+                    {copy.howItWorks.eyebrow}
                   </Text>
                   <Heading as="h2" size="section">
-                    From “we should go” to ready to leave.
+                    {copy.howItWorks.title}
                   </Heading>
                 </div>
                 <Text as="p" variant="lead" tone="muted">
-                  One shared path from the first idea to the trailhead.
+                  {copy.howItWorks.body}
                 </Text>
               </div>
 
               <ol className={styles.steps} data-reveal>
-                {howItWorks.map((step, index) => (
+                {content.howItWorks.map((step, index) => (
                   <li
                     data-reveal
                     data-reveal-order={index + 1}
@@ -275,23 +285,21 @@ export function MarketingPage() {
             <div className={styles.editorialGrid} data-reveal>
               <Stack gap="lg">
                 <Text as="p" variant="eyebrow">
-                  A shared adventure
+                  {copy.editorial.eyebrow}
                 </Text>
                 <Heading as="h2" size="section">
-                  The best trips feel spontaneous. The preparation shouldn&apos;t.
+                  {copy.editorial.title}
                 </Heading>
                 <Text as="p" variant="lead" tone="muted">
-                  Accomp is for the friend who starts the plan—and everyone who
-                  helps turn it into a shared adventure.
+                  {copy.editorial.body}
                 </Text>
                 <p className={styles.validationNote}>
-                  Original abstract composition used until photography is
-                  approved.
+                  {copy.editorial.validation}
                 </p>
               </Stack>
 
               <div
-                aria-label="Abstract illustration of three companions planning around a map"
+                aria-label={copy.editorial.visualLabel}
                 className={styles.editorialArt}
                 role="img"
               >
@@ -310,16 +318,16 @@ export function MarketingPage() {
             <div className={styles.faqGrid} data-reveal>
               <Stack gap="md">
                 <Text as="p" variant="eyebrow">
-                  FAQ
+                  {copy.faq.eyebrow}
                 </Text>
                 <Heading as="h2" size="section">
-                  A few things to know.
+                  {copy.faq.title}
                 </Heading>
                 <Text as="p" variant="lead" tone="muted">
-                  Honest answers before launch.
+                  {copy.faq.body}
                 </Text>
               </Stack>
-              <FAQList items={faqItems} />
+              <FAQList items={content.faqItems} />
             </div>
           </Container>
         </section>
@@ -329,33 +337,33 @@ export function MarketingPage() {
             <div className={styles.waitlistField} data-reveal>
               <Stack gap="lg">
                 <Text as="p" variant="eyebrow">
-                  Your next trip starts together
+                  {copy.waitlist.eyebrow}
                 </Text>
                 <Heading as="h2" size="section">
-                  Make room for the adventure.
+                  {copy.waitlist.title}
                 </Heading>
                 <Text as="p" variant="lead">
-                  Bring the people and the plan together before the trail begins.
+                  {copy.waitlist.body}
                 </Text>
               </Stack>
 
               <div className={styles.waitlistForm}>
                 <div
-                  aria-label="Waitlist signup is not active yet"
+                  aria-label={copy.waitlist.groupLabel}
                   className={styles.formPreview}
                   role="group"
                 >
                   <input
-                    aria-label="Email address preview"
+                    aria-label={copy.waitlist.emailLabel}
                     disabled
-                    placeholder="email@example.com"
+                    placeholder={copy.waitlist.emailPlaceholder}
                     type="email"
                   />
                   <Button disabled type="button" variant="dark">
-                    Coming soon
+                    {copy.waitlist.button}
                   </Button>
                 </div>
-                <p>No information is collected or submitted yet.</p>
+                <p>{copy.waitlist.notice}</p>
               </div>
 
               <span className={styles.waitlistCompanions} aria-hidden="true">
@@ -375,32 +383,34 @@ export function MarketingPage() {
                 <Icon name="pine" size="md" decorative />
                 <span>Accomp</span>
               </a>
-              <p>
-                One calm place for the route, the crew, the gear, and the plan.
-              </p>
+              <p>{copy.footer.tagline}</p>
             </div>
             <div className={styles.footerLinks}>
               <div>
-                <h2>Product</h2>
-                <a href="#features">Features</a>
-                <a href="#how-it-works">How it works</a>
-                <a href="#offline">Offline</a>
+                <h2>{copy.footer.product}</h2>
+                <a href="#features">{copy.footer.features}</a>
+                <a href="#how-it-works">{copy.footer.howItWorks}</a>
+                <a href="#offline">{copy.footer.offline}</a>
               </div>
               <div>
-                <h2>Support</h2>
-                <a href="#faq">FAQ</a>
-                <span>Contact · coming later</span>
+                <h2>{copy.footer.support}</h2>
+                <a href="#faq">{copy.footer.faq}</a>
+                <span>{copy.footer.contact}</span>
               </div>
               <div>
-                <h2>Legal</h2>
-                <a href="/privacy">Privacy</a>
-                <a href="/terms">Terms</a>
+                <h2>{copy.footer.legal}</h2>
+                <a href={localizedPath(locale, "/privacy")}>
+                  {copy.footer.privacy}
+                </a>
+                <a href={localizedPath(locale, "/terms")}>
+                  {copy.footer.terms}
+                </a>
               </div>
             </div>
           </div>
           <div className={styles.footerBottom}>
-            <span>© 2026 Accomp · Adventure Together.</span>
-            <span>Pre-launch product concept</span>
+            <span>{copy.footer.copyright}</span>
+            <span>{copy.footer.status}</span>
           </div>
         </Container>
       </footer>

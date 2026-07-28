@@ -1,11 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { headers } from "next/headers";
 import {
-  getSiteOriginFromHeaders,
-  SITE_DESCRIPTION,
-  SITE_NAME,
-  SITE_TITLE,
-} from "@/lib/site";
+  getLocaleFromHeaders,
+  localizedPath,
+  otherLocale,
+} from "@/lib/i18n/config";
+import { getMessages } from "@/lib/i18n/messages";
+import { getSiteOriginFromHeaders, SITE_NAME } from "@/lib/site";
 import "./globals.css";
 
 export const viewport: Viewport = {
@@ -15,25 +16,30 @@ export const viewport: Viewport = {
 
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
+  const locale = getLocaleFromHeaders(requestHeaders);
+  const messages = getMessages(locale);
+  const alternate = otherLocale(locale);
   const metadataBase = getSiteOriginFromHeaders(requestHeaders);
+  const canonical = localizedPath(locale);
+  const socialImage = locale === "th" ? "/og-th.png" : "/og.png";
 
   return {
     metadataBase,
     title: {
-      default: SITE_TITLE,
-      template: `%s · ${SITE_NAME}`,
+      default: messages.meta.title,
+      template: messages.meta.titleTemplate,
     },
-    description: SITE_DESCRIPTION,
+    description: messages.meta.description,
     applicationName: SITE_NAME,
     category: "travel",
-    keywords: [
-      "outdoor trip planner",
-      "group hiking planner",
-      "shared gear checklist",
-      "offline trip planning",
-    ],
+    keywords: messages.meta.keywords,
     alternates: {
-      canonical: "/",
+      canonical,
+      languages: {
+        en: localizedPath("en"),
+        th: localizedPath("th"),
+        "x-default": localizedPath("en"),
+      },
     },
     icons: {
       icon: "/brand/accomp-pine-icon.svg",
@@ -41,36 +47,40 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     openGraph: {
       type: "website",
-      url: "/",
+      url: canonical,
       siteName: SITE_NAME,
-      title: SITE_TITLE,
-      description: SITE_DESCRIPTION,
-      locale: "en_US",
+      title: messages.meta.title,
+      description: messages.meta.description,
+      locale: messages.meta.openGraphLocale,
+      alternateLocale: [getMessages(alternate).meta.openGraphLocale],
       images: [
         {
-          url: "/og.png",
+          url: socialImage,
           width: 1200,
           height: 630,
-          alt: "Accomp — Adventure Together, with a shared route and trip-planning visual",
+          alt: messages.meta.ogAlt,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: SITE_TITLE,
-      description: SITE_DESCRIPTION,
-      images: ["/og.png"],
+      title: messages.meta.title,
+      description: messages.meta.description,
+      images: [socialImage],
     },
   };
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const requestHeaders = await headers();
+  const locale = getLocaleFromHeaders(requestHeaders);
+
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body>{children}</body>
     </html>
   );

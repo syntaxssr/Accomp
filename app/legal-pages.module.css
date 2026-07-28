@@ -12,6 +12,13 @@
   margin-inline: auto;
 }
 
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+
 .brand {
   min-width: 2.75rem;
   min-height: 2.75rem;

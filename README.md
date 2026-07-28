@@ -1,8 +1,8 @@
 # Accomp Marketing Website
 
 Accomp is a static-first marketing website for the Accomp mobile app. The
-repository contains the motion-complete marketing page and the Phase 10
-release-candidate automation layer.
+repository contains the motion-complete bilingual marketing page, the Phase 10
+release-candidate automation layer and the Phase 2.1 TH/EN foundation.
 
 ## Technology
 
@@ -17,6 +17,7 @@ release-candidate automation layer.
 - Worker-level security headers and a no-store health endpoint
 - GitHub Actions quality checks and strict production preflight
 - URL-driven production smoke tests and commit-bound release packaging
+- File-based Thai and English catalogs with locale-aware routes and metadata
 
 No backend, database, CMS, authentication, analytics, cookie tracking or live
 waitlist is active.
@@ -49,12 +50,17 @@ npm run check:release
 
 ```text
 app/                 App Router entry and metadata
+app/[locale]/        Localized homepage, legal and not-found routes
 components/layout/   Container and spacing primitives
 components/ui/       Typography, buttons, links, cards and icon primitive
 components/marketing/Marketing sections and progressive interactions
-content/             Typed navigation, feature and FAQ content
+components/i18n/     Accessible language switcher
+components/legal/    Shared localized legal and not-found presentation
+content/             Typed localized content composition
+messages/            Complete English and Thai message catalogs
 public/brand/        Production-facing brand assets
 public/og.png        1200 × 630 social preview
+public/og-th.png     1200 × 630 Thai social preview
 brand/               Brand source files and identity documentation
 docs/                Phase deliverables and design references
 lib/                 Shared site identity and origin resolution
@@ -65,12 +71,13 @@ worker/              Cloudflare-compatible application entry
 
 ## Phase boundary
 
-The current routes contain the complete marketing story, calm progressive
+The `/en` and `/th` routes contain the complete marketing story, calm progressive
 motion, search/social metadata, crawl endpoints, legal status notices, a
 branded 404, repeatable release checks, a health endpoint, runtime security
 headers and commit-bound release packaging. The local candidate has no known
 critical defect. Analytics, live forms, final legal agreements, confirmed
 launch destinations and deployment remain gated.
 
-See [Phase 10 documentation](./docs/phase-10/README.md) and the main
+See [Phase 2.1 documentation](./docs/phase-2.1/README.md),
+[Phase 10 release automation](./docs/phase-10/README.md) and the main
 [project plan](./plan.md).

@@ -4,6 +4,10 @@ import {
   handleImageOptimization,
 } from "vinext/server/image-optimization";
 import handler from "vinext/server/app-router-entry";
+import {
+  getLocaleFromPathname,
+  LOCALE_HEADER,
+} from "../lib/i18n/config";
 import { withSecurityHeaders } from "./security-headers";
 
 interface AssetFetcher {
@@ -60,8 +64,14 @@ const worker = {
       );
     }
 
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set(LOCALE_HEADER, getLocaleFromPathname(url.pathname));
+    const localizedRequest = new Request(request, {
+      headers: requestHeaders,
+    });
+
     return withSecurityHeaders(
-      await handler.fetch(request, env, context),
+      await handler.fetch(localizedRequest, env, context),
       url,
     );
   },

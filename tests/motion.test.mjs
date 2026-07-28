@@ -23,7 +23,7 @@ test("uses progressive reveal enhancement without hiding server content", async 
   assert.doesNotMatch(controller, /setInterval|requestAnimationFrame\([^)]*=>\s*requestAnimationFrame/);
   assert.match(controller, /\[data-motion-root\]/);
   assert.match(page, /data-motion-root/);
-  assert.match(page, /data-phase="10"/);
+  assert.match(page, /data-phase="2\.1"/);
   assert.match(page, /data-reveal/);
   assert.match(styles, /\.site\[data-motion="enhanced"\] \[data-reveal\]/);
   assert.doesNotMatch(styles, /^\.site \[data-reveal\]\s*\{[^}]*opacity:\s*0/ms);
