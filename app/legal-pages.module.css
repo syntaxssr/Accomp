@@ -51,7 +51,7 @@
   font-family: var(--font-family-accent);
   font-size: clamp(3rem, 8vw, 5.5rem);
   font-weight: 800;
-  letter-spacing: -0.06em;
+  letter-spacing: var(--font-letter-spacing-accent);
   line-height: 0.94;
 }
 
@@ -91,7 +91,7 @@
   margin: 0;
   font-family: var(--font-family-accent);
   font-size: var(--font-size-card);
-  letter-spacing: -0.035em;
+  letter-spacing: var(--font-letter-spacing-accent);
 }
 
 .content p,

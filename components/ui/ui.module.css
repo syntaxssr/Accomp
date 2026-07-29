@@ -177,6 +177,7 @@
 
 .heading {
   font-family: var(--font-family-accent);
+  letter-spacing: var(--font-letter-spacing-accent);
   line-height: 0.98;
   text-wrap: balance;
 }
@@ -185,21 +186,18 @@
   max-width: 8ch;
   font-size: var(--font-size-display);
   font-weight: 800;
-  letter-spacing: -0.065em;
 }
 
 .heading[data-size="section"] {
   max-width: 15ch;
   font-size: var(--font-size-section);
   font-weight: 800;
-  letter-spacing: -0.055em;
 }
 
 .heading[data-size="card"] {
   max-width: 21ch;
   font-size: var(--font-size-card);
   font-weight: 700;
-  letter-spacing: -0.03em;
 }
 
 .text {

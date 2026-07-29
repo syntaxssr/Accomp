@@ -81,10 +81,12 @@ test("keeps complete TH/EN catalogs with identical keys and placeholders", async
 });
 
 test("defines a two-locale, URL-driven i18n foundation", async () => {
-  const [config, messages, worker] = await Promise.all([
+  const [config, messages, worker, layout, documentSync] = await Promise.all([
     source("lib/i18n/config.ts"),
     source("lib/i18n/messages.ts"),
     source("worker/index.ts"),
+    source("app/layout.tsx"),
+    source("components/i18n/LocaleDocumentSync.tsx"),
   ]);
 
   assert.match(config, /SUPPORTED_LOCALES = \["en", "th"\]/);
@@ -94,6 +96,14 @@ test("defines a two-locale, URL-driven i18n foundation", async () => {
   assert.match(messages, /messages\/th\.json/);
   assert.match(messages, /Record<Locale, Messages>/);
   assert.match(worker, /LOCALE_HEADER/);
+  assert.match(layout, /<LocaleDocumentSync \/>/);
+  assert.match(documentSync, /usePathname\(\)/);
+  assert.match(documentSync, /getLocaleFromPathname\(pathname\)/);
+  assert.match(documentSync, /useLayoutEffect/);
+  assert.match(
+    documentSync,
+    /document\.documentElement\.lang = locale/,
+  );
   assert.doesNotMatch(`${config}\n${messages}`, /cookie|localStorage/i);
 });
 

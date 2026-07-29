@@ -5,6 +5,7 @@ import {
   localizedPath,
   otherLocale,
 } from "@/lib/i18n/config";
+import { LocaleDocumentSync } from "@/components/i18n/LocaleDocumentSync";
 import { getMessages } from "@/lib/i18n/messages";
 import { getSiteOriginFromHeaders, SITE_NAME } from "@/lib/site";
 import "@fontsource-variable/nunito/wght.css";
@@ -92,7 +93,10 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <body>{children}</body>
+      <body>
+        <LocaleDocumentSync />
+        {children}
+      </body>
     </html>
   );
 }

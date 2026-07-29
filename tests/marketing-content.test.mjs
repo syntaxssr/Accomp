@@ -246,7 +246,9 @@ test("serves bilingual typography assets and preserves the offline map artwork",
     thaiRegular,
     thaiBold,
     thaiExtraBold,
-    thaiAccent,
+    originalThaiAccent,
+    adjustedThaiAccent,
+    accentReadme,
   ] =
     await Promise.all([
       source("app/layout.tsx"),
@@ -281,6 +283,13 @@ test("serves bilingual typography assets and preserves the offline map artwork",
         ),
       ),
       stat(new URL("public/fonts/pg-miss-half/PGMissHalf.ttf", root)),
+      stat(
+        new URL(
+          "public/fonts/pg-miss-half/AccompThaiAccent-v5.ttf",
+          root,
+        ),
+      ),
+      source("public/fonts/pg-miss-half/README.md"),
     ]);
 
   assert.doesNotMatch(layout, /next\/font/);
@@ -295,7 +304,7 @@ test("serves bilingual typography assets and preserves the offline map artwork",
   );
   assert.match(
     globalStyles,
-    /--font-family-accent:\s*"PG Miss Half", "Nunito Variable", Nunito, ui-sans-serif/,
+    /--font-family-accent:\s*"Accomp Thai Accent", "PG Miss Half", "Nunito Variable", Nunito/,
   );
   assert.match(
     globalStyles,
@@ -303,11 +312,15 @@ test("serves bilingual typography assets and preserves the offline map artwork",
   );
   assert.match(
     globalStyles,
+    /--font-letter-spacing-accent:\s*0\.02em/,
+  );
+  assert.match(
+    globalStyles,
     /@font-face \{[\s\S]*font-family: "LINE Seed Sans TH";[\s\S]*font-weight: 400/,
   );
   assert.match(
     globalStyles,
-    /@font-face \{[\s\S]*font-family: "PG Miss Half";[\s\S]*font-weight: 400/,
+    /@font-face \{[\s\S]*font-family: "Accomp Thai Accent";[\s\S]*AccompThaiAccent-v5\.ttf[\s\S]*font-weight: 400/,
   );
   assert.match(
     globalStyles,
@@ -315,11 +328,19 @@ test("serves bilingual typography assets and preserves the offline map artwork",
   );
   assert.match(
     globalStyles,
-    /html\[lang="th"\] \{[\s\S]*--font-family-accent:\s*"PG Miss Half", "LINE Seed Sans TH"/,
+    /html\[lang="th"\] \{[\s\S]*--font-family-accent:\s*"Accomp Thai Accent", "PG Miss Half", "LINE Seed Sans TH"/,
   );
   assert.match(
     globalStyles,
     /html\[lang="th"\] \{[\s\S]*--font-family-body:\s*"LINE Seed Sans TH"/,
+  );
+  assert.match(
+    globalStyles,
+    /html\[lang="th"\] \{[\s\S]*font-feature-settings:\s*"liga" 1/,
+  );
+  assert.match(
+    globalStyles,
+    /html\[lang="th"\] \{[\s\S]*font-variant-ligatures:\s*common-ligatures/,
   );
   assert.match(
     brandIdentity,
@@ -330,7 +351,16 @@ test("serves bilingual typography assets and preserves the offline map artwork",
   assert.ok(thaiRegular.size > 0);
   assert.ok(thaiBold.size > 0);
   assert.ok(thaiExtraBold.size > 0);
-  assert.ok(thaiAccent.size > 0);
+  assert.ok(originalThaiAccent.size > 0);
+  assert.ok(adjustedThaiAccent.size > 0);
+  assert.match(accentReadme, /uniF70A`–`uniF70D/);
+  assert.match(accentReadme, /uniF705`–`uniF708/);
+  assert.match(accentReadme, /all eight contextual tone-mark glyphs down by 20/);
+  assert.match(accentReadme, /uniF70B[\s\S]*767 font units/);
+  assert.match(accentReadme, /uni0E31[\s\S]*ไม้หันอากาศ/);
+  assert.match(accentReadme, /58–112 px[\s\S]*within 2 pixels/);
+  assert.match(accentReadme, /uni0E48`–`uni0E4B[\s\S]*are\s+unchanged/);
+  assert.match(accentReadme, /original `liga`, GSUB, and GPOS tables are preserved/);
   assert.match(globalStyles, /clamp\(3\.65rem, 9\.2vw, 7rem\)/);
   assert.match(globalStyles, /clamp\(2\.7rem, 6\.5vw, 4\.8rem\)/);
   assert.match(
@@ -349,27 +379,33 @@ test("serves bilingual typography assets and preserves the offline map artwork",
     typographyStyles,
     /\.heading \{[\s\S]*font-family: var\(--font-family-accent\)/,
   );
-  assert.match(typographyStyles, /letter-spacing: -0\.065em/);
+  assert.match(
+    typographyStyles,
+    /\.heading \{[\s\S]*letter-spacing: var\(--font-letter-spacing-accent\)/,
+  );
   assert.match(
     typographyStyles,
     /\.heading\[data-size="display"\] \{[\s\S]*max-width: 8ch/,
   );
   assert.match(
     page,
-    /className=\{styles\.heroTagline\}[\s\S]*variant="lead"[\s\S]*tone="sand"/,
+    /<Text as="p" variant="lead" tone="sand">\s*\{copy\.hero\.eyebrow\}\s*<\/Text>/,
+  );
+  assert.doesNotMatch(page, /styles\.heroTagline/);
+  assert.match(
+    pageStyles,
+    /\.heroCopy h1 \{[\s\S]*font-family: var\(--font-family-accent\);[\s\S]*letter-spacing: var\(--font-letter-spacing-accent\)/,
   );
   assert.match(
     pageStyles,
-    /\.heroCopy h1 \{[\s\S]*font-family: var\(--font-family-accent\)/,
+    /:global\(html\[lang="th"\]\) \.heroCopy h1 \{[\s\S]*line-height: 1\.3/,
   );
+  assert.match(page, /className=\{styles\.heroBody\}/);
   assert.match(
     pageStyles,
-    /\.heroTagline \{[\s\S]*font-family: var\(--font-family-accent\)/,
+    /\.heroCopy > \.heroBody \{[\s\S]*margin-top: var\(--space-5\)/,
   );
-  assert.match(
-    pageStyles,
-    /:global\(html\[lang="th"\]\) \.heroTagline \{[\s\S]*font-family: var\(--font-family-body\)/,
-  );
+  assert.doesNotMatch(pageStyles, /\.heroTagline/);
   assert.match(
     featureRailStyles,
     /\.card h3 \{[\s\S]*font-family: var\(--font-family-accent\)/,
@@ -396,7 +432,7 @@ test("serves bilingual typography assets and preserves the offline map artwork",
   );
   assert.match(
     siteHeaderStyles,
-    /\.brand \{[\s\S]*font-family: var\(--font-family-accent\);[\s\S]*font-size: 2rem;[\s\S]*line-height: 1;[\s\S]*letter-spacing: 0\.015em/,
+    /\.brand \{[\s\S]*font-family: var\(--font-family-accent\);[\s\S]*font-size: 2rem;[\s\S]*line-height: 1;[\s\S]*letter-spacing: var\(--font-letter-spacing-accent\)/,
   );
   assert.match(
     siteHeaderStyles,

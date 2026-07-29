@@ -57,7 +57,7 @@
   font-family: var(--font-family-accent);
   font-size: clamp(3.2rem, 7vw, 5.8rem);
   font-weight: 800;
-  letter-spacing: -0.065em;
+  letter-spacing: var(--font-letter-spacing-accent);
   line-height: 0.94;
 }
 
@@ -170,7 +170,7 @@
   font-family: var(--font-family-accent);
   font-size: clamp(2rem, 4vw, 3.4rem);
   font-weight: 800;
-  letter-spacing: -0.055em;
+  letter-spacing: var(--font-letter-spacing-accent);
   line-height: 0.98;
 }
 
@@ -210,7 +210,7 @@
   margin: var(--space-5) 0 0;
   font-family: var(--font-family-accent);
   font-size: var(--font-size-card);
-  letter-spacing: -0.035em;
+  letter-spacing: var(--font-letter-spacing-accent);
 }
 
 .impactCard p,

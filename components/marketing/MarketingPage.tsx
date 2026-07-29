@@ -96,18 +96,18 @@ export function MarketingPage({ locale, messages }: MarketingPageProps) {
               </div>
 
               <Stack className={styles.heroCopy} gap="md">
-                <Text
-                  as="p"
-                  className={styles.heroTagline}
-                  variant="lead"
-                  tone="sand"
-                >
+                <Text as="p" variant="lead" tone="sand">
                   {copy.hero.eyebrow}
                 </Text>
                 <Heading as="h1" size="display" tone="inverse">
                   {copy.hero.title}
                 </Heading>
-                <Text as="p" variant="lead" tone="sand">
+                <Text
+                  as="p"
+                  className={styles.heroBody}
+                  variant="lead"
+                  tone="sand"
+                >
                   {copy.hero.body}
                 </Text>
                 <div className={styles.heroActions}>

@@ -221,18 +221,21 @@ WOFF2 จากชุดทางการ `LINE_Seed_Sans_TH_V1.003` เพื�
 
 Weight: Regular 400
 
+เว็บไซต์ใช้ไฟล์อนุพันธ์ภายในชื่อ **Accomp Thai Accent** ซึ่งแก้ตำแหน่งไม้โท
+เฉพาะรูปแบบที่ไม่ซ้อนสระ โดยเก็บไฟล์ PG Miss Half ต้นฉบับไว้สำหรับ rollback
+
 ใช้เฉพาะข้อความที่ทำหน้าที่เป็นจุดเด่น:
 
 - ชื่อแบรนด์ `Accomp` ข้างโลโก้บน Topbar ทั้งภาษาไทยและอังกฤษ
 - Hero headline
-- Hero tagline ภาษาอังกฤษ
 - Section headings
 - Card titles
 
-Hero tagline/eyebrow เช่น **“เพื่อนร่วมทางสำหรับทุกการผจญภัย”** ต้องใช้
-LINE Seed Sans TH เช่นเดียวกับ body copy ห้ามใช้ PG Miss Half กับ navigation,
-buttons, FAQ, legal body copy หรือข้อความ UI ทั่วไป สิทธิ์สำหรับการฝังฟอนต์
-บนเว็บต้องได้รับการยืนยันก่อนเผยแพร่ production
+Hero tagline/eyebrow ต้องใช้ฟอนต์และรูปแบบเดียวกับ Hero body copy:
+**“Your companion for every adventure”** ใช้ Nunito และ
+**“เพื่อนร่วมทางสำหรับทุกการผจญภัย”** ใช้ LINE Seed Sans TH ห้ามใช้ PG Miss
+Half กับ navigation, buttons, FAQ, legal body copy หรือข้อความ UI ทั่วไป
+สิทธิ์สำหรับการฝังฟอนต์บนเว็บต้องได้รับการยืนยันก่อนเผยแพร่ production
 
 ### Typography behavior
 
@@ -241,6 +244,8 @@ buttons, FAQ, legal body copy หรือข้อความ UI ทั่ว�
 - ใช้ Nunito Variable กับข้อความภาษาอังกฤษ ใช้ LINE Seed Sans TH
   กับเนื้อหาและ UI ภาษาไทย และใช้ PG Miss Half เฉพาะจุดเด่นของทั้งสองภาษา
   ตามขอบเขตที่กำหนด
+- ใช้ tracking `0.02em` กับ PG Miss Half เพื่อให้ตัวอักษรไม่ชิดกันเกินไป
+  เมื่อแสดงผลด้วยน้ำหนัก `700–800`
 - ใช้น้ำหนัก `800` กับ Hero และหัวข้อ Section, `700` กับชื่อการ์ดและข้อความเด่น
   และคง `400–500` สำหรับเนื้อหาที่ต้องอ่านต่อเนื่อง
 - หัวข้อใหญ่ กระชับ และมีพื้นที่หายใจ

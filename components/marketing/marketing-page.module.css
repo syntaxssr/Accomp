@@ -99,19 +99,19 @@
   font-size: clamp(3.25rem, 6vw, 5.75rem);
   font-weight: 800;
   line-height: 1.02;
-  letter-spacing: -0.025em;
+  letter-spacing: var(--font-letter-spacing-accent);
 }
 
-.heroTagline {
-  font-family: var(--font-family-accent);
-}
-
-:global(html[lang="th"]) .heroTagline {
-  font-family: var(--font-family-body);
+:global(html[lang="th"]) .heroCopy h1 {
+  line-height: 1.3;
 }
 
 .heroCopy > p {
   margin-inline: auto;
+}
+
+.heroCopy > .heroBody {
+  margin-top: var(--space-5);
 }
 
 .heroActions {
@@ -450,7 +450,7 @@
   font-family: var(--font-family-accent);
   font-size: clamp(3rem, 7vw, 6.25rem);
   font-weight: 800;
-  letter-spacing: -0.055em;
+  letter-spacing: var(--font-letter-spacing-accent);
   line-height: 0.92;
   text-wrap: balance;
 }
@@ -506,6 +506,7 @@
   font-family: var(--font-family-accent);
   font-size: clamp(1.15rem, 2.2vw, 1.55rem);
   font-weight: 800;
+  letter-spacing: var(--font-letter-spacing-accent);
   line-height: 1.08;
 }
 
@@ -713,6 +714,7 @@
 .offlineCard strong {
   font-family: var(--font-family-accent);
   font-size: 1.35rem;
+  letter-spacing: var(--font-letter-spacing-accent);
 }
 
 .offlineCard p {
@@ -775,7 +777,7 @@
   font-family: var(--font-family-accent);
   font-size: var(--font-size-card);
   font-weight: 700;
-  letter-spacing: -0.04em;
+  letter-spacing: var(--font-letter-spacing-accent);
 }
 
 .steps p {

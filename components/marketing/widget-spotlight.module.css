@@ -60,7 +60,7 @@
 .cardCopy h3 {
   font-family: var(--font-family-accent);
   font-size: var(--font-size-card);
-  letter-spacing: -0.03em;
+  letter-spacing: var(--font-letter-spacing-accent);
   line-height: 1.1;
 }
 
