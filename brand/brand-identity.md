@@ -16,10 +16,10 @@ feature hierarchy ในเอกสาร Phase เก่า
 - **Platform being promoted:** Mobile App (platforms not yet confirmed)
 - **Website scope:** เว็บไซต์โปรโมตแอปเท่านั้น
 - **Founded:** 2026
-- **Tagline:** *Adventure Together.*
+- **Tagline:** _Adventure Together._
 - **Personality:** Friendly · Modern · Reliable · Adventurous
 
-ชื่อ **Accomp** มาจากแนวคิดของการ *accompany* หรือการร่วมเดินทางไปกับผู้อื่น สื่อถึงมิตรภาพ ความร่วมมือ ความไว้วางใจ และการสำรวจไปด้วยกัน
+ชื่อ **Accomp** มาจากแนวคิดของการ _accompany_ หรือการร่วมเดินทางไปกับผู้อื่น สื่อถึงมิตรภาพ ความร่วมมือ ความไว้วางใจ และการสำรวจไปด้วยกัน
 
 ## 2. Brand Essence
 
@@ -162,14 +162,14 @@ Accomp มีฟีเจอร์หลักหนึ่งเดียวค�
 
 ### Core colors
 
-| Token | Hex | Intended use |
-|---|---:|---|
-| Trail Sage | `#778873` | Logo, primary CTA, path motif, active states |
-| Meadow Sage | `#A1BC98` | Hover, supporting surfaces, icons, gentle depth |
-| Trail Sand | `#DCCFC0` | Cards, borders, soft fields, supporting surfaces |
-| Warm Cream | `#FDF6ED` | Main canvas, light surfaces, text on dark |
-| Brand Dark | `#1F1F1F` | Headings, primary text, dark surfaces |
-| Background Dark | `#171717` | Dark sections and dark mode backgrounds |
+| Token           |       Hex | Intended use                                     |
+| --------------- | --------: | ------------------------------------------------ |
+| Trail Sage      | `#778873` | Logo, primary CTA, path motif, active states     |
+| Meadow Sage     | `#A1BC98` | Hover, supporting surfaces, icons, gentle depth  |
+| Trail Sand      | `#DCCFC0` | Cards, borders, soft fields, supporting surfaces |
+| Warm Cream      | `#FDF6ED` | Main canvas, light surfaces, text on dark        |
+| Brand Dark      | `#1F1F1F` | Headings, primary text, dark surfaces            |
+| Background Dark | `#171717` | Dark sections and dark mode backgrounds          |
 
 ```css
 :root {
@@ -233,7 +233,7 @@ Weight: Regular 400
 
 Hero tagline/eyebrow ต้องใช้ฟอนต์และรูปแบบเดียวกับ Hero body copy:
 **“Your companion for every adventure”** ใช้ Nunito และ
-**“เพื่อนร่วมทางสำหรับทุกการผจญภัย”** ใช้ LINE Seed Sans TH ห้ามใช้ PG Miss
+**“เพื่อนร่วมทางของทุกการผจญภัย”** ใช้ LINE Seed Sans TH ห้ามใช้ PG Miss
 Half กับ navigation, buttons, FAQ, legal body copy หรือข้อความ UI ทั่วไป
 สิทธิ์สำหรับการฝังฟอนต์บนเว็บต้องได้รับการยืนยันก่อนเผยแพร่ production
 

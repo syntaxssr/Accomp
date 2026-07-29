@@ -196,6 +196,18 @@ test("keeps localized navigation and button geometry stable", async () => {
   assert.match(headerStyles, /height: 1\.875rem/);
   assert.match(headerStyles, /width: 136\.703125px/);
   assert.match(headerStyles, /height: 52px/);
+  assert.match(
+    headerStyles,
+    /\.desktopNav a \{[\s\S]*font-size: 1rem/,
+  );
+  assert.match(
+    headerStyles,
+    /\.groupTrigger \{[\s\S]*font-size: 1rem/,
+  );
+  assert.match(
+    headerStyles,
+    /\.actions \.headerCta\[data-size-lock="waitlist"\] \{[\s\S]*font-size: 0\.9375rem/,
+  );
   assert.match(headerStyles, /width: 14\.5rem/);
   assert.match(marketingPage, /data-size-lock="compact"/);
   assert.match(roadmapPage, /data-size-lock="return-home"/);
@@ -229,7 +241,7 @@ test("keeps user-visible copy in message catalogs", async () => {
   ).join("\n");
 
   for (const formerHardCodedCopy of [
-    "Adventure together.",
+    "Better together.",
     "Join the waitlist",
     "No information is collected or submitted yet.",
     "Navigate Accomp",

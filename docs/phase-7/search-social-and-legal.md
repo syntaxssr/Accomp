@@ -51,7 +51,7 @@ Phase 2.1 adds `public/og-th.png`, a 1200 × 630 localized derivative for Thai
 routes. It was produced with the built-in ImageGen text-localization edit path,
 then resized and inspected in the project. The exact Thai subtitle is:
 
-- `ผจญภัยไปด้วยกัน`
+- `ไปด้วยกัน สนุกกว่า`
 
 ## Crawl Routes
 

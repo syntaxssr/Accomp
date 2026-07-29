@@ -54,7 +54,7 @@ coverage.
 
 English continues to use `public/og.png`. Thai uses `public/og-th.png`, a
 localized derivative created with the built-in ImageGen edit path. The exact
-Thai subtitle is `ผจญภัยไปด้วยกัน`. The exported file is 1200 × 630 and stays
+Thai subtitle is `ไปด้วยกัน สนุกกว่า`. The exported file is 1200 × 630 and stays
 below the repository asset budget.
 
 ## Validation

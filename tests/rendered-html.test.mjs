@@ -60,12 +60,12 @@ test("server-renders complete and distinct Phase 2.4 EN/TH pages", async () => {
 
   assert.match(english, /<html[^>]*lang="en"/i);
   assert.match(thai, /<html[^>]*lang="th"/i);
-  assert.match(english, /<title>Adventure Together · Accomp<\/title>/i);
-  assert.match(thai, /<title>ผจญภัยไปด้วยกัน · Accomp<\/title>/i);
+  assert.match(english, /<title>Better Together · Accomp<\/title>/i);
+  assert.match(thai, /<title>ไปด้วยกัน สนุกกว่า · Accomp<\/title>/i);
   assert.match(english, /data-phase="2\.4"/);
   assert.match(thai, /data-phase="2\.4"/);
-  assert.match(english, /Adventure together\./i);
-  assert.match(thai, /ผจญภัยไปด้วยกัน/);
+  assert.match(english, /Better together\./i);
+  assert.match(thai, /ไปด้วยกัน สนุกกว่า/);
   assert.doesNotMatch(english, /Product preview ·/);
   assert.doesNotMatch(thai, /ตัวอย่างผลิตภัณฑ์ ·/);
   assert.match(english, /href="\/th"/);
@@ -114,14 +114,8 @@ test("renders a complete semantic TH/EN mobile app roadmap", async () => {
   assert.match(thai, /aria-current="step"/);
   assert.match(english, /href="\/th\/roadmap"/);
   assert.match(thai, /href="\/en\/roadmap"/);
-  assert.match(
-    english,
-    /<a[^>]*aria-current="page"[^>]*href="\/en\/roadmap"/,
-  );
-  assert.match(
-    thai,
-    /<a[^>]*aria-current="page"[^>]*href="\/th\/roadmap"/,
-  );
+  assert.match(english, /<a[^>]*aria-current="page"[^>]*href="\/en\/roadmap"/);
+  assert.match(thai, /<a[^>]*aria-current="page"[^>]*href="\/th\/roadmap"/);
   assert.match(english, /Shape the right companion/);
   assert.match(thai, /สร้างเพื่อนร่วมทางที่ตอบโจทย์/);
 });
@@ -151,14 +145,8 @@ test("renders a safe bilingual support experience and supporter empty state", as
   assert.match(thai, /ยังไม่เปิดใช้งาน/);
   assert.match(english, /href="\/th\/support"/);
   assert.match(thai, /href="\/en\/support"/);
-  assert.match(
-    english,
-    /<a[^>]*aria-current="page"[^>]*href="\/en\/support"/,
-  );
-  assert.match(
-    thai,
-    /<a[^>]*aria-current="page"[^>]*href="\/th\/support"/,
-  );
+  assert.match(english, /<a[^>]*aria-current="page"[^>]*href="\/en\/support"/);
+  assert.match(thai, /<a[^>]*aria-current="page"[^>]*href="\/th\/support"/);
   assert.doesNotMatch(`${english}${thai}`, /<form\b/i);
 });
 
@@ -178,7 +166,10 @@ test("renders semantic landmarks, complete anchors and native FAQ items in both 
     assert.match(html, /<header\b/);
     assert.match(html, /<main\b[^>]*id="main"/);
     assert.match(html, /<footer\b/);
-    assert.equal(targets.every((target) => ids.has(target)), true);
+    assert.equal(
+      targets.every((target) => ids.has(target)),
+      true,
+    );
   }
 });
 
@@ -211,10 +202,7 @@ test("renders localized canonical, alternate, social and structured metadata", a
     english,
     /<link rel="canonical" href="https:\/\/accomp\.test\/en"/,
   );
-  assert.match(
-    thai,
-    /<link rel="canonical" href="https:\/\/accomp\.test\/th"/,
-  );
+  assert.match(thai, /<link rel="canonical" href="https:\/\/accomp\.test\/th"/);
   assert.match(english, /hrefLang="th"|hreflang="th"/i);
   assert.match(thai, /hrefLang="en"|hreflang="en"/i);
   assert.match(english, /content="https:\/\/accomp\.test\/og\.png"/);
@@ -226,17 +214,25 @@ test("renders localized canonical, alternate, social and structured metadata", a
 });
 
 test("serves localized legal notices, sitemap and real EN/TH 404 pages", async () => {
-  const [privacyEn, privacyTh, termsEn, termsTh, robots, sitemap, missingEn, missingTh] =
-    await Promise.all([
-      render("/en/privacy"),
-      render("/th/privacy"),
-      render("/en/terms"),
-      render("/th/terms"),
-      render("/robots.txt"),
-      render("/sitemap.xml"),
-      render("/en/not-a-real-page"),
-      render("/th/not-a-real-page"),
-    ]);
+  const [
+    privacyEn,
+    privacyTh,
+    termsEn,
+    termsTh,
+    robots,
+    sitemap,
+    missingEn,
+    missingTh,
+  ] = await Promise.all([
+    render("/en/privacy"),
+    render("/th/privacy"),
+    render("/en/terms"),
+    render("/th/terms"),
+    render("/robots.txt"),
+    render("/sitemap.xml"),
+    render("/en/not-a-real-page"),
+    render("/th/not-a-real-page"),
+  ]);
 
   assert.equal(privacyEn.status, 200);
   assert.match(await privacyEn.text(), /does not accept waitlist submissions/);
@@ -293,10 +289,7 @@ test("serves localized pages and health with production security headers", async
   ]);
 
   for (const response of [english, thai, health]) {
-    assert.equal(
-      response.headers.get("x-content-type-options"),
-      "nosniff",
-    );
+    assert.equal(response.headers.get("x-content-type-options"), "nosniff");
     assert.equal(response.headers.get("x-frame-options"), "DENY");
     assert.equal(
       response.headers.get("referrer-policy"),

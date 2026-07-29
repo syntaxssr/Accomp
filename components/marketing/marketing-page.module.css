@@ -71,7 +71,7 @@
 
 .heroStage {
   position: relative;
-  min-height: clamp(38rem, 52vw, 47rem);
+  min-height: clamp(42rem, 60vw, 50rem);
   border-radius: 1.5rem;
   display: grid;
   place-items: center;
@@ -98,7 +98,7 @@
   font-family: var(--font-family-accent);
   font-size: clamp(3.25rem, 6vw, 5.75rem);
   font-weight: 800;
-  line-height: 1.02;
+  line-height: 1.3;
   letter-spacing: var(--font-letter-spacing-accent);
 }
 
@@ -123,11 +123,6 @@
 
 .heroActions > a {
   box-shadow: 0 0.85rem 2.2rem rgb(0 0 0 / 18%);
-}
-
-.heroNote {
-  max-width: 34rem;
-  font-size: var(--font-size-xs);
 }
 
 .heroVisual {

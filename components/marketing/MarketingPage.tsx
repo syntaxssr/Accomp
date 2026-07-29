@@ -119,9 +119,6 @@ export function MarketingPage({ locale, messages }: MarketingPageProps) {
                     {copy.hero.primaryCta}
                   </ButtonLink>
                 </div>
-                <Text as="p" tone="sand" className={styles.heroNote}>
-                  {copy.hero.note}
-                </Text>
               </Stack>
             </div>
           </Container>

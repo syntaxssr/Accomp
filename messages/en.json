@@ -1,15 +1,15 @@
 {
   "meta": {
-    "title": "Adventure Together · Accomp",
+    "title": "Better Together · Accomp",
     "titleTemplate": "%s · Accomp",
-    "description": "Plan one outdoor trip together—from the itinerary and shared gear to maps and essential details ready offline with Accomp.",
+    "description": "Plan every outdoor trip together in one place—from routes, itineraries, and shared gear to maps and essential information you can access anytime, even without a signal.",
     "keywords": [
       "outdoor trip planner",
       "group hiking planner",
       "shared gear checklist",
       "offline trip planning"
     ],
-    "ogAlt": "Accomp — Adventure Together, with a shared route and trip-planning visual",
+    "ogAlt": "Accomp — Better Together, with a shared route and trip-planning visual",
     "openGraphLocale": "en_US",
     "inLanguage": "en"
   },
@@ -37,10 +37,9 @@
     "skipToContent": "Skip to content",
     "hero": {
       "eyebrow": "Your companion for every adventure",
-      "title": "Adventure together.",
-      "body": "Plan one outdoor trip together—from the itinerary and shared gear to maps and essential details ready offline.",
+      "title": "Better together.",
+      "body": "Plan every outdoor trip together in one place—from routes, itineraries, and shared gear to maps and essential information you can access anytime, even without a signal.",
       "primaryCta": "Join the waitlist",
-      "note": "A mobile app concept built around one shared trip plan.",
       "visualLabel": "Illustrative Accomp trip overview with shared paths",
       "visualDisclaimer": "Illustrative UI · not a product screenshot",
       "phone": {

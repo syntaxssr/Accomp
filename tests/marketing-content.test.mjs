@@ -190,6 +190,14 @@ test("centers the hero copy over one full-width artwork stage", async () => {
   );
   assert.match(
     styles,
+    /\.heroCopy h1 \{[\s\S]*line-height: 1\.3/,
+  );
+  assert.match(
+    styles,
+    /:global\(html\[lang="th"\]\) \.heroCopy h1 \{[\s\S]*line-height: 1\.3/,
+  );
+  assert.match(
+    styles,
     /\.heroVisual\s*\{[\s\S]*position: absolute[\s\S]*inset: 0/,
   );
   assert.match(styles, /\.heroVisual::after/);
@@ -197,7 +205,7 @@ test("centers the hero copy over one full-width artwork stage", async () => {
     styles,
     /\.hero > \.heroContainer\s*\{[\s\S]*91\.5rem/,
   );
-  assert.match(styles, /min-height: clamp\(38rem, 52vw, 47rem\)/);
+  assert.match(styles, /min-height: clamp\(42rem, 60vw, 50rem\)/);
   assert.match(
     styles,
     /@media \(min-width: 68rem\)\s*\{[\s\S]*\.hero\s*\{[\s\S]*padding-block: 1\.75rem 4\.75rem/,
@@ -398,7 +406,7 @@ test("serves bilingual typography assets and preserves the offline map artwork",
   );
   assert.match(
     pageStyles,
-    /:global\(html\[lang="th"\]\) \.heroCopy h1 \{[\s\S]*line-height: 1\.3/,
+    /\.heroCopy h1 \{[\s\S]*line-height: 1\.3/,
   );
   assert.match(page, /className=\{styles\.heroBody\}/);
   assert.match(
