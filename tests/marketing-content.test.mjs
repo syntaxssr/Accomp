@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { readFile, stat } from "node:fs/promises";
 import test from "node:test";
 
 const root = new URL("../", import.meta.url);
@@ -228,14 +228,43 @@ test("declares compact, tablet and desktop layout behavior", async () => {
   assert.match(globalStyles, /prefers-reduced-motion: reduce/);
 });
 
-test("uses the approved English typography and preserves the offline map artwork", async () => {
-  const [layout, globalStyles, typographyStyles, page, pageStyles] =
+test("uses the approved bilingual typography and preserves the offline map artwork", async () => {
+  const [
+    layout,
+    globalStyles,
+    brandIdentity,
+    typographyStyles,
+    page,
+    pageStyles,
+    thaiRegular,
+    thaiBold,
+    thaiExtraBold,
+  ] =
     await Promise.all([
       source("app/layout.tsx"),
       source("app/globals.css"),
+      source("brand/brand-identity.md"),
       source("components/ui/ui.module.css"),
       source("components/marketing/MarketingPage.tsx"),
       source("components/marketing/marketing-page.module.css"),
+      stat(
+        new URL(
+          "public/fonts/line-seed-sans-th/LINESeedSansTH_W_Rg.woff2",
+          root,
+        ),
+      ),
+      stat(
+        new URL(
+          "public/fonts/line-seed-sans-th/LINESeedSansTH_W_Bd.woff2",
+          root,
+        ),
+      ),
+      stat(
+        new URL(
+          "public/fonts/line-seed-sans-th/LINESeedSansTH_W_XBd.woff2",
+          root,
+        ),
+      ),
     ]);
 
   assert.doesNotMatch(layout, /next\/font/);
@@ -252,6 +281,23 @@ test("uses the approved English typography and preserves the offline map artwork
     globalStyles,
     /--font-family-body:[\s\S]*"Nunito Variable", Nunito, ui-sans-serif, system-ui/,
   );
+  assert.match(
+    globalStyles,
+    /@font-face \{[\s\S]*font-family: "LINE Seed Sans TH";[\s\S]*font-weight: 400/,
+  );
+  assert.match(
+    globalStyles,
+    /html\[lang="th"\] \{[\s\S]*--font-family-display:\s*"LINE Seed Sans TH"/,
+  );
+  assert.match(
+    globalStyles,
+    /html\[lang="th"\] \{[\s\S]*--font-family-body:\s*"LINE Seed Sans TH"/,
+  );
+  assert.match(brandIdentity, /Thai typeface: LINE Seed Sans TH/);
+  assert.match(brandIdentity, /Regular 400, Bold 700, ExtraBold 800/);
+  assert.ok(thaiRegular.size > 0);
+  assert.ok(thaiBold.size > 0);
+  assert.ok(thaiExtraBold.size > 0);
   assert.match(globalStyles, /clamp\(3\.65rem, 9\.2vw, 7rem\)/);
   assert.match(globalStyles, /clamp\(2\.7rem, 6\.5vw, 4\.8rem\)/);
   assert.match(
