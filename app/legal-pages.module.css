@@ -50,7 +50,7 @@
   margin: 0;
   font-family: var(--font-family-display);
   font-size: clamp(3rem, 8vw, 5.5rem);
-  font-weight: 560;
+  font-weight: 800;
   letter-spacing: -0.06em;
   line-height: 0.94;
 }

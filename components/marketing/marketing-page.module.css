@@ -97,14 +97,14 @@
   max-width: 14ch;
   font-family: var(--font-family-display);
   font-size: clamp(3.25rem, 6vw, 5.75rem);
-  font-weight: 600;
+  font-weight: 800;
   line-height: 1.02;
   letter-spacing: -0.025em;
 }
 
 .heroTagline {
   font-family: var(--font-family-display);
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .heroCopy > p {
@@ -390,7 +390,7 @@
   margin: 0 0 var(--space-5);
   font-family: var(--font-family-display);
   font-size: var(--font-size-card);
-  font-weight: 560;
+  font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 1.05;
 }
@@ -458,7 +458,7 @@
   align-items: center;
   gap: var(--space-3);
   color: var(--color-cream);
-  font-weight: 650;
+  font-weight: 700;
 }
 
 .offlinePoints li::before {
@@ -658,7 +658,7 @@
   margin: 0 0 var(--space-3);
   font-family: var(--font-family-display);
   font-size: var(--font-size-card);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.04em;
 }
 

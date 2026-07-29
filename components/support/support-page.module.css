@@ -56,7 +56,7 @@
   margin: 0;
   font-family: var(--font-family-display);
   font-size: clamp(3.2rem, 7vw, 5.8rem);
-  font-weight: 570;
+  font-weight: 800;
   letter-spacing: -0.065em;
   line-height: 0.94;
 }
@@ -147,7 +147,7 @@
   left: var(--space-5);
   max-width: 30rem;
   font-size: var(--font-size-xs);
-  font-weight: 650;
+  font-weight: 700;
 }
 
 .impact,
@@ -169,7 +169,7 @@
   margin: 0;
   font-family: var(--font-family-display);
   font-size: clamp(2rem, 4vw, 3.4rem);
-  font-weight: 570;
+  font-weight: 800;
   letter-spacing: -0.055em;
   line-height: 0.98;
 }

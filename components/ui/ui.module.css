@@ -184,21 +184,21 @@
 .heading[data-size="display"] {
   max-width: 8ch;
   font-size: var(--font-size-display);
-  font-weight: 560;
+  font-weight: 800;
   letter-spacing: -0.065em;
 }
 
 .heading[data-size="section"] {
   max-width: 15ch;
   font-size: var(--font-size-section);
-  font-weight: 550;
+  font-weight: 800;
   letter-spacing: -0.055em;
 }
 
 .heading[data-size="card"] {
   max-width: 21ch;
   font-size: var(--font-size-card);
-  font-weight: 620;
+  font-weight: 700;
   letter-spacing: -0.03em;
 }
 
@@ -213,7 +213,7 @@
 
 .text[data-variant="eyebrow"] {
   font-size: var(--font-size-xs);
-  font-weight: 750;
+  font-weight: 800;
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }

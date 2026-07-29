@@ -251,7 +251,18 @@ test("uses the approved English typography and preserves the offline map artwork
   );
   assert.match(globalStyles, /clamp\(3\.65rem, 9\.2vw, 7rem\)/);
   assert.match(globalStyles, /clamp\(2\.7rem, 6\.5vw, 4\.8rem\)/);
-  assert.match(typographyStyles, /font-weight: 560/);
+  assert.match(
+    typographyStyles,
+    /\.heading\[data-size="display"\] \{[\s\S]*font-weight: 800/,
+  );
+  assert.match(
+    typographyStyles,
+    /\.heading\[data-size="section"\] \{[\s\S]*font-weight: 800/,
+  );
+  assert.match(
+    typographyStyles,
+    /\.heading\[data-size="card"\] \{[\s\S]*font-weight: 700/,
+  );
   assert.match(typographyStyles, /letter-spacing: -0\.065em/);
   assert.match(
     typographyStyles,
