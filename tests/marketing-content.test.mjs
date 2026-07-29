@@ -67,6 +67,9 @@ test("preserves the complete marketing structure through Phase 2.4", async () =>
 
   assert.match(page, /data-phase="2\.4"/);
   assert.match(page, /data-motion-root/);
+  assert.match(page, /className=\{styles\.promisePanel\}/);
+  assert.match(page, /className=\{styles\.promisePath\}/);
+  assert.match(page, /className=\{styles\.promiseStep\}/);
   assert.match(page, /<MotionController/);
   assert.match(page, /<SiteHeader/);
   assert.doesNotMatch(page, /previewNote/);

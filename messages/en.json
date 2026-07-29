@@ -56,7 +56,8 @@
       }
     },
     "promise": {
-      "body": "One core feature: Shared Trip Planning.",
+      "kicker": "One core feature",
+      "title": "Shared Trip Planning.",
       "label": "Three capabilities within Accomp's shared trip planning feature",
       "items": [
         "Plan the trip",

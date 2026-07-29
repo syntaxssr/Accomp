@@ -128,11 +128,24 @@ export function MarketingPage({ locale, messages }: MarketingPageProps) {
 
         <section className={styles.promise} data-reveal>
           <Container>
-            <p>{copy.promise.body}</p>
-            <div aria-label={copy.promise.label}>
-              {content.promiseLabels.map((label) => (
-                <span key={label}>{label}</span>
-              ))}
+            <div className={styles.promisePanel}>
+              <div className={styles.promiseHeading}>
+                <p className={styles.promiseKicker}>{copy.promise.kicker}</p>
+                <h2 className={styles.promiseTitle}>{copy.promise.title}</h2>
+              </div>
+              <ol
+                aria-label={copy.promise.label}
+                className={styles.promisePath}
+              >
+                {content.promiseLabels.map((label, index) => (
+                  <li className={styles.promiseStep} key={label}>
+                    <span aria-hidden="true">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <strong>{label}</strong>
+                  </li>
+                ))}
+              </ol>
             </div>
           </Container>
         </section>
