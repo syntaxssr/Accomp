@@ -228,7 +228,7 @@ test("declares compact, tablet and desktop layout behavior", async () => {
   assert.match(globalStyles, /prefers-reduced-motion: reduce/);
 });
 
-test("uses the approved bilingual typography and preserves the offline map artwork", async () => {
+test("serves bilingual typography assets and preserves the offline map artwork", async () => {
   const [
     layout,
     globalStyles,
@@ -236,9 +236,17 @@ test("uses the approved bilingual typography and preserves the offline map artwo
     typographyStyles,
     page,
     pageStyles,
+    siteHeaderStyles,
+    faqStyles,
+    featureRailStyles,
+    widgetStyles,
+    roadmapStyles,
+    supportStyles,
+    legalStyles,
     thaiRegular,
     thaiBold,
     thaiExtraBold,
+    thaiAccent,
   ] =
     await Promise.all([
       source("app/layout.tsx"),
@@ -247,6 +255,13 @@ test("uses the approved bilingual typography and preserves the offline map artwo
       source("components/ui/ui.module.css"),
       source("components/marketing/MarketingPage.tsx"),
       source("components/marketing/marketing-page.module.css"),
+      source("components/marketing/site-header.module.css"),
+      source("components/marketing/faq-list.module.css"),
+      source("components/marketing/feature-rail.module.css"),
+      source("components/marketing/widget-spotlight.module.css"),
+      source("components/roadmap/roadmap-page.module.css"),
+      source("components/support/support-page.module.css"),
+      source("app/legal-pages.module.css"),
       stat(
         new URL(
           "public/fonts/line-seed-sans-th/LINESeedSansTH_W_Rg.woff2",
@@ -265,6 +280,7 @@ test("uses the approved bilingual typography and preserves the offline map artwo
           root,
         ),
       ),
+      stat(new URL("public/fonts/pg-miss-half/PGMissHalf.ttf", root)),
     ]);
 
   assert.doesNotMatch(layout, /next\/font/);
@@ -279,6 +295,10 @@ test("uses the approved bilingual typography and preserves the offline map artwo
   );
   assert.match(
     globalStyles,
+    /--font-family-accent:\s*"Nunito Variable", Nunito, ui-sans-serif/,
+  );
+  assert.match(
+    globalStyles,
     /--font-family-body:[\s\S]*"Nunito Variable", Nunito, ui-sans-serif, system-ui/,
   );
   assert.match(
@@ -287,17 +307,30 @@ test("uses the approved bilingual typography and preserves the offline map artwo
   );
   assert.match(
     globalStyles,
+    /@font-face \{[\s\S]*font-family: "PG Miss Half";[\s\S]*font-weight: 400/,
+  );
+  assert.match(
+    globalStyles,
     /html\[lang="th"\] \{[\s\S]*--font-family-display:\s*"LINE Seed Sans TH"/,
+  );
+  assert.match(
+    globalStyles,
+    /html\[lang="th"\] \{[\s\S]*--font-family-accent:\s*"PG Miss Half", "LINE Seed Sans TH"/,
   );
   assert.match(
     globalStyles,
     /html\[lang="th"\] \{[\s\S]*--font-family-body:\s*"LINE Seed Sans TH"/,
   );
-  assert.match(brandIdentity, /Thai typeface: LINE Seed Sans TH/);
+  assert.match(
+    brandIdentity,
+    /Thai body and UI typeface: LINE Seed Sans TH/,
+  );
+  assert.match(brandIdentity, /Thai accent typeface: PG Miss Half/);
   assert.match(brandIdentity, /Regular 400, Bold 700, ExtraBold 800/);
   assert.ok(thaiRegular.size > 0);
   assert.ok(thaiBold.size > 0);
   assert.ok(thaiExtraBold.size > 0);
+  assert.ok(thaiAccent.size > 0);
   assert.match(globalStyles, /clamp\(3\.65rem, 9\.2vw, 7rem\)/);
   assert.match(globalStyles, /clamp\(2\.7rem, 6\.5vw, 4\.8rem\)/);
   assert.match(
@@ -312,6 +345,10 @@ test("uses the approved bilingual typography and preserves the offline map artwo
     typographyStyles,
     /\.heading\[data-size="card"\] \{[\s\S]*font-weight: 700/,
   );
+  assert.match(
+    typographyStyles,
+    /\.heading \{[\s\S]*font-family: var\(--font-family-accent\)/,
+  );
   assert.match(typographyStyles, /letter-spacing: -0\.065em/);
   assert.match(
     typographyStyles,
@@ -320,11 +357,39 @@ test("uses the approved bilingual typography and preserves the offline map artwo
   assert.match(page, /className=\{styles\.heroTagline\}/);
   assert.match(
     pageStyles,
-    /\.heroCopy h1 \{[\s\S]*font-family: var\(--font-family-display\)/,
+    /\.heroCopy h1 \{[\s\S]*font-family: var\(--font-family-accent\)/,
   );
   assert.match(
     pageStyles,
-    /\.heroTagline \{[\s\S]*font-family: var\(--font-family-display\)/,
+    /\.heroTagline \{[\s\S]*font-family: var\(--font-family-accent\)/,
+  );
+  assert.match(
+    featureRailStyles,
+    /\.card h3 \{[\s\S]*font-family: var\(--font-family-accent\)/,
+  );
+  assert.match(
+    widgetStyles,
+    /\.cardCopy h3 \{[\s\S]*font-family: var\(--font-family-accent\)/,
+  );
+  assert.match(
+    roadmapStyles,
+    /\.sectionHeading h2,[\s\S]*font-family: var\(--font-family-accent\)/,
+  );
+  assert.match(
+    supportStyles,
+    /\.impactCard h3,[\s\S]*font-family: var\(--font-family-accent\)/,
+  );
+  assert.match(
+    legalStyles,
+    /\.content h2 \{[\s\S]*font-family: var\(--font-family-accent\)/,
+  );
+  assert.match(
+    siteHeaderStyles,
+    /\.brand \{[\s\S]*font-family: var\(--font-family-display\)/,
+  );
+  assert.match(
+    faqStyles,
+    /\.list summary \{[\s\S]*font-family: var\(--font-family-display\)/,
   );
   assert.match(
     typographyStyles,

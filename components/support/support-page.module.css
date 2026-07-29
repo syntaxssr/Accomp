@@ -54,7 +54,7 @@
 .hero h1 {
   max-width: 10ch;
   margin: 0;
-  font-family: var(--font-family-display);
+  font-family: var(--font-family-accent);
   font-size: clamp(3.2rem, 7vw, 5.8rem);
   font-weight: 800;
   letter-spacing: -0.065em;
@@ -167,7 +167,7 @@
 .sectionHeading h2,
 .channelPanel h2 {
   margin: 0;
-  font-family: var(--font-family-display);
+  font-family: var(--font-family-accent);
   font-size: clamp(2rem, 4vw, 3.4rem);
   font-weight: 800;
   letter-spacing: -0.055em;
@@ -208,7 +208,7 @@
 .supporterCard h3,
 .emptyState h3 {
   margin: var(--space-5) 0 0;
-  font-family: var(--font-family-display);
+  font-family: var(--font-family-accent);
   font-size: var(--font-size-card);
   letter-spacing: -0.035em;
 }

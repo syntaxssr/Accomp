@@ -109,7 +109,7 @@
 .card h3 {
   max-width: 13ch;
   margin: 0 0 var(--space-4);
-  font-family: var(--font-family-display);
+  font-family: var(--font-family-accent);
   font-size: var(--font-size-card);
   font-weight: 700;
   letter-spacing: -0.04em;

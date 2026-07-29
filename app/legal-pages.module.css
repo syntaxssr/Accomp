@@ -48,7 +48,7 @@
 .title {
   max-width: 12ch;
   margin: 0;
-  font-family: var(--font-family-display);
+  font-family: var(--font-family-accent);
   font-size: clamp(3rem, 8vw, 5.5rem);
   font-weight: 800;
   letter-spacing: -0.06em;
@@ -89,7 +89,7 @@
 
 .content h2 {
   margin: 0;
-  font-family: var(--font-family-display);
+  font-family: var(--font-family-accent);
   font-size: var(--font-size-card);
   letter-spacing: -0.035em;
 }

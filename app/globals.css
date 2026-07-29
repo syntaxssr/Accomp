@@ -25,6 +25,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "PG Miss Half";
+  src: url("/fonts/pg-miss-half/PGMissHalf.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 :root {
   color-scheme: light;
 
@@ -40,6 +48,8 @@
   --color-focus: #1f1f1f;
 
   --font-family-display:
+    "Nunito Variable", Nunito, ui-sans-serif, system-ui, sans-serif;
+  --font-family-accent:
     "Nunito Variable", Nunito, ui-sans-serif, system-ui, sans-serif;
   --font-family-body:
     "Nunito Variable", Nunito, ui-sans-serif, system-ui, -apple-system,
@@ -113,6 +123,9 @@ html[lang="th"] {
   --font-family-display:
     "LINE Seed Sans TH", "Noto Sans Thai", Thonburi, Tahoma, ui-sans-serif,
     system-ui, sans-serif;
+  --font-family-accent:
+    "PG Miss Half", "LINE Seed Sans TH", "Noto Sans Thai", Thonburi, Tahoma,
+    ui-sans-serif, system-ui, sans-serif;
   --font-family-body:
     "LINE Seed Sans TH", "Noto Sans Thai", Thonburi, Tahoma, ui-sans-serif,
     system-ui, sans-serif;

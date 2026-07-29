@@ -213,20 +213,35 @@ Weights: 400, 500, 700, 800
 - FAQ
 - Legal and metadata
 
-### Thai typeface: LINE Seed Sans TH
+### Thai body and UI typeface: LINE Seed Sans TH
 
 Weights: Regular 400, Bold 700, ExtraBold 800
 
-ใช้กับข้อความภาษาไทยทั้งหมด โดย self-host ไฟล์ WOFF2 จากชุดทางการ
-`LINE_Seed_Sans_TH_V1.003` เพื่อให้รูปทรงภาษาไทยโค้งมน เป็นมิตร
-และแสดงผลสม่ำเสมอบนอุปกรณ์ต่าง ๆ
+ใช้กับเนื้อหา เมนู ปุ่ม FAQ ข้อความกำกับ และ UI ภาษาไทย โดย self-host ไฟล์
+WOFF2 จากชุดทางการ `LINE_Seed_Sans_TH_V1.003` เพื่อให้รูปทรงภาษาไทยโค้งมน
+เป็นมิตร และแสดงผลสม่ำเสมอบนอุปกรณ์ต่าง ๆ
+
+### Thai accent typeface: PG Miss Half
+
+Weight: Regular 400
+
+ใช้เฉพาะข้อความภาษาไทยที่ทำหน้าที่เป็นจุดเด่น:
+
+- Hero headline
+- Hero tagline
+- Section headings
+- Card titles
+
+ห้ามใช้กับ body copy, navigation, buttons, FAQ, legal body copy
+หรือข้อความ UI ทั่วไป สิทธิ์สำหรับการฝังฟอนต์บนเว็บต้องได้รับการยืนยัน
+ก่อนเผยแพร่ production
 
 ### Typography behavior
 
-- เว็บไซต์ต้อง self-host Nunito Variable และ LINE Seed Sans TH
-  เพื่อให้แสดงผลสม่ำเสมอทุกเครื่อง
-- ใช้ Nunito Variable กับข้อความภาษาอังกฤษ และ LINE Seed Sans TH
-  กับข้อความภาษาไทย เพื่อรักษาบุคลิกที่โค้งมน เป็นมิตร และต่อเนื่อง
+- เว็บไซต์ต้อง self-host Nunito Variable, LINE Seed Sans TH และฟอนต์ accent
+  ภาษาไทยที่ได้รับอนุมัติ เพื่อให้แสดงผลสม่ำเสมอทุกเครื่อง
+- ใช้ Nunito Variable กับข้อความภาษาอังกฤษ ใช้ LINE Seed Sans TH
+  กับเนื้อหาและ UI ภาษาไทย และใช้ PG Miss Half เฉพาะจุดเด่นที่กำหนด
 - ใช้น้ำหนัก `800` กับ Hero และหัวข้อ Section, `700` กับชื่อการ์ดและข้อความเด่น
   และคง `400–500` สำหรับเนื้อหาที่ต้องอ่านต่อเนื่อง
 - หัวข้อใหญ่ กระชับ และมีพื้นที่หายใจ
