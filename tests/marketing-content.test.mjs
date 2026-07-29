@@ -225,7 +225,7 @@ test("declares compact, tablet and desktop layout behavior", async () => {
   assert.match(globalStyles, /prefers-reduced-motion: reduce/);
 });
 
-test("preserves the approved Phase 3 typography and offline map artwork", async () => {
+test("uses the approved English typography and preserves the offline map artwork", async () => {
   const [layout, globalStyles, typographyStyles, page, pageStyles] =
     await Promise.all([
       source("app/layout.tsx"),
@@ -236,13 +236,18 @@ test("preserves the approved Phase 3 typography and offline map artwork", async 
     ]);
 
   assert.doesNotMatch(layout, /next\/font/);
-  assert.match(
-    globalStyles,
-    /--font-family-display:\s*Geist, Inter, ui-sans-serif, system-ui, sans-serif/,
+  assert.match(layout, /@fontsource-variable\/nunito\/wght\.css/);
+  assert.doesNotMatch(
+    layout,
+    /@fontsource-variable\/(?:inter|plus-jakarta-sans)/,
   );
   assert.match(
     globalStyles,
-    /--font-family-body:[\s\S]*Inter, ui-sans-serif, system-ui/,
+    /--font-family-display:\s*"Nunito Variable", Nunito, ui-sans-serif/,
+  );
+  assert.match(
+    globalStyles,
+    /--font-family-body:[\s\S]*"Nunito Variable", Nunito, ui-sans-serif, system-ui/,
   );
   assert.match(globalStyles, /clamp\(3\.65rem, 9\.2vw, 7rem\)/);
   assert.match(globalStyles, /clamp\(2\.7rem, 6\.5vw, 4\.8rem\)/);
@@ -251,6 +256,15 @@ test("preserves the approved Phase 3 typography and offline map artwork", async 
   assert.match(
     typographyStyles,
     /\.heading\[data-size="display"\] \{[\s\S]*max-width: 8ch/,
+  );
+  assert.match(page, /className=\{styles\.heroTagline\}/);
+  assert.match(
+    pageStyles,
+    /\.heroCopy h1 \{[\s\S]*font-family: var\(--font-family-display\)/,
+  );
+  assert.match(
+    pageStyles,
+    /\.heroTagline \{[\s\S]*font-family: var\(--font-family-display\)/,
   );
   assert.match(
     typographyStyles,

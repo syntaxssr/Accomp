@@ -17,7 +17,7 @@ prepare the gear, and keep maps and essential trip details ready offline.
 - Next-compatible React application using Vinext and Vite
 - React 19 and TypeScript in strict mode
 - CSS custom properties and CSS Modules
-- Phase 3-aligned system sans-serif typography
+- Self-hosted Nunito variable typography
 - Native CSS motion with a small Intersection Observer enhancement
 - ESLint, TypeScript and Node test runner
 - Cloudflare Worker-compatible build output

@@ -76,8 +76,8 @@ Final component states still require accessibility testing.
 
 | Token | Value |
 |---|---|
-| `font-display` | Geist, system sans-serif fallback |
-| `font-body` | Inter, system sans-serif fallback |
+| `font-display` | Nunito Variable, system sans-serif fallback |
+| `font-body` | Nunito Variable, system sans-serif fallback |
 | `font-mono` | System monospace, only for technical metadata if needed |
 
 ### Weight

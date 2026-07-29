@@ -196,29 +196,29 @@ Accomp มีฟีเจอร์หลักหนึ่งเดียวค�
 
 ## 9. Typography
 
-### Primary typeface: Geist
+### Primary typeface: Nunito Variable
 
 Weights: 400, 500, 600, 700
 
 ใช้กับ:
 
 - Display headings
-- Navigation
-- Buttons
-- UI labels
+- Hero and campaign taglines
+- Section and card headings
 - Short marketing statements
-
-### Secondary typeface: Inter
-
-ใช้กับ:
-
 - Long-form copy
 - Supporting descriptions
+- Navigation
+- Buttons and UI labels
 - FAQ
 - Legal and metadata
 
 ### Typography behavior
 
+- เว็บไซต์ต้อง self-host Nunito Variable เพื่อให้แสดงผลสม่ำเสมอทุกเครื่อง
+- ใช้ฟอนต์ตระกูลเดียวกับข้อความภาษาอังกฤษทั้งหมดเพื่อรักษาบุคลิกที่โค้งมน
+  เป็นมิตร และต่อเนื่อง
+- การตัดสินใจนี้ใช้กับตัวอักษรภาษาอังกฤษ ส่วนฟอนต์ภาษาไทยจะทบทวนแยกต่างหาก
 - หัวข้อใหญ่ กระชับ และมีพื้นที่หายใจ
 - เนื้อหาต้องอ่านง่ายบนหน้าจอกลางแจ้ง
 - ไม่ใช้หลายขนาดหรือหลาย weight โดยไม่มีลำดับชั้น

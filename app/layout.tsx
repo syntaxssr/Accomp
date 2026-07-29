@@ -7,6 +7,7 @@ import {
 } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/messages";
 import { getSiteOriginFromHeaders, SITE_NAME } from "@/lib/site";
+import "@fontsource-variable/nunito/wght.css";
 import "./globals.css";
 
 export const viewport: Viewport = {

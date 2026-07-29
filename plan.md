@@ -333,7 +333,7 @@ Friendly, calm, spacious, modern, reliable and outdoor-first.
 
 - Warm off-white/light surface สลับกับ Brand Dark
 - Trail Sage ใช้เป็น focus color บน Warm Cream canvas
-- Extra-large Geist headlines
+- Extra-large Nunito headlines
 - Generous vertical rhythm
 - Rounded content frames
 - Soft shadows และ minimal borders
