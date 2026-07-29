@@ -104,7 +104,10 @@
 
 .heroTagline {
   font-family: var(--font-family-accent);
-  font-weight: 800;
+}
+
+:global(html[lang="th"]) .heroTagline {
+  font-family: var(--font-family-body);
 }
 
 .heroCopy > p {

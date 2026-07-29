@@ -99,7 +99,8 @@ export function MarketingPage({ locale, messages }: MarketingPageProps) {
                 <Text
                   as="p"
                   className={styles.heroTagline}
-                  variant="eyebrow"
+                  variant="lead"
+                  tone="sand"
                 >
                   {copy.hero.eyebrow}
                 </Text>

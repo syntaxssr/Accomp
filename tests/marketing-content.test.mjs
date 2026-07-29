@@ -295,7 +295,7 @@ test("serves bilingual typography assets and preserves the offline map artwork",
   );
   assert.match(
     globalStyles,
-    /--font-family-accent:\s*"Nunito Variable", Nunito, ui-sans-serif/,
+    /--font-family-accent:\s*"PG Miss Half", "Nunito Variable", Nunito, ui-sans-serif/,
   );
   assert.match(
     globalStyles,
@@ -325,7 +325,7 @@ test("serves bilingual typography assets and preserves the offline map artwork",
     brandIdentity,
     /Thai body and UI typeface: LINE Seed Sans TH/,
   );
-  assert.match(brandIdentity, /Thai accent typeface: PG Miss Half/);
+  assert.match(brandIdentity, /Accent typeface: PG Miss Half/);
   assert.match(brandIdentity, /Regular 400, Bold 700, ExtraBold 800/);
   assert.ok(thaiRegular.size > 0);
   assert.ok(thaiBold.size > 0);
@@ -354,7 +354,10 @@ test("serves bilingual typography assets and preserves the offline map artwork",
     typographyStyles,
     /\.heading\[data-size="display"\] \{[\s\S]*max-width: 8ch/,
   );
-  assert.match(page, /className=\{styles\.heroTagline\}/);
+  assert.match(
+    page,
+    /className=\{styles\.heroTagline\}[\s\S]*variant="lead"[\s\S]*tone="sand"/,
+  );
   assert.match(
     pageStyles,
     /\.heroCopy h1 \{[\s\S]*font-family: var\(--font-family-accent\)/,
@@ -362,6 +365,10 @@ test("serves bilingual typography assets and preserves the offline map artwork",
   assert.match(
     pageStyles,
     /\.heroTagline \{[\s\S]*font-family: var\(--font-family-accent\)/,
+  );
+  assert.match(
+    pageStyles,
+    /:global\(html\[lang="th"\]\) \.heroTagline \{[\s\S]*font-family: var\(--font-family-body\)/,
   );
   assert.match(
     featureRailStyles,
@@ -385,7 +392,15 @@ test("serves bilingual typography assets and preserves the offline map artwork",
   );
   assert.match(
     siteHeaderStyles,
-    /\.brand \{[\s\S]*font-family: var\(--font-family-display\)/,
+    /\.brand \{[\s\S]*font-family: var\(--font-family-accent\)/,
+  );
+  assert.match(
+    siteHeaderStyles,
+    /\.brand \{[\s\S]*font-family: var\(--font-family-accent\);[\s\S]*font-size: 2rem;[\s\S]*line-height: 1;[\s\S]*letter-spacing: 0\.015em/,
+  );
+  assert.match(
+    siteHeaderStyles,
+    /\.brand span \{[\s\S]*transform: translateY\(-0\.12em\)/,
   );
   assert.match(
     faqStyles,

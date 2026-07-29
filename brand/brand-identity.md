@@ -196,16 +196,12 @@ Accomp มีฟีเจอร์หลักหนึ่งเดียวค�
 
 ## 9. Typography
 
-### Primary typeface: Nunito Variable
+### English body and UI typeface: Nunito Variable
 
 Weights: 400, 500, 700, 800
 
-ใช้กับข้อความภาษาอังกฤษทั้งหมด:
+ใช้กับเนื้อหาและ UI ภาษาอังกฤษ:
 
-- Display headings
-- Hero and campaign taglines
-- Section and card headings
-- Short marketing statements
 - Long-form copy
 - Supporting descriptions
 - Navigation
@@ -221,27 +217,30 @@ Weights: Regular 400, Bold 700, ExtraBold 800
 WOFF2 จากชุดทางการ `LINE_Seed_Sans_TH_V1.003` เพื่อให้รูปทรงภาษาไทยโค้งมน
 เป็นมิตร และแสดงผลสม่ำเสมอบนอุปกรณ์ต่าง ๆ
 
-### Thai accent typeface: PG Miss Half
+### Accent typeface: PG Miss Half
 
 Weight: Regular 400
 
-ใช้เฉพาะข้อความภาษาไทยที่ทำหน้าที่เป็นจุดเด่น:
+ใช้เฉพาะข้อความที่ทำหน้าที่เป็นจุดเด่น:
 
+- ชื่อแบรนด์ `Accomp` ข้างโลโก้บน Topbar ทั้งภาษาไทยและอังกฤษ
 - Hero headline
-- Hero tagline
+- Hero tagline ภาษาอังกฤษ
 - Section headings
 - Card titles
 
-ห้ามใช้กับ body copy, navigation, buttons, FAQ, legal body copy
-หรือข้อความ UI ทั่วไป สิทธิ์สำหรับการฝังฟอนต์บนเว็บต้องได้รับการยืนยัน
-ก่อนเผยแพร่ production
+Hero tagline/eyebrow เช่น **“เพื่อนร่วมทางสำหรับทุกการผจญภัย”** ต้องใช้
+LINE Seed Sans TH เช่นเดียวกับ body copy ห้ามใช้ PG Miss Half กับ navigation,
+buttons, FAQ, legal body copy หรือข้อความ UI ทั่วไป สิทธิ์สำหรับการฝังฟอนต์
+บนเว็บต้องได้รับการยืนยันก่อนเผยแพร่ production
 
 ### Typography behavior
 
 - เว็บไซต์ต้อง self-host Nunito Variable, LINE Seed Sans TH และฟอนต์ accent
-  ภาษาไทยที่ได้รับอนุมัติ เพื่อให้แสดงผลสม่ำเสมอทุกเครื่อง
+  ที่ได้รับอนุมัติ เพื่อให้แสดงผลสม่ำเสมอทุกเครื่อง
 - ใช้ Nunito Variable กับข้อความภาษาอังกฤษ ใช้ LINE Seed Sans TH
-  กับเนื้อหาและ UI ภาษาไทย และใช้ PG Miss Half เฉพาะจุดเด่นที่กำหนด
+  กับเนื้อหาและ UI ภาษาไทย และใช้ PG Miss Half เฉพาะจุดเด่นของทั้งสองภาษา
+  ตามขอบเขตที่กำหนด
 - ใช้น้ำหนัก `800` กับ Hero และหัวข้อ Section, `700` กับชื่อการ์ดและข้อความเด่น
   และคง `400–500` สำหรับเนื้อหาที่ต้องอ่านต่อเนื่อง
 - หัวข้อใหญ่ กระชับ และมีพื้นที่หายใจ
