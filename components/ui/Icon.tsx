@@ -4,7 +4,7 @@ type IconName = "logo" | "pine";
 type IconSize = "sm" | "md" | "lg";
 
 const iconSources: Record<IconName, string> = {
-  logo: "/brand/accomp-logo-temporary.webp",
+  logo: "/brand/accomp-logo.svg",
   pine: "/brand/accomp-pine-icon.svg",
 };
 
@@ -27,8 +27,7 @@ export function Icon({
   const alt = decorative ? "" : (label ?? `${name} icon`);
 
   return (
-    // The source is a fixed 1.3 kB SVG; a native image avoids shipping the
-    // framework image runtime for a decorative brand mark.
+    // Native images keep these small decorative brand assets dependency-free.
     // eslint-disable-next-line @next/next/no-img-element
     <img
       alt={alt}

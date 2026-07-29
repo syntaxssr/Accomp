@@ -336,6 +336,7 @@ export function SiteHeader({
               copy={languageSwitcher}
               locale={locale}
               pathname={languagePathname}
+              variant="header"
             />
 
             <ButtonLink

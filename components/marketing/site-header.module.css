@@ -43,6 +43,12 @@
   white-space: nowrap;
 }
 
+.brand img[data-name="logo"] {
+  width: 2.5rem;
+  height: 2.5rem;
+  filter: none;
+}
+
 .navPill,
 .desktopNav,
 .desktopLanguage {
@@ -174,7 +180,6 @@
 }
 
 .headerCta {
-  inline-size: 10.25rem;
   flex: 0 0 auto;
   white-space: nowrap;
   box-shadow: 0 0.65rem 1.5rem rgb(119 136 115 / 16%);
@@ -396,14 +401,31 @@
 }
 
 @media (min-width: 68rem) {
+  .header {
+    padding: 1.5rem 0 0.5rem;
+  }
+
   .pill {
+    width: min(
+      calc(100% - (2 * var(--layout-gutter))),
+      91.5rem
+    );
     grid-template-columns: minmax(7rem, 1fr) auto minmax(7rem, 1fr);
     gap: clamp(1rem, 2vw, 2rem);
     display: grid;
   }
 
   .brand {
+    width: 9.5rem;
+    min-width: 9.5rem;
+    min-height: 1.875rem;
+    height: 1.875rem;
     justify-self: start;
+  }
+
+  .brand img[data-name="logo"] {
+    width: 1.875rem;
+    height: 1.875rem;
   }
 
   .navPill {
@@ -445,6 +467,16 @@
     background: rgb(255 255 255 / 80%);
     box-shadow: 0 0.65rem 1.8rem rgb(23 23 23 / 5%);
     backdrop-filter: blur(18px);
+  }
+
+  .actions .headerCta[data-size-lock="waitlist"] {
+    width: 136.703125px;
+    min-width: 136.703125px;
+    min-height: 52px;
+    height: 52px;
+    padding: 0.8rem 0.4rem;
+    border-radius: 32px;
+    font-size: 0.8125rem;
   }
 
   .menuTrigger {

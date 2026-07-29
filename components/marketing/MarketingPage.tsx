@@ -43,39 +43,8 @@ export function MarketingPage({ locale, messages }: MarketingPageProps) {
 
       <main id="main" tabIndex={-1}>
         <section className={styles.hero} id="top">
-          <Container>
-            <div className={styles.heroGrid}>
-              <Stack className={styles.heroCopy} gap="lg">
-                <Text as="p" variant="eyebrow">
-                  {copy.hero.eyebrow}
-                </Text>
-                <Heading as="h1" size="display">
-                  {copy.hero.title}
-                </Heading>
-                <Text as="p" variant="lead" tone="muted">
-                  {copy.hero.body}
-                </Text>
-                <div className={styles.heroActions}>
-                  <ButtonLink
-                    data-motion="download"
-                    data-size-lock="waitlist"
-                    href="#waitlist"
-                  >
-                    {copy.hero.primaryCta}
-                  </ButtonLink>
-                  <ButtonLink
-                    data-size-lock="hero-secondary"
-                    href="#features"
-                    variant="secondary"
-                  >
-                    {copy.hero.secondaryCta}
-                  </ButtonLink>
-                </div>
-                <Text as="p" tone="muted" className={styles.heroNote}>
-                  {copy.hero.note}
-                </Text>
-              </Stack>
-
+          <Container className={styles.heroContainer}>
+            <div className={styles.heroStage}>
               <div
                 aria-label={copy.hero.visualLabel}
                 className={styles.heroVisual}
@@ -125,6 +94,30 @@ export function MarketingPage({ locale, messages }: MarketingPageProps) {
                   {copy.hero.visualDisclaimer}
                 </span>
               </div>
+
+              <Stack className={styles.heroCopy} gap="md">
+                <Text as="p" variant="eyebrow">
+                  {copy.hero.eyebrow}
+                </Text>
+                <Heading as="h1" size="display" tone="inverse">
+                  {copy.hero.title}
+                </Heading>
+                <Text as="p" variant="lead" tone="sand">
+                  {copy.hero.body}
+                </Text>
+                <div className={styles.heroActions}>
+                  <ButtonLink
+                    data-motion="download"
+                    data-size-lock="waitlist"
+                    href="#waitlist"
+                  >
+                    {copy.hero.primaryCta}
+                  </ButtonLink>
+                </div>
+                <Text as="p" tone="sand" className={styles.heroNote}>
+                  {copy.hero.note}
+                </Text>
+              </Stack>
             </div>
           </Container>
         </section>

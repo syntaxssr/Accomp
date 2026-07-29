@@ -25,10 +25,6 @@
   min-inline-size: 10.25rem;
 }
 
-.button[data-size-lock="hero-secondary"] {
-  min-inline-size: 14.25rem;
-}
-
 .button[data-size-lock="return-home"] {
   min-inline-size: 10.5rem;
 }

@@ -112,7 +112,17 @@ test("provides accessible desktop and mobile language switching", async () => {
   assert.match(switcher, /hrefLang=/);
   assert.match(switcher, /window\.location\.hash/);
   assert.match(switcher, /data-display-locale=\{displayedLocale\}/);
-  assert.match(switcher, /styles\.indicator/);
+  assert.match(switcher, /data-variant=\{variant\}/);
+  assert.match(switcher, /aria-expanded=\{open\}/);
+  assert.match(switcher, /aria-haspopup="menu"/);
+  assert.match(switcher, /role="menu"/);
+  assert.match(switcher, /role="menuitem"/);
+  assert.match(switcher, /en: "\/brand\/flag-en\.svg"/);
+  assert.match(switcher, /th: "\/brand\/flag-th\.svg"/);
+  assert.match(switcher, /className=\{styles\.currentFlag\}/);
+  assert.match(switcher, /className=\{styles\.menuFlag\}/);
+  assert.match(switcher, /pointerdown/);
+  assert.match(switcher, /event\.key === "Escape"/);
   assert.match(switcher, /setPendingLocale\(targetLocale\)/);
   assert.match(
     switcher,
@@ -124,21 +134,32 @@ test("provides accessible desktop and mobile language switching", async () => {
     /router\.push\(destination, \{ scroll: false \}\)/,
   );
   assert.doesNotMatch(switcher, /window\.location\.assign/);
-  assert.match(switcher, /\? 0\s*: 520/);
   assert.doesNotMatch(
     switcher,
     /onMouseEnter|onMouseLeave|onFocus|onBlur/,
   );
   assert.match(switcherStyles, /min-height: 2\.75rem/);
+  assert.match(switcherStyles, /border-radius: 50%/);
+  assert.match(switcherStyles, /@keyframes language-menu-in/);
+  assert.match(switcherStyles, /@keyframes language-flag-settle/);
   assert.match(
     switcherStyles,
-    /transform 520ms cubic-bezier\(0\.22, 1, 0\.36, 1\)/,
+    /\.switcher\[data-variant="header"\]\s*\{[\s\S]*width: 56px[\s\S]*height: 56px/,
   );
-  assert.match(switcherStyles, /@keyframes language-indicator-settle/);
-  assert.match(switcherStyles, /scaleX\(1\.1\)/);
   assert.match(switcherStyles, /prefers-reduced-motion: reduce/);
   assert.match(header, /desktopLanguage/);
+  assert.match(header, /variant="header"/);
   assert.match(header, /mobileLanguage/);
+});
+
+test("ships the owner-provided SVG flag assets", async () => {
+  const [englishFlag, thaiFlag] = await Promise.all([
+    source("public/brand/flag-en.svg"),
+    source("public/brand/flag-th.svg"),
+  ]);
+
+  assert.match(englishFlag, /<svg[\s\S]*viewBox="0 0 512 512"/);
+  assert.match(thaiFlag, /<svg[\s\S]*viewBox="0 0 512 512"/);
 });
 
 test("keeps localized navigation and button geometry stable", async () => {
@@ -164,9 +185,12 @@ test("keeps localized navigation and button geometry stable", async () => {
   assert.match(header, /data-size-lock="waitlist"/);
   assert.match(headerStyles, /\[data-nav-slot="0"\]/);
   assert.match(headerStyles, /inline-size: 7\.75rem/);
-  assert.match(headerStyles, /inline-size: 10\.25rem/);
+  assert.match(headerStyles, /91\.5rem/);
+  assert.match(headerStyles, /width: 9\.5rem/);
+  assert.match(headerStyles, /height: 1\.875rem/);
+  assert.match(headerStyles, /width: 136\.703125px/);
+  assert.match(headerStyles, /height: 52px/);
   assert.match(headerStyles, /width: 14\.5rem/);
-  assert.match(marketingPage, /data-size-lock="hero-secondary"/);
   assert.match(marketingPage, /data-size-lock="compact"/);
   assert.match(roadmapPage, /data-size-lock="return-home"/);
   assert.match(supportPage, /data-size-lock="return-home"/);
@@ -177,10 +201,6 @@ test("keeps localized navigation and button geometry stable", async () => {
   assert.match(
     buttonStyles,
     /\.button\[data-size-lock="waitlist"\]\s*\{\s*min-inline-size: 10\.25rem/,
-  );
-  assert.match(
-    buttonStyles,
-    /\.button\[data-size-lock="hero-secondary"\]\s*\{\s*min-inline-size: 14\.25rem/,
   );
   assert.match(buttonStyles, /min-inline-size: 10\.5rem/);
   assert.match(legalStyles, /min-inline-size: 10\.5rem/);

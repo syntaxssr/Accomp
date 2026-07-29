@@ -157,6 +157,50 @@ test("uses native disclosures and explicit client boundaries", async () => {
   assert.match(rail, /aria-live="polite"/);
 });
 
+test("centers the hero copy over one full-width artwork stage", async () => {
+  const [page, styles] = await Promise.all([
+    source("components/marketing/MarketingPage.tsx"),
+    source("components/marketing/marketing-page.module.css"),
+  ]);
+
+  assert.match(
+    page,
+    /<Container className=\{styles\.heroContainer\}>/,
+  );
+  assert.match(page, /className=\{styles\.heroStage\}/);
+  assert.doesNotMatch(
+    page,
+    /secondaryCta|heroSecondary|data-size-lock="hero-secondary"/,
+  );
+  assert.match(
+    page,
+    /className=\{styles\.heroVisual\}[\s\S]*className=\{styles\.heroCopy\}/,
+  );
+  assert.doesNotMatch(page, /styles\.heroGrid/);
+  assert.match(
+    styles,
+    /\.heroStage\s*\{[\s\S]*position: relative[\s\S]*border-radius: 1\.5rem[\s\S]*place-items: center/,
+  );
+  assert.match(
+    styles,
+    /\.heroCopy\s*\{[\s\S]*align-items: center[\s\S]*text-align: center/,
+  );
+  assert.match(
+    styles,
+    /\.heroVisual\s*\{[\s\S]*position: absolute[\s\S]*inset: 0/,
+  );
+  assert.match(styles, /\.heroVisual::after/);
+  assert.match(
+    styles,
+    /\.hero > \.heroContainer\s*\{[\s\S]*91\.5rem/,
+  );
+  assert.match(styles, /min-height: clamp\(38rem, 52vw, 47rem\)/);
+  assert.match(
+    styles,
+    /@media \(min-width: 68rem\)\s*\{[\s\S]*\.hero\s*\{[\s\S]*padding-block: 1\.75rem 4\.75rem/,
+  );
+});
+
 test("declares compact, tablet and desktop layout behavior", async () => {
   const [pageStyles, headerStyles, railStyles, globalStyles] = await Promise.all([
     source("components/marketing/marketing-page.module.css"),

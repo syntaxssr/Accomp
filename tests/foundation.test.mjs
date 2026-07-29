@@ -74,26 +74,43 @@ test("uses one matching pine asset for source and public output", async () => {
   assert.doesNotMatch(publicAsset, /phantom/i);
 });
 
-test("uses the owner-provided temporary mascot for brand-logo placements", async () => {
-  const [icon, header, footer, legal, notFound, layout, logo] =
-    await Promise.all([
-      source("components/ui/Icon.tsx"),
-      source("components/marketing/SiteHeader.tsx"),
-      source("components/marketing/SiteFooter.tsx"),
-      source("components/legal/LegalNoticePage.tsx"),
-      source("components/legal/LocalizedNotFound.tsx"),
-      source("app/layout.tsx"),
-      stat(new URL("public/brand/accomp-logo-temporary.webp", root)),
-    ]);
+test("uses the owner-provided SVG logo across brand placements", async () => {
+  const [
+    icon,
+    header,
+    footer,
+    legal,
+    notFound,
+    layout,
+    logo,
+    favicon,
+    appleIcon,
+  ] = await Promise.all([
+    source("components/ui/Icon.tsx"),
+    source("components/marketing/SiteHeader.tsx"),
+    source("components/marketing/SiteFooter.tsx"),
+    source("components/legal/LegalNoticePage.tsx"),
+    source("components/legal/LocalizedNotFound.tsx"),
+    source("app/layout.tsx"),
+    source("public/brand/accomp-logo.svg"),
+    stat(new URL("public/favicon.ico", root)),
+    stat(new URL("public/brand/accomp-apple-touch-icon.png", root)),
+  ]);
 
-  assert.match(icon, /logo: "\/brand\/accomp-logo-temporary\.webp"/);
+  assert.match(icon, /logo: "\/brand\/accomp-logo\.svg"/);
   assert.match(header, /<Icon name="logo" size="md" decorative \/>/);
+  assert.match(header, /<span>Accomp<\/span>/);
   assert.match(footer, /<Icon name="logo" size="md" decorative \/>/);
   assert.match(legal, /<Icon name="logo" size="md" decorative \/>/);
   assert.match(notFound, /<Icon name="logo" size="md" decorative \/>/);
-  assert.match(layout, /icon: "\/brand\/accomp-logo-temporary\.webp"/);
-  assert.ok(logo.size > 0);
-  assert.ok(logo.size < 100_000);
+  assert.match(layout, /url: "\/favicon\.ico\?v=2"/);
+  assert.match(layout, /url: "\/brand\/accomp-logo\.svg\?v=2"/);
+  assert.match(layout, /apple: "\/brand\/accomp-apple-touch-icon\.png\?v=2"/);
+  assert.match(logo, /viewBox="0 0 1024 1024"/);
+  assert.ok(favicon.size > 0);
+  assert.ok(favicon.size < 100_000);
+  assert.ok(appleIcon.size > 0);
+  assert.ok(appleIcon.size < 500_000);
 });
 
 test("declares no persistence binding", async () => {
