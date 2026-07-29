@@ -57,6 +57,19 @@
   scrollbar-width: thin;
 }
 
+.rail[data-presentation="stack"] {
+  --feature-card-gap: clamp(1rem, 2vw, 1.5rem);
+  width: 100%;
+  padding-right: 0;
+  position: relative;
+  grid-auto-columns: unset;
+  grid-auto-flow: row;
+  gap: var(--feature-card-gap);
+  overflow: visible;
+  isolation: isolate;
+  scroll-snap-type: none;
+}
+
 .card {
   min-height: 32rem;
   padding: clamp(1.4rem, 3vw, 2rem);
@@ -75,6 +88,35 @@
     transform var(--motion-fast) var(--ease-standard);
 }
 
+.rail[data-presentation="stack"] .card {
+  aspect-ratio: 3 / 4;
+  min-width: 0;
+  min-height: 15rem;
+  opacity: 1;
+  transform: none;
+  translate: 0 0;
+  transition:
+    translate 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.rail[data-presentation="stack"][data-stack-enabled="true"] .card {
+  transform: translate3d(var(--feature-stack-x, 0), 0, 0);
+  will-change: transform;
+}
+
+.rail[data-presentation="stack"] .card:nth-child(1) {
+  z-index: 3;
+}
+
+.rail[data-presentation="stack"] .card:nth-child(2) {
+  z-index: 2;
+}
+
+.rail[data-presentation="stack"] .card:nth-child(3) {
+  z-index: 1;
+}
+
 .card[data-active="true"] {
   opacity: 1;
   transform: translateY(0) scale(1);
@@ -83,6 +125,13 @@
 .card:hover {
   box-shadow: var(--shadow-soft);
   transform: translateY(-3px) scale(1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .rail[data-presentation="stack"] .card:hover {
+    translate: 0 -0.4rem;
+    box-shadow: 0 1.7rem 3.5rem rgb(23 23 23 / 16%);
+  }
 }
 
 .card:nth-child(2) {
@@ -320,6 +369,14 @@
   .rail {
     grid-auto-columns: min(46vw, 26rem);
   }
+
+  .rail[data-presentation="stack"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .rail[data-presentation="stack"] .card {
+    min-height: clamp(20rem, 29vw, 26rem);
+  }
 }
 
 @media (min-width: 56.25rem) {
@@ -331,6 +388,10 @@
 
   .card {
     min-height: 35rem;
+  }
+
+  .rail[data-presentation="stack"] .card {
+    min-height: 0;
   }
 }
 
@@ -345,5 +406,11 @@
 
   .card[data-active="true"] .checklist span b {
     animation: none;
+  }
+
+  .rail[data-presentation="stack"] .card,
+  .rail[data-presentation="stack"] .card:hover {
+    transform: none;
+    translate: none;
   }
 }

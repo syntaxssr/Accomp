@@ -53,7 +53,9 @@
   padding-block: clamp(2rem, 4vw, 4rem) clamp(5rem, 9vw, 9rem);
 }
 
-.hero > .heroContainer {
+.hero > .heroContainer,
+.promise > .promiseContainer,
+.chapter > .planContainer {
   width: min(
     calc(100% - (2 * var(--layout-gutter))),
     91.5rem
@@ -384,59 +386,12 @@
 
 .promisePanel {
   position: relative;
-  padding: clamp(2rem, 6vw, 5.5rem);
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  isolation: isolate;
-  background:
-    radial-gradient(circle at 86% 12%, rgb(161 188 152 / 48%), transparent 28%),
-    linear-gradient(145deg, var(--color-sand), var(--color-cream) 72%);
-  box-shadow: var(--shadow-soft);
-}
-
-.promisePanel::before,
-.promisePanel::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  border: 1px solid rgb(119 136 115 / 24%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.promisePanel::before {
-  width: 22rem;
-  height: 22rem;
-  top: -14rem;
-  left: -7rem;
-}
-
-.promisePanel::after {
-  width: 17rem;
-  height: 17rem;
-  right: -8rem;
-  bottom: -11rem;
 }
 
 .promiseHeading {
   display: grid;
   justify-items: center;
   text-align: center;
-}
-
-.promiseKicker {
-  width: fit-content;
-  margin: 0 0 var(--space-5);
-  padding: 0.65rem 0.9rem;
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-pill);
-  color: var(--color-sage-ink);
-  background: rgb(253 246 237 / 72%);
-  font-size: var(--font-size-xs);
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
 }
 
 .promiseTitle {
@@ -451,42 +406,65 @@
 }
 
 .promisePath {
+  --promise-card-gap: clamp(1rem, 2vw, 1.5rem);
   margin: clamp(3rem, 6vw, 5rem) 0 0;
   padding: 0;
   position: relative;
   display: grid;
-  gap: var(--space-3);
+  gap: var(--promise-card-gap);
+  isolation: isolate;
   list-style: none;
 }
 
-.promisePath::before {
-  content: "";
-  width: 2px;
-  position: absolute;
-  top: 2rem;
-  bottom: 2rem;
-  left: 1.65rem;
-  background: var(--color-brand);
-}
-
 .promiseStep {
-  min-height: 5.75rem;
-  padding: var(--space-4);
+  aspect-ratio: 3 / 4;
+  min-width: 0;
+  min-height: 15rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
   border: 1px solid rgb(119 136 115 / 32%);
-  border-radius: var(--radius-lg);
+  border-radius: clamp(1.5rem, 3vw, 2.5rem);
   position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: center;
-  gap: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--color-night);
   background: rgb(253 246 237 / 90%);
-  box-shadow: 0 1rem 2.5rem rgb(23 23 23 / 7%);
+  box-shadow: 0 1.35rem 3rem rgb(23 23 23 / 12%);
+  transform: none;
+  translate: 0 0;
+  transition:
+    translate 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.promiseStep > span {
+.site[data-motion="enhanced"]
+  .promisePath[data-stack-enabled="true"]
+  .promiseStep {
+  transform: translate3d(var(--promise-stack-x, 0), 0, 0);
+  will-change: transform;
+}
+
+.promiseStep:nth-child(1) {
+  z-index: 3;
+}
+
+.promiseStep:nth-child(2) {
+  z-index: 2;
+  background: var(--color-meadow);
+}
+
+.promiseStep:nth-child(3) {
+  z-index: 1;
+  color: var(--color-cream);
+  background: var(--color-night);
+}
+
+.promiseNumber {
   width: 3.3rem;
   height: 3.3rem;
+  flex: 0 0 auto;
   border-radius: 50%;
   display: grid;
   place-items: center;
@@ -497,27 +475,142 @@
   letter-spacing: 0.08em;
 }
 
-.promiseStep strong {
-  font-family: var(--font-family-accent);
-  font-size: clamp(1.15rem, 2.2vw, 1.55rem);
-  font-weight: 800;
-  letter-spacing: var(--font-letter-spacing-accent);
-  line-height: 1.08;
-}
-
-.promiseStep:nth-child(2) > span {
+.promiseStep:nth-child(2) .promiseNumber {
   color: var(--color-night);
-  background: var(--color-meadow);
+  background: var(--color-cream);
 }
 
-.promiseStep:nth-child(3) {
-  color: var(--color-cream);
-  background: var(--color-night);
-}
-
-.promiseStep:nth-child(3) > span {
+.promiseStep:nth-child(3) .promiseNumber {
   color: var(--color-night);
   background: var(--color-sand);
+}
+
+.promiseStep strong {
+  max-width: 11ch;
+  margin-top: var(--space-5);
+  font-family: var(--font-family-accent);
+  font-size: clamp(2rem, 3.7vw, 3.35rem);
+  font-weight: 800;
+  letter-spacing: var(--font-letter-spacing-accent);
+  line-height: 1;
+  text-wrap: balance;
+}
+
+:global(html[lang="th"]) .promiseStep strong {
+  line-height: 1.3;
+}
+
+.promiseCardVisual {
+  width: 100%;
+  min-height: 12rem;
+  margin-top: clamp(2rem, 4vw, 3rem);
+  border-radius: var(--radius-lg);
+  position: relative;
+  flex: 1 1 auto;
+  display: block;
+  overflow: hidden;
+  background: rgb(161 188 152 / 34%);
+  transform: translateZ(0);
+}
+
+.promiseStep:nth-child(1) .promiseCardVisual::before {
+  content: "";
+  width: 120%;
+  height: 7rem;
+  border-top: 0.45rem solid var(--color-brand);
+  border-radius: 50%;
+  position: absolute;
+  top: 42%;
+  left: -10%;
+  transform: rotate(-10deg);
+}
+
+.promiseStep:nth-child(1) .promiseCardVisual i {
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 0.3rem solid var(--color-cream);
+  border-radius: 50%;
+  position: absolute;
+  background: var(--color-brand);
+  box-shadow: 0 0 0 0.22rem var(--color-brand);
+}
+
+.promiseStep:nth-child(1) .promiseCardVisual i:nth-child(1) {
+  top: 55%;
+  left: 15%;
+}
+
+.promiseStep:nth-child(1) .promiseCardVisual i:nth-child(2) {
+  top: 29%;
+  left: 48%;
+}
+
+.promiseStep:nth-child(1) .promiseCardVisual i:nth-child(3) {
+  top: 48%;
+  right: 13%;
+}
+
+.promiseStep:nth-child(2) .promiseCardVisual {
+  background: rgb(253 246 237 / 62%);
+}
+
+.promiseStep:nth-child(2) .promiseCardVisual i {
+  width: 66%;
+  height: 1rem;
+  border-radius: var(--radius-pill);
+  position: absolute;
+  right: 9%;
+  background: var(--color-cream);
+  box-shadow: -2.4rem 0 0 -0.12rem var(--color-brand);
+}
+
+.promiseStep:nth-child(2) .promiseCardVisual i:nth-child(1) {
+  top: 24%;
+}
+
+.promiseStep:nth-child(2) .promiseCardVisual i:nth-child(2) {
+  top: 48%;
+}
+
+.promiseStep:nth-child(2) .promiseCardVisual i:nth-child(3) {
+  top: 72%;
+}
+
+.promiseStep:nth-child(3) .promiseCardVisual {
+  background:
+    radial-gradient(circle at center, rgb(161 188 152 / 32%), transparent 20%),
+    rgb(253 246 237 / 6%);
+}
+
+.promiseStep:nth-child(3) .promiseCardVisual i {
+  border: 1px solid rgb(220 207 192 / 46%);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.promiseStep:nth-child(3) .promiseCardVisual i:nth-child(1) {
+  width: 4rem;
+  height: 4rem;
+}
+
+.promiseStep:nth-child(3) .promiseCardVisual i:nth-child(2) {
+  width: 7rem;
+  height: 7rem;
+}
+
+.promiseStep:nth-child(3) .promiseCardVisual i:nth-child(3) {
+  width: 10rem;
+  height: 10rem;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .promiseStep:hover {
+    translate: 0 -0.4rem;
+    box-shadow: 0 1.7rem 3.5rem rgb(23 23 23 / 16%);
+  }
 }
 
 .chapter,
@@ -710,6 +803,10 @@
   font-family: var(--font-family-accent);
   font-size: 1.35rem;
   letter-spacing: var(--font-letter-spacing-accent);
+}
+
+:global(html[lang="th"]) .offlineCard strong {
+  line-height: 1.3;
 }
 
 .offlineCard p {
@@ -1014,23 +1111,8 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .promisePath::before {
-    width: auto;
-    height: 2px;
-    top: 1.65rem;
-    right: 16%;
-    bottom: auto;
-    left: 16%;
-  }
-
   .promiseStep {
-    min-height: 11rem;
-    padding: var(--space-5);
-    grid-template-columns: 1fr;
-    justify-items: center;
-    align-content: start;
-    gap: var(--space-5);
-    text-align: center;
+    min-height: clamp(20rem, 29vw, 26rem);
   }
 
   .chapterHeading,
@@ -1241,12 +1323,14 @@
 
 @media (prefers-reduced-motion: reduce) {
   .site [data-reveal],
+  .promiseStep,
   .waitlistCompanions i,
   .steps::before,
   .mapRoutePrimary,
   .mapRouteSecondary {
     opacity: 1;
     transform: none;
+    translate: none;
     transition: none;
   }
 

@@ -55,35 +55,34 @@
       }
     },
     "promise": {
-      "kicker": "One core feature",
       "title": "Shared Trip Planning.",
       "label": "Three capabilities within Accomp's shared trip planning feature",
       "items": [
         "Plan the trip",
         "Prepare the gear",
-        "Ready offline"
+        "Offline maps & trip data"
       ]
     },
     "plan": {
       "eyebrow": "Capability 01 · Plan",
-      "title": "One shared trip plan for everyone.",
-      "body": "Create the trip, invite your crew, and keep the itinerary, route, meeting point, and essential details in one shared space.",
+      "title": "Everyone. Every plan. All in one place.",
+      "body": "Create a trip, invite friends, and bring the itinerary, routes, meeting points, and every essential detail into one shared space—so everyone follows the same plan from the first idea to departure.",
       "railLabel": "Plan the trip",
       "cards": [
         {
-          "eyebrow": "01 · Start",
-          "title": "Start with the trip",
-          "body": "Set the place, dates, and first outline while the idea is still fresh."
+          "eyebrow": "01 · Start the trip",
+          "title": "Turn the idea into a trip",
+          "body": "Set the destination and dates, then sketch the first outline right away while the travel idea is still fresh."
         },
         {
-          "eyebrow": "02 · Invite",
-          "title": "Invite your crew",
-          "body": "Bring every companion into the same trip space and keep the context together."
+          "eyebrow": "02 · Invite friends",
+          "title": "Bring everyone into one trip",
+          "body": "Invite your companions to plan together, with complete access to the information and details they need."
         },
         {
-          "eyebrow": "03 · Shape",
-          "title": "Shape the days",
-          "body": "Turn loose ideas into a clear itinerary everyone can follow."
+          "eyebrow": "03 · Plan each day",
+          "title": "Clear days. Ready crew.",
+          "body": "Turn loose ideas into an easy-to-follow daily itinerary so everyone knows where to go, what to do, and when to meet."
         }
       ]
     },
@@ -145,7 +144,7 @@
       }
     },
     "offline": {
-      "eyebrow": "Capability 03 · Ready offline",
+      "eyebrow": "Capability 03 · Offline maps & trip data",
       "title": "Keep the shared plan close when the signal isn't.",
       "body": "Download maps, routes, the itinerary, meeting point, and essential details before coverage fades.",
       "points": [

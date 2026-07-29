@@ -53,6 +53,68 @@ test("implements the approved hero, route and final CTA motion language", async 
   assert.match(page, /className=\{styles\.waitlistCompanions\}/);
 });
 
+test("spreads the three core-feature cards with scroll progress", async () => {
+  const [stack, page, styles] = await Promise.all([
+    source("components/marketing/PromiseCardStack.tsx"),
+    source("components/marketing/MarketingPage.tsx"),
+    source("components/marketing/marketing-page.module.css"),
+  ]);
+
+  assert.match(stack, /^"use client";/);
+  assert.match(stack, /window\.addEventListener\("scroll", scheduleUpdate/);
+  assert.match(stack, /window\.requestAnimationFrame\(updateStack\)/);
+  assert.match(stack, /prefers-reduced-motion: reduce/);
+  assert.match(stack, /data\.stackState|dataset\.stackState/);
+  assert.match(stack, /--promise-stack-x/);
+  assert.match(page, /<PromiseCardStack/);
+  assert.match(
+    styles,
+    /\.promisePath\[data-stack-enabled="true"\][\s\S]*translate3d\(var\(--promise-stack-x, 0\)/,
+  );
+  assert.match(
+    styles,
+    /@media \(prefers-reduced-motion: reduce\)[\s\S]*\.promiseStep/,
+  );
+  assert.match(
+    styles,
+    /@media \(hover: hover\) and \(pointer: fine\)[\s\S]*\.promiseStep:hover[\s\S]*translate: 0 -0\.4rem/,
+  );
+  assert.match(
+    styles,
+    /translate 0\.4s cubic-bezier\(0\.22, 1, 0\.36, 1\)/,
+  );
+  assert.doesNotMatch(styles, /\.promiseStep:hover \.promiseCardVisual/);
+  assert.doesNotMatch(styles, /@keyframes promise-(?:route|checklist|offline)-hover/);
+  assert.match(
+    styles,
+    /@media \(prefers-reduced-motion: reduce\)[\s\S]*\.promiseStep[\s\S]*translate: none/,
+  );
+});
+
+test("matches the planning cards to the core-feature stack motion", async () => {
+  const [rail, page, styles] = await Promise.all([
+    source("components/marketing/FeatureRail.tsx"),
+    source("components/marketing/MarketingPage.tsx"),
+    source("components/marketing/feature-rail.module.css"),
+  ]);
+
+  assert.match(page, /presentation="stack"/);
+  assert.match(rail, /data-feature-stack/);
+  assert.match(rail, /--feature-stack-x/);
+  assert.match(rail, /window\.addEventListener\("scroll", scheduleUpdate/);
+  assert.match(rail, /const stackStart = window\.innerHeight \* 0\.82/);
+  assert.match(rail, /const stackEnd = window\.innerHeight \* 0\.28/);
+  assert.match(rail, /const stackedCenter = railCenter \+ \(cardIndex - middle\) \* 18/);
+  assert.match(
+    styles,
+    /\.rail\[data-presentation="stack"\][\s\S]*aspect-ratio: 3 \/ 4/,
+  );
+  assert.match(
+    styles,
+    /\.rail\[data-presentation="stack"\]\[data-stack-enabled="true"\] \.card[\s\S]*translate3d\(var\(--feature-stack-x, 0\)/,
+  );
+});
+
 test("adds calm header state and touch-keyboard rail progression", async () => {
   const [header, headerStyles, rail, railStyles] = await Promise.all([
     source("components/marketing/SiteHeader.tsx"),

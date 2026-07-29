@@ -12,6 +12,7 @@ import type { Messages } from "@/lib/i18n/messages";
 import { FAQList } from "./FAQList";
 import { FeatureRail } from "./FeatureRail";
 import { MotionController } from "./MotionController";
+import { PromiseCardStack } from "./PromiseCardStack";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
 import { WidgetSpotlight } from "./WidgetSpotlight";
@@ -125,25 +126,15 @@ export function MarketingPage({ locale, messages }: MarketingPageProps) {
         </section>
 
         <section className={styles.promise} data-reveal>
-          <Container>
+          <Container className={styles.promiseContainer}>
             <div className={styles.promisePanel}>
               <div className={styles.promiseHeading}>
-                <p className={styles.promiseKicker}>{copy.promise.kicker}</p>
                 <h2 className={styles.promiseTitle}>{copy.promise.title}</h2>
               </div>
-              <ol
-                aria-label={copy.promise.label}
-                className={styles.promisePath}
-              >
-                {content.promiseLabels.map((label, index) => (
-                  <li className={styles.promiseStep} key={label}>
-                    <span aria-hidden="true">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <strong>{label}</strong>
-                  </li>
-                ))}
-              </ol>
+              <PromiseCardStack
+                items={content.promiseLabels}
+                label={copy.promise.label}
+              />
             </div>
           </Container>
         </section>
@@ -155,7 +146,7 @@ export function MarketingPage({ locale, messages }: MarketingPageProps) {
           role="group"
         >
         <section className={styles.chapter}>
-          <Container>
+          <Container className={styles.planContainer}>
             <Stack gap="xl">
               <div className={styles.chapterHeading} data-reveal>
                 <div>
@@ -175,6 +166,7 @@ export function MarketingPage({ locale, messages }: MarketingPageProps) {
                 cards={content.planningFeatures}
                 copy={messages.accessibility.featureRail}
                 label={copy.plan.railLabel}
+                presentation="stack"
                 tone="cream"
               />
             </Stack>

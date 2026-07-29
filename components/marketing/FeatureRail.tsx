@@ -20,8 +20,12 @@ interface FeatureRailProps {
   cards: FeatureCardContent[];
   copy: Messages["accessibility"]["featureRail"];
   label: string;
+  presentation?: "rail" | "stack";
   tone: "cream" | "sand";
 }
+
+const DESKTOP_QUERY = "(min-width: 48rem)";
+const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 
 function FeatureArtwork({
   copy,
@@ -106,6 +110,7 @@ export function FeatureRail({
   cards,
   copy,
   label,
+  presentation = "rail",
   tone,
 }: FeatureRailProps) {
   const railRef = useRef<HTMLDivElement>(null);
@@ -138,6 +143,10 @@ export function FeatureRail({
   useEffect(() => {
     const rail = railRef.current;
 
+    if (presentation === "stack") {
+      return;
+    }
+
     function scheduleUpdate() {
       if (animationFrameRef.current !== null) {
         cancelAnimationFrame(animationFrameRef.current);
@@ -161,7 +170,112 @@ export function FeatureRail({
       rail?.removeEventListener("scroll", scheduleUpdate);
       window.removeEventListener("resize", scheduleUpdate);
     };
-  }, [update]);
+  }, [presentation, update]);
+
+  useEffect(() => {
+    const currentRail = railRef.current;
+
+    if (!currentRail || presentation !== "stack") {
+      return;
+    }
+
+    const rail: HTMLDivElement = currentRail;
+    const cards = Array.from(
+      rail.querySelectorAll<HTMLElement>("[data-feature-card]"),
+    );
+    const desktop = window.matchMedia(DESKTOP_QUERY);
+    const reducedMotion = window.matchMedia(REDUCED_MOTION_QUERY);
+    let frame = 0;
+
+    function expandWithoutMotion() {
+      rail.dataset.stackEnabled = "false";
+      rail.dataset.stackState = "expanded";
+      rail.style.removeProperty("--feature-stack-progress");
+
+      cards.forEach((card) => {
+        card.style.removeProperty("--feature-stack-x");
+      });
+    }
+
+    function updateStack() {
+      frame = 0;
+
+      if (reducedMotion.matches || !desktop.matches) {
+        expandWithoutMotion();
+        return;
+      }
+
+      const bounds = rail.getBoundingClientRect();
+      const stackStart = window.innerHeight * 0.82;
+      const stackEnd = window.innerHeight * 0.28;
+      const range = Math.max(1, stackStart - stackEnd);
+      const progress = Math.min(
+        1,
+        Math.max(0, (stackStart - bounds.top) / range),
+      );
+      const collapse = 1 - progress;
+      const railCenter = rail.clientWidth / 2;
+      const middle = (cards.length - 1) / 2;
+
+      rail.dataset.stackEnabled = "true";
+      rail.dataset.stackState =
+        progress <= 0.01
+          ? "stacked"
+          : progress >= 0.99
+            ? "expanded"
+            : "spreading";
+      rail.style.setProperty(
+        "--feature-stack-progress",
+        progress.toFixed(4),
+      );
+
+      cards.forEach((card, cardIndex) => {
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        const stackedCenter = railCenter + (cardIndex - middle) * 18;
+        const offset = (stackedCenter - cardCenter) * collapse;
+
+        card.style.setProperty(
+          "--feature-stack-x",
+          `${offset.toFixed(2)}px`,
+        );
+      });
+    }
+
+    function scheduleUpdate() {
+      if (frame) {
+        return;
+      }
+
+      frame = window.requestAnimationFrame(updateStack);
+    }
+
+    function configure() {
+      if (frame) {
+        window.cancelAnimationFrame(frame);
+        frame = 0;
+      }
+
+      updateStack();
+    }
+
+    configure();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    desktop.addEventListener("change", configure);
+    reducedMotion.addEventListener("change", configure);
+
+    return () => {
+      if (frame) {
+        window.cancelAnimationFrame(frame);
+      }
+
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      desktop.removeEventListener("change", configure);
+      reducedMotion.removeEventListener("change", configure);
+      expandWithoutMotion();
+    };
+  }, [cards, presentation]);
 
   function moveTo(nextIndex: number) {
     const rail = railRef.current;
@@ -200,43 +314,53 @@ export function FeatureRail({
   }
 
   return (
-    <div className={styles.wrapper} data-reveal>
-      <div className={styles.controls}>
-        <button
-          aria-label={formatMessage(copy.previous, { label })}
-          disabled={!hasOverflow || index === 0}
-          onClick={() => moveTo(index - 1)}
-          type="button"
-        >
-          ←
-        </button>
-        <button
-          aria-label={formatMessage(copy.next, { label })}
-          disabled={!hasOverflow || index === cards.length - 1}
-          onClick={() => moveTo(index + 1)}
-          type="button"
-        >
-          →
-        </button>
-        <span aria-live="polite">
-          {hasOverflow
-            ? formatMessage(copy.status, {
-                current: index + 1,
-                total: cards.length,
-              })
-            : formatMessage(copy.allVisible, { total: cards.length })}
-        </span>
-      </div>
+    <div
+      className={styles.wrapper}
+      data-presentation={presentation}
+      data-reveal
+    >
+      {presentation === "rail" && (
+        <div className={styles.controls}>
+          <button
+            aria-label={formatMessage(copy.previous, { label })}
+            disabled={!hasOverflow || index === 0}
+            onClick={() => moveTo(index - 1)}
+            type="button"
+          >
+            ←
+          </button>
+          <button
+            aria-label={formatMessage(copy.next, { label })}
+            disabled={!hasOverflow || index === cards.length - 1}
+            onClick={() => moveTo(index + 1)}
+            type="button"
+          >
+            →
+          </button>
+          <span aria-live="polite">
+            {hasOverflow
+              ? formatMessage(copy.status, {
+                  current: index + 1,
+                  total: cards.length,
+                })
+              : formatMessage(copy.allVisible, { total: cards.length })}
+          </span>
+        </div>
+      )}
 
       <div
         aria-label={formatMessage(copy.region, { label })}
-        aria-roledescription={copy.roleDescription}
+        aria-roledescription={
+          presentation === "rail" ? copy.roleDescription : undefined
+        }
         className={styles.rail}
+        data-feature-stack={presentation === "stack" ? "" : undefined}
+        data-presentation={presentation}
         data-tone={tone}
-        onKeyDown={onKeyDown}
+        onKeyDown={presentation === "rail" ? onKeyDown : undefined}
         ref={railRef}
         role="region"
-        tabIndex={0}
+        tabIndex={presentation === "rail" ? 0 : undefined}
       >
         {cards.map((card, cardIndex) => (
           <article

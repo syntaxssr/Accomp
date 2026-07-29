@@ -11,12 +11,12 @@ Its three capabilities are:
 
 1. Plan the trip / วางแผน
 2. Prepare the gear / เตรียมอุปกรณ์
-3. Ready offline / พร้อมใช้งานออฟไลน์
+3. Offline maps & trip data / แผนที่และข้อมูลออฟไลน์
 
-Do not present gear preparation or offline readiness as separate top-level
-product features. They may have dedicated marketing chapters or roadmap stages
-only when the copy clearly identifies them as capabilities of the same shared
-trip plan.
+Do not present gear preparation, offline maps, or offline trip data as separate
+top-level product features. They may have dedicated marketing chapters or
+roadmap stages only when the copy clearly identifies them as capabilities of
+the same shared trip plan.
 
 Home Screen Widgets are planned companion surfaces, not a fourth capability:
 

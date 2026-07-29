@@ -47,7 +47,7 @@ to the trailhead.
 - Mark prepared items.
 - See what is ready and what still needs attention.
 
-### Capability 3 — Ready offline / พร้อมใช้งานออฟไลน์
+### Capability 3 — Offline maps & trip data / แผนที่และข้อมูลออฟไลน์
 
 - Download maps and routes before leaving coverage.
 - Keep the itinerary, meeting point, and essential trip details on the device.
@@ -79,7 +79,8 @@ story. The native widgets themselves remain planned and unvalidated.
 ## Presentation Rules
 
 - Accomp has one core user-facing feature, not three separate products.
-- Gear preparation and offline readiness always belong to the shared trip plan.
+- Gear preparation, offline maps, and offline trip data always belong to the
+  shared trip plan.
 - Home Screen Widgets are companion surfaces, not a fourth capability.
 - The website may give each capability a dedicated visual chapter so the story
   is easy to scan.

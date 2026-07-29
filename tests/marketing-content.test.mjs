@@ -37,8 +37,8 @@ test("locks one core feature with three capabilities as product truth", async ()
   );
   assert.match(definition, /Capability 1 — Plan the trip/);
   assert.match(definition, /Capability 2 — Prepare the gear/);
-  assert.match(definition, /Capability 3 — Ready offline/);
-  assert.match(agents, /Do not present gear preparation or offline readiness/);
+  assert.match(definition, /Capability 3 — Offline maps & trip data/);
+  assert.match(agents, /Do not present gear preparation, offline maps/);
   assert.match(page, /data-core-feature="shared-trip-planning"/);
   assert.match(english.marketing.plan.eyebrow, /Capability 01/);
   assert.match(english.marketing.pack.eyebrow, /Capability 02/);
@@ -49,9 +49,10 @@ test("locks one core feature with three capabilities as product truth", async ()
 });
 
 test("preserves the complete marketing structure through Phase 2.4", async () => {
-  const [page, english] = await Promise.all([
+  const [page, english, promiseStack] = await Promise.all([
     source("components/marketing/MarketingPage.tsx"),
     source("messages/en.json"),
+    source("components/marketing/PromiseCardStack.tsx"),
   ]);
 
   for (const id of [
@@ -67,9 +68,16 @@ test("preserves the complete marketing structure through Phase 2.4", async () =>
 
   assert.match(page, /data-phase="2\.4"/);
   assert.match(page, /data-motion-root/);
+  assert.match(
+    page,
+    /<Container className=\{styles\.promiseContainer\}>/,
+  );
   assert.match(page, /className=\{styles\.promisePanel\}/);
-  assert.match(page, /className=\{styles\.promisePath\}/);
-  assert.match(page, /className=\{styles\.promiseStep\}/);
+  assert.match(page, /<PromiseCardStack/);
+  assert.match(promiseStack, /className=\{styles\.promisePath\}/);
+  assert.match(promiseStack, /className=\{styles\.promiseStep\}/);
+  assert.match(promiseStack, /data-promise-stack/);
+  assert.match(promiseStack, /data-promise-card/);
   assert.match(page, /<MotionController/);
   assert.match(page, /<SiteHeader/);
   assert.doesNotMatch(page, /previewNote/);
@@ -203,7 +211,16 @@ test("centers the hero copy over one full-width artwork stage", async () => {
   assert.match(styles, /\.heroVisual::after/);
   assert.match(
     styles,
-    /\.hero > \.heroContainer\s*\{[\s\S]*91\.5rem/,
+    /\.hero > \.heroContainer,\s*\.promise > \.promiseContainer,\s*\.chapter > \.planContainer\s*\{[\s\S]*91\.5rem/,
+  );
+  assert.doesNotMatch(styles, /\.promisePanel::(?:before|after)/);
+  assert.match(
+    styles,
+    /\.promiseStep\s*\{[\s\S]*aspect-ratio: 3 \/ 4/,
+  );
+  assert.match(
+    styles,
+    /:global\(html\[lang="th"\]\) \.promiseStep strong \{[\s\S]*line-height: 1\.3/,
   );
   assert.match(styles, /min-height: clamp\(42rem, 60vw, 50rem\)/);
   assert.match(
