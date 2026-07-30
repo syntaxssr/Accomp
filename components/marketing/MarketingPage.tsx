@@ -145,7 +145,7 @@ export function MarketingPage({ locale, messages }: MarketingPageProps) {
           id="features"
           role="group"
         >
-        <section className={styles.chapter}>
+        <section className={`${styles.chapter} ${styles.planChapter}`}>
           <Container className={styles.planContainer}>
             <Stack gap="xl">
               <div className={styles.chapterHeading} data-reveal>

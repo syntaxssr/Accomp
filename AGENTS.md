@@ -30,3 +30,31 @@ native mobile widgets have been implemented.
 
 Keep all public copy in `messages/en.json` and `messages/th.json`, preserve key
 parity, and qualify unconfirmed collaboration and offline behavior.
+
+## Daily Work and Prompt Maintenance
+
+The reusable project prompt lives in [`prompt.md`](./prompt.md). Treat it as a
+living summary of the latest approved product, design, interaction, content,
+quality, and workflow decisions.
+
+When the owner says `เริ่มงาน`:
+
+1. Check whether `http://localhost:3000/` responds.
+2. If it does not, run the repository's current development command.
+3. Verify the URL before reporting readiness.
+4. Keep the server running until the owner asks to stop it.
+
+Before every owner-authorized Commit and Push:
+
+1. Review all changes since the last Commit.
+2. Update the matching category in `prompt.md` when the work refines an existing
+   topic.
+3. Add a new category near the end of `prompt.md` when the work introduces a
+   genuinely new topic.
+4. Consolidate repeated instructions and retain the latest approved decision.
+5. Update the `Maintenance Log`.
+6. Include `prompt.md` in the same Commit as the work it documents.
+7. Use a concise Commit summary, push the current branch, and report the Commit
+   hash and clean/dirty working-tree state.
+
+Never Commit or Push without an explicit owner request.

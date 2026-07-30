@@ -40,10 +40,15 @@ test("locks one core feature with three capabilities as product truth", async ()
   assert.match(definition, /Capability 3 — Offline maps & trip data/);
   assert.match(agents, /Do not present gear preparation, offline maps/);
   assert.match(page, /data-core-feature="shared-trip-planning"/);
-  assert.match(english.marketing.plan.eyebrow, /Capability 01/);
+  assert.equal(english.marketing.plan.eyebrow, "01 · Plan");
   assert.match(english.marketing.pack.eyebrow, /Capability 02/);
   assert.match(english.marketing.offline.eyebrow, /Capability 03/);
-  assert.match(thai.marketing.plan.eyebrow, /ความสามารถ 01/);
+  assert.equal(thai.marketing.plan.eyebrow, "01 · วางแผน");
+  assert.equal(thai.marketing.plan.title, "ทุกคน ทุกแผน\nในที่เดียว");
+  assert.equal(
+    thai.marketing.plan.body,
+    "สร้างทริป ชวนเพื่อน และรวมกำหนดการ เส้นทาง จุดนัดพบ\nพร้อมรายละเอียดสำคัญทั้งหมดไว้ในพื้นที่เดียว\nเพื่อให้ทุกคนเห็นแผนเดียวกัน ตั้งแต่เริ่มวางแผนจนจบทริป",
+  );
   assert.match(thai.marketing.pack.eyebrow, /ความสามารถ 02/);
   assert.match(thai.marketing.offline.eyebrow, /ความสามารถ 03/);
 });
@@ -225,7 +230,31 @@ test("centers the hero copy over one full-width artwork stage", async () => {
   assert.match(styles, /min-height: clamp\(42rem, 60vw, 50rem\)/);
   assert.match(
     styles,
-    /@media \(min-width: 68rem\)\s*\{[\s\S]*\.hero\s*\{[\s\S]*padding-block: 1\.75rem 4\.75rem/,
+    /@media \(min-width: 68rem\)\s*\{[\s\S]*\.hero\s*\{[\s\S]*padding-block: 1\.75rem 2\.375rem/,
+  );
+  assert.match(
+    styles,
+    /\.promise\s*\{[\s\S]*clamp\(2rem, 4vw, 3\.5rem\)[\s\S]*clamp\(2rem, 4vw, 3\.5rem\)/,
+  );
+  assert.match(
+    styles,
+    /:global\(html\[lang="th"\]\) \.promiseTitle\s*\{[\s\S]*max-width: none[\s\S]*font-size: clamp\(1\.75rem, 7vw, 6\.25rem\)[\s\S]*white-space: nowrap/,
+  );
+  assert.match(
+    page,
+    /className=\{`\$\{styles\.chapter\} \$\{styles\.planChapter\}`\}/,
+  );
+  assert.match(
+    styles,
+    /\.planChapter\s*\{[\s\S]*clamp\(2\.75rem, 5vw, 5rem\)[\s\S]*var\(--space-section\)/,
+  );
+  assert.match(
+    styles,
+    /:global\(html\[lang="th"\]\) \.planChapter \.chapterHeading h2\s*\{[\s\S]*line-height: 1\.45[\s\S]*white-space: pre-line/,
+  );
+  assert.match(
+    styles,
+    /:global\(html\[lang="th"\]\) \.planChapter \.chapterHeading > p\s*\{[\s\S]*white-space: pre-line/,
   );
 });
 

@@ -102,8 +102,8 @@ test("matches the planning cards to the core-feature stack motion", async () => 
   assert.match(rail, /data-feature-stack/);
   assert.match(rail, /--feature-stack-x/);
   assert.match(rail, /window\.addEventListener\("scroll", scheduleUpdate/);
-  assert.match(rail, /const stackStart = window\.innerHeight \* 0\.82/);
-  assert.match(rail, /const stackEnd = window\.innerHeight \* 0\.28/);
+  assert.match(rail, /const stackStart = window\.innerHeight \* 0\.96/);
+  assert.match(rail, /const stackEnd = window\.innerHeight \* 0\.42/);
   assert.match(rail, /const stackedCenter = railCenter \+ \(cardIndex - middle\) \* 18/);
   assert.match(
     styles,

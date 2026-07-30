@@ -64,8 +64,11 @@ test("keeps complete TH/EN catalogs with identical keys and placeholders", async
   assert.match(thai.privacy.title, /[\u0E00-\u0E7F]/);
   assert.match(thai.terms.title, /[\u0E00-\u0E7F]/);
   assert.equal(english.marketing.faq.items.length, 7);
-  assert.equal(english.marketing.promise.title, "Shared Trip Planning.");
-  assert.equal(thai.marketing.promise.title, "วางแผนทริปร่วมกัน");
+  assert.equal(
+    english.marketing.promise.title,
+    "Get every trip ready together.",
+  );
+  assert.equal(thai.marketing.promise.title, "เตรียมทุกทริปไปด้วยกัน");
   assert.deepEqual(english.marketing.promise.items, [
     "Plan the trip",
     "Prepare the gear",

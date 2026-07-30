@@ -206,8 +206,8 @@ export function FeatureRail({
       }
 
       const bounds = rail.getBoundingClientRect();
-      const stackStart = window.innerHeight * 0.82;
-      const stackEnd = window.innerHeight * 0.28;
+      const stackStart = window.innerHeight * 0.96;
+      const stackEnd = window.innerHeight * 0.42;
       const range = Math.max(1, stackStart - stackEnd);
       const progress = Math.min(
         1,

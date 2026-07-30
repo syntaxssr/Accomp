@@ -50,7 +50,9 @@
 }
 
 .hero {
-  padding-block: clamp(2rem, 4vw, 4rem) clamp(5rem, 9vw, 9rem);
+  padding-block:
+    clamp(2rem, 4vw, 4rem)
+    clamp(2.5rem, 4.5vw, 4.5rem);
 }
 
 .hero > .heroContainer,
@@ -381,7 +383,9 @@
 }
 
 .promise {
-  padding-block: clamp(4rem, 8vw, 7rem);
+  padding-block:
+    clamp(2rem, 4vw, 3.5rem)
+    clamp(2rem, 4vw, 3.5rem);
 }
 
 .promisePanel {
@@ -403,6 +407,12 @@
   letter-spacing: var(--font-letter-spacing-accent);
   line-height: 0.92;
   text-wrap: balance;
+}
+
+:global(html[lang="th"]) .promiseTitle {
+  max-width: none;
+  font-size: clamp(1.75rem, 7vw, 6.25rem);
+  white-space: nowrap;
 }
 
 .promisePath {
@@ -620,6 +630,12 @@
   padding-block: var(--space-section);
 }
 
+.planChapter {
+  padding-block:
+    clamp(2.75rem, 5vw, 5rem)
+    var(--space-section);
+}
+
 .packChapter,
 .editorial {
   background: var(--color-sand);
@@ -631,6 +647,15 @@
 
 .chapterHeading > div > p {
   margin-bottom: var(--space-5);
+}
+
+:global(html[lang="th"]) .planChapter .chapterHeading h2 {
+  line-height: 1.45;
+  white-space: pre-line;
+}
+
+:global(html[lang="th"]) .planChapter .chapterHeading > p {
+  white-space: pre-line;
 }
 
 .offline {
@@ -1173,7 +1198,7 @@
 
 @media (min-width: 68rem) {
   .hero {
-    padding-block: 1.75rem 4.75rem;
+    padding-block: 1.75rem 2.375rem;
   }
 }
 

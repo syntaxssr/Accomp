@@ -55,7 +55,7 @@
       }
     },
     "promise": {
-      "title": "Shared Trip Planning.",
+      "title": "Get every trip ready together.",
       "label": "Three capabilities within Accomp's shared trip planning feature",
       "items": [
         "Plan the trip",
@@ -64,9 +64,9 @@
       ]
     },
     "plan": {
-      "eyebrow": "Capability 01 · Plan",
+      "eyebrow": "01 · Plan",
       "title": "Everyone. Every plan. All in one place.",
-      "body": "Create a trip, invite friends, and bring the itinerary, routes, meeting points, and every essential detail into one shared space—so everyone follows the same plan from the first idea to departure.",
+      "body": "Create a trip, invite friends, and bring the itinerary, routes, meeting points, and every essential detail into one shared space—so everyone follows the same plan from the moment planning begins until the trip is complete.",
       "railLabel": "Plan the trip",
       "cards": [
         {
