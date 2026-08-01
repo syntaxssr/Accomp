@@ -5,7 +5,7 @@ type IconSize = "sm" | "md" | "lg";
 
 const iconSources: Record<IconName, string> = {
   logo: "/brand/accomp-logo.svg",
-  pine: "/brand/accomp-pine-icon.svg",
+  pine: "/brand/accomp-logo.svg",
 };
 
 interface IconProps {

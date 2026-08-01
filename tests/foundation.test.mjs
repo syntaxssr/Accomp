@@ -63,15 +63,12 @@ test("exports the complete Phase 4 primitive surface", async () => {
   }
 });
 
-test("uses one matching pine asset for source and public output", async () => {
-  const [sourceAsset, publicAsset] = await Promise.all([
-    source("brand/accomp-pine-icon.svg"),
-    source("public/brand/accomp-pine-icon.svg"),
-  ]);
+test("uses the current logo for decorative pine placements", async () => {
+  const icon = await source("components/ui/Icon.tsx");
 
-  assert.equal(publicAsset, sourceAsset);
-  assert.match(publicAsset, /color="#778873"/i);
-  assert.doesNotMatch(publicAsset, /phantom/i);
+  assert.match(icon, /logo: "\/brand\/accomp-logo\.svg"/);
+  assert.match(icon, /pine: "\/brand\/accomp-logo\.svg"/);
+  assert.doesNotMatch(icon, /public\/brand\/accomp-pine-icon/);
 });
 
 test("uses the owner-provided SVG logo across brand placements", async () => {
@@ -83,6 +80,7 @@ test("uses the owner-provided SVG logo across brand placements", async () => {
     notFound,
     layout,
     logo,
+    logoMetadata,
     favicon,
     appleIcon,
   ] = await Promise.all([
@@ -93,6 +91,7 @@ test("uses the owner-provided SVG logo across brand placements", async () => {
     source("components/legal/LocalizedNotFound.tsx"),
     source("app/layout.tsx"),
     source("public/brand/accomp-logo.svg"),
+    stat(new URL("public/brand/accomp-logo.svg", root)),
     stat(new URL("public/favicon.ico", root)),
     stat(new URL("public/brand/accomp-apple-touch-icon.png", root)),
   ]);
@@ -103,10 +102,12 @@ test("uses the owner-provided SVG logo across brand placements", async () => {
   assert.match(footer, /<Icon name="logo" size="md" decorative \/>/);
   assert.match(legal, /<Icon name="logo" size="md" decorative \/>/);
   assert.match(notFound, /<Icon name="logo" size="md" decorative \/>/);
-  assert.match(layout, /url: "\/favicon\.ico\?v=2"/);
-  assert.match(layout, /url: "\/brand\/accomp-logo\.svg\?v=2"/);
-  assert.match(layout, /apple: "\/brand\/accomp-apple-touch-icon\.png\?v=2"/);
+  assert.match(layout, /url: "\/favicon\.ico\?v=3"/);
+  assert.match(layout, /url: "\/brand\/accomp-logo\.svg\?v=3"/);
+  assert.match(layout, /apple: "\/brand\/accomp-apple-touch-icon\.png\?v=3"/);
   assert.match(logo, /viewBox="0 0 1024 1024"/);
+  assert.match(logo, /data:image\/webp;base64/);
+  assert.ok(logoMetadata.size < 100_000);
   assert.ok(favicon.size > 0);
   assert.ok(favicon.size < 100_000);
   assert.ok(appleIcon.size > 0);

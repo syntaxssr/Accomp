@@ -383,6 +383,8 @@ route, meeting point และข้อมูลสำคัญสามาร�
 - Widget 1: Countdown Companion
   - แสดงจำนวนวันก่อนทริป
   - Mascot มีความสุข/ตื่นเต้นขึ้นเมื่อวันเดินทางใกล้เข้ามา
+  - ปัจจุบันใช้ภาพมาสคอต provisional เดียวกันในทั้งห้าสถานะก่อน และยังต้อง
+    สร้าง expression variants ให้ตรงกับแต่ละช่วงนับถอยหลังในรอบถัดไป
 - Widget 2: Gear Checklist
   - แสดงความพร้อมและรายการที่ยังต้องเตรียม
 - เป็น static concept preview บนเว็บ
@@ -527,9 +529,14 @@ preview จนกว่าจะมี backend และ privacy approval Footer
 
 - Header ใช้ logo SVG + `Accomp` text
 - Logo ปัจจุบันยังเป็น provisional และเปลี่ยนได้เมื่อได้ final identity
+- Artwork ล่าสุดเป็นมาสคอตต้นสนสีเขียวอ่อนผิวสัมผัสแบบปั้นและใบหน้ายิ้ม
 - Favicon/browser tab ใช้ logo asset ที่ตรงกับ Header
+- Apple touch icon และ favicon ใช้ artwork ชุดเดียวกันพร้อม cache version ใหม่
 - Language flags ใช้ owner-provided SVG
-- Mascot pine ใช้กับ Widget และ concept visuals ได้ แต่ห้ามเรียกว่า final
+- Decorative pine placements ใน Roadmap/Support ใช้ logo ปัจจุบันแทนไฟล์
+  public pine symbol เก่า
+- Mascot pine ใช้กับ Widget และ concept visuals ได้ แต่ห้ามเรียกว่า final;
+  ภาพทั้งห้าสถานะปัจจุบันยังเป็น provisional asset เดียวกัน
 - Asset ทุกชิ้นต้องเป็นของแบรนด์ สร้างใหม่ หรือมี license เชิงพาณิชย์
 - ห้ามสร้าง inline SVG เลียนแบบ proprietary artwork ของ reference
 
@@ -538,7 +545,9 @@ preview จนกว่าจะมี backend และ privacy approval Footer
 ```text
 ใช้ logo mark แบบ SVG แยกจาก brand text และใช้ mark เดียวกันกับ favicon
 จัดเก็บ flag/mascot/assets ใน public directory พร้อมสถานะ provisional/final
-ที่ชัดเจน ใช้เฉพาะ asset ที่มีสิทธิ์และห้ามนำ asset ของ reference มาใช้
+ที่ชัดเจน อัปเดต cache version เมื่อเปลี่ยน browser icon บีบอัด logo, Apple icon
+และ mascot ให้เหมาะกับเว็บ ใช้เฉพาะ asset ที่มีสิทธิ์และห้ามนำ asset ของ
+reference มาใช้
 ```
 
 ## 20. Responsive, Accessibility, and Performance
@@ -554,6 +563,8 @@ preview จนกว่าจะมี backend และ privacy approval Footer
 - Reduced motion ต้องอ่านเนื้อหาได้ครบ
 - หลีกเลี่ยง layout shift เมื่อโหลดฟอนต์หรือเปลี่ยนภาษา
 - Production build และ rendered HTML ต้องผ่าน
+- Logo SVG ไม่เกิน 100 KB, Apple touch icon ไม่เกิน 500 KB และมาสคอต WebP
+  แต่ละไฟล์ไม่เกิน 60 KB ที่ขนาด 512×512
 
 ### Reusable Prompt
 
@@ -692,3 +703,7 @@ commit summary กระชับ จากนั้น Push ไป Remote branc
   ถึง Core feature และจาก Core feature ถึง Plan ลงครึ่งหนึ่ง อัปเดตหัวข้อและ
   คำอธิบาย TH/EN กำหนดจุดตัดบรรทัดภาษาไทย และเลื่อนจุดเริ่มคลี่ Plan cards
   ให้เร็วขึ้นโดยรักษาระยะและความเร็วของ Motion เดิม
+- **2026-08-01 — Provisional mascot identity refresh:** เปลี่ยน logo, favicon,
+  Apple touch icon และ widget mascot เป็น artwork ต้นสนชุดล่าสุด ย้าย decorative
+  pine placements ให้ใช้ logo ปัจจุบัน ลบ public asset เก่าที่ไม่ใช้งาน และ
+  บีบอัดไฟล์ให้อยู่ใน performance budget โดยยังระบุสถานะ provisional ไว้ชัดเจน
