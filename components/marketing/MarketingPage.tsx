@@ -174,7 +174,7 @@ export function MarketingPage({ locale, messages }: MarketingPageProps) {
         </section>
 
         <section className={`${styles.chapter} ${styles.packChapter}`}>
-          <Container>
+          <Container className={styles.planContainer}>
             <Stack gap="xl">
               <div className={styles.chapterHeading} data-reveal>
                 <div>
@@ -194,6 +194,7 @@ export function MarketingPage({ locale, messages }: MarketingPageProps) {
                 cards={content.packingFeatures}
                 copy={messages.accessibility.featureRail}
                 label={copy.pack.railLabel}
+                presentation="stack"
                 tone="sand"
               />
             </Stack>
@@ -218,9 +219,6 @@ export function MarketingPage({ locale, messages }: MarketingPageProps) {
                     <li key={point}>{point}</li>
                   ))}
                 </ul>
-                <p className={styles.validationNote}>
-                  {copy.offline.validation}
-                </p>
               </Stack>
 
               <div
@@ -233,22 +231,118 @@ export function MarketingPage({ locale, messages }: MarketingPageProps) {
                   className={styles.offlineMapRoutes}
                   viewBox="0 0 800 760"
                 >
+                  <defs>
+                    <clipPath id="offline-terrain-clip">
+                      <path d="M-30 18L126 46 160 92 232 110 252 160 320 178 330 238 396 252 410 312 470 328 482 390 548 412 552 472 620 492 618 552 690 576 676 638 748 670 830 730 830 810 610 810 574 748 500 736 472 682 398 664 380 604 310 584 296 522 226 496 218 434 150 404 152 342 88 306 102 246 40 202 58 144-10 96Z" />
+                    </clipPath>
+                  </defs>
+                  <path
+                    className={styles.mapTerrain}
+                    d="M-30 18L126 46 160 92 232 110 252 160 320 178 330 238 396 252 410 312 470 328 482 390 548 412 552 472 620 492 618 552 690 576 676 638 748 670 830 730 830 810 610 810 574 748 500 736 472 682 398 664 380 604 310 584 296 522 226 496 218 434 150 404 152 342 88 306 102 246 40 202 58 144-10 96Z"
+                  />
+                  <g clipPath="url(#offline-terrain-clip)">
+                  <path
+                    className={styles.mapContour}
+                    d="M-76 128C48 32 190 40 270 126S394 250 504 154 674 60 842 112"
+                  />
+                  <path
+                    className={styles.mapContour}
+                    d="M-92 190C42 84 182 86 264 178S402 302 524 206 704 112 862 160"
+                  />
+                  <path
+                    className={styles.mapContour}
+                    d="M62 342C8 262 38 166 130 124S302 130 344 218 310 374 214 402 108 390 62 342Z"
+                  />
+                  <path
+                    className={styles.mapContour}
+                    d="M104 312C66 256 90 194 150 166S258 174 286 232 258 334 198 352 134 344 104 312Z"
+                  />
+                  <path
+                    className={`${styles.mapContour} ${styles.mapContourMajor}`}
+                    d="M142 286C120 252 136 214 172 200S236 206 252 240 236 300 200 312 158 304 142 286Z"
+                  />
+                  <path
+                    className={styles.mapContour}
+                    d="M438 706C382 620 418 516 520 476S716 488 764 580 724 736 622 762 488 748 438 706Z"
+                  />
+                  <path
+                    className={styles.mapContour}
+                    d="M486 672C450 614 478 546 542 520S674 530 706 592 680 688 614 706 526 696 486 672Z"
+                  />
+                  <path
+                    className={`${styles.mapContour} ${styles.mapContourMajor}`}
+                    d="M534 642C512 606 530 564 570 550S650 556 668 594 652 654 612 666 552 660 534 642Z"
+                  />
                   <path
                     className={styles.mapRouteSecondary}
-                    d="M-30 570C130 410 230 652 390 486S650 250 850 368"
+                    d="M-24 420C86 348 176 438 282 388S456 286 566 338 704 462 836 408"
                     pathLength="1"
+                  />
+                  </g>
+                  <path
+                    className={styles.mapTrailHalo}
+                    d="M650 690C610 668 632 620 585 598S548 532 505 516 478 460 448 438 414 382 375 365 334 325 310 286 270 262 250 212 222 188 214 160"
                   />
                   <path
                     className={styles.mapRoutePrimary}
-                    d="M-20 298C120 392 246 218 390 342S626 590 840 470"
+                    d="M650 690C610 668 632 620 585 598S548 532 505 516 478 460 448 438 414 382 375 365 334 325 310 286 270 262 250 212 222 188 214 160"
                     pathLength="1"
                   />
                 </svg>
-                <span className={styles.mapPin} aria-hidden="true" />
                 <div className={styles.offlineCard} aria-hidden="true">
                   <small>{copy.offline.cardEyebrow}</small>
                   <strong>{copy.offline.cardTitle}</strong>
                   <p>{copy.offline.cardBody}</p>
+                </div>
+                <div
+                  className={`${styles.mapWaypoint} ${styles.mapWaypointStart}`}
+                  aria-hidden="true"
+                >
+                  <span>↗</span>
+                  <small>{copy.offline.mapStart}</small>
+                </div>
+                <div
+                  className={`${styles.mapWaypoint} ${styles.mapWaypointCamp}`}
+                  aria-hidden="true"
+                >
+                  <span>△</span>
+                  <small>{copy.offline.mapCamp}</small>
+                </div>
+                <div className={styles.mapCurrent} aria-hidden="true">
+                  <span className={styles.mapCurrentDot} />
+                  <div>
+                    <strong>{copy.offline.mapCurrent}</strong>
+                    <small>{copy.offline.mapCoordinates}</small>
+                  </div>
+                </div>
+                <div
+                  className={`${styles.mapStop} ${styles.mapStopViewpoint}`}
+                  aria-hidden="true"
+                >
+                  <span />
+                  <small>{copy.offline.mapViewpoint}</small>
+                </div>
+                <div
+                  className={`${styles.mapStop} ${styles.mapStopWaterfall}`}
+                  aria-hidden="true"
+                >
+                  <span />
+                  <small>{copy.offline.mapWaterfall}</small>
+                </div>
+                <div
+                  className={`${styles.mapStop} ${styles.mapStopRest}`}
+                  aria-hidden="true"
+                >
+                  <span />
+                  <small>{copy.offline.mapRest}</small>
+                </div>
+                <div className={styles.mapNorth} aria-hidden="true">
+                  <span>N</span>
+                  <small>{copy.offline.mapNorth}</small>
+                </div>
+                <div className={styles.mapScale} aria-hidden="true">
+                  <span />
+                  <small>{copy.offline.mapScale}</small>
                 </div>
                 <span className={styles.mapLabel}>
                   {copy.offline.mapLabel}

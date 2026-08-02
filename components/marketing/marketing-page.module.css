@@ -444,9 +444,7 @@
   box-shadow: 0 1.35rem 3rem rgb(23 23 23 / 12%);
   transform: none;
   translate: 0 0;
-  transition:
-    translate 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .site[data-motion="enhanced"]
@@ -618,7 +616,6 @@
 
 @media (hover: hover) and (pointer: fine) {
   .promiseStep:hover {
-    translate: 0 -0.4rem;
     box-shadow: 0 1.7rem 3.5rem rgb(23 23 23 / 16%);
   }
 }
@@ -650,12 +647,21 @@
 }
 
 :global(html[lang="th"]) .planChapter .chapterHeading h2 {
+  max-width: none;
+  font-size: clamp(2.7rem, 4.4vw, 3.85rem);
   line-height: 1.45;
-  white-space: pre-line;
+  white-space: nowrap;
 }
 
 :global(html[lang="th"]) .planChapter .chapterHeading > p {
   white-space: pre-line;
+}
+
+:global(html[lang="th"]) .packChapter .chapterHeading h2 {
+  max-width: none;
+  font-size: clamp(1.5rem, 4.4vw, 3.85rem);
+  line-height: 1.45;
+  white-space: nowrap;
 }
 
 .offline {
@@ -716,10 +722,13 @@
   border-radius: var(--radius-xl);
   overflow: hidden;
   background:
-    linear-gradient(rgb(161 188 152 / 4%) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(161 188 152 / 4%) 1px, transparent 1px),
-    var(--color-sage-ink);
-  background-size: 2rem 2rem;
+    linear-gradient(rgb(119 136 115 / 10%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(119 136 115 / 10%) 1px, transparent 1px),
+    var(--color-cream);
+  background-size:
+    2rem 2rem,
+    2rem 2rem,
+    auto;
 }
 
 .offlineMapRoutes {
@@ -729,19 +738,49 @@
   height: 100%;
 }
 
+.mapTerrain {
+  fill: rgb(119 136 115 / 92%);
+}
+
+.mapContour,
+.mapRoutePrimary,
+.mapRouteSecondary,
+.mapTrailHalo {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.mapContour {
+  stroke: rgb(253 246 237 / 24%);
+  stroke-width: 2;
+}
+
+.mapContourMajor {
+  stroke: rgb(253 246 237 / 36%);
+  stroke-width: 2.5;
+}
+
 .mapRoutePrimary,
 .mapRouteSecondary {
-  fill: none;
-  stroke: var(--color-meadow);
   stroke-dasharray: 1;
   stroke-dashoffset: 0;
-  stroke-width: 8;
-  stroke-linecap: round;
+}
+
+.mapRoutePrimary {
+  stroke: var(--color-night);
+  stroke-width: 5;
+  filter: drop-shadow(0 2px 2px rgb(23 23 23 / 12%));
 }
 
 .mapRouteSecondary {
-  stroke: var(--color-brand);
-  stroke-width: 5;
+  stroke: rgb(253 246 237 / 42%);
+  stroke-width: 3;
+}
+
+.mapTrailHalo {
+  stroke: var(--color-cream);
+  stroke-width: 12;
 }
 
 .site[data-motion="enhanced"]
@@ -768,25 +807,192 @@
   transition-delay: 80ms;
 }
 
-.mapPin {
+.mapWaypoint {
   position: absolute;
-  bottom: 25%;
-  left: 30%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--color-night);
+}
+
+.mapWaypoint > span {
+  width: 2.4rem;
+  aspect-ratio: 1;
+  border: 3px solid var(--color-night);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--color-cream);
+  background: var(--color-night);
+  box-shadow: 0 0.5rem 1.4rem rgb(0 0 0 / 24%);
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+.mapWaypoint small,
+.mapCurrent div,
+.mapNorth,
+.mapScale {
+  border: 1px solid rgb(253 246 237 / 14%);
+  border-radius: var(--radius-pill);
+  background: rgb(23 23 23 / 72%);
+  box-shadow: 0 0.75rem 1.8rem rgb(0 0 0 / 18%);
+  backdrop-filter: blur(8px);
+}
+
+.mapWaypoint small {
+  padding: 0.45rem 0.7rem;
+  color: var(--color-cream);
+  font-size: 0.7rem;
+  font-weight: 750;
+}
+
+.mapWaypointStart {
+  right: 4%;
+  bottom: 6%;
+  flex-direction: row-reverse;
+}
+
+.mapWaypointCamp {
+  top: 17%;
+  left: 23%;
+}
+
+.mapWaypointCamp > span {
+  color: var(--color-cream);
+  background: var(--color-night);
+}
+
+.mapCurrent {
+  position: absolute;
+  z-index: 4;
+  top: 51%;
+  left: 52%;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  transform: translate(-1.1rem, -1.1rem);
+}
+
+.mapCurrentDot {
   width: 1.5rem;
   aspect-ratio: 1;
-  border: 5px solid var(--color-cream);
+  border: 5px solid var(--color-night);
   border-radius: 50%;
-  background: var(--color-brand);
-  box-shadow: 0 0 0 10px rgb(161 188 152 / 12%);
+  background: var(--color-cream);
+  box-shadow:
+    0 0 0 9px rgb(253 246 237 / 28%),
+    0 0 0 18px rgb(253 246 237 / 12%);
+}
+
+.mapCurrent div {
+  padding: 0.65rem 0.85rem;
+  display: grid;
+  gap: 0.12rem;
+  color: var(--color-cream);
+}
+
+.mapCurrent strong {
+  font-size: 0.76rem;
+}
+
+.mapCurrent small {
+  color: var(--color-sand);
+  font-size: 0.62rem;
+}
+
+.mapStop {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--color-cream);
+}
+
+.mapStop > span {
+  width: 1rem;
+  aspect-ratio: 1;
+  border: 3px solid var(--color-night);
+  border-radius: 50%;
+  background: var(--color-cream);
+  box-shadow: 0 0 0 2px rgb(253 246 237 / 55%);
+}
+
+.mapStop small {
+  font-size: 0.64rem;
+  font-weight: 750;
+  letter-spacing: 0.07em;
+  text-shadow: 0 1px 2px rgb(23 23 23 / 32%);
+}
+
+.mapStopViewpoint {
+  top: 29%;
+  left: 31%;
+}
+
+.mapStopWaterfall {
+  top: 40%;
+  left: 40%;
+}
+
+.mapStopRest {
+  top: 68%;
+  left: 66%;
+}
+
+.mapNorth {
+  position: absolute;
+  z-index: 3;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 3.25rem;
+  padding: 0.55rem 0.4rem;
+  display: grid;
+  justify-items: center;
+  color: var(--color-cream);
+}
+
+.mapNorth span {
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.mapNorth small {
+  color: var(--color-sand);
+  font-size: 0.48rem;
+}
+
+.mapScale {
+  position: absolute;
+  z-index: 3;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  padding: 0.55rem 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--color-cream);
+}
+
+.mapScale span {
+  width: 3rem;
+  border-top: 3px solid currentColor;
+}
+
+.mapScale small {
+  font-size: 0.62rem;
+  font-weight: 750;
 }
 
 .offlineCard {
   position: absolute;
   z-index: 2;
-  top: 2rem;
-  right: 2rem;
-  width: min(70%, 18.75rem);
-  padding: 1.25rem;
+  top: 5.25rem;
+  right: 1.5rem;
+  width: min(48%, 15.5rem);
+  padding: 1rem;
   border-radius: 1.4rem;
   color: var(--color-night);
   background: var(--color-cream);
@@ -832,6 +1038,17 @@
 
 :global(html[lang="th"]) .offlineCard strong {
   line-height: 1.3;
+}
+
+:global(html[lang="th"]) .offline h2 {
+  max-width: none;
+  font-size: clamp(2.35rem, 6vw, 4.5rem);
+  letter-spacing: 0.035em !important;
+  white-space: pre;
+}
+
+:global(html[lang="en"]) .offline h2 {
+  white-space: pre-line;
 }
 
 .offlineCard p {
@@ -1145,6 +1362,10 @@
     grid-template-columns: minmax(0, 1.4fr) minmax(18rem, 0.75fr);
   }
 
+  .planChapter .chapterHeading {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .steps {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -1199,6 +1420,13 @@
 @media (min-width: 68rem) {
   .hero {
     padding-block: 1.75rem 2.375rem;
+  }
+}
+
+@media (min-width: 75rem) {
+  .planChapter .chapterHeading {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    column-gap: clamp(1.75rem, 2.5vw, 2.25rem);
   }
 }
 

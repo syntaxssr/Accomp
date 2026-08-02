@@ -54,9 +54,10 @@ test("implements the approved hero, route and final CTA motion language", async 
 });
 
 test("spreads the three core-feature cards with scroll progress", async () => {
-  const [stack, page, styles] = await Promise.all([
+  const [stack, page, rebound, styles] = await Promise.all([
     source("components/marketing/PromiseCardStack.tsx"),
     source("components/marketing/MarketingPage.tsx"),
+    source("components/marketing/card-cursor-rebound.ts"),
     source("components/marketing/marketing-page.module.css"),
   ]);
 
@@ -76,13 +77,17 @@ test("spreads the three core-feature cards with scroll progress", async () => {
     /@media \(prefers-reduced-motion: reduce\)[\s\S]*\.promiseStep/,
   );
   assert.match(
-    styles,
-    /@media \(hover: hover\) and \(pointer: fine\)[\s\S]*\.promiseStep:hover[\s\S]*translate: 0 -0\.4rem/,
+    stack,
+    /onMouseEnter=\{reboundCardFromCursor\}/,
   );
-  assert.match(
-    styles,
-    /translate 0\.4s cubic-bezier\(0\.22, 1, 0\.36, 1\)/,
-  );
+  assert.match(rebound, /const CARD_REBOUND_DISTANCE = 10/);
+  assert.match(rebound, /const CARD_REBOUND_DURATION = 600/);
+  assert.match(rebound, /center - cursorPosition/);
+  assert.match(rebound, /offset: 0\.42/);
+  assert.match(rebound, /offset: 0\.72/);
+  assert.match(rebound, /card\.animate/);
+  assert.match(rebound, /prefers-reduced-motion: reduce/);
+  assert.doesNotMatch(styles, /\.promiseStep:hover\s*\{[^}]*translate:/);
   assert.doesNotMatch(styles, /\.promiseStep:hover \.promiseCardVisual/);
   assert.doesNotMatch(styles, /@keyframes promise-(?:route|checklist|offline)-hover/);
   assert.match(
@@ -91,20 +96,25 @@ test("spreads the three core-feature cards with scroll progress", async () => {
   );
 });
 
-test("matches the planning cards to the core-feature stack motion", async () => {
+test("matches the planning and packing cards to the core-feature stack motion", async () => {
   const [rail, page, styles] = await Promise.all([
     source("components/marketing/FeatureRail.tsx"),
     source("components/marketing/MarketingPage.tsx"),
     source("components/marketing/feature-rail.module.css"),
   ]);
 
-  assert.match(page, /presentation="stack"/);
+  assert.equal(page.match(/presentation="stack"/g)?.length, 2);
+  assert.equal(
+    page.match(/<Container className=\{styles\.planContainer\}>/g)?.length,
+    2,
+  );
   assert.match(rail, /data-feature-stack/);
   assert.match(rail, /--feature-stack-x/);
   assert.match(rail, /window\.addEventListener\("scroll", scheduleUpdate/);
   assert.match(rail, /const stackStart = window\.innerHeight \* 0\.96/);
   assert.match(rail, /const stackEnd = window\.innerHeight \* 0\.42/);
   assert.match(rail, /const stackedCenter = railCenter \+ \(cardIndex - middle\) \* 18/);
+  assert.match(rail, /onMouseEnter=\{reboundCardFromCursor\}/);
   assert.match(
     styles,
     /\.rail\[data-presentation="stack"\][\s\S]*aspect-ratio: 3 \/ 4/,

@@ -93,17 +93,17 @@
       "railLabel": "Prepare the gear",
       "cards": [
         {
-          "eyebrow": "01 · List",
+          "eyebrow": "List",
           "title": "Share the checklist",
           "body": "Keep personal and group essentials in one calm, readable list."
         },
         {
-          "eyebrow": "02 · Assign",
+          "eyebrow": "Assign",
           "title": "Split the load",
           "body": "Make responsibility visible before anyone leaves home."
         },
         {
-          "eyebrow": "03 · Review",
+          "eyebrow": "Review",
           "title": "See what's ready",
           "body": "A final check shows what is ready and what still needs attention."
         }
@@ -134,9 +134,9 @@
         "tent": "Tent",
         "stove": "Stove",
         "firstAid": "First aid",
-        "may": "May",
-        "ton": "Ton",
-        "you": "You"
+        "may": "Bas",
+        "ton": "Beam",
+        "you": "Praewa"
       },
       "readiness": {
         "value": "8/10",
@@ -145,24 +145,32 @@
     },
     "offline": {
       "eyebrow": "Capability 03 · Offline maps & trip data",
-      "title": "Keep the shared plan close when the signal isn't.",
+      "title": "Keep moving.\nEven without a signal.",
       "body": "Download maps, routes, the itinerary, meeting point, and essential details before coverage fades.",
       "points": [
         "Download maps and routes",
         "Keep trip details on the device",
         "See offline and sync status"
       ],
-      "validation": "Exact offline behavior remains subject to product validation.",
       "visualLabel": "Illustrative offline route and trip details",
       "cardEyebrow": "Prepared offline",
       "cardTitle": "Khao Yai route",
       "cardBody": "Map, itinerary and meeting details · Illustrative UI",
-      "mapLabel": "Abstract route · not real map data"
+      "mapLabel": "Illustrative map and coordinates · not real data",
+      "mapCurrent": "Your location",
+      "mapCoordinates": "14.4392° N · 101.3728° E",
+      "mapStart": "Trail start",
+      "mapCamp": "Campsite",
+      "mapViewpoint": "Viewpoint",
+      "mapWaterfall": "Waterfall",
+      "mapRest": "Rest stop",
+      "mapNorth": "North",
+      "mapScale": "500 m"
     },
     "widgets": {
-      "eyebrow": "Companion surfaces",
-      "title": "Your trip, at a glance.",
-      "body": "Bring the same shared plan closer to the Home Screen with a countdown companion and a compact gear checklist.",
+      "eyebrow": "Accomp Widgets",
+      "title": "Every trip at a glance.",
+      "body": "Check your trip date and the gear that still needs attention without opening the app.",
       "sectionLabel": "Two planned Home Screen widget concepts",
       "previewLabel": "Widget concept",
       "conceptNote": "Concept preview only · Platform availability, refresh behavior, and native interactions are not confirmed.",

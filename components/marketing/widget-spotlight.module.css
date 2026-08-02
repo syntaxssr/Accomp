@@ -21,6 +21,12 @@
   gap: var(--space-3);
 }
 
+:global(html[lang="th"]) .heading h2 {
+  max-width: none;
+  font-size: clamp(1.6rem, 3.8vw, 3.35rem);
+  white-space: nowrap;
+}
+
 .grid {
   display: grid;
   gap: var(--space-5);

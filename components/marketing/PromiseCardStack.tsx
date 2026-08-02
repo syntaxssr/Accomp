@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import styles from "./marketing-page.module.css";
+import { reboundCardFromCursor } from "./card-cursor-rebound";
 
 const DESKTOP_QUERY = "(min-width: 48rem)";
 const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
@@ -131,6 +132,7 @@ export function PromiseCardStack({
           className={styles.promiseStep}
           data-promise-card
           key={item}
+          onMouseEnter={reboundCardFromCursor}
         >
           <span aria-hidden="true" className={styles.promiseNumber}>
             {String(index + 1).padStart(2, "0")}

@@ -70,6 +70,16 @@ test("keeps both widget previews static, honest, and accessible", async () => {
   assert.match(styles, /@media \(min-width: 48rem\)/);
   assert.match(styles, /@media \(min-width: 56\.25rem\)/);
   assert.match(styles, /prefers-reduced-motion: reduce/);
+  assert.match(
+    styles,
+    /:global\(html\[lang="th"\]\) \.heading h2\s*\{[\s\S]*max-width: none[\s\S]*font-size: clamp\(1\.6rem, 3\.8vw, 3\.35rem\)[\s\S]*white-space: nowrap/,
+  );
+  assert.equal(thai.marketing.widgets.eyebrow, "วิดเจ็ต Accomp");
+  assert.equal(thai.marketing.widgets.title, "ทุกทริปในมุมมองเดียว");
+  assert.equal(
+    thai.marketing.widgets.body,
+    "เช็กวันเดินทางและอุปกรณ์ที่ยังต้องเตรียมได้โดยไม่ต้องเปิดแอป",
+  );
 
   for (const catalog of [english, thai]) {
     assert.equal(catalog.marketing.widgets.countdown.states.length, 5);

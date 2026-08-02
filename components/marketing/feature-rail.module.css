@@ -124,12 +124,11 @@
 
 .card:hover {
   box-shadow: var(--shadow-soft);
-  transform: translateY(-3px) scale(1);
+  transform: translateY(0) scale(1);
 }
 
 @media (hover: hover) and (pointer: fine) {
   .rail[data-presentation="stack"] .card:hover {
-    translate: 0 -0.4rem;
     box-shadow: 0 1.7rem 3.5rem rgb(23 23 23 / 16%);
   }
 }
@@ -163,6 +162,12 @@
   font-weight: 700;
   letter-spacing: var(--font-letter-spacing-accent);
   line-height: 1;
+}
+
+:global(html[lang="th"]) .rail[data-presentation="stack"] .card h3 {
+  max-width: none;
+  font-size: clamp(1.35rem, 2vw, 1.65rem);
+  white-space: nowrap;
 }
 
 .card > p:nth-child(3) {

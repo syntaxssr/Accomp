@@ -44,13 +44,28 @@ test("locks one core feature with three capabilities as product truth", async ()
   assert.match(english.marketing.pack.eyebrow, /Capability 02/);
   assert.match(english.marketing.offline.eyebrow, /Capability 03/);
   assert.equal(thai.marketing.plan.eyebrow, "01 · วางแผน");
-  assert.equal(thai.marketing.plan.title, "ทุกคน ทุกแผน\nในที่เดียว");
+  assert.equal(thai.marketing.plan.title, "ทุกคน ทุกแผน ในที่เดียว");
+  assert.deepEqual(
+    thai.marketing.plan.cards.map((card) => card.eyebrow),
+    ["เริ่มทริป", "ชวนเพื่อน", "วางแผน"],
+  );
   assert.equal(
     thai.marketing.plan.body,
     "สร้างทริป ชวนเพื่อน และรวมกำหนดการ เส้นทาง จุดนัดพบ\nพร้อมรายละเอียดสำคัญทั้งหมดไว้ในพื้นที่เดียว\nเพื่อให้ทุกคนเห็นแผนเดียวกัน ตั้งแต่เริ่มวางแผนจนจบทริป",
   );
-  assert.match(thai.marketing.pack.eyebrow, /ความสามารถ 02/);
-  assert.match(thai.marketing.offline.eyebrow, /ความสามารถ 03/);
+  assert.equal(thai.marketing.pack.eyebrow, "02 · เตรียมอุปกรณ์");
+  assert.deepEqual(
+    thai.marketing.pack.cards.map((card) => card.eyebrow),
+    ["รายการ", "แบ่งหน้าที่", "ตรวจสอบ"],
+  );
+  assert.deepEqual(
+    english.marketing.pack.cards.map((card) => card.eyebrow),
+    ["List", "Assign", "Review"],
+  );
+  assert.equal(
+    thai.marketing.offline.eyebrow,
+    "03 · แผนที่และข้อมูลออฟไลน์",
+  );
 });
 
 test("preserves the complete marketing structure through Phase 2.4", async () => {
@@ -250,11 +265,23 @@ test("centers the hero copy over one full-width artwork stage", async () => {
   );
   assert.match(
     styles,
-    /:global\(html\[lang="th"\]\) \.planChapter \.chapterHeading h2\s*\{[\s\S]*line-height: 1\.45[\s\S]*white-space: pre-line/,
+    /:global\(html\[lang="th"\]\) \.planChapter \.chapterHeading h2\s*\{[\s\S]*max-width: none[\s\S]*font-size: clamp\(2\.7rem, 4\.4vw, 3\.85rem\)[\s\S]*line-height: 1\.45[\s\S]*white-space: nowrap/,
   );
   assert.match(
     styles,
     /:global\(html\[lang="th"\]\) \.planChapter \.chapterHeading > p\s*\{[\s\S]*white-space: pre-line/,
+  );
+  assert.match(
+    styles,
+    /:global\(html\[lang="th"\]\) \.packChapter \.chapterHeading h2\s*\{[\s\S]*font-size: clamp\(1\.5rem, 4\.4vw, 3\.85rem\)[\s\S]*white-space: nowrap/,
+  );
+  assert.match(
+    styles,
+    /\.planChapter \.chapterHeading\s*\{[\s\S]*grid-template-columns: minmax\(0, 1fr\)/,
+  );
+  assert.match(
+    styles,
+    /@media \(min-width: 75rem\)\s*\{[\s\S]*\.planChapter \.chapterHeading\s*\{[\s\S]*grid-template-columns: minmax\(0, 1\.25fr\) minmax\(0, 1fr\)[\s\S]*column-gap: clamp\(1\.75rem, 2\.5vw, 2\.25rem\)/,
   );
 });
 
@@ -465,6 +492,10 @@ test("serves bilingual typography assets and preserves the offline map artwork",
     /\.card h3 \{[\s\S]*font-family: var\(--font-family-accent\)/,
   );
   assert.match(
+    featureRailStyles,
+    /:global\(html\[lang="th"\]\) \.rail\[data-presentation="stack"\] \.card h3 \{[\s\S]*max-width: none[\s\S]*font-size: clamp\(1\.35rem, 2vw, 1\.65rem\)[\s\S]*white-space: nowrap/,
+  );
+  assert.match(
     widgetStyles,
     /\.cardCopy h3 \{[\s\S]*font-family: var\(--font-family-accent\)/,
   );
@@ -501,8 +532,21 @@ test("serves bilingual typography assets and preserves the offline map artwork",
     /\.heading\[data-size="section"\] \{[\s\S]*max-width: 15ch/,
   );
   assert.match(page, /viewBox="0 0 800 760"/);
-  assert.match(page, /M-30 570C130 410 230 652 390 486S650 250 850 368/);
-  assert.match(page, /M-20 298C120 392 246 218 390 342S626 590 840 470/);
+  assert.match(page, /M650 690C610 668 632 620 585 598/);
+  assert.match(page, /styles\.mapTerrain/);
+  assert.match(page, /styles\.mapWaypointStart/);
+  assert.match(page, /styles\.mapWaypointCamp/);
+  assert.match(page, /styles\.mapCurrent/);
+  assert.match(page, /styles\.mapStopViewpoint/);
+  assert.match(page, /styles\.mapStopWaterfall/);
+  assert.match(page, /styles\.mapStopRest/);
+  assert.match(pageStyles, /\.mapContour/);
+  assert.match(pageStyles, /\.mapContourMajor/);
   assert.match(pageStyles, /\.mapRouteSecondary/);
-  assert.match(pageStyles, /\.mapPin/);
+  assert.match(pageStyles, /\.mapTrailHalo/);
+  assert.match(pageStyles, /\.mapCurrentDot/);
+  assert.match(
+    pageStyles,
+    /:global\(html\[lang="th"\]\) \.offline h2\s*\{[\s\S]*max-width: none[\s\S]*font-size: clamp\(2\.35rem, 6vw, 4\.5rem\)[\s\S]*letter-spacing: 0\.035em !important[\s\S]*white-space: pre/,
+  );
 });

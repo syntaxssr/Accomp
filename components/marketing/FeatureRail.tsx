@@ -13,6 +13,7 @@ import type {
 } from "@/content/site-content";
 import { formatMessage } from "@/lib/i18n/format";
 import type { Messages } from "@/lib/i18n/messages";
+import { reboundCardFromCursor } from "./card-cursor-rebound";
 import styles from "./feature-rail.module.css";
 
 interface FeatureRailProps {
@@ -368,6 +369,7 @@ export function FeatureRail({
             data-active={!hasOverflow || index === cardIndex}
             data-feature-card
             key={card.title}
+            onMouseEnter={reboundCardFromCursor}
           >
             <p>{card.eyebrow}</p>
             <h3>{card.title}</h3>
